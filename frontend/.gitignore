@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+
+# Production build
+.next/
+out/
+dist/
+build/
+
+# Testing coverage
+coverage/
+
+# Env files
+.env*
+
+# System files
+.DS_Store
+
+# Editor settings
+.vscode/
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
