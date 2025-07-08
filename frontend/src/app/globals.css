@@ -5,6 +5,18 @@
   --foreground: #171717;
 }
 
+:root {
+  font-family: var(--font-body);
+}
+
+h1, h2 {
+  font-family: var(--font-heading);
+}
+
+h3, h4 {
+  font-family: var(--font-subheading);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
