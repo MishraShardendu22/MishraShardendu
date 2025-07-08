@@ -1,9 +1,5 @@
 const page = () => {
-  return (
-                                      <div>
-      hellow
-    </div>
-  )
+  return <div>hellow</div>
 }
 
 export default page
