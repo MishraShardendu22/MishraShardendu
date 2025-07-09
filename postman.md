@@ -128,7 +128,17 @@ Content-Type: application/json
   "start_date": "2023-01-15",
   "end_date": "2024-01-15",
   "description": "Worked on various projects and technologies",
-  "technologies": ["React", "Node.js", "PostgreSQL"]
+  "technologies": ["React", "Node.js", "PostgreSQL"],
+  "projects": [
+    {
+      "project_name": "Internal Dashboard",
+      "description": "Built internal analytics dashboard",
+      "skills": ["React", "Node.js"]
+    }
+  ],
+  "company_logo": "https://example.com/logo.png",
+  "certificate_url": "https://example.com/certificate.pdf",
+  "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"]
 }
 ```
 
@@ -155,7 +165,17 @@ Content-Type: application/json
   "start_date": "2023-01-15",
   "end_date": "2024-06-15",
   "description": "Updated description of work experience",
-  "technologies": ["React", "Node.js", "PostgreSQL", "Docker"]
+  "technologies": ["React", "Node.js", "PostgreSQL", "Docker"],
+  "projects": [
+    {
+      "project_name": "Updated Internal Dashboard",
+      "description": "Enhanced analytics dashboard with new features",
+      "skills": ["React", "Node.js", "Docker"]
+    }
+  ],
+  "company_logo": "https://example.com/updated-logo.png",
+  "certificate_url": "https://example.com/updated-certificate.pdf",
+  "images": ["https://example.com/updated-image1.jpg", "https://example.com/updated-image2.jpg"]
 }
 ```
 
@@ -192,7 +212,85 @@ Content-Type: application/json
 
 ---
 
-## 5. Test Route
+## 5. Certifications & Achievements API
+
+### Create Certification (Protected)
+**POST** `/api/certifications`
+
+**Headers:**
+```
+Authorization: Bearer <your-jwt-token>
+Content-Type: application/json
+```
+
+**Request Body:**
+```json
+{
+  "title": "AWS Certified Solutions Architect",
+  "description": "Professional certification for AWS cloud architecture",
+  "projects": [
+    {
+      "project_name": "Cloud Migration Project",
+      "description": "Migrated legacy systems to AWS",
+      "skills": ["AWS", "Docker", "Terraform"]
+    }
+  ],
+  "skills": ["AWS", "Cloud Architecture", "EC2", "S3"],
+  "certificate_url": "https://example.com/aws-cert.pdf",
+  "images": ["https://example.com/cert-image1.jpg", "https://example.com/cert-image2.jpg"],
+  "issuer": "Amazon Web Services",
+  "issue_date": "2024-01-15",
+  "expiry_date": "2027-01-15"
+}
+```
+
+### Get All Certifications (Public)
+**GET** `/api/public/certifications`
+
+### Get Certification by ID (Public)
+**GET** `/api/public/certifications/:id`
+
+### Update Certification (Protected)
+**PUT** `/api/certifications/:id`
+
+**Headers:**
+```
+Authorization: Bearer <your-jwt-token>
+Content-Type: application/json
+```
+
+**Request Body:**
+```json
+{
+  "title": "Updated AWS Certified Solutions Architect",
+  "description": "Updated professional certification for AWS cloud architecture",
+  "projects": [
+    {
+      "project_name": "Advanced Cloud Migration Project",
+      "description": "Enhanced migration with multi-region deployment",
+      "skills": ["AWS", "Docker", "Terraform", "Kubernetes"]
+    }
+  ],
+  "skills": ["AWS", "Cloud Architecture", "EC2", "S3", "Lambda"],
+  "certificate_url": "https://example.com/updated-aws-cert.pdf",
+  "images": ["https://example.com/updated-cert-image1.jpg"],
+  "issuer": "Amazon Web Services",
+  "issue_date": "2024-01-15",
+  "expiry_date": "2027-01-15"
+}
+```
+
+### Delete Certification (Protected)
+**DELETE** `/api/certifications/:id`
+
+**Headers:**
+```
+Authorization: Bearer <your-jwt-token>
+```
+
+---
+
+## 6. Test Route
 
 ### Test Endpoint (Public)
 **GET** `/api/test`
@@ -227,7 +325,7 @@ Content-Type: application/json
    - Create resources using POST endpoints
    - Retrieve them using GET endpoints
    - Update them using PUT endpoints
-   - Delete projects using DELETE endpoint
+   - Delete projects and certifications using DELETE endpoints
 
 ---
 

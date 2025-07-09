@@ -173,6 +173,7 @@ func SetUpRoutes(app *fiber.App, logger *slog.Logger) {
 	route.SetupProjectRoutes(app, config.JWT_SECRET)
 	route.SetupSkillRoutes(app, config.JWT_SECRET)
 	route.SetupExperienceRoutes(app, config.JWT_SECRET)
+	route.SetupCertificationRoutes(app, config.JWT_SECRET)
 	
 	api := app.Group("/api")
 	api.Get("/test", util.Testfunc)
