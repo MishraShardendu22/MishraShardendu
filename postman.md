@@ -32,6 +32,8 @@ Content-Type: application/json
 }
 ```
 
+**Required Fields:** `email`, `password`, `adminPass`
+
 **Response:**
 ```json
 {
@@ -48,6 +50,8 @@ Content-Type: application/json
 ---
 
 ## 2. Projects API
+
+**Note:** All protected routes require JWT authorization. Users can only update/delete their own projects.
 
 ### Create Project (Protected)
 **POST** `/api/projects`
@@ -70,6 +74,8 @@ Content-Type: application/json
   "project_video": "https://youtube.com/watch?v=..."
 }
 ```
+
+**Required Fields:** `project_name`, `description`
 
 ### Get All Projects (Public)
 **GET** `/api/public/projects`
@@ -111,6 +117,8 @@ Authorization: Bearer <your-jwt-token>
 
 ## 3. Experience API
 
+**Note:** All protected routes require JWT authorization. Users can only update/archive their own experiences.
+
 ### Create Experience (Protected)
 **POST** `/api/experience`
 
@@ -141,6 +149,8 @@ Content-Type: application/json
   "images": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"]
 }
 ```
+
+**Required Fields:** `company_name`, `position`, `start_date`, `description`
 
 ### Get All Experiences (Public)
 **GET** `/api/public/experience`
@@ -191,6 +201,8 @@ Authorization: Bearer <your-jwt-token>
 
 ## 4. Skills API
 
+**Note:** Skills creation requires JWT authorization.
+
 ### Create Skill (Protected)
 **POST** `/api/skills`
 
@@ -207,12 +219,16 @@ Content-Type: application/json
 }
 ```
 
+**Required Fields:** At least one technology in the `technologies` array
+
 ### Get All Skills (Public)
 **GET** `/api/public/skills`
 
 ---
 
 ## 5. Certifications & Achievements API
+
+**Note:** All protected routes require JWT authorization. Users can only update/delete their own certifications.
 
 ### Create Certification (Protected)
 **POST** `/api/certifications`
@@ -243,6 +259,8 @@ Content-Type: application/json
   "expiry_date": "2027-01-15"
 }
 ```
+
+**Required Fields:** `title`, `description`
 
 ### Get All Certifications (Public)
 **GET** `/api/public/certifications`
@@ -315,7 +333,7 @@ Authorization: Bearer <your-jwt-token>
 
 2. **Test protected routes:**
    - Use the JWT token in Authorization header for protected routes
-   - Create some projects, experiences, and skills
+   - Create some projects, experiences, skills, and certifications
 
 3. **Test public routes:**
    - Test all the public GET endpoints without authentication
@@ -343,6 +361,7 @@ All endpoints return standardized error responses:
 ```
 
 Common status codes:
+
 - `200`: Success
 - `201`: Created
 - `400`: Bad Request
@@ -357,13 +376,3 @@ Common status codes:
 
 Make sure these environment variables are set:
 
-```
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-DB_NAME=your_database_name
-ADMIN_PASS=your_admin_password
-JWT_SECRET=your_jwt_secret_key
-CORS_ALLOW_ORIGINS=*
-LOG_LEVEL=info
-ENVIRONMENT=development
-```

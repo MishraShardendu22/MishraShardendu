@@ -46,4 +46,5 @@ type CertificationOrAchivements struct {
 	Issuer           string     `bson:"issuer" json:"issuer"`
 	IssueDate        string     `bson:"issue_date" json:"issue_date"`
 	ExpiryDate       string     `bson:"expiry_date" json:"expiry_date"`
+	CreatedBy        string     `bson:"created_by" json:"created_by"`
 }

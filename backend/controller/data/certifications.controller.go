@@ -23,6 +23,13 @@ func CreateCertification(c *fiber.Ctx) error {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Description is required", nil, "")
 	}
 
+	userID, ok := c.Locals("user_id").(string)
+	if !ok {
+		return util.ResponseAPI(c, fiber.StatusUnauthorized, "Invalid user context", nil, "")
+	}
+
+	certification.CreatedBy = userID
+
 	if err := mgm.Coll(&certification).Create(&certification); err != nil {
 		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to create certification", nil, err.Error())
 	}
@@ -59,6 +66,15 @@ func UpdateCertification(c *fiber.Ctx) error {
 		return util.ResponseAPI(c, fiber.StatusNotFound, "Certification not found", nil, err.Error())
 	}
 
+	userID, ok := c.Locals("user_id").(string)
+	if !ok {
+		return util.ResponseAPI(c, fiber.StatusUnauthorized, "Invalid user context", nil, "")
+	}
+
+	if certification.CreatedBy != userID {
+		return util.ResponseAPI(c, fiber.StatusForbidden, "Not authorized to update this certification", nil, "")
+	}
+
 	var updatedCertification models.CertificationOrAchivements
 	if err := c.BodyParser(&updatedCertification); err != nil {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid request body", nil, err.Error())
@@ -87,6 +103,15 @@ func DeleteCertification(c *fiber.Ctx) error {
 	certification := &models.CertificationOrAchivements{}
 	if err := mgm.Coll(certification).FindByID(id, certification); err != nil {
 		return util.ResponseAPI(c, fiber.StatusNotFound, "Certification not found", nil, err.Error())
+	}
+
+	userID, ok := c.Locals("user_id").(string)
+	if !ok {
+		return util.ResponseAPI(c, fiber.StatusUnauthorized, "Invalid user context", nil, "")
+	}
+
+	if certification.CreatedBy != userID {
+		return util.ResponseAPI(c, fiber.StatusForbidden, "Not authorized to delete this certification", nil, "")
 	}
 
 	if err := mgm.Coll(certification).Delete(certification); err != nil {
