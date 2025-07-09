@@ -12,6 +12,7 @@ import (
 
 	"github.com/MishraShardendu22/database"
 	"github.com/MishraShardendu22/models"
+	"github.com/MishraShardendu22/route"
 	"github.com/MishraShardendu22/util"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -166,7 +167,13 @@ func main() {
 }
 
 func SetUpRoutes(app *fiber.App, logger *slog.Logger) {
+	config := loadConfig()
+	
+	route.SetupAdminRoutes(app, config.AdminPass, config.JWT_SECRET)
+	route.SetupProjectRoutes(app, config.JWT_SECRET)
+	route.SetupSkillRoutes(app, config.JWT_SECRET)
+	route.SetupExperienceRoutes(app, config.JWT_SECRET)
+	
 	api := app.Group("/api")
-
 	api.Get("/test", util.Testfunc)
 }

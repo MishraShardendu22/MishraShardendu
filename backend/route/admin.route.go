@@ -1,1 +1,14 @@
 package route
+
+import (
+	"github.com/MishraShardendu22/controller"
+	"github.com/gofiber/fiber/v2"
+)
+
+func SetupAdminRoutes(app *fiber.App, adminPass string, jwtSecret string) {
+	api := app.Group("/api")
+	
+	api.Post("/admin/auth", func(c *fiber.Ctx) error {
+		return controller.AdminRegisterAndLogin(c, adminPass, jwtSecret)
+	})
+}
