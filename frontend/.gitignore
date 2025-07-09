@@ -1,5 +1,6 @@
 # Node modules
 node_modules/
+Portfolio.postman_collection.json
 
 # Production build
 .next/
