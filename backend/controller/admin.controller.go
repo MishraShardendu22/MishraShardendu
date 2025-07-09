@@ -19,6 +19,8 @@ func AdminRegisterAndLogin(c *fiber.Ctx, adminPass string, secret string) error 
 		return util.ResponseAPI(c, fiber.StatusUnauthorized, "Invalid admin password", nil, "")
 	}
 
+	req.AdminPass = "" // Clear admin password from request
+
 	if req.Email == "" || req.Password == "" {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "email and password are required", nil, "")
 	}
@@ -30,6 +32,7 @@ func AdminRegisterAndLogin(c *fiber.Ctx, adminPass string, secret string) error 
 		if !util.CheckPassword(req.Password, existing.Password) {
 			return util.ResponseAPI(c, fiber.StatusUnauthorized, "Invalid email or password", nil, "")
 		}
+		
 		token, _ := util.GenerateJWT(existing.ID.Hex(), existing.Email, secret)
 		return util.ResponseAPI(c, fiber.StatusAccepted, "User already exists", existing, token)
 	}
@@ -41,5 +44,6 @@ func AdminRegisterAndLogin(c *fiber.Ctx, adminPass string, secret string) error 
 	}
 
 	token, _ := util.GenerateJWT(req.ID.Hex(), req.Email, secret)
+
 	return util.ResponseAPI(c, fiber.StatusCreated, "Admin registered successfully", req, token)
 }
