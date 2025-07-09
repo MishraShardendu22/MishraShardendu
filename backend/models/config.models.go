@@ -9,6 +9,8 @@ type Config struct {
 	LogLevel         string
 	MONGODB_URI      string
 	DbName           string
+	AdminPass        string
+	JWT_SECRET       string
 }
 
 type TestModel struct {

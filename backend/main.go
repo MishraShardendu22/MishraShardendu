@@ -28,6 +28,8 @@ func loadConfig() *models.Config {
 		LogLevel:         util.GetEnv("LOG_LEVEL", "info"),
 		MONGODB_URI:      util.GetEnv("MONGODB_URI", "some_default_mongo_uri"),
 		DbName:           util.GetEnv("DB_NAME", "test"),
+		AdminPass:        util.GetEnv("ADMIN_PASS", ""),
+		JWT_SECRET:       util.GetEnv("JWT_SECRET", ""),
 	}
 	return config
 }
