@@ -22,7 +22,6 @@ type Project struct {
 	ProjectRepository string   `bson:"project_repository" json:"project_repository"`
 	ProjectLiveLink   string   `bson:"project_live_link" json:"project_live_link"`
 	ProjectVideo      string   `bson:"project_video" json:"project_video"`
-	CreatedBy         string   `bson:"created_by" json:"created_by"`
 }
 
 type Experience struct {
