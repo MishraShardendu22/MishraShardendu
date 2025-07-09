@@ -1,6 +1,9 @@
 package models
 
-import "github.com/kamva/mgm/v3"
+import (
+	"github.com/kamva/mgm/v3"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type User struct {
 	mgm.DefaultModel `bson:",inline"`
@@ -8,8 +11,8 @@ type User struct {
 	Password         string                       `bson:"password"`
 	AdminPass        string                       `bson:"admin_pass"`
 	Skills           []string                     `bson:"skills" json:"skills"`
-	Projects         []Project                    `bson:"projects" json:"projects"`
-	Experiences      []Experience                 `bson:"experiences" json:"experiences"`
+	Projects         []primitive.ObjectID         `bson:"projects"`
+	Experiences      []primitive.ObjectID         `bson:"experiences"`
 	Certifications   []CertificationOrAchivements `bson:"certifications" json:"certifications"`
 }
 

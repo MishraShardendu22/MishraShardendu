@@ -171,6 +171,7 @@ func SetUpRoutes(app *fiber.App, logger *slog.Logger) {
 
 	route.SetupSkillRoutes(app, config.JWT_SECRET)
 	route.SetupProjectRoutes(app, config.JWT_SECRET)
+	// route.SetupProjectRoutes(app, config.JWT_SECRET)
 	route.SetupAdminRoutes(app, config.AdminPass, config.JWT_SECRET)
 
 	api := app.Group("/api")
