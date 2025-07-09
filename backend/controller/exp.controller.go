@@ -15,10 +15,12 @@ func GetExperiences(c *fiber.Ctx) error {
 	if err != nil {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid user ID", nil, "")
 	}
+
 	var user models.User
 	if err := mgm.Coll(&models.User{}).FindByID(userObjID, &user); err != nil {
 		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
 	}
+
 	if len(user.Experiences) == 0 {
 		return util.ResponseAPI(c, fiber.StatusOK, "No experiences found", nil, "")
 	}
@@ -30,6 +32,7 @@ func GetExperiences(c *fiber.Ctx) error {
 			exps = append(exps, e)
 		}
 	}
+
 	return util.ResponseAPI(c, fiber.StatusOK, "Experiences retrieved successfully", exps, "")
 }
 
@@ -38,14 +41,17 @@ func GetExperienceByID(c *fiber.Ctx) error {
 	if eid == "" {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Experience ID is required", nil, "")
 	}
+
 	expObjID, err := primitive.ObjectIDFromHex(eid)
 	if err != nil {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid experience ID", nil, "")
 	}
+
 	var e models.Experience
 	if err := mgm.Coll(&models.Experience{}).FindByID(expObjID, &e); err != nil {
 		return util.ResponseAPI(c, fiber.StatusNotFound, "Experience not found", nil, "")
 	}
+
 	return util.ResponseAPI(c, fiber.StatusOK, "Experience retrieved successfully", e, "")
 }
 
@@ -54,9 +60,11 @@ func AddExperiences(c *fiber.Ctx) error {
 	if err := c.BodyParser(&e); err != nil {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid request body", nil, "")
 	}
+
 	if e.CompanyName == "" || e.Position == "" || e.StartDate == "" {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Company name, position and start date are required", nil, "")
 	}
+
 	if err := mgm.Coll(&models.Experience{}).Create(&e); err != nil {
 		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to add experience", nil, "")
 	}
@@ -66,14 +74,17 @@ func AddExperiences(c *fiber.Ctx) error {
 	if err != nil {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid user ID", nil, "")
 	}
+
 	var user models.User
 	if err := mgm.Coll(&models.User{}).FindByID(userObjID, &user); err != nil {
 		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
 	}
+
 	user.Experiences = append(user.Experiences, e.ID)
 	if err := mgm.Coll(&models.User{}).Update(&user); err != nil {
 		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to update user experiences", nil, "")
 	}
+
 	return util.ResponseAPI(c, fiber.StatusOK, "Experience added successfully", e, "")
 }
 
@@ -82,6 +93,7 @@ func UpdateExperiences(c *fiber.Ctx) error {
 	if eid == "" {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Experience ID is required", nil, "")
 	}
+
 	expObjID, err := primitive.ObjectIDFromHex(eid)
 	if err != nil {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid experience ID", nil, "")
@@ -91,6 +103,7 @@ func UpdateExperiences(c *fiber.Ctx) error {
 	if err := c.BodyParser(&input); err != nil {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid request body", nil, "")
 	}
+
 	if input.CompanyName == "" || input.Position == "" || input.StartDate == "" {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Company name, position and start date are required", nil, "")
 	}
@@ -106,9 +119,11 @@ func UpdateExperiences(c *fiber.Ctx) error {
 		"certificate_url": input.CertificateURL,
 		"images":          input.Images,
 	}}
+
 	if _, err := mgm.Coll(&models.Experience{}).UpdateByID(c.Context(), expObjID, update); err != nil {
 		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to update experience", nil, "")
 	}
+
 	return util.ResponseAPI(c, fiber.StatusOK, "Experience updated successfully", input, "")
 }
 
@@ -138,6 +153,7 @@ func RemoveExperiences(c *fiber.Ctx) error {
 		}
 		updated = append(updated, expID)
 	}
+
 	if !found {
 		return util.ResponseAPI(c, fiber.StatusNotFound, "Experience not found", nil, "")
 	}
@@ -146,5 +162,6 @@ func RemoveExperiences(c *fiber.Ctx) error {
 	if err := mgm.Coll(&models.User{}).Update(&user); err != nil {
 		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to remove experience", nil, "")
 	}
+
 	return util.ResponseAPI(c, fiber.StatusOK, "Experience removed successfully", nil, "")
 }

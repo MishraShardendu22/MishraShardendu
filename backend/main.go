@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"log/slog"
 	"os"
@@ -103,16 +102,12 @@ func init() {
 	if currEnv == "development" {
 		if err := godotenv.Load(); err != nil {
 			log.Printf("Warning: error loading .env file: %v", err)
-		} else {
-			fmt.Println(".env loaded")
 		}
 	}
 }
 
 func main() {
 	config := loadConfig()
-
-	fmt.Println("hello", config.MONGODB_URI, config.DbName)
 	if err := database.ConnectDatabase(config.DbName, config.MONGODB_URI); err != nil {
 		log.Fatalf("Database connection failed: %v", err)
 	}
@@ -169,9 +164,9 @@ func main() {
 func SetUpRoutes(app *fiber.App, logger *slog.Logger) {
 	config := loadConfig()
 
+	route.SetupExpRoutes(app, config.JWT_SECRET)
 	route.SetupSkillRoutes(app, config.JWT_SECRET)
 	route.SetupProjectRoutes(app, config.JWT_SECRET)
-	// route.SetupProjectRoutes(app, config.JWT_SECRET)
 	route.SetupAdminRoutes(app, config.AdminPass, config.JWT_SECRET)
 
 	api := app.Group("/api")

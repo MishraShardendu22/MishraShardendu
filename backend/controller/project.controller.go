@@ -23,7 +23,7 @@ func GetProjects(c *fiber.Ctx) error {
 		return util.ResponseAPI(c, fiber.StatusOK, "No projects found", nil, "")
 	}
 
-	var projects []models.Project
+	projects := make([]models.Project, 0, len(user.Projects))
 	for _, projID := range user.Projects {
 		var p models.Project
 		if err := mgm.Coll(&models.Project{}).FindByID(projID, &p); err == nil {
@@ -116,33 +116,27 @@ func RemoveProjects(c *fiber.Ctx) error {
 	if err != nil {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid user ID", nil, "")
 	}
-
 	pid := c.Params("id")
 	if pid == "" {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Project ID is required", nil, "")
 	}
-
 	var user models.User
 	if err := mgm.Coll(&models.User{}).FindByID(userObjID, &user); err != nil {
 		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
 	}
 
-	var updated []primitive.ObjectID
-	found := false
+	updated := make([]primitive.ObjectID, 0, len(user.Projects))
 	for _, projID := range user.Projects {
 		if projID.Hex() == pid {
-			found = true
 			continue
 		}
 		updated = append(updated, projID)
 	}
-	if !found {
-		return util.ResponseAPI(c, fiber.StatusNotFound, "Project not found", nil, "")
-	}
 
 	user.Projects = updated
 	if err := mgm.Coll(&models.User{}).Update(&user); err != nil {
-		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to remove project", nil, "")
+		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to remove project from user", nil, "")
 	}
+
 	return util.ResponseAPI(c, fiber.StatusOK, "Project removed successfully", nil, "")
 }
