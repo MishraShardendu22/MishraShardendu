@@ -2,41 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { ProtectedRoute } from "../../../components/auth/protected-route";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../../../components/ui/card";
-import { Button } from "../../../components/ui/button";
-import { Badge } from "../../../components/ui/badge";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "../../../components/ui/dialog";
-import { Input } from "../../../components/ui/input";
-import { Label } from "../../../components/ui/label";
-import { Textarea } from "../../../components/ui/textarea";
 import { Alert, AlertDescription } from "../../../components/ui/alert";
 import { certificationsAPI } from "../../../util/apiResponse.util";
 import {
   Certification,
   CreateCertificationRequest,
 } from "../../../data/types.data";
-import { Plus, Edit, Trash2, ExternalLink, Award } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import Image from "next/image";
-import { Select, SelectTrigger, SelectContent, SelectItem } from '../../../components/ui/select';
-import { Checkbox } from '../../../components/ui/checkbox';
 import { projectsAPI, skillsAPI } from '../../../util/apiResponse.util';
-import { Popover, PopoverTrigger, PopoverContent } from '../../../components/ui/popover';
+import { CertificationAddDialog, CertificationCard, CertificationEmptyState } from '../../../components/admin/certifications';
 
 const certificationSchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -172,127 +148,21 @@ export default function AdminCertificationsPage() {
               Manage your certifications and professional achievements.
             </p>
           </div>
-          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogTrigger asChild>
-              <Button onClick={openDialog}>
-                <Plus className="mr-2 h-4 w-4" />
-                Add Certification
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-              <DialogHeader>
-                <DialogTitle>
-                  {editingCertification ? "Edit Certification" : "Add New Certification"}
-                </DialogTitle>
-                <DialogDescription>
-                  {editingCertification ? "Update your certification details." : "Add a new certification to your portfolio."}
-                </DialogDescription>
-              </DialogHeader>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="title">Title</Label>
-                    <Input id="title" {...register("title")} placeholder="Certification Title" />
-                    {errors.title && <p className="text-sm text-red-500">{errors.title.message}</p>}
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="issuer">Issuer</Label>
-                    <Input id="issuer" {...register("issuer")} placeholder="Google, AWS, etc." />
-                    {errors.issuer && <p className="text-sm text-red-500">{errors.issuer.message}</p>}
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="description">Description</Label>
-                  <Textarea id="description" {...register("description")} placeholder="Certification description" rows={3} />
-                  {errors.description && <p className="text-sm text-red-500">{errors.description.message}</p>}
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="skills">Skills</Label>
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <Button type="button" variant="outline" className="w-full justify-between">
-                          {selectedSkills.length > 0
-                            ? `${selectedSkills.length} selected`
-                            : 'Select Skills'}
-                        </Button>
-                      </PopoverTrigger>
-                      <PopoverContent className="max-h-64 overflow-y-auto w-72 p-2">
-                        {allSkills.map((skill) => (
-                          <label key={skill} className="flex items-center gap-2 py-1 px-2 hover:bg-gray-100 rounded cursor-pointer">
-                            <Checkbox
-                              checked={selectedSkills.includes(skill)}
-                              onCheckedChange={(checked) => {
-                                if (checked) setValue('skills', [...selectedSkills, skill]);
-                                else setValue('skills', selectedSkills.filter((s) => s !== skill));
-                              }}
-                            />
-                            <span>{skill}</span>
-                          </label>
-                        ))}
-                      </PopoverContent>
-                    </Popover>
-                    {errors.skills && <p className="text-sm text-red-500">{errors.skills.message as string}</p>}
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="projects">Projects</Label>
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <Button type="button" variant="outline" className="w-full justify-between">
-                          {selectedProjects.length > 0
-                            ? `${selectedProjects.length} selected`
-                            : 'Select Projects'}
-                        </Button>
-                      </PopoverTrigger>
-                      <PopoverContent className="max-h-64 overflow-y-auto w-72 p-2">
-                        {allProjects.map((project) => (
-                          <label key={project.id} className="flex items-center gap-2 py-1 px-2 hover:bg-gray-100 rounded cursor-pointer">
-                            <Checkbox
-                              checked={selectedProjects.includes(project.id)}
-                              onCheckedChange={(checked) => {
-                                if (checked) setValue('projects', [...selectedProjects, project.id]);
-                                else setValue('projects', selectedProjects.filter((p) => p !== project.id));
-                              }}
-                            />
-                            <span>{project.name}</span>
-                          </label>
-                        ))}
-                      </PopoverContent>
-                    </Popover>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="certificate_url">Certificate URL</Label>
-                  <Input id="certificate_url" {...register("certificate_url")} placeholder="https://example.com/cert.pdf" />
-                  {errors.certificate_url && <p className="text-sm text-red-500">{errors.certificate_url.message}</p>}
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="images">Image URLs (comma-separated, optional)</Label>
-                  <Input id="images" {...register("images")} placeholder="https://example.com/img1.jpg, https://example.com/img2.jpg" />
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="issue_date">Issue Date</Label>
-                    <Input id="issue_date" type="date" {...register("issue_date")} />
-                    {errors.issue_date && <p className="text-sm text-red-500">{errors.issue_date.message}</p>}
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="expiry_date">Expiry Date</Label>
-                    <Input id="expiry_date" type="date" {...register("expiry_date")} />
-                    {errors.expiry_date && <p className="text-sm text-red-500">{errors.expiry_date.message}</p>}
-                  </div>
-                </div>
-                <div className="flex justify-end space-x-2">
-                  <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>
-                    Cancel
-                  </Button>
-                  <Button type="submit">
-                    {editingCertification ? "Update Certification" : "Create Certification"}
-                  </Button>
-                </div>
-              </form>
-            </DialogContent>
-          </Dialog>
+          <CertificationAddDialog
+            open={isDialogOpen}
+            setOpen={setIsDialogOpen}
+            onSubmit={onSubmit}
+            errors={errors}
+            register={register}
+            handleSubmit={handleSubmit}
+            reset={reset}
+            setValue={setValue}
+            watch={watch}
+            editingCertification={editingCertification}
+            allSkills={allSkills}
+            allProjects={allProjects}
+            openDialog={openDialog}
+          />
         </div>
 
         {error && (
@@ -308,74 +178,16 @@ export default function AdminCertificationsPage() {
         )}
 
         {certifications.length === 0 ? (
-          <Card>
-            <CardContent className="text-center py-12">
-              <Award className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">No certifications yet</h3>
-              <p className="text-gray-500 mb-4">
-                Get started by adding your first certification.
-              </p>
-              <Button onClick={openDialog}>
-                <Plus className="mr-2 h-4 w-4" />
-                Add Your First Certification
-              </Button>
-            </CardContent>
-          </Card>
+          <CertificationEmptyState onAdd={openDialog} />
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {certifications.map((cert) => (
-              <Card key={cert.inline?.id || cert.inline.id} className="overflow-hidden">
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <CardTitle className="text-lg">{cert.title}</CardTitle>
-                      <CardDescription className="mt-2">
-                        {cert.issuer} &mdash; {cert.issue_date} to {cert.expiry_date}
-                      </CardDescription>
-                    </div>
-                    <div className="flex space-x-1">
-                      <Button variant="ghost" size="sm" onClick={() => handleEdit(cert)}>
-                        <Edit className="h-4 w-4" />
-                      </Button>
-                      <Button variant="ghost" size="sm" onClick={() => handleDelete(cert.inline.id)}>
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    {cert.skills.map((skill, idx) => (
-                      <Badge key={idx} variant="secondary">
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                  <p className="text-sm text-gray-600 line-clamp-3">{cert.description}</p>
-                  <div className="flex space-x-2">
-                    {cert.certificate_url && (
-                      <a
-                        href={cert.certificate_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:text-blue-800"
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                      </a>
-                    )}
-                    {cert.images && cert.images.length > 0 && cert.images[0] && (
-                      <div className="relative h-8 w-8">
-                        <Image
-                          src={cert.images[0]}
-                          alt={cert.title + " certificate image"}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
+              <CertificationCard
+                key={cert.inline?.id || cert.inline.id}
+                cert={cert}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+              />
             ))}
           </div>
         )}
