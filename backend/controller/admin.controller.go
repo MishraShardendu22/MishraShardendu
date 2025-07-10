@@ -47,3 +47,19 @@ func AdminRegisterAndLogin(c *fiber.Ctx, adminPass string, secret string) error 
 
 	return util.ResponseAPI(c, fiber.StatusCreated, "Admin registered successfully", req, token)
 }
+
+func AdminGet(c *fiber.Ctx) error {
+	userId := c.Locals("user_id").(string)
+	if userId == "" {
+		return util.ResponseAPI(c, fiber.StatusUnauthorized, "Unauthorized", nil, "")
+	}
+
+	user := &models.User{}
+	err := mgm.Coll(user).FindByID(userId, user)
+	if err != nil {
+		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
+	}
+
+	user.Password = "" // Don't return password hash
+	return util.ResponseAPI(c, fiber.StatusOK, "User profile fetched successfully", user, "")
+}

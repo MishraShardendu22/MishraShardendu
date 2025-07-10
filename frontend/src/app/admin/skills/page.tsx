@@ -40,7 +40,9 @@ export default function AdminSkillsPage() {
   const fetchSkills = async () => {
     try {
       const response = await skillsAPI.getSkills()
-      setSkills(Array.isArray(response.data?.skills) ? response.data.skills : [])
+      console.log('Fetched skills:', response.data)
+
+      setSkills(Array.isArray(response.data) ? response.data : [])
     } catch (error) {
       setError('Failed to fetch skills')
       setSkills([])

@@ -21,12 +21,6 @@ const loginSchema = z.object({
 
 type LoginFormData = z.infer<typeof loginSchema>
 
-/**
- * Admin Login Page
- * - Handles admin authentication using email, password, and admin password.
- * - Shows detailed error messages on failure.
- * - Redirects to dashboard on success.
- */
 export default function AdminLoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [showAdminPass, setShowAdminPass] = useState(false)
@@ -42,7 +36,6 @@ export default function AdminLoginPage() {
     resolver: zodResolver(loginSchema),
   })
 
-  // Handles form submission and login logic
   const onSubmit = async (data: LoginFormData, e?: React.BaseSyntheticEvent) => {
     e?.preventDefault()
     setError('')

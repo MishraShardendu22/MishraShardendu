@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { ProtectedRoute } from '../../../components/auth/protected-route'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card'
 import { Button } from '../../../components/ui/button'
@@ -7,11 +8,18 @@ import { Input } from '../../../components/ui/input'
 import { Label } from '../../../components/ui/label'
 import { useAuth } from '../../../hooks/use-auth'
 import { User, Mail, Shield, Save } from 'lucide-react'
-import { useEffect, useState } from 'react'
 import api from '../../../util/api'
 
+interface ProfileData {
+  _id: string
+  email: string
+  skills: string[]
+  projects: string[]
+  experiences: string[]
+}
+
 export default function AdminProfilePage() {
-  const [profile, setProfile] = useState(null)
+  const [profile, setProfile] = useState<ProfileData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const { logout } = useAuth()
@@ -19,9 +27,9 @@ export default function AdminProfilePage() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await api.get('/admin/profile')
-        setProfile(response.data)
-      } catch (err) {
+        const response = await api.get('/admin/auth')
+        setProfile(response.data.data)
+      } catch {
         setError('Failed to load profile')
       } finally {
         setLoading(false)
@@ -48,7 +56,6 @@ export default function AdminProfilePage() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {/* Profile Information */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center">
@@ -101,7 +108,6 @@ export default function AdminProfilePage() {
             </CardContent>
           </Card>
 
-          {/* Account Statistics */}
           <Card>
             <CardHeader>
               <CardTitle>Account Statistics</CardTitle>
@@ -139,7 +145,6 @@ export default function AdminProfilePage() {
             </CardContent>
           </Card>
 
-          {/* Security Settings */}
           <Card>
             <CardHeader>
               <CardTitle>Security</CardTitle>
@@ -154,7 +159,6 @@ export default function AdminProfilePage() {
                   You are currently logged in and have access to all admin features.
                 </p>
               </div>
-              
               <Button
                 variant="outline"
                 onClick={handleLogout}
@@ -165,7 +169,6 @@ export default function AdminProfilePage() {
             </CardContent>
           </Card>
 
-          {/* Quick Actions */}
           <Card>
             <CardHeader>
               <CardTitle>Quick Actions</CardTitle>
@@ -194,4 +197,4 @@ export default function AdminProfilePage() {
       </div>
     </ProtectedRoute>
   )
-} 
+}

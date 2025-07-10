@@ -23,11 +23,11 @@ export default function AdminDashboardPage() {
         const [projectsRes, experiencesRes, skillsRes] = await Promise.all([
           projectsAPI.getAllProjects(),
           experiencesAPI.getAllExperiences(),
-          skillsAPI.getSkills(),
+          (await skillsAPI.getSkills()),
         ])
         setProjects(Array.isArray(projectsRes.data) ? projectsRes.data : [])
         setExperiences(Array.isArray(experiencesRes.data) ? experiencesRes.data : [])
-        setSkills(Array.isArray(skillsRes.data?.skills) ? skillsRes.data.skills : [])
+        setSkills(Array.isArray(skillsRes.data) ? skillsRes.data : [])
       } catch (err) {
         setError('Failed to load dashboard data')
         setProjects([])
