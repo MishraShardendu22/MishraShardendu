@@ -13,6 +13,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { projectsAPI, skillsAPI } from '../../../util/apiResponse.util';
 import { CertificationAddDialog, CertificationCard, CertificationEmptyState } from '../../../components/admin/certifications';
+import Link from 'next/link';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card";
+import { Badge } from "../../../components/ui/badge";
 
 const certificationSchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -182,12 +185,23 @@ export default function AdminCertificationsPage() {
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {certifications.map((cert) => (
-              <CertificationCard
-                key={cert.inline?.id || cert.inline.id}
-                cert={cert}
-                onEdit={handleEdit}
-                onDelete={handleDelete}
-              />
+              <Link key={cert.inline?.id || cert.inline.id} href={`/admin/certifications/${cert.inline?.id || cert.inline.id}`} className="block">
+                <Card className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-xl">{cert.title}</CardTitle>
+                    <CardDescription>{cert.description.slice(0, 100) + (cert.description.length > 100 ? '...' : '')}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex-1 space-y-4">
+                    <div className="flex flex-wrap gap-2">
+                      {cert.skills.map((skill, index) => (
+                        <Badge key={index} variant="outline" className="text-xs">
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         )}

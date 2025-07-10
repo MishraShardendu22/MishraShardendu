@@ -21,6 +21,7 @@ import { Checkbox } from '../../../components/ui/checkbox';
 import { projectsAPI } from '../../../util/apiResponse.util';
 import { skillsAPI } from '../../../util/apiResponse.util';
 import { Popover, PopoverTrigger, PopoverContent } from '../../../components/ui/popover';
+import Link from 'next/link';
 
 const experienceSchema = z.object({
   company_name: z.string().min(1, 'Company name is required'),
@@ -386,76 +387,28 @@ export default function AdminExperiencesPage() {
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {experiences.map((experience) => (
-              <Card key={experience.inline?.id || experience.inline.id} className="overflow-hidden">
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <CardTitle className="text-lg">{experience.position}</CardTitle>
-                      <CardDescription className="mt-2 flex items-center">
-                        <Building2 className="h-4 w-4 mr-1" />
-                        {experience.company_name}
-                      </CardDescription>
+              <Link key={experience.inline?.id || experience.inline.id} href={`/admin/experiences/${experience.inline?.id || experience.inline.id}`} className="block">
+                <Card className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-xl">{experience.position}</CardTitle>
+                    <CardDescription>
+                      {experience.company_name} • {new Date(experience.start_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - {new Date(experience.end_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex-1 space-y-4">
+                    <div className="flex flex-wrap gap-2">
+                      {experience.technologies.map((tech, index) => (
+                        <Badge key={index} variant="outline" className="text-xs">
+                          {tech}
+                        </Badge>
+                      ))}
                     </div>
-                    <div className="flex space-x-1">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleEdit(experience)}
-                      >
-                        <Edit className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleDelete(experience.inline.id)}
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center text-sm text-gray-500">
-                    <Calendar className="h-4 w-4 mr-1" />
-                    {formatDate(experience.start_date)} - {formatDate(experience.end_date)}
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {experience.technologies.map((tech, index) => (
-                      <Badge key={index} variant="secondary">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                  
-                  <p className="text-sm text-gray-600 line-clamp-3">
-                    {experience.description}
-                  </p>
-
-                  <div className="flex space-x-2">
-                    {experience.certificate_url && (
-                      <a
-                        href={experience.certificate_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:text-blue-800"
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                      </a>
-                    )}
-                    {experience.company_logo && (
-                      <div className="relative h-8 w-8">
-                        <Image
-                          src={experience.company_logo}
-                          alt={`${experience.company_name} logo`}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
+                    <p className="text-sm text-gray-600 line-clamp-3">
+                      {experience.description.slice(0, 150) + (experience.description.length > 150 ? '...' : '')}
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         )}

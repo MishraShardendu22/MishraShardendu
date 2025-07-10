@@ -21,6 +21,7 @@ import * as z from 'zod'
 import { Checkbox } from '../../../components/ui/checkbox';
 import { skillsAPI } from '../../../util/apiResponse.util';
 import { Popover, PopoverTrigger, PopoverContent } from '../../../components/ui/popover';
+import Link from 'next/link';
 
 const projectSchema = z.object({
   project_name: z.string().min(1, 'Project name is required'),
@@ -309,80 +310,23 @@ export default function AdminProjectsPage() {
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
-              <Card key={project.inline?.id || project.inline.id} className="overflow-hidden">
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <CardTitle className="text-lg">{project.project_name}</CardTitle>
-                      <CardDescription className="mt-2">
-                        {project.small_description}
-                      </CardDescription>
+              <Link key={project.inline?.id || project.inline.id} href={`/admin/projects/${project.inline?.id || project.inline.id}`} className="block">
+                <Card className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-xl">{project.project_name}</CardTitle>
+                    <CardDescription>{project.small_description}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex-1 space-y-4">
+                    <div className="flex flex-wrap gap-2">
+                      {project.skills.map((skill, index) => (
+                        <Badge key={index} variant="outline" className="text-xs">
+                          {skill}
+                        </Badge>
+                      ))}
                     </div>
-                    <div className="flex space-x-1">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleEdit(project)}
-                      >
-                        <Edit className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleDelete(project.inline.id)}
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    {project.skills.map((skill, index) => (
-                      <Badge key={index} variant="secondary">
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                  
-                  <p className="text-sm text-gray-600 line-clamp-3">
-                    {project.description}
-                  </p>
-
-                  <div className="flex space-x-2">
-                    {project.project_repository && (
-                      <a
-                        href={project.project_repository}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:text-blue-800"
-                      >
-                        <Github className="h-4 w-4" />
-                      </a>
-                    )}
-                    {project.project_live_link && (
-                      <a
-                        href={project.project_live_link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-green-600 hover:text-green-800"
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                      </a>
-                    )}
-                    {project.project_video && (
-                      <a
-                        href={project.project_video}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-red-600 hover:text-red-800"
-                      >
-                        <Play className="h-4 w-4" />
-                      </a>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         )}
