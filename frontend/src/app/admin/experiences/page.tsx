@@ -20,6 +20,7 @@ import Image from 'next/image'
 import { Checkbox } from '../../../components/ui/checkbox';
 import { projectsAPI } from '../../../util/apiResponse.util';
 import { skillsAPI } from '../../../util/apiResponse.util';
+import { Popover, PopoverTrigger, PopoverContent } from '../../../components/ui/popover';
 
 const experienceSchema = z.object({
   company_name: z.string().min(1, 'Company name is required'),
@@ -254,20 +255,29 @@ export default function AdminExperiencesPage() {
 
                 <div className="space-y-2">
                   <Label htmlFor="technologies">Technologies</Label>
-                  <div className="border rounded p-2">
-                    {allSkills.map((skill) => (
-                      <label key={skill} className="flex items-center gap-2">
-                        <Checkbox
-                          checked={selectedTechnologies.includes(skill)}
-                          onCheckedChange={(checked) => {
-                            if (checked) setValue('technologies', [...selectedTechnologies, skill]);
-                            else setValue('technologies', selectedTechnologies.filter((s) => s !== skill));
-                          }}
-                        />
-                        <span>{skill}</span>
-                      </label>
-                    ))}
-                  </div>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button type="button" variant="outline" className="w-full justify-between">
+                        {selectedTechnologies.length > 0
+                          ? `${selectedTechnologies.length} selected`
+                          : 'Select Technologies'}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="max-h-64 overflow-y-auto w-72 p-2">
+                      {allSkills.map((skill) => (
+                        <label key={skill} className="flex items-center gap-2 py-1 px-2 hover:bg-gray-100 rounded cursor-pointer">
+                          <Checkbox
+                            checked={selectedTechnologies.includes(skill)}
+                            onCheckedChange={(checked) => {
+                              if (checked) setValue('technologies', [...selectedTechnologies, skill]);
+                              else setValue('technologies', selectedTechnologies.filter((s) => s !== skill));
+                            }}
+                          />
+                          <span>{skill}</span>
+                        </label>
+                      ))}
+                    </PopoverContent>
+                  </Popover>
                   {errors.technologies && <p className="text-sm text-red-500">{errors.technologies.message as string}</p>}
                 </div>
 
@@ -297,20 +307,29 @@ export default function AdminExperiencesPage() {
 
                 <div className="space-y-2">
                   <Label htmlFor="projects">Projects</Label>
-                  <div className="border rounded p-2">
-                    {allProjects.map((project) => (
-                      <label key={project.id} className="flex items-center gap-2">
-                        <Checkbox
-                          checked={(selectedProjects || []).includes(project.id)}
-                          onCheckedChange={(checked) => {
-                            if (checked) setValue('projects', [...(selectedProjects || []), project.id]);
-                            else setValue('projects', (selectedProjects || []).filter((p) => p !== project.id));
-                          }}
-                        />
-                        <span>{project.name}</span>
-                      </label>
-                    ))}
-                  </div>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button type="button" variant="outline" className="w-full justify-between">
+                        {selectedProjects.length > 0
+                          ? `${selectedProjects.length} selected`
+                          : 'Select Projects'}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="max-h-64 overflow-y-auto w-72 p-2">
+                      {allProjects.map((project) => (
+                        <label key={project.id} className="flex items-center gap-2 py-1 px-2 hover:bg-gray-100 rounded cursor-pointer">
+                          <Checkbox
+                            checked={selectedProjects.includes(project.id)}
+                            onCheckedChange={(checked) => {
+                              if (checked) setValue('projects', [...selectedProjects, project.id]);
+                              else setValue('projects', selectedProjects.filter((p) => p !== project.id));
+                            }}
+                          />
+                          <span>{project.name}</span>
+                        </label>
+                      ))}
+                    </PopoverContent>
+                  </Popover>
                 </div>
 
                 <div className="space-y-2">

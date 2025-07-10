@@ -5,8 +5,8 @@ import { ProtectedRoute } from '../../../components/auth/protected-route'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card'
 import { Button } from '../../../components/ui/button'
 import { Badge } from '../../../components/ui/badge'
-import { projectsAPI, experiencesAPI, skillsAPI } from '../../../util/apiResponse.util'
-import { Project, Experience } from '../../../data/types.data'
+import { projectsAPI, experiencesAPI, skillsAPI, certificationsAPI } from '../../../util/apiResponse.util'
+import { Project, Experience, Certification } from '../../../data/types.data'
 import { Briefcase, GraduationCap, Settings, Plus, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
 
@@ -14,25 +14,29 @@ export default function AdminDashboardPage() {
   const [projects, setProjects] = useState<Project[]>([])
   const [experiences, setExperiences] = useState<Experience[]>([])
   const [skills, setSkills] = useState<string[]>([])
+  const [certifications, setCertifications] = useState<Certification[]>([]);
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [projectsRes, experiencesRes, skillsRes] = await Promise.all([
+        const [projectsRes, experiencesRes, skillsRes, certificationsRes] = await Promise.all([
           projectsAPI.getAllProjects(),
           experiencesAPI.getAllExperiences(),
           (await skillsAPI.getSkills()),
+          certificationsAPI.getAllCertifications(),
         ])
         setProjects(Array.isArray(projectsRes.data) ? projectsRes.data : [])
         setExperiences(Array.isArray(experiencesRes.data) ? experiencesRes.data : [])
         setSkills(Array.isArray(skillsRes.data) ? skillsRes.data : [])
+        setCertifications(Array.isArray(certificationsRes.data) ? certificationsRes.data : [])
       } catch (err) {
         setError('Failed to load dashboard data')
         setProjects([])
         setExperiences([])
         setSkills([])
+        setCertifications([])
       } finally {
         setLoading(false)
       }
@@ -90,6 +94,19 @@ export default function AdminDashboardPage() {
               <div className="text-2xl font-bold">{skills.length}</div>
               <p className="text-xs text-muted-foreground">
                 {skills.length === 0 ? 'No skills yet' : 'Technical skills'}
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Total Certifications</CardTitle>
+              <Badge variant="outline" className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{certifications.length}</div>
+              <p className="text-xs text-muted-foreground">
+                {certifications.length === 0 ? 'No certifications yet' : 'Professional certifications'}
               </p>
             </CardContent>
           </Card>
@@ -221,6 +238,62 @@ export default function AdminDashboardPage() {
                       <Link href="/admin/experiences">
                         <Button variant="outline" className="w-full">
                           View All Experiences
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Recent Certifications */}
+        <div className="grid gap-4 md:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardTitle>Recent Certifications</CardTitle>
+              <CardDescription>
+                Your latest certifications and achievements
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {certifications.length === 0 ? (
+                <div className="text-center py-6">
+                  <Badge className="mx-auto h-12 w-12 text-gray-400" />
+                  <h3 className="mt-2 text-sm font-medium text-gray-900">No certifications</h3>
+                  <p className="mt-1 text-sm text-gray-500">
+                    Get started by adding your first certification.
+                  </p>
+                  <div className="mt-6">
+                    <Link href="/admin/certifications">
+                      <Button>
+                        <Plus className="mr-2 h-4 w-4" />
+                        Add Certification
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {certifications.slice(0, 3).map((cert) => (
+                    <div key={cert.inline.id} className="flex items-center justify-between">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-gray-900 truncate">{cert.title}</p>
+                        <p className="text-sm text-gray-500 truncate">{cert.issuer} &mdash; {cert.issue_date} to {cert.expiry_date}</p>
+                        <div className="flex flex-wrap gap-1 mt-1">
+                          {cert.skills.map((skill, idx) => (
+                            <Badge key={idx} variant="secondary" className="text-xs">{skill}</Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  {certifications.length > 3 && (
+                    <div className="pt-4">
+                      <Link href="/admin/certifications">
+                        <Button variant="outline" className="w-full">
+                          View All Certifications
                         </Button>
                       </Link>
                     </div>

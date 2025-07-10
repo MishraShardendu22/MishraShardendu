@@ -18,6 +18,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { Checkbox } from '../../../components/ui/checkbox';
 import { skillsAPI } from '../../../util/apiResponse.util';
+import { Popover, PopoverTrigger, PopoverContent } from '../../../components/ui/popover';
 
 const projectSchema = z.object({
   project_name: z.string().min(1, 'Project name is required'),
@@ -178,20 +179,29 @@ export default function AdminProjectsPage() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="skills">Skills</Label>
-                    <div className="border rounded p-2">
-                      {allSkills.map((skill) => (
-                        <label key={skill} className="flex items-center gap-2">
-                          <Checkbox
-                            checked={selectedSkills.includes(skill)}
-                            onCheckedChange={(checked) => {
-                              if (checked) setValue('skills', [...selectedSkills, skill]);
-                              else setValue('skills', selectedSkills.filter((s) => s !== skill));
-                            }}
-                          />
-                          <span>{skill}</span>
-                        </label>
-                      ))}
-                    </div>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button type="button" variant="outline" className="w-full justify-between">
+                          {selectedSkills.length > 0
+                            ? `${selectedSkills.length} selected`
+                            : 'Select Skills'}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="max-h-64 overflow-y-auto w-72 p-2">
+                        {allSkills.map((skill) => (
+                          <label key={skill} className="flex items-center gap-2 py-1 px-2 hover:bg-gray-100 rounded cursor-pointer">
+                            <Checkbox
+                              checked={selectedSkills.includes(skill)}
+                              onCheckedChange={(checked) => {
+                                if (checked) setValue('skills', [...selectedSkills, skill]);
+                                else setValue('skills', selectedSkills.filter((s) => s !== skill));
+                              }}
+                            />
+                            <span>{skill}</span>
+                          </label>
+                        ))}
+                      </PopoverContent>
+                    </Popover>
                     {errors.skills && <p className="text-sm text-red-500">{errors.skills.message as string}</p>}
                   </div>
                 </div>
