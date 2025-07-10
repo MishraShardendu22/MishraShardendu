@@ -8,13 +8,13 @@ import (
 
 type User struct {
 	mgm.DefaultModel `bson:",inline" json:"inline"`
-	Email            string                        `bson:"email" json:"email"`
-	Password         string                        `bson:"password" json:"password"`
-	AdminPass        string                        `bson:"admin_pass" json:"admin_pass"`
-	Skills           []string                      `bson:"skills" json:"skills"`
-	Projects         []primitive.ObjectID          `bson:"projects" json:"projects"`
-	Experiences      []primitive.ObjectID          `bson:"experiences" json:"experiences"`
-	Certifications   []CertificationOrAchievements `bson:"certifications" json:"certifications"`
+	Email            string               `bson:"email" json:"email"`
+	Password         string               `bson:"password" json:"password"`
+	AdminPass        string               `bson:"admin_pass" json:"admin_pass"`
+	Skills           []string             `bson:"skills" json:"skills"`
+	Projects         []primitive.ObjectID `bson:"projects" json:"projects"`
+	Experiences      []primitive.ObjectID `bson:"experiences" json:"experiences"`
+	Certifications   []primitive.ObjectID `bson:"certifications" json:"certifications"`
 }
 
 type Project struct {
@@ -54,5 +54,4 @@ type CertificationOrAchievements struct {
 	Issuer           string               `bson:"issuer" json:"issuer"`
 	IssueDate        string               `bson:"issue_date" json:"issue_date"`
 	ExpiryDate       string               `bson:"expiry_date" json:"expiry_date"`
-	CreatedBy        string               `bson:"created_by" json:"created_by"`
 }
