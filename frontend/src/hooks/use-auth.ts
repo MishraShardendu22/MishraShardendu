@@ -67,7 +67,7 @@ export const useAuth = create<AuthState>()(
             set({ isLoading: false })
             return { success: false, error: 'Invalid server response. Please contact support.' }
           }
-
+          
           // Store token in localStorage
           if (typeof window !== 'undefined') {
             localStorage.setItem('jwt_token', token)

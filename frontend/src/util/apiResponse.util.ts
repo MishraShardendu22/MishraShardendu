@@ -11,6 +11,9 @@ import {
   Experience,
   CreateExperienceRequest,
   UpdateExperienceRequest,
+  Certification,
+  CreateCertificationRequest,
+  UpdateCertificationRequest,
 } from '../data/types.data'
 
 // Authentication API
@@ -95,6 +98,37 @@ export const experiencesAPI = {
     return response.data
   },
 }
+
+// Certifications API
+export const certificationsAPI = {
+  getAllCertifications: async (): Promise<ApiResponse<Certification[]>> => {
+    const response = await api.get('/certifications')
+    return response.data
+  },
+
+  getCertificationById: async (id: string): Promise<ApiResponse<Certification>> => {
+    const response = await api.get(`/certifications/${id}`)
+    return response.data
+  },
+
+  createCertification: async (cert: CreateCertificationRequest): Promise<ApiResponse<Certification>> => {
+    const response = await api.post('/certifications', cert)
+    return response.data
+  },
+
+  updateCertification: async (id: string, cert: UpdateCertificationRequest): Promise<ApiResponse<Certification>> => {
+    const response = await api.put(`/certifications/${id}`, cert)
+    return response.data
+  },
+
+  deleteCertification: async (id: string): Promise<ApiResponse<{ message: string }>> => {
+    const response = await api.delete(`/certifications/${id}`)
+    return response.data
+  },
+}
+
+// Achievements API (alias for certifications if same contract)
+export const achievementsAPI = certificationsAPI;
 
 // Test API
 export const testAPI = {

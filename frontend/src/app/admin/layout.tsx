@@ -15,6 +15,7 @@ import {
   Menu,
   X,
   User,
+  Award,
 } from 'lucide-react'
 import api from '../../util/api'
 
@@ -23,6 +24,7 @@ const navigation = [
   { name: 'Projects', href: '/admin/projects', icon: Briefcase },
   { name: 'Experiences', href: '/admin/experiences', icon: GraduationCap },
   { name: 'Skills', href: '/admin/skills', icon: Settings },
+  { name: 'Certifications & Achievements', href: '/admin/certifications', icon: Award },
   { name: 'Profile', href: '/admin/profile', icon: User },
 ]
 

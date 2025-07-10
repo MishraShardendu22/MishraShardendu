@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button'
 import { Badge } from '../components/ui/badge'
-import { projectsAPI, experiencesAPI, skillsAPI } from '../util/apiResponse.util'
+import { projectsAPI, experiencesAPI, skillsAPI, certificationsAPI } from '../util/apiResponse.util'
 import { Project, Experience } from '../data/types.data'
+import { Certification } from '../data/types.data'
 import { Briefcase, ExternalLink, Github, Play, Mail, Linkedin } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -14,25 +15,29 @@ export default function HomePage() {
   const [projects, setProjects] = useState<Project[]>([])
   const [experiences, setExperiences] = useState<Experience[]>([])
   const [skills, setSkills] = useState<string[]>([])
+  const [certifications, setCertifications] = useState<Certification[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [projectsRes, experiencesRes, skillsRes] = await Promise.all([
+        const [projectsRes, experiencesRes, skillsRes, certificationsRes] = await Promise.all([
           projectsAPI.getAllProjects(),
           experiencesAPI.getAllExperiences(),
           skillsAPI.getSkills(),
+          certificationsAPI.getAllCertifications(),
         ])
         setProjects(Array.isArray(projectsRes.data) ? projectsRes.data : (projectsRes.data === null ? [] : []))
         setExperiences(Array.isArray(experiencesRes.data) ? experiencesRes.data : (experiencesRes.data === null ? [] : []))
         setSkills(Array.isArray(skillsRes.data) ? skillsRes.data : (skillsRes.data === null ? [] : []))
+        setCertifications(Array.isArray(certificationsRes.data) ? certificationsRes.data : (certificationsRes.data === null ? [] : []))
       } catch (err) {
         setError('Failed to load homepage data')
         setProjects([])
         setExperiences([])
         setSkills([])
+        setCertifications([])
       } finally {
         setLoading(false)
       }
@@ -241,6 +246,62 @@ export default function HomePage() {
                 </Card>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications Section */}
+      <section className="py-24 sm:py-32 bg-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Certifications
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-gray-600">
+              Professional certifications and credentials
+            </p>
+          </div>
+          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            {certifications.length === 0 ? (
+              <Card className="col-span-full">
+                <CardContent className="text-center py-12">
+                  <span className="text-gray-400 mb-4 inline-block">
+                    <svg width="48" height="48" fill="none" viewBox="0 0 24 24"><path d="M12 17.75l-6.16 3.24 1.18-6.88L2 9.76l6.92-1.01L12 2.5l3.08 6.25L22 9.76l-5.02 4.35 1.18 6.88z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/></svg>
+                  </span>
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">No certifications yet</h3>
+                  <p className="text-gray-500 mb-4">Certifications will appear here when added.</p>
+                </CardContent>
+              </Card>
+            ) : (
+              certifications.map((cert) => (
+                <Card key={cert.inline?.id || cert.inline.id} className="flex flex-col overflow-hidden">
+                  <CardHeader>
+                    <CardTitle className="text-xl">{cert.title}</CardTitle>
+                    <CardDescription>{cert.issuer} &mdash; {cert.issue_date} to {cert.expiry_date}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex-1 space-y-4">
+                    <p className="text-sm text-gray-600 line-clamp-3">{cert.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {cert.skills.map((skill, idx) => (
+                        <Badge key={idx} variant="outline" className="text-xs">{skill}</Badge>
+                      ))}
+                    </div>
+                    <div className="flex space-x-2 pt-4">
+                      {cert.certificate_url && (
+                        <a href={cert.certificate_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+                          <ExternalLink className="h-5 w-5" />
+                        </a>
+                      )}
+                      {cert.images && cert.images.length > 0 && cert.images[0] && (
+                        <div className="relative h-8 w-8">
+                          <Image src={cert.images[0]} alt={cert.title + " certificate image"} fill className="object-contain" />
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))
+            )}
           </div>
         </div>
       </section>

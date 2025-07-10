@@ -96,3 +96,40 @@ export interface CreateExperienceRequest {
 }
 
 export type UpdateExperienceRequest = CreateExperienceRequest
+
+// Certification Types
+export interface Certification {
+  inline: {
+    id: string
+    created_at: string
+    updated_at: string
+  }
+  title: string
+  description: string
+  projects: string[]
+  skills: string[]
+  certificate_url: string
+  images: string[]
+  issuer: string
+  issue_date: string
+  expiry_date: string
+}
+
+export interface CreateCertificationRequest {
+  title: string
+  description: string
+  issuer: string
+  skills: string[]
+  projects: string[]
+  certificate_url: string
+  images: string[]
+  issue_date: string
+  expiry_date: string
+}
+
+export type UpdateCertificationRequest = CreateCertificationRequest;
+
+// Achievement Types (if different, otherwise alias Certification)
+export type Achievement = Certification;
+export type CreateAchievementRequest = CreateCertificationRequest;
+export type UpdateAchievementRequest = UpdateCertificationRequest;
