@@ -16,12 +16,14 @@ import { Plus, Edit, Trash2, ExternalLink, Github, Play, Briefcase } from 'lucid
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
+import { Checkbox } from '../../../components/ui/checkbox';
+import { skillsAPI } from '../../../util/apiResponse.util';
 
 const projectSchema = z.object({
   project_name: z.string().min(1, 'Project name is required'),
   small_description: z.string().min(1, 'Small description is required'),
   description: z.string().min(1, 'Description is required'),
-  skills: z.string().min(1, 'Skills are required'),
+  skills: z.array(z.string()).min(1, 'At least one skill is required'),
   project_repository: z.string().url('Must be a valid URL'),
   project_live_link: z.string().url('Must be a valid URL'),
   project_video: z.string().url('Must be a valid URL'),
@@ -36,15 +38,21 @@ export default function AdminProjectsPage() {
   const [success, setSuccess] = useState('')
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [editingProject, setEditingProject] = useState<Project | null>(null)
+  const [allSkills, setAllSkills] = useState<string[]>([]);
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm<ProjectFormData>({
     resolver: zodResolver(projectSchema),
+    defaultValues: { skills: [] },
   })
+
+  const selectedSkills = watch('skills') || [];
 
   const fetchProjects = async () => {
     try {
@@ -59,8 +67,14 @@ export default function AdminProjectsPage() {
   }
 
   useEffect(() => {
-    fetchProjects()
-  }, [])
+    fetchProjects();
+    // Fetch all skills for skills field
+    const fetchSkills = async () => {
+      const skillsRes = await skillsAPI.getSkills();
+      setAllSkills(Array.isArray(skillsRes.data) ? skillsRes.data : []);
+    };
+    fetchSkills();
+  }, []);
 
   if (loading) return <div>Loading...</div>
   if (error) return <div>{error}</div>
@@ -69,7 +83,7 @@ export default function AdminProjectsPage() {
     try {
       const projectData: CreateProjectRequest = {
         ...data,
-        skills: data.skills.split(',').map(skill => skill.trim()),
+        skills: data.skills,
       }
 
       if (editingProject) {
@@ -82,7 +96,7 @@ export default function AdminProjectsPage() {
 
       setIsDialogOpen(false)
       setEditingProject(null)
-      reset()
+      reset({ skills: [] })
       fetchProjects()
     } catch (error) {
       console.error('Error saving project:', error)
@@ -96,7 +110,7 @@ export default function AdminProjectsPage() {
       project_name: project.project_name,
       small_description: project.small_description,
       description: project.description,
-      skills: project.skills.join(', '),
+      skills: project.skills,
       project_repository: project.project_repository,
       project_live_link: project.project_live_link,
       project_video: project.project_video,
@@ -119,7 +133,7 @@ export default function AdminProjectsPage() {
 
   const openDialog = () => {
     setEditingProject(null)
-    reset()
+    reset({ skills: [] })
     setIsDialogOpen(true)
   }
 
@@ -163,15 +177,22 @@ export default function AdminProjectsPage() {
                     )}
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="skills">Skills (comma-separated)</Label>
-                    <Input
-                      id="skills"
-                      {...register('skills')}
-                      placeholder="React, Node.js, MongoDB"
-                    />
-                    {errors.skills && (
-                      <p className="text-sm text-red-500">{errors.skills.message}</p>
-                    )}
+                    <Label htmlFor="skills">Skills</Label>
+                    <div className="border rounded p-2">
+                      {allSkills.map((skill) => (
+                        <label key={skill} className="flex items-center gap-2">
+                          <Checkbox
+                            checked={selectedSkills.includes(skill)}
+                            onCheckedChange={(checked) => {
+                              if (checked) setValue('skills', [...selectedSkills, skill]);
+                              else setValue('skills', selectedSkills.filter((s) => s !== skill));
+                            }}
+                          />
+                          <span>{skill}</span>
+                        </label>
+                      ))}
+                    </div>
+                    {errors.skills && <p className="text-sm text-red-500">{errors.skills.message as string}</p>}
                   </div>
                 </div>
 

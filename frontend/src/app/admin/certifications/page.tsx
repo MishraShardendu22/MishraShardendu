@@ -33,17 +33,20 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import Image from "next/image";
+import { Select, SelectTrigger, SelectContent, SelectItem } from '../../../components/ui/select';
+import { Checkbox } from '../../../components/ui/checkbox';
+import { projectsAPI, skillsAPI } from '../../../util/apiResponse.util';
 
 const certificationSchema = z.object({
-  title: z.string().min(1, "Title is required"),
-  description: z.string().min(1, "Description is required"),
-  issuer: z.string().min(1, "Issuer is required"),
-  skills: z.string().min(1, "Skills are required"),
-  projects: z.string().optional(),
-  certificate_url: z.string().url("Must be a valid URL"),
+  title: z.string().min(1, 'Title is required'),
+  description: z.string().min(1, 'Description is required'),
+  issuer: z.string().min(1, 'Issuer is required'),
+  skills: z.array(z.string()).min(1, 'At least one skill is required'),
+  projects: z.array(z.string()),
+  certificate_url: z.string().url('Must be a valid URL'),
   images: z.string().optional(),
-  issue_date: z.string().min(1, "Issue date is required"),
-  expiry_date: z.string().min(1, "Expiry date is required"),
+  issue_date: z.string().min(1, 'Issue date is required'),
+  expiry_date: z.string().min(1, 'Expiry date is required'),
 });
 
 type CertificationFormData = z.infer<typeof certificationSchema>;
@@ -55,15 +58,23 @@ export default function AdminCertificationsPage() {
   const [success, setSuccess] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingCertification, setEditingCertification] = useState<Certification | null>(null);
+  const [allProjects, setAllProjects] = useState<{ id: string; name: string }[]>([]);
+  const [allSkills, setAllSkills] = useState<string[]>([]);
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm<CertificationFormData>({
     resolver: zodResolver(certificationSchema),
+    defaultValues: { skills: [], projects: [] },
   });
+
+  const selectedSkills = watch('skills');
+  const selectedProjects = watch('projects');
 
   const fetchCertifications = async () => {
     try {
@@ -81,6 +92,14 @@ export default function AdminCertificationsPage() {
 
   useEffect(() => {
     fetchCertifications();
+    // Fetch all projects and skills for dropdowns
+    const fetchProjectsAndSkills = async () => {
+      const projectsRes = await projectsAPI.getAllProjects();
+      setAllProjects(Array.isArray(projectsRes.data) ? projectsRes.data.map((p: any) => ({ id: p.inline.id, name: p.project_name })) : []);
+      const skillsRes = await skillsAPI.getSkills();
+      setAllSkills(Array.isArray(skillsRes.data) ? skillsRes.data : []);
+    };
+    fetchProjectsAndSkills();
   }, []);
 
   if (loading) return <div>Loading...</div>;
@@ -90,24 +109,21 @@ export default function AdminCertificationsPage() {
     try {
       const certData: CreateCertificationRequest = {
         ...data,
-        skills: data.skills.split(",").map((s) => s.trim()),
-        projects: data.projects ? data.projects.split(",").map((p) => p.trim()) : [],
-        images: data.images ? data.images.split(",").map((img) => img.trim()) : [],
+        images: data.images ? data.images.split(',').map((img) => img.trim()) : [],
       };
       if (editingCertification) {
-        console.log("Updating certification:", editingCertification.inline.id, certData);
         await certificationsAPI.updateCertification(editingCertification.inline.id, certData);
-        setSuccess("Certification updated successfully");
+        setSuccess('Certification updated successfully');
       } else {
         await certificationsAPI.createCertification(certData);
-        setSuccess("Certification created successfully");
+        setSuccess('Certification created successfully');
       }
       setIsDialogOpen(false);
       setEditingCertification(null);
-      reset();
+      reset({ skills: [], projects: [] });
       fetchCertifications();
     } catch (error) {
-      setError("Failed to save certification");
+      setError('Failed to save certification');
     }
   };
 
@@ -117,10 +133,10 @@ export default function AdminCertificationsPage() {
       title: cert.title,
       description: cert.description,
       issuer: cert.issuer,
-      skills: cert.skills.join(", "),
-      projects: cert.projects.join(", "),
+      skills: cert.skills,
+      projects: cert.projects,
       certificate_url: cert.certificate_url,
-      images: cert.images.join(", "),
+      images: cert.images.join(', '),
       issue_date: cert.issue_date,
       expiry_date: cert.expiry_date,
     });
@@ -191,13 +207,39 @@ export default function AdminCertificationsPage() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="skills">Skills (comma-separated)</Label>
-                    <Input id="skills" {...register("skills")} placeholder="GCP, Kubernetes, Compute Engine" />
-                    {errors.skills && <p className="text-sm text-red-500">{errors.skills.message}</p>}
+                    <Label htmlFor="skills">Skills</Label>
+                    <div className="border rounded p-2">
+                      {allSkills.map((skill) => (
+                        <label key={skill} className="flex items-center gap-2">
+                          <Checkbox
+                            checked={selectedSkills.includes(skill)}
+                            onCheckedChange={(checked) => {
+                              if (checked) setValue('skills', [...selectedSkills, skill]);
+                              else setValue('skills', selectedSkills.filter((s) => s !== skill));
+                            }}
+                          />
+                          <span>{skill}</span>
+                        </label>
+                      ))}
+                    </div>
+                    {errors.skills && <p className="text-sm text-red-500">{errors.skills.message as string}</p>}
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="projects">Projects (comma-separated, optional)</Label>
-                    <Input id="projects" {...register("projects")} placeholder="Project1, Project2" />
+                    <Label htmlFor="projects">Projects</Label>
+                    <div className="border rounded p-2">
+                      {allProjects.map((project) => (
+                        <label key={project.id} className="flex items-center gap-2">
+                          <Checkbox
+                            checked={selectedProjects.includes(project.id)}
+                            onCheckedChange={(checked) => {
+                              if (checked) setValue('projects', [...selectedProjects, project.id]);
+                              else setValue('projects', selectedProjects.filter((p) => p !== project.id));
+                            }}
+                          />
+                          <span>{project.name}</span>
+                        </label>
+                      ))}
+                    </div>
                   </div>
                 </div>
                 <div className="space-y-2">

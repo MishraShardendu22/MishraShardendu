@@ -17,6 +17,9 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import Image from 'next/image'
+import { Checkbox } from '../../../components/ui/checkbox';
+import { projectsAPI } from '../../../util/apiResponse.util';
+import { skillsAPI } from '../../../util/apiResponse.util';
 
 const experienceSchema = z.object({
   company_name: z.string().min(1, 'Company name is required'),
@@ -24,9 +27,10 @@ const experienceSchema = z.object({
   start_date: z.string().min(1, 'Start date is required'),
   end_date: z.string().min(1, 'End date is required'),
   description: z.string().min(1, 'Description is required'),
-  technologies: z.string().min(1, 'Technologies are required'),
+  technologies: z.array(z.string()).min(1, 'At least one technology is required'),
   company_logo: z.string().url('Must be a valid URL'),
   certificate_url: z.string().url('Must be a valid URL'),
+  projects: z.array(z.string()),
   images: z.string().min(1, 'Images are required'),
 })
 
@@ -39,15 +43,23 @@ export default function AdminExperiencesPage() {
   const [success, setSuccess] = useState('')
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [editingExperience, setEditingExperience] = useState<Experience | null>(null)
+  const [allProjects, setAllProjects] = useState<{ id: string; name: string }[]>([]);
+  const [allSkills, setAllSkills] = useState<string[]>([]);
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm<ExperienceFormData>({
     resolver: zodResolver(experienceSchema),
+    defaultValues: { projects: [], technologies: [] },
   })
+
+  const selectedProjects = watch('projects') || [];
+  const selectedTechnologies = watch('technologies') || [];
 
   const fetchExperiences = async () => {
     try {
@@ -63,6 +75,18 @@ export default function AdminExperiencesPage() {
 
   useEffect(() => {
     fetchExperiences()
+    // Fetch all projects for dropdown
+    const fetchProjects = async () => {
+      const projectsRes = await projectsAPI.getAllProjects();
+      setAllProjects(Array.isArray(projectsRes.data) ? projectsRes.data.map((p: any) => ({ id: p.inline.id, name: p.project_name })) : []);
+    };
+    fetchProjects();
+    // Fetch all skills for technologies
+    const fetchSkills = async () => {
+      const skillsRes = await skillsAPI.getSkills();
+      setAllSkills(Array.isArray(skillsRes.data) ? skillsRes.data : []);
+    };
+    fetchSkills();
   }, [])
 
   if (loading) return <div>Loading...</div>
@@ -72,7 +96,8 @@ export default function AdminExperiencesPage() {
     try {
       const experienceData: CreateExperienceRequest = {
         ...data,
-        technologies: data.technologies.split(',').map(tech => tech.trim()),
+        technologies: data.technologies,
+        projects: data.projects,
         images: data.images.split(',').map(img => img.trim()),
       }
 
@@ -86,7 +111,7 @@ export default function AdminExperiencesPage() {
 
       setIsDialogOpen(false)
       setEditingExperience(null)
-      reset()
+      reset({ projects: [], technologies: [] })
       fetchExperiences()
     } catch (error) {
       console.error('Error saving experience:', error)
@@ -102,9 +127,10 @@ export default function AdminExperiencesPage() {
       start_date: experience.start_date,
       end_date: experience.end_date,
       description: experience.description,
-      technologies: experience.technologies.join(', '),
+      technologies: experience.technologies,
       company_logo: experience.company_logo,
       certificate_url: experience.certificate_url,
+      projects: experience.projects,
       images: experience.images.join(', '),
     })
     setIsDialogOpen(true)
@@ -125,7 +151,7 @@ export default function AdminExperiencesPage() {
 
   const openDialog = () => {
     setEditingExperience(null)
-    reset()
+    reset({ projects: [], technologies: [] })
     setIsDialogOpen(true)
   }
 
@@ -227,15 +253,22 @@ export default function AdminExperiencesPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="technologies">Technologies (comma-separated)</Label>
-                  <Input
-                    id="technologies"
-                    {...register('technologies')}
-                    placeholder="React, Node.js, MongoDB, Docker"
-                  />
-                  {errors.technologies && (
-                    <p className="text-sm text-red-500">{errors.technologies.message}</p>
-                  )}
+                  <Label htmlFor="technologies">Technologies</Label>
+                  <div className="border rounded p-2">
+                    {allSkills.map((skill) => (
+                      <label key={skill} className="flex items-center gap-2">
+                        <Checkbox
+                          checked={selectedTechnologies.includes(skill)}
+                          onCheckedChange={(checked) => {
+                            if (checked) setValue('technologies', [...selectedTechnologies, skill]);
+                            else setValue('technologies', selectedTechnologies.filter((s) => s !== skill));
+                          }}
+                        />
+                        <span>{skill}</span>
+                      </label>
+                    ))}
+                  </div>
+                  {errors.technologies && <p className="text-sm text-red-500">{errors.technologies.message as string}</p>}
                 </div>
 
                 <div className="space-y-2">
@@ -260,6 +293,24 @@ export default function AdminExperiencesPage() {
                   {errors.certificate_url && (
                     <p className="text-sm text-red-500">{errors.certificate_url.message}</p>
                   )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="projects">Projects</Label>
+                  <div className="border rounded p-2">
+                    {allProjects.map((project) => (
+                      <label key={project.id} className="flex items-center gap-2">
+                        <Checkbox
+                          checked={(selectedProjects || []).includes(project.id)}
+                          onCheckedChange={(checked) => {
+                            if (checked) setValue('projects', [...(selectedProjects || []), project.id]);
+                            else setValue('projects', (selectedProjects || []).filter((p) => p !== project.id));
+                          }}
+                        />
+                        <span>{project.name}</span>
+                      </label>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="space-y-2">

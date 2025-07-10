@@ -30,6 +30,7 @@ export interface User {
   skills: string[]
   projects: string[]
   experiences: string[]
+  certifications: string[]
 }
 
 // Skills Types
@@ -78,6 +79,7 @@ export interface Experience {
   technologies: string[]
   company_logo: string
   certificate_url: string
+  projects: string[]
   images: string[]
   created_at?: string
   updated_at?: string
@@ -92,6 +94,7 @@ export interface CreateExperienceRequest {
   technologies: string[]
   company_logo: string
   certificate_url: string
+  projects: string[]
   images: string[]
 }
 

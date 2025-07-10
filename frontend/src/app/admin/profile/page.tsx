@@ -9,6 +9,8 @@ import { Label } from '../../../components/ui/label'
 import { useAuth } from '../../../hooks/use-auth'
 import { User, Mail, Shield } from 'lucide-react'
 import api from '../../../util/api'
+import { certificationsAPI } from '../../../util/apiResponse.util';
+import { Certification } from '../../../data/types.data';
 
 interface ProfileData {
   inline: {
@@ -31,12 +33,23 @@ export default function AdminProfilePage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const { logout } = useAuth()
+  const [userCertifications, setUserCertifications] = useState<Certification[]>([]);
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const response = await api.get('/admin/auth')
         setProfile(response.data.data)
+        // Fetch user certifications if present
+        if (response.data.data.certifications && response.data.data.certifications.length > 0) {
+          // Fetch all certifications and filter by user's certification IDs
+          const allCertsResp = await certificationsAPI.getAllCertifications();
+          const allCerts = Array.isArray(allCertsResp.data) ? allCertsResp.data : [];
+          const userCerts = allCerts.filter(cert => response.data.data.certifications.includes(cert.inline.id));
+          setUserCertifications(userCerts);
+        } else {
+          setUserCertifications([]);
+        }
       } catch {
         setError('Failed to load profile')
       } finally {
@@ -150,6 +163,38 @@ export default function AdminProfilePage() {
                   <div className="text-sm text-gray-600">Status</div>
                 </div>
               </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Certifications</CardTitle>
+              <CardDescription>
+                Your professional certifications and achievements
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {userCertifications.length === 0 ? (
+                <div className="text-gray-500">No certifications yet.</div>
+              ) : (
+                <div className="space-y-2">
+                  {userCertifications.map(cert => (
+                    <div key={cert.inline.id} className="border rounded p-2">
+                      <div className="font-semibold">{cert.title}</div>
+                      <div className="text-xs text-gray-500">{cert.issuer} &mdash; {cert.issue_date} to {cert.expiry_date}</div>
+                      <div className="text-sm text-gray-600 mt-1">{cert.description}</div>
+                      <div className="flex flex-wrap gap-1 mt-1">
+                        {cert.skills.map((skill, idx) => (
+                          <span key={idx} className="bg-gray-200 text-xs rounded px-2 py-0.5 mr-1">{skill}</span>
+                        ))}
+                      </div>
+                      {cert.certificate_url && (
+                        <a href={cert.certificate_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs mt-1 inline-block">View Certificate</a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
             </CardContent>
           </Card>
 

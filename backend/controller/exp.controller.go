@@ -118,6 +118,7 @@ func UpdateExperiences(c *fiber.Ctx) error {
 		"company_logo":    input.CompanyLogo,
 		"certificate_url": input.CertificateURL,
 		"images":          input.Images,
+		"projects":        input.Projects,
 	}}
 
 	if _, err := mgm.Coll(&models.Experience{}).UpdateByID(c.Context(), expObjID, update); err != nil {
