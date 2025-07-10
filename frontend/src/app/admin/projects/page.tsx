@@ -1,4 +1,6 @@
 'use client'
+import dynamic from 'next/dynamic'
+const TiptapEditor = dynamic(() => import('../../../components/TipTap'), { ssr: false })
 
 import { useEffect, useState } from 'react'
 import { ProtectedRoute } from '../../../components/auth/protected-route'
@@ -220,12 +222,10 @@ export default function AdminProjectsPage() {
 
                 <div className="space-y-2">
                   <Label htmlFor="description">Full Description</Label>
-                  <Textarea
-                    id="description"
-                    {...register('description')}
-                    placeholder="Detailed project description"
-                    rows={4}
-                  />
+<TiptapEditor
+  value={watch('description')}
+  onChange={(value) => setValue('description', value)}
+/>
                   {errors.description && (
                     <p className="text-sm text-red-500">{errors.description.message}</p>
                   )}

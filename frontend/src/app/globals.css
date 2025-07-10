@@ -39,6 +39,26 @@
   --sidebar-ring: oklch(0.709 0.01 56.259);
 }
 
+.ProseMirror ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  padding-left: 1rem;
+}
+
+.ProseMirror ol {
+  list-style-type: decimal;
+  margin-left: 1.5rem;
+  padding-left: 1rem;
+}
+
+.ProseMirror blockquote {
+  border-left: 4px solid #d1d5db; /* tailwind gray-300 */
+  margin-left: 1rem;
+  padding-left: 1rem;
+  color: #6b7280; /* gray-500 */
+  font-style: italic;
+}
+
 h1, h2 {
   font-family: var(--font-heading);
 }
