@@ -27,7 +27,7 @@ export default function HomePage() {
         ])
         setProjects(Array.isArray(projectsRes.data) ? projectsRes.data : (projectsRes.data === null ? [] : []))
         setExperiences(Array.isArray(experiencesRes.data) ? experiencesRes.data : (experiencesRes.data === null ? [] : []))
-        setSkills(Array.isArray(skillsRes.data?.skills) ? skillsRes.data.skills : (skillsRes.data?.skills === null ? [] : []))
+        setSkills(Array.isArray(skillsRes.data) ? skillsRes.data : (skillsRes.data === null ? [] : []))
       } catch (err) {
         setError('Failed to load homepage data')
         setProjects([])
@@ -75,69 +75,29 @@ export default function HomePage() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Technical Skills
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-gray-600">
-              Technologies and tools I work with
-            </p>
-          </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <div className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-              {/* Programming Languages */}
-              <div className="flex flex-col">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Programming Languages</h3>
-                <div className="flex flex-wrap gap-2">
-                  {skills
-                    .filter(skill => 
-                      ['JavaScript', 'TypeScript', 'Python', 'Go', 'Java', 'C++', 'C#', 'PHP', 'Ruby', 'Swift', 'Kotlin', 'Rust'].includes(skill)
-                    )
-                    .map((skill, index) => (
-                      <Badge key={index} variant="secondary">
-                        {skill}
-                      </Badge>
-                    ))}
-                </div>
-              </div>
+{/* Skills Section */}
+<section className="py-24 sm:py-32">
+  <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="mx-auto max-w-2xl text-center">
+      <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        Technical Skills
+      </h2>
+      <p className="mt-4 text-lg leading-8 text-gray-600">
+        Technologies and tools I work with
+      </p>
+    </div>
+    <div className="mx-auto mt-12 max-w-4xl text-center">
+      <div className="flex flex-wrap justify-center gap-3">
+        {skills.map((skill, index) => (
+          <Badge key={index} variant="secondary" className="text-sm">
+            {skill}
+          </Badge>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
-              {/* Frameworks & Libraries */}
-              <div className="flex flex-col">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Frameworks & Libraries</h3>
-                <div className="flex flex-wrap gap-2">
-                  {skills
-                    .filter(skill => 
-                      ['React', 'Vue', 'Angular', 'Node.js', 'Express', 'Django', 'Flask', 'Spring', 'Laravel', 'Next.js', 'Nuxt.js'].includes(skill)
-                    )
-                    .map((skill, index) => (
-                      <Badge key={index} variant="secondary">
-                        {skill}
-                      </Badge>
-                    ))}
-                </div>
-              </div>
-
-              {/* DevOps & Tools */}
-              <div className="flex flex-col">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">DevOps & Tools</h3>
-                <div className="flex flex-wrap gap-2">
-                  {skills
-                    .filter(skill => 
-                      ['Docker', 'Kubernetes', 'AWS', 'Azure', 'GCP', 'Git', 'Jenkins', 'CI/CD', 'Terraform', 'Ansible', 'MongoDB', 'PostgreSQL', 'MySQL', 'Redis'].includes(skill)
-                    )
-                    .map((skill, index) => (
-                      <Badge key={index} variant="secondary">
-                        {skill}
-                      </Badge>
-                    ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Projects Section */}
       <section id="projects" className="py-24 sm:py-32 bg-white">
@@ -152,7 +112,7 @@ export default function HomePage() {
           </div>
           <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {projects.map((project) => (
-              <Card key={project.inline?.id || project._id} className="flex flex-col overflow-hidden">
+              <Card key={project.inline?.id || project.inline.id} className="flex flex-col overflow-hidden">
                 <CardHeader>
                   <CardTitle className="text-xl">{project.project_name}</CardTitle>
                   <CardDescription>{project.small_description}</CardDescription>
@@ -223,7 +183,7 @@ export default function HomePage() {
           <div className="mx-auto mt-16 max-w-2xl lg:max-w-none">
             <div className="grid gap-8 lg:grid-cols-2">
               {experiences.map((experience) => (
-                <Card key={experience.inline?.id || experience._id}>
+                <Card key={experience.inline?.id || experience.inline.id}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>

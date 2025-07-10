@@ -7,16 +7,24 @@ import { Button } from '../../../components/ui/button'
 import { Input } from '../../../components/ui/input'
 import { Label } from '../../../components/ui/label'
 import { useAuth } from '../../../hooks/use-auth'
-import { User, Mail, Shield, Save } from 'lucide-react'
+import { User, Mail, Shield } from 'lucide-react'
 import api from '../../../util/api'
 
 interface ProfileData {
-  _id: string
+  inline: {
+    id: string
+    created_at: string
+    updated_at: string
+  }
   email: string
+  password: string
+  admin_pass: string
   skills: string[]
   projects: string[]
   experiences: string[]
+  certifications?: string[] | null
 }
+
 
 export default function AdminProfilePage() {
   const [profile, setProfile] = useState<ProfileData | null>(null)
@@ -87,7 +95,7 @@ export default function AdminProfilePage() {
                 <Label htmlFor="user-id">User ID</Label>
                 <Input
                   id="user-id"
-                  value={profile?._id || ''}
+                  value={profile?.inline?.id || ''}
                   disabled
                   className="bg-gray-50"
                 />
@@ -166,31 +174,6 @@ export default function AdminProfilePage() {
               >
                 Sign Out
               </Button>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Quick Actions</CardTitle>
-              <CardDescription>
-                Common tasks and shortcuts
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid gap-2">
-                <Button variant="outline" className="justify-start">
-                  <Save className="mr-2 h-4 w-4" />
-                  Export Portfolio Data
-                </Button>
-                <Button variant="outline" className="justify-start">
-                  <Shield className="mr-2 h-4 w-4" />
-                  Change Admin Password
-                </Button>
-                <Button variant="outline" className="justify-start">
-                  <User className="mr-2 h-4 w-4" />
-                  View Public Portfolio
-                </Button>
-              </div>
             </CardContent>
           </Card>
         </div>

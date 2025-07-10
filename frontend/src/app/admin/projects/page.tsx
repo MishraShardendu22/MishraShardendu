@@ -73,7 +73,7 @@ export default function AdminProjectsPage() {
       }
 
       if (editingProject) {
-        await projectsAPI.updateProject(editingProject._id, projectData)
+        await projectsAPI.updateProject(editingProject.inline.id, projectData)
         setSuccess('Project updated successfully')
       } else {
         await projectsAPI.createProject(projectData)
@@ -278,7 +278,7 @@ export default function AdminProjectsPage() {
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
-              <Card key={project.inline?.id || project._id} className="overflow-hidden">
+              <Card key={project.inline?.id || project.inline.id} className="overflow-hidden">
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div className="flex-1">
@@ -298,7 +298,7 @@ export default function AdminProjectsPage() {
                       <Button
                         variant="ghost"
                         size="sm"
-                        onClick={() => handleDelete(project._id)}
+                        onClick={() => handleDelete(project.inline.id)}
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>

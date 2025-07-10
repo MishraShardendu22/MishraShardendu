@@ -77,7 +77,7 @@ export default function AdminExperiencesPage() {
       }
 
       if (editingExperience) {
-        await experiencesAPI.updateExperience(editingExperience._id, experienceData)
+        await experiencesAPI.updateExperience(editingExperience.inline.id, experienceData)
         setSuccess('Experience updated successfully')
       } else {
         await experiencesAPI.createExperience(experienceData)
@@ -316,7 +316,7 @@ export default function AdminExperiencesPage() {
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {experiences.map((experience) => (
-              <Card key={experience.inline?.id || experience._id} className="overflow-hidden">
+              <Card key={experience.inline?.id || experience.inline.id} className="overflow-hidden">
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div className="flex-1">
@@ -337,7 +337,7 @@ export default function AdminExperiencesPage() {
                       <Button
                         variant="ghost"
                         size="sm"
-                        onClick={() => handleDelete(experience._id)}
+                        onClick={() => handleDelete(experience.inline.id)}
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>

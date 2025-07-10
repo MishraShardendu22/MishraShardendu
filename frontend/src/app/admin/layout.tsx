@@ -29,7 +29,8 @@ const navigation = [
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const pathname = usePathname()
-  const [profile, setProfile] = useState(null)
+  type Profile = { email: string }
+  const [profile, setProfile] = useState<Profile | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const { logout } = useAuth()

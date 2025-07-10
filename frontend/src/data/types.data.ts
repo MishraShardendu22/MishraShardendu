@@ -25,7 +25,7 @@ export interface AuthResponse {
 
 // User Types
 export interface User {
-  _id: string
+
   email: string
   skills: string[]
   projects: string[]
@@ -44,7 +44,6 @@ export interface SkillsResponse {
 // Project Types
 export interface Project {
   inline: any
-  _id: string
   project_name: string
   small_description: string
   description: string
@@ -71,7 +70,6 @@ export type UpdateProjectRequest = CreateProjectRequest
 // Experience Types
 export interface Experience {
   inline: any
-  _id: string
   company_name: string
   position: string
   start_date: string

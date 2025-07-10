@@ -70,18 +70,6 @@ export default function AdminSkillsPage() {
     }
   }
 
-  const handleRemoveSkill = async (skillToRemove: string) => {
-    try {
-      const updatedSkills = skills.filter(skill => skill !== skillToRemove)
-      await skillsAPI.addSkills({ skills: updatedSkills })
-      setSuccess('Skill removed successfully')
-      fetchSkills()
-    } catch (error) {
-      console.error('Error removing skill:', error)
-      setError('Failed to remove skill')
-    }
-  }
-
   const openDialog = () => {
     reset()
     setIsDialogOpen(true)
@@ -203,14 +191,6 @@ export default function AdminSkillsPage() {
                       className="flex items-center justify-between p-3 border rounded-lg"
                     >
                       <span className="font-medium">{skill}</span>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleRemoveSkill(skill)}
-                        className="text-red-600 hover:text-red-800"
-                      >
-                        <X className="h-4 w-4" />
-                      </Button>
                     </div>
                   ))}
                 </div>

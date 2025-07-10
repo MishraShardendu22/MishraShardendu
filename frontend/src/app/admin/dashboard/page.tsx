@@ -135,7 +135,7 @@ export default function AdminDashboardPage() {
               ) : (
                 <div className="space-y-4">
                   {projects.slice(0, 3).map((project) => (
-                    <div key={project._id} className="flex items-center justify-between">
+                    <div key={project.inline.id} className="flex items-center justify-between">
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-900 truncate">
                           {project.project_name}
@@ -200,7 +200,7 @@ export default function AdminDashboardPage() {
               ) : (
                 <div className="space-y-4">
                   {experiences.slice(0, 3).map((experience) => (
-                    <div key={experience._id} className="flex items-center justify-between">
+                    <div key={experience.inline.id} className="flex items-center justify-between">
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-900 truncate">
                           {experience.position}
