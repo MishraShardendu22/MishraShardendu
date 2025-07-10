@@ -1,7 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Fredoka, Poppins, Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
+import { Toaster } from 'react-hot-toast';
+import { Fredoka, Poppins, Inter } from 'next/font/google'
 import ThemeToggleClient from '@/components/ThemeToggleClient'
 
 // Playful rounded heading font
@@ -78,6 +79,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+        <Toaster 
+          position='top-right'
+          reverseOrder={true}
+        />
           <ThemeToggleClient />
         </ThemeProvider>
       </body>
