@@ -4,14 +4,12 @@ import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { certificationsAPI } from '../../../../util/apiResponse.util';
 import { Certification } from '../../../../data/types.data';
-import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../../../components/ui/card';
 import { Badge } from '../../../../components/ui/badge';
 import { Button } from '../../../../components/ui/button';
 import { ExternalLink, Award } from 'lucide-react';
 import Image from 'next/image';
-
-const TiptapEditor = dynamic(() => import('../../../../components/TipTap'), { ssr: false });
+import ReactMarkdown from 'react-markdown';
 
 export default function AdminCertificationDetailPage({ params }: { params: { id: string } }) {
   const [certification, setCertification] = useState<Certification | null>(null);
@@ -50,8 +48,8 @@ export default function AdminCertificationDetailPage({ params }: { params: { id:
               <Badge key={index} variant="outline" className="text-xs">{skill}</Badge>
             ))}
           </div>
-          <div className="mb-6">
-            <TiptapEditor content={certification.description} readOnly />
+          <div className="mb-6 prose prose-sm max-w-none">
+            <ReactMarkdown>{certification.description}</ReactMarkdown>
           </div>
           <div className="flex space-x-2 pt-4">
             {certification.certificate_url && (

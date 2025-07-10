@@ -1,5 +1,8 @@
 'use client'
 
+import dynamic from 'next/dynamic'
+const TiptapModalEditor = dynamic(() => import('../../../components/TipTap').then(mod => ({ default: mod.TiptapModalEditor })), { ssr: false })
+
 import { useEffect, useState } from 'react'
 import { ProtectedRoute } from '../../../components/auth/protected-route'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card'
@@ -181,7 +184,7 @@ export default function AdminExperiencesPage() {
                 Add Experience
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogContent className="w-[80vw] max-w-none max-h-[90vh] overflow-y-auto">
               <DialogHeader>
                 <DialogTitle>
                   {editingExperience ? 'Edit Experience' : 'Add New Experience'}
@@ -242,12 +245,10 @@ export default function AdminExperiencesPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="description">Description</Label>
-                  <Textarea
-                    id="description"
-                    {...register('description')}
-                    placeholder="Describe your role and responsibilities"
-                    rows={4}
+                  <Label htmlFor="description">Description (Markdown Editor)</Label>
+                  <TiptapModalEditor
+                    value={watch('description')}
+                    onChange={(value) => setValue('description', value)}
                   />
                   {errors.description && (
                     <p className="text-sm text-red-500">{errors.description.message}</p>
@@ -387,28 +388,89 @@ export default function AdminExperiencesPage() {
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {experiences.map((experience) => (
-              <Link key={experience.inline?.id || experience.inline.id} href={`/admin/experiences/${experience.inline?.id || experience.inline.id}`} className="block">
-                <Card className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <CardTitle className="text-xl">{experience.position}</CardTitle>
-                    <CardDescription>
-                      {experience.company_name} • {new Date(experience.start_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - {new Date(experience.end_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-1 space-y-4">
-                    <div className="flex flex-wrap gap-2">
-                      {experience.technologies.map((tech, index) => (
-                        <Badge key={index} variant="outline" className="text-xs">
-                          {tech}
-                        </Badge>
-                      ))}
+              <Card key={experience.inline?.id || experience.inline.id} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <CardTitle className="text-xl">{experience.position}</CardTitle>
+                      <CardDescription className="mt-2">
+                        {experience.company_name}
+                      </CardDescription>
+                      <p className="text-sm text-gray-500 mt-1">
+                        {new Date(experience.start_date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                        })} - {new Date(experience.end_date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                        })}
+                      </p>
                     </div>
-                    <p className="text-sm text-gray-600 line-clamp-3">
-                      {experience.description.slice(0, 150) + (experience.description.length > 150 ? '...' : '')}
-                    </p>
-                  </CardContent>
-                </Card>
-              </Link>
+                    {experience.company_logo && (
+                      <div className="relative h-12 w-12">
+                        <Image
+                          src={experience.company_logo}
+                          alt={`${experience.company_name} logo`}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </CardHeader>
+                <CardContent className="flex-1 space-y-4">
+                  <p className="text-sm text-gray-600 line-clamp-3">
+                    {experience.description.length > 150 
+                      ? `${experience.description.substring(0, 150)}...` 
+                      : experience.description
+                    }
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {experience.technologies.map((tech, index) => (
+                      <Badge key={index} variant="outline" className="text-xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  {experience.certificate_url && (
+                    <a
+                      href={experience.certificate_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
+                    >
+                      <ExternalLink className="mr-1 h-4 w-4" />
+                      View Certificate
+                    </a>
+                  )}
+
+                  <div className="flex space-x-2 pt-4">
+                    <Link href={`/admin/experiences/${experience.inline?.id || experience.inline.id}`}>
+                      <Button variant="outline" size="sm" className="flex-1">
+                        View Details
+                      </Button>
+                    </Link>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => handleEdit(experience)}
+                      className="flex-1"
+                    >
+                      <Edit className="h-4 w-4" />
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => handleDelete(experience.inline?.id || experience.inline.id)}
+                      className="text-red-600 hover:text-red-700"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         )}

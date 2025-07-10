@@ -79,29 +79,27 @@ export default function HomePage() {
       </section>
 
       {/* Skills Section */}
-{/* Skills Section */}
-<section className="py-24 sm:py-32">
-  <div className="mx-auto max-w-7xl px-6 lg:px-8">
-    <div className="mx-auto max-w-2xl text-center">
-      <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-        Technical Skills
-      </h2>
-      <p className="mt-4 text-lg leading-8 text-gray-600">
-        Technologies and tools I work with
-      </p>
-    </div>
-    <div className="mx-auto mt-12 max-w-4xl text-center">
-      <div className="flex flex-wrap justify-center gap-3">
-        {skills.map((skill, index) => (
-          <Badge key={index} variant="secondary" className="text-sm">
-            {skill}
-          </Badge>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
-
+      <section className="py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Technical Skills
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-gray-600">
+              Technologies and tools I work with
+            </p>
+          </div>
+          <div className="mx-auto mt-12 max-w-4xl text-center">
+            <div className="flex flex-wrap justify-center gap-3">
+              {skills.map((skill, index) => (
+                <Badge key={index} variant="secondary" className="text-sm">
+                  {skill}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Projects Section */}
       <section id="projects" className="py-24 sm:py-32 bg-white">
@@ -115,7 +113,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {projects.map((project) => (
+            {projects.slice(0, 6).map((project) => (
               <Card key={project.inline?.id || project.inline.id} className="flex flex-col overflow-hidden">
                 <CardHeader>
                   <CardTitle className="text-xl">{project.project_name}</CardTitle>
@@ -123,7 +121,10 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent className="flex-1 space-y-4">
                   <p className="text-sm text-gray-600 line-clamp-3">
-                    {project.description}
+                    {project.description.length > 150 
+                      ? `${project.description.substring(0, 150)}...` 
+                      : project.description
+                    }
                   </p>
                   
                   <div className="flex flex-wrap gap-2">
@@ -166,10 +167,25 @@ export default function HomePage() {
                       </a>
                     )}
                   </div>
+
+                  <Link href={`/projects/${project.inline?.id || project.inline.id}`}>
+                    <Button variant="outline" className="w-full">
+                      View Details
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
           </div>
+          {projects.length > 6 && (
+            <div className="mt-12 text-center">
+              <Link href="/projects">
+                <Button variant="outline" size="lg">
+                  View All Projects
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
@@ -186,7 +202,7 @@ export default function HomePage() {
           </div>
           <div className="mx-auto mt-16 max-w-2xl lg:max-w-none">
             <div className="grid gap-8 lg:grid-cols-2">
-              {experiences.map((experience) => (
+              {experiences.slice(0, 4).map((experience) => (
                 <Card key={experience.inline?.id || experience.inline.id}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
@@ -218,8 +234,11 @@ export default function HomePage() {
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <p className="text-sm text-gray-600">
-                      {experience.description}
+                    <p className="text-sm text-gray-600 line-clamp-3">
+                      {experience.description.length > 150 
+                        ? `${experience.description.substring(0, 150)}...` 
+                        : experience.description
+                      }
                     </p>
                     
                     <div className="flex flex-wrap gap-2">
@@ -241,10 +260,25 @@ export default function HomePage() {
                         View Certificate
                       </a>
                     )}
+
+                    <Link href={`/experiences/${experience.inline?.id || experience.inline.id}`}>
+                      <Button variant="outline" className="w-full">
+                        View Details
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               ))}
             </div>
+            {experiences.length > 4 && (
+              <div className="mt-12 text-center">
+                <Link href="/experiences">
+                  <Button variant="outline" size="lg">
+                    View All Experiences
+                  </Button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -272,14 +306,19 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             ) : (
-              certifications.map((cert) => (
+              certifications.slice(0, 6).map((cert) => (
                 <Card key={cert.inline?.id || cert.inline.id} className="flex flex-col overflow-hidden">
                   <CardHeader>
                     <CardTitle className="text-xl">{cert.title}</CardTitle>
                     <CardDescription>{cert.issuer} &mdash; {cert.issue_date} to {cert.expiry_date}</CardDescription>
                   </CardHeader>
                   <CardContent className="flex-1 space-y-4">
-                    <p className="text-sm text-gray-600 line-clamp-3">{cert.description}</p>
+                    <p className="text-sm text-gray-600 line-clamp-3">
+                      {cert.description.length > 150 
+                        ? `${cert.description.substring(0, 150)}...` 
+                        : cert.description
+                      }
+                    </p>
                     <div className="flex flex-wrap gap-2">
                       {cert.skills.map((skill, idx) => (
                         <Badge key={idx} variant="outline" className="text-xs">{skill}</Badge>
@@ -297,11 +336,26 @@ export default function HomePage() {
                         </div>
                       )}
                     </div>
+
+                    <Link href={`/certifications/${cert.inline?.id || cert.inline.id}`}>
+                      <Button variant="outline" className="w-full">
+                        View Details
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               ))
             )}
           </div>
+          {certifications.length > 6 && (
+            <div className="mt-12 text-center">
+              <Link href="/certifications">
+                <Button variant="outline" size="lg">
+                  View All Certifications
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 

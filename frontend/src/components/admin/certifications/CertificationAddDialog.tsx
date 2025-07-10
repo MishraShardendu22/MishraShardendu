@@ -8,6 +8,9 @@ import { Checkbox } from '../../ui/checkbox';
 import { Popover, PopoverTrigger, PopoverContent } from '../../ui/popover';
 import { Plus } from 'lucide-react';
 import React from 'react';
+import dynamic from 'next/dynamic';
+
+const TiptapModalEditor = dynamic(() => import('../../TipTap').then(mod => ({ default: mod.TiptapModalEditor })), { ssr: false });
 
 type CertificationAddDialogProps = {
   open: boolean;
@@ -51,7 +54,7 @@ export function CertificationAddDialog({
           Add Certification
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="w-[80vw] max-w-none max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
             {editingCertification ? "Edit Certification" : "Add New Certification"}
@@ -74,8 +77,11 @@ export function CertificationAddDialog({
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="description">Description</Label>
-            <Textarea id="description" {...register("description")} placeholder="Certification description" rows={3} />
+            <Label htmlFor="description">Description (Markdown Editor)</Label>
+            <TiptapModalEditor
+              value={watch('description')}
+              onChange={(value) => setValue('description', value)}
+            />
             {errors.description && <p className="text-sm text-red-500">{errors.description.message}</p>}
           </div>
           <div className="grid grid-cols-2 gap-4">

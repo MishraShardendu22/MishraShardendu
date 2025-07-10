@@ -98,6 +98,197 @@ const DropdownItem: React.FC<DropdownItemProps> = ({ icon: Icon, label, onClick,
   </button>
 )
 
+// Compact Tiptap Editor for Modals
+export const TiptapModalEditor = ({ value, onChange }: { value: string; onChange: (val: string) => void }) => {
+  const lowlight = createLowlight(common)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      UnderlineExtension,
+      Strike,
+      TextStyle,
+      Code,
+      LinkExtension.configure({ openOnClick: false }),
+      ImageExtension,
+      HorizontalRule,
+      HardBreak.configure({ keepMarks: false }),
+      CodeBlockLowlight.configure({ lowlight }),
+      CharacterCount.configure({ limit: 10000 }),
+      Placeholder.configure({ placeholder: 'Start writing your description...' }),
+      Markdown.configure({ html: true }),
+    ],
+    content: value || '',
+  })
+
+  useEffect(() => {
+    if (!editor) return
+
+    const updateContent = () => onChange(editor.storage.markdown.getMarkdown())
+    editor.on('update', updateContent)
+
+    return () => {
+      editor.off('update', updateContent)
+    }
+  }, [editor, onChange])
+
+  useEffect(() => {
+    if (editor && value !== editor.storage.markdown.getMarkdown()) {
+      editor.commands.setContent(value || '')
+    }
+  }, [value, editor])
+
+  if (!editor) return null
+
+  const toggleDropdown = (dropdown: string) => {
+    setOpenDropdown(openDropdown === dropdown ? null : dropdown)
+  }
+
+  const characterCount = editor.storage.characterCount.characters()
+  const characterLimit = 10000
+
+  return (
+    <div className="border border-gray-200 rounded-md overflow-hidden">
+      {/* Compact Toolbar */}
+      <div className="bg-gray-50 border-b border-gray-200 p-2">
+        <div className="flex items-center gap-1 flex-wrap">
+          {/* Basic formatting */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => editor.chain().focus().toggleBold().run()}
+            className={`h-8 px-2 ${editor.isActive('bold') ? 'bg-blue-100 text-blue-600' : ''}`}
+          >
+            <Bold className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => editor.chain().focus().toggleItalic().run()}
+            className={`h-8 px-2 ${editor.isActive('italic') ? 'bg-blue-100 text-blue-600' : ''}`}
+          >
+            <Italic className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => editor.chain().focus().toggleUnderline().run()}
+            className={`h-8 px-2 ${editor.isActive('underline') ? 'bg-blue-100 text-blue-600' : ''}`}
+          >
+            <Underline className="h-4 w-4" />
+          </Button>
+          
+          <div className="w-px h-6 bg-gray-300 mx-1" />
+          
+          {/* Headings */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+            className={`h-8 px-2 ${editor.isActive('heading', { level: 1 }) ? 'bg-blue-100 text-blue-600' : ''}`}
+          >
+            <Heading1 className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+            className={`h-8 px-2 ${editor.isActive('heading', { level: 2 }) ? 'bg-blue-100 text-blue-600' : ''}`}
+          >
+            <Heading2 className="h-4 w-4" />
+          </Button>
+          
+          <div className="w-px h-6 bg-gray-300 mx-1" />
+          
+          {/* Lists */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => editor.chain().focus().toggleBulletList().run()}
+            className={`h-8 px-2 ${editor.isActive('bulletList') ? 'bg-blue-100 text-blue-600' : ''}`}
+          >
+            <List className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => editor.chain().focus().toggleOrderedList().run()}
+            className={`h-8 px-2 ${editor.isActive('orderedList') ? 'bg-blue-100 text-blue-600' : ''}`}
+          >
+            <ListOrdered className="h-4 w-4" />
+          </Button>
+          
+          <div className="w-px h-6 bg-gray-300 mx-1" />
+          
+          {/* Code */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => editor.chain().focus().toggleCode().run()}
+            className={`h-8 px-2 ${editor.isActive('code') ? 'bg-blue-100 text-blue-600' : ''}`}
+          >
+            <Code2 className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+            className={`h-8 px-2 ${editor.isActive('codeBlock') ? 'bg-blue-100 text-blue-600' : ''}`}
+          >
+            <FileCode className="h-4 w-4" />
+          </Button>
+          
+          <div className="w-px h-6 bg-gray-300 mx-1" />
+          
+          {/* Quote */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => editor.chain().focus().toggleBlockquote().run()}
+            className={`h-8 px-2 ${editor.isActive('blockquote') ? 'bg-blue-100 text-blue-600' : ''}`}
+          >
+            <Quote className="h-4 w-4" />
+          </Button>
+          
+          <div className="w-px h-6 bg-gray-300 mx-1" />
+          
+          {/* Undo/Redo */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => editor.chain().focus().undo().run()}
+            className="h-8 px-2"
+            disabled={!editor.can().undo()}
+          >
+            <Undo className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => editor.chain().focus().redo().run()}
+            className="h-8 px-2"
+            disabled={!editor.can().redo()}
+          >
+            <Redo className="h-4 w-4" />
+          </Button>
+          
+          {/* Character count */}
+          <div className="ml-auto text-xs text-gray-500">
+            {characterCount}/{characterLimit}
+          </div>
+        </div>
+      </div>
+      
+      {/* Editor Content */}
+      <div className="p-4 min-h-[300px] max-h-[500px] overflow-y-auto">
+        <EditorContent editor={editor} className="prose prose-sm max-w-none focus:outline-none" />
+      </div>
+    </div>
+  )
+}
+
+// Original full Tiptap Editor (keeping for backward compatibility)
 const TiptapEditor = ({ value, onChange }: { value: string; onChange: (val: string) => void }) => {
   const lowlight = createLowlight(common)
   const [preview, setPreview] = useState(false)
@@ -298,113 +489,56 @@ useEffect(() => {
                 <Redo className="h-4 w-4" />
               </Button>
             </div>
-
-            {/* Export Dropdown */}
-            <DropdownMenu
-              trigger={<><Download className="h-4 w-4" /><span className="text-sm font-medium">Export</span></>}
-              isOpen={openDropdown === 'export'}
-              onToggle={() => toggleDropdown('export')}
-            >
-              <DropdownItem
-                icon={Download}
-                label="Export Markdown"
-                onClick={() => {
-                  const md = editor.storage.markdown.getMarkdown()
-                  const blob = new Blob([md], { type: 'text/markdown' })
-                  const url = URL.createObjectURL(blob)
-                  const a = document.createElement('a')
-                  a.href = url
-                  a.download = 'document.md'
-                  a.click()
-                  URL.revokeObjectURL(url)
-                }}
-                isActive={false}
-              />
-            </DropdownMenu>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <Badge variant="outline" className="text-xs font-medium">
-                {wordCount} words
-              </Badge>
-              <Badge variant="outline" className="text-xs font-medium">
-                {characterCount}/{characterLimit}
-              </Badge>
-            </div>
+          {/* Preview toggle */}
+          <div className="flex items-center gap-2">
             <Button
-              variant={preview ? "default" : "outline"}
+              variant="outline"
               size="sm"
               onClick={() => setPreview(!preview)}
-              className="h-8 px-3"
+              className="flex items-center gap-2"
             >
-              {preview ? (
-                <>
-                  <Edit3 className="h-4 w-4 mr-2" />
-                  Edit
-                </>
-              ) : (
-                <>
-                  <Eye className="h-4 w-4 mr-2" />
-                  Preview
-                </>
-              )}
+              {preview ? <Edit3 className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+              {preview ? 'Edit' : 'Preview'}
             </Button>
           </div>
         </div>
-      </div>
 
-      {/* Editor */}
-      <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-        <div className="border-b border-gray-100 bg-gray-50 px-6 py-3">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-gray-700">
-              {preview ? 'Preview' : 'Editor'}
-            </span>
-            <div className="flex items-center gap-2">
-              <div className="h-2 w-20 bg-gray-200 rounded-full overflow-hidden">
-                <div 
-                  className={`h-full transition-all duration-300 ${
-                    characterCount > characterLimit * 0.9 
-                      ? 'bg-red-500' 
-                      : characterCount > characterLimit * 0.7 
-                      ? 'bg-amber-500' 
-                      : 'bg-green-500'
-                  }`}
-                  style={{ width: `${Math.min((characterCount / characterLimit) * 100, 100)}%` }}
-                />
-              </div>
-              <span className="text-xs text-gray-500">
-                {Math.round((characterCount / characterLimit) * 100)}%
-              </span>
-            </div>
-          </div>
-        </div>
-        
-        <div className="p-6" onClick={() => setOpenDropdown(null)}>
+        {/* Editor Content */}
+        <div className="p-6">
           {preview ? (
-            <div className="prose prose-gray max-w-none min-h-[500px] prose-headings:text-gray-900 prose-p:text-gray-700">
-              <ReactMarkdown
-                components={{
-                  ul: ({ children }) => <ul className="list-disc list-inside ml-4 my-4 space-y-2">{children}</ul>,
-                  ol: ({ children }) => <ol className="list-decimal list-inside ml-4 my-4 space-y-2">{children}</ol>,
-                  li: ({ children }) => <li className="ml-2">{children}</li>,
-                  blockquote: ({ children }) => (
-                    <blockquote className="border-l-4 border-gray-300 pl-4 py-2 my-4 italic text-gray-700 bg-gray-50">
-                      {children}
-                    </blockquote>
-                  ),
-                }}
-              >
-                {editor.storage.markdown.getMarkdown()}
-              </ReactMarkdown>
+            <div className="prose prose-lg max-w-none">
+              <ReactMarkdown>{editor.storage.markdown.getMarkdown()}</ReactMarkdown>
             </div>
           ) : (
-            <EditorContent 
-              editor={editor} 
-              className="prose prose-gray max-w-none min-h-[500px] focus:outline-none prose-headings:text-gray-900 prose-p:text-gray-700"
-            />
+            <EditorContent editor={editor} className="prose prose-lg max-w-none" />
           )}
+        </div>
+
+        {/* Footer */}
+        <div className="flex items-center justify-between p-4 border-t border-gray-100 bg-gray-50">
+          <div className="flex items-center gap-4 text-sm text-gray-600">
+            <span>{characterCount} characters</span>
+            <span>{wordCount} words</span>
+            <span className={`${characterCount > characterLimit * 0.9 ? 'text-orange-600' : 'text-gray-600'}`}>
+              {Math.round((characterCount / characterLimit) * 100)}% of limit
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                const markdown = editor.storage.markdown.getMarkdown()
+                navigator.clipboard.writeText(markdown)
+              }}
+              className="flex items-center gap-2"
+            >
+              <Download className="h-4 w-4" />
+              Copy Markdown
+            </Button>
+          </div>
         </div>
       </div>
     </div>

@@ -4,13 +4,11 @@ import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { projectsAPI } from '../../../../util/apiResponse.util';
 import { Project } from '../../../../data/types.data';
-import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../../../components/ui/card';
 import { Badge } from '../../../../components/ui/badge';
 import { Button } from '../../../../components/ui/button';
 import { Github, ExternalLink, Play } from 'lucide-react';
-
-const TiptapEditor = dynamic(() => import('../../../../components/TipTap'), { ssr: false });
+import ReactMarkdown from 'react-markdown';
 
 export default function AdminProjectDetailPage({ params }: { params: { id: string } }) {
   const [project, setProject] = useState<Project | null>(null);
@@ -47,8 +45,8 @@ export default function AdminProjectDetailPage({ params }: { params: { id: strin
               <Badge key={index} variant="outline" className="text-xs">{skill}</Badge>
             ))}
           </div>
-          <div className="mb-6">
-            <TiptapEditor content={project.description} readOnly />
+          <div className="mb-6 prose prose-sm max-w-none">
+            <ReactMarkdown>{project.description}</ReactMarkdown>
           </div>
           <div className="flex space-x-2 pt-4">
             {project.project_repository && (

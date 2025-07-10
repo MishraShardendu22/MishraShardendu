@@ -47,7 +47,7 @@ export function ProjectAddDialog({
           Add Project
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="w-[80vw] max-w-none max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
             {editingProject ? 'Edit Project' : 'Add New Project'}

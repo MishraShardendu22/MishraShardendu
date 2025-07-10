@@ -1,6 +1,6 @@
 'use client'
 import dynamic from 'next/dynamic'
-const TiptapEditor = dynamic(() => import('../../../components/TipTap'), { ssr: false })
+const TiptapModalEditor = dynamic(() => import('../../../components/TipTap').then(mod => ({ default: mod.TiptapModalEditor })), { ssr: false })
 
 import { useEffect, useState } from 'react'
 import { ProtectedRoute } from '../../../components/auth/protected-route'
@@ -158,7 +158,7 @@ export default function AdminProjectsPage() {
                 Add Project
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogContent className="w-[80vw] max-w-none max-h-[90vh] overflow-y-auto">
               <DialogHeader>
                 <DialogTitle>
                   {editingProject ? 'Edit Project' : 'Add New Project'}
@@ -222,11 +222,11 @@ export default function AdminProjectsPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="description">Full Description</Label>
-<TiptapEditor
-  value={watch('description')}
-  onChange={(value) => setValue('description', value)}
-/>
+                  <Label htmlFor="description">Full Description (Markdown Editor)</Label>
+                  <TiptapModalEditor
+                    value={watch('description')}
+                    onChange={(value) => setValue('description', value)}
+                  />
                   {errors.description && (
                     <p className="text-sm text-red-500">{errors.description.message}</p>
                   )}
@@ -310,23 +310,85 @@ export default function AdminProjectsPage() {
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
-              <Link key={project.inline?.id || project.inline.id} href={`/admin/projects/${project.inline?.id || project.inline.id}`} className="block">
-                <Card className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <CardTitle className="text-xl">{project.project_name}</CardTitle>
-                    <CardDescription>{project.small_description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-1 space-y-4">
-                    <div className="flex flex-wrap gap-2">
-                      {project.skills.map((skill, index) => (
-                        <Badge key={index} variant="outline" className="text-xs">
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
+              <Card key={project.inline?.id || project.inline.id} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl">{project.project_name}</CardTitle>
+                  <CardDescription>{project.small_description}</CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1 space-y-4">
+                  <p className="text-sm text-gray-600 line-clamp-3">
+                    {project.description.length > 150 
+                      ? `${project.description.substring(0, 150)}...` 
+                      : project.description
+                    }
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {project.skills.map((skill, index) => (
+                      <Badge key={index} variant="outline" className="text-xs">
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <div className="flex space-x-2 pt-4">
+                    {project.project_repository && (
+                      <a
+                        href={project.project_repository}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800"
+                      >
+                        <Github className="h-5 w-5" />
+                      </a>
+                    )}
+                    {project.project_live_link && (
+                      <a
+                        href={project.project_live_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-green-600 hover:text-green-800"
+                      >
+                        <ExternalLink className="h-5 w-5" />
+                      </a>
+                    )}
+                    {project.project_video && (
+                      <a
+                        href={project.project_video}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-red-600 hover:text-red-800"
+                      >
+                        <Play className="h-5 w-5" />
+                      </a>
+                    )}
+                  </div>
+
+                  <div className="flex space-x-2 pt-4">
+                    <Link href={`/admin/projects/${project.inline?.id || project.inline.id}`}>
+                      <Button variant="outline" size="sm" className="flex-1">
+                        View Details
+                      </Button>
+                    </Link>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => handleEdit(project)}
+                      className="flex-1"
+                    >
+                      <Edit className="h-4 w-4" />
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => handleDelete(project.inline?.id || project.inline.id)}
+                      className="text-red-600 hover:text-red-700"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         )}

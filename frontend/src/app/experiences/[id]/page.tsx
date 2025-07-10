@@ -4,14 +4,12 @@ import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { experiencesAPI } from '../../../util/apiResponse.util';
 import { Experience } from '../../../data/types.data';
-import dynamic from 'next/dynamic';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../../components/ui/card';
 import { Badge } from '../../../components/ui/badge';
 import { Button } from '../../../components/ui/button';
 import { ExternalLink, Calendar, Building2, GraduationCap } from 'lucide-react';
 import Image from 'next/image';
-
-const TiptapEditor = dynamic(() => import('../../../components/TipTap'), { ssr: false });
+import ReactMarkdown from 'react-markdown';
 
 export default function ExperienceDetailPage({ params }: { params: { id: string } }) {
   const [experience, setExperience] = useState<Experience | null>(null);
@@ -50,8 +48,8 @@ export default function ExperienceDetailPage({ params }: { params: { id: string 
               <Badge key={index} variant="outline" className="text-xs">{tech}</Badge>
             ))}
           </div>
-          <div className="mb-6">
-            <TiptapEditor content={experience.description} readOnly />
+          <div className="mb-6 prose prose-sm max-w-none">
+            <ReactMarkdown>{experience.description}</ReactMarkdown>
           </div>
           <div className="flex space-x-2 pt-4">
             {experience.certificate_url && (

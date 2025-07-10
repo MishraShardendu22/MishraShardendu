@@ -12,10 +12,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { projectsAPI, skillsAPI } from '../../../util/apiResponse.util';
-import { CertificationAddDialog, CertificationCard, CertificationEmptyState } from '../../../components/admin/certifications';
+import { CertificationAddDialog, CertificationEmptyState } from '../../../components/admin/certifications';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card";
 import { Badge } from "../../../components/ui/badge";
+import { Button } from "../../../components/ui/button";
+import { Edit, Trash2, ExternalLink, Award } from 'lucide-react';
+import Image from 'next/image';
 
 const certificationSchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -185,23 +188,77 @@ export default function AdminCertificationsPage() {
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {certifications.map((cert) => (
-              <Link key={cert.inline?.id || cert.inline.id} href={`/admin/certifications/${cert.inline?.id || cert.inline.id}`} className="block">
-                <Card className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <CardTitle className="text-xl">{cert.title}</CardTitle>
-                    <CardDescription>{cert.description.slice(0, 100) + (cert.description.length > 100 ? '...' : '')}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-1 space-y-4">
-                    <div className="flex flex-wrap gap-2">
-                      {cert.skills.map((skill, index) => (
-                        <Badge key={index} variant="outline" className="text-xs">
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
+              <Card key={cert.inline?.id || cert.inline.id} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-xl">{cert.title}</CardTitle>
+                  <CardDescription>
+                    {cert.issuer} • {cert.issue_date} to {cert.expiry_date}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1 space-y-4">
+                  <p className="text-sm text-gray-600 line-clamp-3">
+                    {cert.description.length > 150 
+                      ? `${cert.description.substring(0, 150)}...` 
+                      : cert.description
+                    }
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {cert.skills.map((skill, index) => (
+                      <Badge key={index} variant="outline" className="text-xs">
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <div className="flex space-x-2 pt-4">
+                    {cert.certificate_url && (
+                      <a
+                        href={cert.certificate_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800"
+                      >
+                        <ExternalLink className="h-5 w-5" />
+                      </a>
+                    )}
+                    {cert.images && cert.images.length > 0 && cert.images[0] && (
+                      <div className="relative h-8 w-8">
+                        <Image
+                          src={cert.images[0]}
+                          alt={cert.title + " certificate image"}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="flex space-x-2 pt-4">
+                    <Link href={`/admin/certifications/${cert.inline?.id || cert.inline.id}`}>
+                      <Button variant="outline" size="sm" className="flex-1">
+                        View Details
+                      </Button>
+                    </Link>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => handleEdit(cert)}
+                      className="flex-1"
+                    >
+                      <Edit className="h-4 w-4" />
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => handleDelete(cert.inline?.id || cert.inline.id)}
+                      className="text-red-600 hover:text-red-700"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         )}
