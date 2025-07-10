@@ -1,18 +1,21 @@
-import { useState, useEffect } from 'react'
+'use client'
+
+import { useState, useEffect, JSX } from 'react'
 import { Code, Coffee, Zap, Star, Sparkles, Rocket, Heart } from 'lucide-react'
 
 const Loader = () => {
   const [currentMessage, setCurrentMessage] = useState(0)
   const [dots, setDots] = useState('')
+  const [particles, setParticles] = useState<JSX.Element[]>([])
 
   const messages = [
-    "Brewing some amazing code...",
-    "Summoning digital magic...",
-    "Crafting pixel-perfect experiences...",
-    "Loading awesome content...",
-    "Initializing creativity engine...",
-    "Preparing something special...",
-    "Assembling digital masterpiece..."
+    'Brewing some amazing code...',
+    'Summoning digital magic...',
+    'Crafting pixel-perfect experiences...',
+    'Loading awesome content...',
+    'Initializing creativity engine...',
+    'Preparing something special...',
+    'Assembling digital masterpiece...'
   ]
 
   const icons = [Code, Coffee, Zap, Star, Sparkles, Rocket, Heart]
@@ -35,25 +38,35 @@ const Loader = () => {
     }
   }, [])
 
+  useEffect(() => {
+    const temp: JSX.Element[] = []
+    for (let i = 0; i < 6; i++) {
+      temp.push(
+        <div
+          key={i}
+          className="absolute w-2 h-2 bg-primary/20 rounded-full animate-pulse"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            animationDelay: `${i * 0.5}s`,
+            animationDuration: `${2 + Math.random() * 2}s`
+          }}
+        />
+      )
+    }
+    setParticles(temp)
+  }, [])
+
   const CurrentIcon = icons[currentMessage]
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center relative overflow-hidden">
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-primary/20 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${i * 0.5}s`,
-              animationDuration: `${2 + Math.random() * 2}s`
-            }}
-          />
-        ))}
-      </div>
+      {particles.length > 0 && (
+        <div className="absolute inset-0 overflow-hidden">
+          {particles}
+        </div>
+      )}
 
       {/* Floating Geometric Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -69,7 +82,7 @@ const Loader = () => {
           <div className="w-24 h-24 rounded-full border-4 border-primary/20 animate-spin mx-auto relative">
             <div className="absolute inset-0 rounded-full border-t-4 border-primary animate-spin" style={{ animationDuration: '1s' }} />
             <div className="absolute inset-2 rounded-full border-2 border-secondary/30 animate-spin" style={{ animationDuration: '2s', animationDirection: 'reverse' }} />
-            
+
             {/* Center Icon */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center animate-pulse">
@@ -89,13 +102,15 @@ const Loader = () => {
 
         {/* Progress Bar */}
         <div className="w-64 h-2 bg-muted rounded-full overflow-hidden mx-auto">
-          <div className="h-full bg-gradient-to-r from-primary via-secondary to-accent rounded-full animate-pulse" 
-               style={{ 
-                 width: '100%',
-                 background: 'linear-gradient(90deg, var(--primary), var(--secondary), var(--accent))',
-                 backgroundSize: '200% 100%',
-                 animation: 'shimmer 2s infinite'
-               }} />
+          <div
+            className="h-full bg-gradient-to-r from-primary via-secondary to-accent rounded-full animate-pulse"
+            style={{
+              width: '100%',
+              background: 'linear-gradient(90deg, var(--primary), var(--secondary), var(--accent))',
+              backgroundSize: '200% 100%',
+              animation: 'shimmer 2s infinite'
+            }}
+          />
         </div>
 
         {/* Dynamic Message */}

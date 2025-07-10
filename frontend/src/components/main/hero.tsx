@@ -1,13 +1,22 @@
 import { Briefcase, Mail, Sparkles, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import { Badge } from '../ui/badge'
 import { Button } from '../ui/button'
+import Image from 'next/image'
 
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5 py-24 sm:py-32">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,theme(colors.primary/10),transparent_50%)]"></div>
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+<Image
+  src="/Professional.webp"
+  alt="Professional"
+  width={500}
+  height={500}
+  priority
+  className="mx-auto rounded-xl shadow-lg object-cover"
+/>
+
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-4xl font-bold tracking-tight sm:text-7xl bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
             Shardendu Mishra
