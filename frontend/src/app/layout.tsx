@@ -1,11 +1,10 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import { Toaster } from 'react-hot-toast'
 import { ThemeProvider } from 'next-themes'
-import { Toaster } from 'react-hot-toast';
 import { Fredoka, Poppins, Inter } from 'next/font/google'
 import ThemeToggleClient from '@/components/ThemeToggleClient'
 
-// Playful rounded heading font
 const fredoka = Fredoka({
   variable: '--font-heading',
   subsets: ['latin'],
@@ -13,7 +12,6 @@ const fredoka = Fredoka({
   display: 'swap',
 })
 
-// Clean subheading font
 const poppins = Poppins({
   variable: '--font-subheading',
   subsets: ['latin'],
@@ -21,7 +19,6 @@ const poppins = Poppins({
   display: 'swap',
 })
 
-// Clean body font
 const inter = Inter({
   variable: '--font-body',
   subsets: ['latin'],
@@ -71,19 +68,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${fredoka.variable} ${poppins.variable} ${inter.variable} antialiased`}>
+      <body className={`${fredoka.variable} ${poppins.variable} ${inter.variable} antialiased `}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
-        <Toaster 
-          position='top-right'
-          reverseOrder={true}
-        />
-          <ThemeToggleClient />
+          <div className="min-h-screen bg-background text-foreground">
+            <div className="fixed top-4 right-4 z-50">
+              <ThemeToggleClient />
+            </div>
+            {children}
+            <Toaster position="top-right" reverseOrder />
+          </div>
         </ThemeProvider>
       </body>
     </html>
