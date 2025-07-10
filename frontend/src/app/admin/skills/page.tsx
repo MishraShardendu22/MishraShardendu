@@ -40,10 +40,10 @@ export default function AdminSkillsPage() {
   const fetchSkills = async () => {
     try {
       const response = await skillsAPI.getSkills()
-      setSkills(response.data.skills)
+      setSkills(Array.isArray(response.data?.skills) ? response.data.skills : [])
     } catch (error) {
-      console.error('Error fetching skills:', error)
       setError('Failed to fetch skills')
+      setSkills([])
     } finally {
       setLoading(false)
     }
@@ -85,15 +85,8 @@ export default function AdminSkillsPage() {
     setIsDialogOpen(true)
   }
 
-  if (loading) {
-    return (
-      <ProtectedRoute>
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
-        </div>
-      </ProtectedRoute>
-    )
-  }
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>{error}</div>
 
   return (
     <ProtectedRoute>

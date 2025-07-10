@@ -6,7 +6,7 @@ import { Button } from '../components/ui/button'
 import { Badge } from '../components/ui/badge'
 import { projectsAPI, experiencesAPI, skillsAPI } from '../util/apiResponse.util'
 import { Project, Experience } from '../data/types.data'
-import { Briefcase, ExternalLink, Github, Play, Mail, Linkedin, Github as GithubIcon } from 'lucide-react'
+import { Briefcase, ExternalLink, Github, Play, Mail, Linkedin } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -15,6 +15,7 @@ export default function HomePage() {
   const [experiences, setExperiences] = useState<Experience[]>([])
   const [skills, setSkills] = useState<string[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,27 +25,23 @@ export default function HomePage() {
           experiencesAPI.getAllExperiences(),
           skillsAPI.getSkills(),
         ])
-
-        setProjects(projectsRes.data)
-        setExperiences(experiencesRes.data)
-        setSkills(skillsRes.data.skills)
-      } catch (error) {
-        console.error('Error fetching data:', error)
+        setProjects(Array.isArray(projectsRes.data) ? projectsRes.data : (projectsRes.data === null ? [] : []))
+        setExperiences(Array.isArray(experiencesRes.data) ? experiencesRes.data : (experiencesRes.data === null ? [] : []))
+        setSkills(Array.isArray(skillsRes.data?.skills) ? skillsRes.data.skills : (skillsRes.data?.skills === null ? [] : []))
+      } catch (err) {
+        setError('Failed to load homepage data')
+        setProjects([])
+        setExperiences([])
+        setSkills([])
       } finally {
         setLoading(false)
       }
     }
-
     fetchData()
   }, [])
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
-      </div>
-    )
-  }
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>{error}</div>
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
@@ -155,7 +152,7 @@ export default function HomePage() {
           </div>
           <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {projects.map((project) => (
-              <Card key={project._id} className="flex flex-col overflow-hidden">
+              <Card key={project.inline?.id || project._id} className="flex flex-col overflow-hidden">
                 <CardHeader>
                   <CardTitle className="text-xl">{project.project_name}</CardTitle>
                   <CardDescription>{project.small_description}</CardDescription>
@@ -226,7 +223,7 @@ export default function HomePage() {
           <div className="mx-auto mt-16 max-w-2xl lg:max-w-none">
             <div className="grid gap-8 lg:grid-cols-2">
               {experiences.map((experience) => (
-                <Card key={experience._id}>
+                <Card key={experience.inline?.id || experience._id}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>
@@ -337,7 +334,7 @@ export default function HomePage() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center">
-                    <GithubIcon className="mr-2 h-5 w-5" />
+                    <Github className="mr-2 h-5 w-5" />
                     GitHub
                   </CardTitle>
                 </CardHeader>

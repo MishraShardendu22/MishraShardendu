@@ -11,7 +11,7 @@ import { Input } from '../../../components/ui/input'
 import { Label } from '../../../components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card'
 import { Alert, AlertDescription } from '../../../components/ui/alert'
-import { Eye, EyeOff, Lock, Mail, Shield } from 'lucide-react'
+import { Eye, EyeOff, Lock, Mail, Shield, X } from 'lucide-react'
 
 const loginSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -21,6 +21,12 @@ const loginSchema = z.object({
 
 type LoginFormData = z.infer<typeof loginSchema>
 
+/**
+ * Admin Login Page
+ * - Handles admin authentication using email, password, and admin password.
+ * - Shows detailed error messages on failure.
+ * - Redirects to dashboard on success.
+ */
 export default function AdminLoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [showAdminPass, setShowAdminPass] = useState(false)
@@ -36,15 +42,22 @@ export default function AdminLoginPage() {
     resolver: zodResolver(loginSchema),
   })
 
-  const onSubmit = async (data: LoginFormData) => {
+  // Handles form submission and login logic
+  const onSubmit = async (data: LoginFormData, e?: React.BaseSyntheticEvent) => {
+    e?.preventDefault()
     setError('')
-    const success = await login(data)
-    if (success) {
-      router.push('/admin/dashboard')
-    } else {
-      setError('Invalid credentials. Please check your email, password, and admin password.')
+    try {
+      const result = await login(data)
+      if (result.success) {
+        router.push('/admin/dashboard')
+      } else {
+        setError(result.error || 'Invalid credentials. Please check your email, password, and admin password.')
+      }
+    } catch (err) {
+      setError('Something went wrong. Please try again later.')
     }
   }
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 p-4">
@@ -57,9 +70,18 @@ export default function AdminLoginPage() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            {/* Error message display for failed login */}
             {error && (
-              <Alert variant="destructive">
-                <AlertDescription>{error}</AlertDescription>
+              <Alert variant="destructive" className="flex items-center justify-between">
+                <AlertDescription className="flex-1">{error}</AlertDescription>
+                <button
+                  type="button"
+                  className="ml-4 p-1 rounded hover:bg-red-100 dark:hover:bg-red-900"
+                  onClick={() => setError('')}
+                  aria-label="Dismiss error"
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </Alert>
             )}
 
@@ -141,11 +163,19 @@ export default function AdminLoginPage() {
             </div>
 
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? 'Signing in...' : 'Sign In'}
+              {isLoading ? (
+                <span className="flex items-center justify-center">
+                  <svg className="animate-spin h-4 w-4 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                  </svg>
+                  Signing in...
+                </span>
+              ) : 'Sign In'}
             </Button>
           </form>
         </CardContent>
       </Card>
     </div>
   )
-} 
+}

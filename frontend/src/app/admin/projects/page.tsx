@@ -49,10 +49,10 @@ export default function AdminProjectsPage() {
   const fetchProjects = async () => {
     try {
       const response = await projectsAPI.getAllProjects()
-      setProjects(response.data)
+      setProjects(Array.isArray(response.data) ? response.data : (response.data === null ? [] : []))
     } catch (error) {
-      console.error('Error fetching projects:', error)
       setError('Failed to fetch projects')
+      setProjects([])
     } finally {
       setLoading(false)
     }
@@ -61,6 +61,9 @@ export default function AdminProjectsPage() {
   useEffect(() => {
     fetchProjects()
   }, [])
+
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>{error}</div>
 
   const onSubmit = async (data: ProjectFormData) => {
     try {
@@ -118,16 +121,6 @@ export default function AdminProjectsPage() {
     setEditingProject(null)
     reset()
     setIsDialogOpen(true)
-  }
-
-  if (loading) {
-    return (
-      <ProtectedRoute>
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
-        </div>
-      </ProtectedRoute>
-    )
   }
 
   return (
@@ -285,7 +278,7 @@ export default function AdminProjectsPage() {
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
-              <Card key={project._id} className="overflow-hidden">
+              <Card key={project.inline?.id || project._id} className="overflow-hidden">
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div className="flex-1">

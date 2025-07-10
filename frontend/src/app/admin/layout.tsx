@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useAuth } from '../../hooks/use-auth'
@@ -16,6 +16,7 @@ import {
   X,
   User,
 } from 'lucide-react'
+import api from '../../util/api'
 
 const navigation = [
   { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
@@ -28,7 +29,24 @@ const navigation = [
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const pathname = usePathname()
-  const { user, logout } = useAuth()
+  const [profile, setProfile] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+  const { logout } = useAuth()
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await api.get('/admin/profile')
+        setProfile(response.data)
+      } catch (err) {
+        setError('Failed to load profile')
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchProfile()
+  }, [])
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -66,7 +84,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <div className="flex items-center">
               <User className="h-8 w-8 rounded-full bg-gray-300 p-1" />
               <div className="ml-3">
-                <p className="text-sm font-medium text-gray-700">{user?.email}</p>
+                <p className="text-sm font-medium text-gray-700">{profile?.email}</p>
               </div>
             </div>
             <Button
@@ -110,7 +128,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <div className="flex items-center">
               <User className="h-8 w-8 rounded-full bg-gray-300 p-1" />
               <div className="ml-3">
-                <p className="text-sm font-medium text-gray-700">{user?.email}</p>
+                <p className="text-sm font-medium text-gray-700">{profile?.email}</p>
               </div>
             </div>
             <Button

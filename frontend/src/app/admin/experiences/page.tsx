@@ -49,21 +49,24 @@ export default function AdminExperiencesPage() {
     resolver: zodResolver(experienceSchema),
   })
 
-  const fetchData = async () => {
+  const fetchExperiences = async () => {
     try {
-      const experiencesRes = await experiencesAPI.getAllExperiences()
-      setExperiences(experiencesRes.data)
+      const response = await experiencesAPI.getAllExperiences()
+      setExperiences(Array.isArray(response.data) ? response.data : (response.data === null ? [] : []))
     } catch (error) {
-      console.error('Error fetching data:', error)
-      setError('Failed to fetch data')
+      setError('Failed to fetch experiences')
+      setExperiences([])
     } finally {
       setLoading(false)
     }
   }
 
   useEffect(() => {
-    fetchData()
+    fetchExperiences()
   }, [])
+
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>{error}</div>
 
   const onSubmit = async (data: ExperienceFormData) => {
     try {
@@ -84,7 +87,7 @@ export default function AdminExperiencesPage() {
       setIsDialogOpen(false)
       setEditingExperience(null)
       reset()
-      fetchData()
+      fetchExperiences()
     } catch (error) {
       console.error('Error saving experience:', error)
       setError('Failed to save experience')
@@ -112,7 +115,7 @@ export default function AdminExperiencesPage() {
       try {
         await experiencesAPI.deleteExperience(experienceId)
         setSuccess('Experience deleted successfully')
-        fetchData()
+        fetchExperiences()
       } catch (error) {
         console.error('Error deleting experience:', error)
         setError('Failed to delete experience')
@@ -131,16 +134,6 @@ export default function AdminExperiencesPage() {
       year: 'numeric',
       month: 'short',
     })
-  }
-
-  if (loading) {
-    return (
-      <ProtectedRoute>
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
-        </div>
-      </ProtectedRoute>
-    )
   }
 
   return (
@@ -323,7 +316,7 @@ export default function AdminExperiencesPage() {
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {experiences.map((experience) => (
-              <Card key={experience._id} className="overflow-hidden">
+              <Card key={experience.inline?.id || experience._id} className="overflow-hidden">
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div className="flex-1">

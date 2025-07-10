@@ -1,8 +1,6 @@
 package controller
 
 import (
-	"fmt"
-
 	"github.com/MishraShardendu22/models"
 	"github.com/MishraShardendu22/util"
 	"github.com/gofiber/fiber/v2"
@@ -17,7 +15,6 @@ func AdminRegisterAndLogin(c *fiber.Ctx, adminPass string, secret string) error 
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid request body", nil, "")
 	}
 
-	fmt.Println("Admin Register and Login Request:", adminPass, req.AdminPass)
 	if req.AdminPass != adminPass {
 		return util.ResponseAPI(c, fiber.StatusUnauthorized, "Invalid admin password", nil, "")
 	}
@@ -35,7 +32,7 @@ func AdminRegisterAndLogin(c *fiber.Ctx, adminPass string, secret string) error 
 		if !util.CheckPassword(req.Password, existing.Password) {
 			return util.ResponseAPI(c, fiber.StatusUnauthorized, "Invalid email or password", nil, "")
 		}
-		
+
 		token, _ := util.GenerateJWT(existing.ID.Hex(), existing.Email, secret)
 		return util.ResponseAPI(c, fiber.StatusAccepted, "User already exists", existing, token)
 	}

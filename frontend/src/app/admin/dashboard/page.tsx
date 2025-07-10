@@ -15,6 +15,7 @@ export default function AdminDashboardPage() {
   const [experiences, setExperiences] = useState<Experience[]>([])
   const [skills, setSkills] = useState<string[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,29 +25,23 @@ export default function AdminDashboardPage() {
           experiencesAPI.getAllExperiences(),
           skillsAPI.getSkills(),
         ])
-
-        setProjects(projectsRes.data)
-        setExperiences(experiencesRes.data)
-        setSkills(skillsRes.data.skills)
-      } catch (error) {
-        console.error('Error fetching dashboard data:', error)
+        setProjects(Array.isArray(projectsRes.data) ? projectsRes.data : [])
+        setExperiences(Array.isArray(experiencesRes.data) ? experiencesRes.data : [])
+        setSkills(Array.isArray(skillsRes.data?.skills) ? skillsRes.data.skills : [])
+      } catch (err) {
+        setError('Failed to load dashboard data')
+        setProjects([])
+        setExperiences([])
+        setSkills([])
       } finally {
         setLoading(false)
       }
     }
-
     fetchData()
   }, [])
 
-  if (loading) {
-    return (
-      <ProtectedRoute>
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
-        </div>
-      </ProtectedRoute>
-    )
-  }
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>{error}</div>
 
   return (
     <ProtectedRoute>

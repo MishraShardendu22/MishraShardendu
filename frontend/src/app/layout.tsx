@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Fredoka, Poppins, Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
+import ThemeToggleClient from '@/components/ThemeToggleClient'
 
 // Playful rounded heading font
 const fredoka = Fredoka({
@@ -77,6 +78,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <ThemeToggleClient />
         </ThemeProvider>
       </body>
     </html>

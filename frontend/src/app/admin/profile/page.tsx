@@ -7,9 +7,31 @@ import { Input } from '../../../components/ui/input'
 import { Label } from '../../../components/ui/label'
 import { useAuth } from '../../../hooks/use-auth'
 import { User, Mail, Shield, Save } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import api from '../../../util/api'
 
 export default function AdminProfilePage() {
-  const { user, logout } = useAuth()
+  const [profile, setProfile] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+  const { logout } = useAuth()
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await api.get('/admin/profile')
+        setProfile(response.data)
+      } catch (err) {
+        setError('Failed to load profile')
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchProfile()
+  }, [])
+
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>{error}</div>
 
   const handleLogout = () => {
     logout()
@@ -44,7 +66,7 @@ export default function AdminProfilePage() {
                   <Mail className="h-4 w-4 text-gray-400" />
                   <Input
                     id="email"
-                    value={user?.email || ''}
+                    value={profile?.email || ''}
                     disabled
                     className="bg-gray-50"
                   />
@@ -58,7 +80,7 @@ export default function AdminProfilePage() {
                 <Label htmlFor="user-id">User ID</Label>
                 <Input
                   id="user-id"
-                  value={user?._id || ''}
+                  value={profile?._id || ''}
                   disabled
                   className="bg-gray-50"
                 />
@@ -91,19 +113,19 @@ export default function AdminProfilePage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center p-4 bg-blue-50 rounded-lg">
                   <div className="text-2xl font-bold text-blue-600">
-                    {user?.skills?.length || 0}
+                    {profile?.skills?.length || 0}
                   </div>
                   <div className="text-sm text-gray-600">Skills</div>
                 </div>
                 <div className="text-center p-4 bg-green-50 rounded-lg">
                   <div className="text-2xl font-bold text-green-600">
-                    {user?.projects?.length || 0}
+                    {profile?.projects?.length || 0}
                   </div>
                   <div className="text-sm text-gray-600">Projects</div>
                 </div>
                 <div className="text-center p-4 bg-purple-50 rounded-lg">
                   <div className="text-2xl font-bold text-purple-600">
-                    {user?.experiences?.length || 0}
+                    {profile?.experiences?.length || 0}
                   </div>
                   <div className="text-sm text-gray-600">Experiences</div>
                 </div>
