@@ -81,13 +81,11 @@ export default function AdminSkillsPage() {
 
   return (
     <ProtectedRoute>
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
+      <div className="space-y-8">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 pb-2 border-b border-gray-200">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Skills</h1>
-            <p className="text-foreground">
-              Manage your technical skills and competencies.
-            </p>
+            <h1 className="text-4xl font-extrabold tracking-tight text-primary mb-1">Skills</h1>
+            <p className="text-muted-foreground text-lg">Manage your technical skills and competencies.</p>
           </div>
           <SkillsAddDialog
             open={isDialogOpen}
@@ -101,24 +99,29 @@ export default function AdminSkillsPage() {
         </div>
 
         {error && (
-          <Alert variant="destructive">
+          <Alert variant="destructive" className="animate-fade-in">
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
 
         {success && (
-          <Alert>
+          <Alert className="animate-fade-in">
             <AlertDescription>{success}</AlertDescription>
           </Alert>
         )}
 
         {skills.length === 0 ? (
-          <SkillsEmptyState onAdd={openDialog} />
+          <div className="flex flex-col items-center justify-center py-16 animate-fade-in">
+            <SkillsEmptyState onAdd={openDialog} />
+          </div>
         ) : (
-          <div className="space-y-6">
-            <SkillsOverview skills={skills} />
-            <SkillsManagement skills={skills} />
-            {/* Skills Categories - can be extracted as another component if needed */}
+          <div className="space-y-8">
+            <div className="shadow-md hover:shadow-xl transition-shadow duration-200 border border-gray-200 bg-white rounded-lg animate-fade-in">
+              <SkillsOverview skills={skills} />
+            </div>
+            <div className="shadow-md hover:shadow-xl transition-shadow duration-200 border border-gray-200 bg-white rounded-lg animate-fade-in">
+              <SkillsManagement skills={skills} />
+            </div>
           </div>
         )}
       </div>

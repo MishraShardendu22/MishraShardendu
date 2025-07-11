@@ -146,13 +146,11 @@ export default function AdminCertificationsPage() {
 
   return (
     <ProtectedRoute>
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
+      <div className="space-y-8">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 pb-2 border-b border-gray-200">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Certifications</h1>
-            <p className="text-foreground">
-              Manage your certifications and professional achievements.
-            </p>
+            <h1 className="text-4xl font-extrabold tracking-tight text-primary mb-1">Certifications</h1>
+            <p className="text-muted-foreground text-lg">Manage your certifications and professional achievements.</p>
           </div>
           <CertificationAddDialog
             open={isDialogOpen}
@@ -172,69 +170,72 @@ export default function AdminCertificationsPage() {
         </div>
 
         {error && (
-          <Alert variant="destructive">
+          <Alert variant="destructive" className="animate-fade-in">
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
 
         {success && (
-          <Alert>
+          <Alert className="animate-fade-in">
             <AlertDescription>{success}</AlertDescription>
           </Alert>
         )}
 
         {certifications.length === 0 ? (
-          <CertificationEmptyState onAdd={openDialog} />
+          <div className="flex flex-col items-center justify-center py-16 animate-fade-in">
+            <CertificationEmptyState onAdd={openDialog} />
+          </div>
         ) : (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {certifications.map((cert) => (
-              <Card key={cert.inline?.id || cert.inline.id} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-xl">{cert.title}</CardTitle>
-                  <CardDescription>
-                    {cert.issuer} • {cert.issue_date} to {cert.expiry_date}
+              <Card key={cert.inline?.id || cert.inline.id} className="flex flex-col overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-200 border border-gray-200 bg-white animate-fade-in">
+                <CardHeader className="bg-gradient-to-r from-blue-50 to-white pb-2">
+                  <CardTitle className="text-2xl font-semibold text-primary flex items-center gap-2">
+                    <Award className="h-5 w-5 text-blue-500" />
+                    {cert.title}
+                  </CardTitle>
+                  <CardDescription className="text-gray-500">
+                    {cert.issuer} &bull; {cert.issue_date} to {cert.expiry_date}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="flex-1 space-y-4">
-                  <p className="text-sm text-gray-600 line-clamp-3">
-                    {cert.description.length > 150 
-                      ? `${cert.description.substring(0, 150)}...` 
+                <CardContent className="flex-1 flex flex-col gap-4 p-5">
+                  <p className="text-base text-gray-700 line-clamp-4">
+                    {cert.description.length > 180 
+                      ? `${cert.description.substring(0, 180)}...` 
                       : cert.description
                     }
                   </p>
-                  
                   <div className="flex flex-wrap gap-2">
                     {cert.skills.map((skill, index) => (
-                      <Badge key={index} variant="outline" className="text-xs">
+                      <Badge key={index} variant="secondary" className="text-xs px-2 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
                         {skill}
                       </Badge>
                     ))}
                   </div>
-
-                  <div className="flex space-x-2 pt-4">
+                  <div className="flex items-center gap-3 pt-2">
                     {cert.certificate_url && (
                       <a
                         href={cert.certificate_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-600 hover:text-blue-800"
+                        className="text-blue-600 hover:text-blue-800 transition-colors"
+                        aria-label="Open certificate link"
                       >
                         <ExternalLink className="h-5 w-5" />
                       </a>
                     )}
                     {cert.images && cert.images.length > 0 && cert.images[0] && (
-                      <div className="relative h-8 w-8">
+                      <div className="relative h-10 w-10 rounded overflow-hidden border border-gray-200">
                         <Image
                           src={cert.images[0]}
-                          alt={cert.title + " certificate image"}
+                          alt={cert.title + ' certificate image'}
                           fill
                           className="object-contain"
                         />
                       </div>
                     )}
                   </div>
-
-                  <div className="flex space-x-2 pt-4">
+                  <div className="flex gap-2 pt-2 mt-auto">
                     <Link href={`/admin/certifications/${cert.inline?.id || cert.inline.id}`}>
                       <Button variant="outline" size="sm" className="flex-1">
                         View Details
@@ -245,6 +246,7 @@ export default function AdminCertificationsPage() {
                       size="sm" 
                       onClick={() => handleEdit(cert)}
                       className="flex-1"
+                      aria-label="Edit certification"
                     >
                       <Edit className="h-4 w-4" />
                     </Button>
@@ -253,6 +255,7 @@ export default function AdminCertificationsPage() {
                       size="sm" 
                       onClick={() => handleDelete(cert.inline?.id || cert.inline.id)}
                       className="text-red-600 hover:text-red-700"
+                      aria-label="Delete certification"
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>

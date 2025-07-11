@@ -306,7 +306,7 @@ tooltip: {
                       <div className="w-3 h-3 bg-chart-3 rounded-full"></div>
                       <span className="text-sm font-medium text-card-foreground">Hard</span>
                     </div>
-                    <Badge className="bg-chart-3 text-chart-3 bg-opacity-20">
+                    <Badge className="bg-chart-3 text-yellow-700 dark:text-chart-3 bg-opacity-20">
                       {data.leetcode.submitStats.acSubmissionNum[3]?.count || 0}
                     </Badge>
                   </div>

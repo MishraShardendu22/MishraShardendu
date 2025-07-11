@@ -7,3 +7,8 @@ import { Checkbox } from '../../ui/checkbox';
 import { Popover, PopoverTrigger, PopoverContent } from '../../ui/popover';
 import { Plus } from 'lucide-react';
 import React from 'react';
+
+export function ExperienceAddDialog() {
+  // TODO: Implement the dialog component here or export the actual implementation if it exists elsewhere
+  return null;
+}

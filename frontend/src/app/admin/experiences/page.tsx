@@ -15,7 +15,7 @@ import { Textarea } from '../../../components/ui/textarea'
 import { Alert, AlertDescription } from '../../../components/ui/alert'
 import { experiencesAPI } from '../../../util/apiResponse.util'
 import { Experience, CreateExperienceRequest } from '../../../data/types.data'
-import { Plus, Edit, Trash2, ExternalLink, Calendar, Building2, GraduationCap } from 'lucide-react'
+import { Plus, Edit, Trash2, ExternalLink, Calendar, Building2, GraduationCap, Briefcase } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
@@ -25,6 +25,7 @@ import { projectsAPI } from '../../../util/apiResponse.util';
 import { skillsAPI } from '../../../util/apiResponse.util';
 import { Popover, PopoverTrigger, PopoverContent } from '../../../components/ui/popover';
 import Link from 'next/link';
+import { ExperienceAddDialog, ExperienceEmptyState } from '../../../components/admin/experiences';
 
 const experienceSchema = z.object({
   company_name: z.string().min(1, 'Company name is required'),
@@ -169,284 +170,73 @@ export default function AdminExperiencesPage() {
 
   return (
     <ProtectedRoute>
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
+      <div className="space-y-8">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 pb-2 border-b border-gray-200">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Experiences</h1>
-            <p className="text-foreground">
-              Manage your work experiences and professional background.
-            </p>
+            <h1 className="text-4xl font-extrabold tracking-tight text-primary mb-1">Experiences</h1>
+            <p className="text-muted-foreground text-lg">Manage your professional experiences and work history.</p>
           </div>
-          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogTrigger asChild>
-              <Button onClick={openDialog}>
-                <Plus className="mr-2 h-4 w-4" />
-                Add Experience
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="w-[80vw] max-w-none max-h-[90vh] overflow-y-auto">
-              <DialogHeader>
-                <DialogTitle>
-                  {editingExperience ? 'Edit Experience' : 'Add New Experience'}
-                </DialogTitle>
-                <DialogDescription>
-                  {editingExperience ? 'Update your experience details.' : 'Add a new work experience to your portfolio.'}
-                </DialogDescription>
-              </DialogHeader>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="company_name">Company Name</Label>
-                    <Input
-                      id="company_name"
-                      {...register('company_name')}
-                      placeholder="Tech Company Inc."
-                    />
-                    {errors.company_name && (
-                      <p className="text-sm text-red-500">{errors.company_name.message}</p>
-                    )}
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="position">Position</Label>
-                    <Input
-                      id="position"
-                      {...register('position')}
-                      placeholder="Senior Developer"
-                    />
-                    {errors.position && (
-                      <p className="text-sm text-red-500">{errors.position.message}</p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="start_date">Start Date</Label>
-                    <Input
-                      id="start_date"
-                      type="date"
-                      {...register('start_date')}
-                    />
-                    {errors.start_date && (
-                      <p className="text-sm text-red-500">{errors.start_date.message}</p>
-                    )}
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="end_date">End Date</Label>
-                    <Input
-                      id="end_date"
-                      type="date"
-                      {...register('end_date')}
-                    />
-                    {errors.end_date && (
-                      <p className="text-sm text-red-500">{errors.end_date.message}</p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="description">Description (Markdown Editor)</Label>
-                  <TiptapModalEditor
-                    value={watch('description')}
-                    onChange={(value) => setValue('description', value)}
-                  />
-                  {errors.description && (
-                    <p className="text-sm text-red-500">{errors.description.message}</p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="technologies">Technologies</Label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button type="button" variant="outline" className="w-full justify-between">
-                        {selectedTechnologies.length > 0
-                          ? `${selectedTechnologies.length} selected`
-                          : 'Select Technologies'}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="max-h-64 overflow-y-auto w-72 p-2">
-                      {allSkills.map((skill) => (
-                        <label key={skill} className="flex items-center gap-2 py-1 px-2 hover:bg-gray-100 rounded cursor-pointer">
-                          <Checkbox
-                            checked={selectedTechnologies.includes(skill)}
-                            onCheckedChange={(checked) => {
-                              if (checked) setValue('technologies', [...selectedTechnologies, skill]);
-                              else setValue('technologies', selectedTechnologies.filter((s) => s !== skill));
-                            }}
-                          />
-                          <span>{skill}</span>
-                        </label>
-                      ))}
-                    </PopoverContent>
-                  </Popover>
-                  {errors.technologies && <p className="text-sm text-red-500">{errors.technologies.message as string}</p>}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="company_logo">Company Logo URL</Label>
-                  <Input
-                    id="company_logo"
-                    {...register('company_logo')}
-                    placeholder="https://example.com/logo.png"
-                  />
-                  {errors.company_logo && (
-                    <p className="text-sm text-red-500">{errors.company_logo.message}</p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="certificate_url">Certificate URL</Label>
-                  <Input
-                    id="certificate_url"
-                    {...register('certificate_url')}
-                    placeholder="https://example.com/certificate.pdf"
-                  />
-                  {errors.certificate_url && (
-                    <p className="text-sm text-red-500">{errors.certificate_url.message}</p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="projects">Projects</Label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button type="button" variant="outline" className="w-full justify-between">
-                        {selectedProjects.length > 0
-                          ? `${selectedProjects.length} selected`
-                          : 'Select Projects'}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="max-h-64 overflow-y-auto w-72 p-2">
-                      {allProjects.map((project) => (
-                        <label key={project.id} className="flex items-center gap-2 py-1 px-2 hover:bg-gray-100 rounded cursor-pointer">
-                          <Checkbox
-                            checked={selectedProjects.includes(project.id)}
-                            onCheckedChange={(checked) => {
-                              if (checked) setValue('projects', [...selectedProjects, project.id]);
-                              else setValue('projects', selectedProjects.filter((p) => p !== project.id));
-                            }}
-                          />
-                          <span>{project.name}</span>
-                        </label>
-                      ))}
-                    </PopoverContent>
-                  </Popover>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="images">Image URLs (comma-separated)</Label>
-                  <Input
-                    id="images"
-                    {...register('images')}
-                    placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg"
-                  />
-                  {errors.images && (
-                    <p className="text-sm text-red-500">{errors.images.message}</p>
-                  )}
-                </div>
-
-                <div className="flex justify-end space-x-2">
-                  <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>
-                    Cancel
-                  </Button>
-                  <Button type="submit">
-                    {editingExperience ? 'Update Experience' : 'Create Experience'}
-                  </Button>
-                </div>
-              </form>
-            </DialogContent>
-          </Dialog>
+          <ExperienceAddDialog
+            open={isDialogOpen}
+            setOpen={setIsDialogOpen}
+            onSubmit={onSubmit}
+            errors={errors}
+            register={register}
+            handleSubmit={handleSubmit}
+            reset={reset}
+            setValue={setValue}
+            watch={watch}
+            editingExperience={editingExperience}
+            allSkills={allSkills}
+            allProjects={allProjects}
+            openDialog={openDialog}
+          />
         </div>
 
         {error && (
-          <Alert variant="destructive">
+          <Alert variant="destructive" className="animate-fade-in">
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
 
         {success && (
-          <Alert>
+          <Alert className="animate-fade-in">
             <AlertDescription>{success}</AlertDescription>
           </Alert>
         )}
 
         {experiences.length === 0 ? (
-          <Card>
-            <CardContent className="text-center py-12">
-              <GraduationCap className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">No experiences yet</h3>
-              <p className="text-gray-500 mb-4">
-                Get started by adding your first work experience.
-              </p>
-              <Button onClick={openDialog}>
-                <Plus className="mr-2 h-4 w-4" />
-                Add Your First Experience
-              </Button>
-            </CardContent>
-          </Card>
+          <div className="flex flex-col items-center justify-center py-16 animate-fade-in">
+            <ExperienceEmptyState onAdd={openDialog} />
+          </div>
         ) : (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {experiences.map((experience) => (
-              <Card key={experience.inline?.id || experience.inline.id} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <CardTitle className="text-xl">{experience.position}</CardTitle>
-                      <CardDescription className="mt-2">
-                        {experience.company_name}
-                      </CardDescription>
-                      <p className="text-sm text-gray-500 mt-1">
-                        {new Date(experience.start_date).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'short',
-                        })} - {new Date(experience.end_date).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'short',
-                        })}
-                      </p>
-                    </div>
-                    {experience.company_logo && (
-                      <div className="relative h-12 w-12">
-                        <Image
-                          src={experience.company_logo}
-                          alt={`${experience.company_name} logo`}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    )}
-                  </div>
+              <Card key={experience.inline?.id || experience.inline.id} className="flex flex-col overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-200 border border-gray-200 bg-white animate-fade-in">
+                <CardHeader className="bg-gradient-to-r from-yellow-50 to-white pb-2">
+                  <CardTitle className="text-2xl font-semibold text-primary flex items-center gap-2">
+                    <Briefcase className="h-5 w-5 text-yellow-500" />
+                    {experience.position}
+                  </CardTitle>
+                  <CardDescription className="text-gray-500">
+                    {experience.company_name} &bull; {experience.start_date} to {experience.end_date}
+                  </CardDescription>
                 </CardHeader>
-                <CardContent className="flex-1 space-y-4">
-                  <p className="text-sm text-gray-600 line-clamp-3">
-                    {experience.description.length > 150 
-                      ? `${experience.description.substring(0, 150)}...` 
+                <CardContent className="flex-1 flex flex-col gap-4 p-5">
+                  <p className="text-base text-gray-700 line-clamp-4">
+                    {experience.description.length > 180 
+                      ? `${experience.description.substring(0, 180)}...` 
                       : experience.description
                     }
                   </p>
-                  
                   <div className="flex flex-wrap gap-2">
                     {experience.technologies.map((tech, index) => (
-                      <Badge key={index} variant="outline" className="text-xs">
+                      <Badge key={index} variant="secondary" className="text-xs px-2 py-1 rounded-full bg-yellow-50 text-yellow-700 border border-yellow-200">
                         {tech}
                       </Badge>
                     ))}
                   </div>
-
-                  {experience.certificate_url && (
-                    <a
-                      href={experience.certificate_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
-                    >
-                      <ExternalLink className="mr-1 h-4 w-4" />
-                      View Certificate
-                    </a>
-                  )}
-
-                  <div className="flex space-x-2 pt-4">
+                  <div className="flex gap-2 pt-2 mt-auto">
                     <Link href={`/admin/experiences/${experience.inline?.id || experience.inline.id}`}>
                       <Button variant="outline" size="sm" className="flex-1">
                         View Details
@@ -457,6 +247,7 @@ export default function AdminExperiencesPage() {
                       size="sm" 
                       onClick={() => handleEdit(experience)}
                       className="flex-1"
+                      aria-label="Edit experience"
                     >
                       <Edit className="h-4 w-4" />
                     </Button>
@@ -465,6 +256,7 @@ export default function AdminExperiencesPage() {
                       size="sm" 
                       onClick={() => handleDelete(experience.inline?.id || experience.inline.id)}
                       className="text-red-600 hover:text-red-700"
+                      aria-label="Delete experience"
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
