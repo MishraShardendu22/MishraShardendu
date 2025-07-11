@@ -77,3 +77,4 @@ Update main.yml
 done
 Update main.go
 Create main.yml
+Add test endpoint to verify API functionality
