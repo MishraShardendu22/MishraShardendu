@@ -44,120 +44,128 @@ export default function AdminDashboardPage() {
     fetchData()
   }, [])
 
-  if (loading) return <div>Loading...</div>
-  if (error) return <div>{error}</div>
+  if (loading) return (
+    <div className="min-h-[40vh] flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-primary border-solid"></div>
+    </div>
+  )
+  if (error) return (
+    <div className="min-h-[40vh] flex flex-col items-center justify-center gap-4">
+      <div className="w-20 h-20 rounded-full bg-destructive/10 flex items-center justify-center">
+        <span className="text-4xl">😢</span>
+      </div>
+      <div className="text-center space-y-2">
+        <h2 className="text-2xl font-heading text-foreground">Oops! Something went wrong</h2>
+        <p className="text-muted-foreground text-lg">{error}</p>
+      </div>
+    </div>
+  )
 
   return (
     <ProtectedRoute>
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-          <p className="text-foreground">
-            Welcome to your portfolio admin panel. Manage your projects, experiences, and skills.
+      <div className="space-y-12">
+        {/* Enhanced Header */}
+        <div className="text-center mb-12 space-y-8">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
+            <span className="text-base font-medium text-primary">Admin Dashboard</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-heading font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-tight">
+            Welcome, Admin
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Manage your portfolio content, track your stats, and take quick actions below.
           </p>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Projects</CardTitle>
-              <Briefcase className="h-4 w-4 text-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{projects.length}</div>
-              <p className="text-xs text-foreground">
-                {projects.length === 0 ? 'No projects yet' : 'Active projects'}
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Experiences</CardTitle>
-              <GraduationCap className="h-4 w-4 text-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{experiences.length}</div>
-              <p className="text-xs text-foreground">
-                {experiences.length === 0 ? 'No experiences yet' : 'Work experiences'}
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Skills</CardTitle>
-              <Settings className="h-4 w-4 text-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{skills.length}</div>
-              <p className="text-xs text-foreground">
-                {skills.length === 0 ? 'No skills yet' : 'Technical skills'}
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Certifications</CardTitle>
-              <Badge variant="outline" className="h-4 w-4 text-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{certifications.length}</div>
-              <p className="text-xs text-foreground">
-                {certifications.length === 0 ? 'No certifications yet' : 'Professional certifications'}
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Portfolio Status</CardTitle>
-              <Badge variant="outline" className="h-4 w-4 text-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">Live</div>
-              <p className="text-xs text-foreground">Portfolio is active</p>
-            </CardContent>
-          </Card>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
+          {/* Stat Card Example */}
+          <div className="group relative overflow-hidden border-2 border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 bg-gradient-to-br from-card/50 to-card backdrop-blur-sm rounded-2xl p-6 flex flex-col items-center animate-fade-in">
+            <Briefcase className="h-8 w-8 text-primary mb-2" />
+            <div className="text-3xl font-bold text-foreground">{projects.length}</div>
+            <div className="text-base text-muted-foreground">Projects</div>
+          </div>
+          <div className="group relative overflow-hidden border-2 border-border/50 hover:border-secondary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-secondary/10 hover:-translate-y-2 bg-gradient-to-br from-card/50 to-card backdrop-blur-sm rounded-2xl p-6 flex flex-col items-center animate-fade-in">
+            <GraduationCap className="h-8 w-8 text-secondary mb-2" />
+            <div className="text-3xl font-bold text-foreground">{experiences.length}</div>
+            <div className="text-base text-muted-foreground">Experiences</div>
+          </div>
+          <div className="group relative overflow-hidden border-2 border-border/50 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-2 bg-gradient-to-br from-card/50 to-card backdrop-blur-sm rounded-2xl p-6 flex flex-col items-center animate-fade-in">
+            <Settings className="h-8 w-8 text-accent mb-2" />
+            <div className="text-3xl font-bold text-foreground">{skills.length}</div>
+            <div className="text-base text-muted-foreground">Skills</div>
+          </div>
+          <div className="group relative overflow-hidden border-2 border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 bg-gradient-to-br from-card/50 to-card backdrop-blur-sm rounded-2xl p-6 flex flex-col items-center animate-fade-in">
+            <Badge variant="outline" className="h-8 w-8 text-primary mb-2 flex items-center justify-center" />
+            <div className="text-3xl font-bold text-foreground">{certifications.length}</div>
+            <div className="text-base text-muted-foreground">Certifications</div>
+          </div>
+          <div className="group relative overflow-hidden border-2 border-border/50 hover:border-secondary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-secondary/10 hover:-translate-y-2 bg-gradient-to-br from-card/50 to-card backdrop-blur-sm rounded-2xl p-6 flex flex-col items-center animate-fade-in">
+            <span className="h-8 w-8 flex items-center justify-center text-secondary mb-2 font-bold text-2xl">🌐</span>
+            <div className="text-3xl font-bold text-foreground">Live</div>
+            <div className="text-base text-muted-foreground">Portfolio Status</div>
+          </div>
         </div>
 
-        {/* Recent Projects */}
-        <div className="grid gap-4 md:grid-cols-2">
-          <Card>
-            <CardHeader>
-              <CardTitle>Recent Projects</CardTitle>
-              <CardDescription>
-                Your latest projects and their current status
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+        {/* Quick Actions */}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <Link href="/admin/projects">
+            <Button variant="outline" className="w-full h-auto p-6 flex-col gap-2 text-lg font-semibold shadow-md hover:shadow-xl transition-all duration-200 animate-fade-in">
+              <Briefcase className="h-8 w-8 mb-2 text-primary" />
+              Manage Projects
+            </Button>
+          </Link>
+          <Link href="/admin/experiences">
+            <Button variant="outline" className="w-full h-auto p-6 flex-col gap-2 text-lg font-semibold shadow-md hover:shadow-xl transition-all duration-200 animate-fade-in">
+              <GraduationCap className="h-8 w-8 mb-2 text-secondary" />
+              Manage Experiences
+            </Button>
+          </Link>
+          <Link href="/admin/skills">
+            <Button variant="outline" className="w-full h-auto p-6 flex-col gap-2 text-lg font-semibold shadow-md hover:shadow-xl transition-all duration-200 animate-fade-in">
+              <Settings className="h-8 w-8 mb-2 text-accent" />
+              Manage Skills
+            </Button>
+          </Link>
+          <Link href="/">
+            <Button variant="outline" className="w-full h-auto p-6 flex-col gap-2 text-lg font-semibold shadow-md hover:shadow-xl transition-all duration-200 animate-fade-in">
+              <ExternalLink className="h-8 w-8 mb-2 text-primary" />
+              View Portfolio
+            </Button>
+          </Link>
+        </div>
+
+        {/* Recent Projects & Experiences */}
+        <div className="grid gap-8 md:grid-cols-2">
+          {/* Recent Projects */}
+          <div className="rounded-2xl border border-border bg-card/80 shadow-lg p-6 animate-fade-in">
+            <h2 className="text-2xl font-bold mb-2 text-primary">Recent Projects</h2>
+            <div className="space-y-4">
               {projects.length === 0 ? (
-                <div className="text-center py-6">
-                  <Briefcase className="mx-auto h-12 w-12 text-gray-400" />
-                  <h3 className="mt-2 text-sm font-medium text-gray-900">No projects</h3>
-                  <p className="mt-1 text-sm text-gray-500">
+                <div className="flex flex-col items-center justify-center py-8">
+                  <Briefcase className="mx-auto h-12 w-12 text-muted-foreground" />
+                  <h3 className="mt-2 text-lg font-medium text-foreground">No projects</h3>
+                  <p className="mt-1 text-base text-muted-foreground">
                     Get started by creating your first project.
                   </p>
                   <div className="mt-6">
                     <Link href="/admin/projects">
                       <Button>
-                        <Plus className="mr-2 h-4 w-4" />
+                        <Plus className="mr-2 h-5 w-5" />
                         Add Project
                       </Button>
                     </Link>
                   </div>
                 </div>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {projects.slice(0, 3).map((project) => (
-                    <div key={project.inline.id} className="flex items-center justify-between">
+                    <div key={project.inline.id} className="flex items-center justify-between gap-4 p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-all duration-200">
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-gray-900 truncate">
+                        <p className="text-base font-semibold text-foreground truncate">
                           {project.project_name}
                         </p>
-                        <p className="text-sm text-gray-500 truncate">
+                        <p className="text-sm text-muted-foreground truncate">
                           {project.small_description}
                         </p>
                       </div>
@@ -167,9 +175,9 @@ export default function AdminDashboardPage() {
                             href={project.project_live_link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-600 hover:text-blue-800"
+                            className="text-primary hover:text-accent"
                           >
-                            <ExternalLink className="h-4 w-4" />
+                            <ExternalLink className="h-5 w-5" />
                           </a>
                         )}
                       </div>
@@ -186,43 +194,38 @@ export default function AdminDashboardPage() {
                   )}
                 </div>
               )}
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Recent Experiences */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Recent Experiences</CardTitle>
-              <CardDescription>
-                Your latest work experiences and positions
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+          <div className="rounded-2xl border border-border bg-card/80 shadow-lg p-6 animate-fade-in">
+            <h2 className="text-2xl font-bold mb-2 text-secondary">Recent Experiences</h2>
+            <div className="space-y-4">
               {experiences.length === 0 ? (
-                <div className="text-center py-6">
-                  <GraduationCap className="mx-auto h-12 w-12 text-gray-400" />
-                  <h3 className="mt-2 text-sm font-medium text-gray-900">No experiences</h3>
-                  <p className="mt-1 text-sm text-gray-500">
+                <div className="flex flex-col items-center justify-center py-8">
+                  <GraduationCap className="mx-auto h-12 w-12 text-muted-foreground" />
+                  <h3 className="mt-2 text-lg font-medium text-foreground">No experiences</h3>
+                  <p className="mt-1 text-base text-muted-foreground">
                     Get started by adding your work experience.
                   </p>
                   <div className="mt-6">
                     <Link href="/admin/experiences">
                       <Button>
-                        <Plus className="mr-2 h-4 w-4" />
+                        <Plus className="mr-2 h-5 w-5" />
                         Add Experience
                       </Button>
                     </Link>
                   </div>
                 </div>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {experiences.slice(0, 3).map((experience) => (
-                    <div key={experience.inline.id} className="flex items-center justify-between">
+                    <div key={experience.inline.id} className="flex items-center justify-between gap-4 p-3 rounded-lg bg-secondary/5 hover:bg-secondary/10 transition-all duration-200">
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-gray-900 truncate">
+                        <p className="text-base font-semibold text-foreground truncate">
                           {experience.position}
                         </p>
-                        <p className="text-sm text-gray-500 truncate">
+                        <p className="text-sm text-muted-foreground truncate">
                           {experience.company_name}
                         </p>
                       </div>
@@ -244,103 +247,9 @@ export default function AdminDashboardPage() {
                   )}
                 </div>
               )}
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Recent Certifications */}
-        <div className="grid gap-4 md:grid-cols-2">
-          <Card>
-            <CardHeader>
-              <CardTitle>Recent Certifications</CardTitle>
-              <CardDescription>
-                Your latest certifications and achievements
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              {certifications.length === 0 ? (
-                <div className="text-center py-6">
-                  <Badge className="mx-auto h-12 w-12 text-gray-400" />
-                  <h3 className="mt-2 text-sm font-medium text-gray-900">No certifications</h3>
-                  <p className="mt-1 text-sm text-gray-500">
-                    Get started by adding your first certification.
-                  </p>
-                  <div className="mt-6">
-                    <Link href="/admin/certifications">
-                      <Button>
-                        <Plus className="mr-2 h-4 w-4" />
-                        Add Certification
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {certifications.slice(0, 3).map((cert) => (
-                    <div key={cert.inline.id} className="flex items-center justify-between">
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-gray-900 truncate">{cert.title}</p>
-                        <p className="text-sm text-gray-500 truncate">{cert.issuer} &mdash; {cert.issue_date} to {cert.expiry_date}</p>
-                        <div className="flex flex-wrap gap-1 mt-1">
-                          {cert.skills.map((skill, idx) => (
-                            <Badge key={idx} variant="secondary" className="text-xs">{skill}</Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                  {certifications.length > 3 && (
-                    <div className="pt-4">
-                      <Link href="/admin/certifications">
-                        <Button variant="outline" className="w-full">
-                          View All Certifications
-                        </Button>
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Quick Actions */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
-            <CardDescription>
-              Common tasks to manage your portfolio
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <Link href="/admin/projects">
-                <Button variant="outline" className="w-full h-auto p-4 flex-col">
-                  <Briefcase className="h-8 w-8 mb-2" />
-                  <span>Manage Projects</span>
-                </Button>
-              </Link>
-              <Link href="/admin/experiences">
-                <Button variant="outline" className="w-full h-auto p-4 flex-col">
-                  <GraduationCap className="h-8 w-8 mb-2" />
-                  <span>Manage Experiences</span>
-                </Button>
-              </Link>
-              <Link href="/admin/skills">
-                <Button variant="outline" className="w-full h-auto p-4 flex-col">
-                  <Settings className="h-8 w-8 mb-2" />
-                  <span>Manage Skills</span>
-                </Button>
-              </Link>
-              <Link href="/">
-                <Button variant="outline" className="w-full h-auto p-4 flex-col">
-                  <ExternalLink className="h-8 w-8 mb-2" />
-                  <span>View Portfolio</span>
-                </Button>
-              </Link>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </ProtectedRoute>
   )

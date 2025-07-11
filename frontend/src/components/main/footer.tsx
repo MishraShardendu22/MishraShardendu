@@ -40,10 +40,12 @@ export default function FooterSection() {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div className="space-y-6">
             <h4 className="text-lg font-semibold text-foreground">Quick Links</h4>
             <nav className="flex flex-col space-y-3">
+              <Link href="/admin/dashboard" className="text-foreground/70 hover:text-primary transition-colors duration-300 hover:translate-x-1 transform">
+                Admin
+              </Link>
               <Link href="#about" className="text-foreground/70 hover:text-primary transition-colors duration-300 hover:translate-x-1 transform">
                 About
               </Link>

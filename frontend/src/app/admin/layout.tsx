@@ -52,122 +52,119 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Mobile sidebar */}
-      <div className={`fixed inset-0 z-50 lg:hidden ${sidebarOpen ? 'block' : 'hidden'}`}>
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-75" onClick={() => setSidebarOpen(false)} />
-        <div className="fixed inset-y-0 left-0 flex w-64 flex-col bg-white">
-          <div className="flex h-16 items-center justify-between px-4">
-            <h1 className="text-xl font-bold">Admin Panel</h1>
-            <Button variant="ghost" size="sm" onClick={() => setSidebarOpen(false)}>
-              <X className="h-5 w-5" />
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 flex">
+      {/* Mobile sidebar overlay */}
+      <div className={`fixed inset-0 z-50 lg:hidden transition-all duration-300 ${sidebarOpen ? 'block' : 'hidden'}`}>
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setSidebarOpen(false)} />
+        <aside className="fixed inset-y-0 left-0 flex w-72 flex-col bg-card/80 border-r border-border shadow-2xl rounded-tr-3xl rounded-br-3xl backdrop-blur-xl animate-fade-in">
+          <div className="flex h-20 items-center justify-between px-6 border-b border-border/30">
+            <h1 className="text-2xl font-heading font-bold text-primary drop-shadow-lg">Admin Panel</h1>
+            <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(false)}>
+              <X className="h-6 w-6 text-foreground" />
             </Button>
           </div>
-          <nav className="flex-1 space-y-1 px-2 py-4">
+          <nav className="flex-1 space-y-2 px-4 py-6">
             {navigation.map((item) => {
               const isActive = pathname === item.href
               return (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`group flex items-center px-2 py-2 text-sm font-medium rounded-md ${
+                  className={`group flex items-center gap-3 px-4 py-3 text-base font-medium rounded-xl transition-all duration-200 ${
                     isActive
-                      ? 'bg-gray-100 text-gray-900'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                      ? 'bg-primary/10 text-primary shadow-lg'
+                      : 'text-muted-foreground hover:bg-primary/5 hover:text-primary'
                   }`}
                   onClick={() => setSidebarOpen(false)}
                 >
-                  <item.icon className="mr-3 h-5 w-5" />
+                  <item.icon className="h-5 w-5" />
                   {item.name}
                 </Link>
               )
             })}
           </nav>
-          <div className="border-t border-gray-200 p-4">
-            <div className="flex items-center">
-              <User className="h-8 w-8 rounded-full bg-gray-300 p-1" />
-              <div className="ml-3">
-                <p className="text-sm font-medium text-gray-700">{profile?.email}</p>
+          <div className="border-t border-border/30 p-6 flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <User className="h-9 w-9 rounded-full bg-muted p-1 shadow" />
+              <div>
+                <p className="text-base font-semibold text-foreground">{profile?.email}</p>
               </div>
             </div>
             <Button
-              variant="ghost"
-              className="mt-3 w-full justify-start"
+              variant="outline"
+              className="w-full justify-start"
               onClick={logout}
             >
-              <LogOut className="mr-2 h-4 w-4" />
+              <LogOut className="mr-2 h-5 w-5" />
               Sign out
             </Button>
           </div>
-        </div>
+        </aside>
       </div>
 
       {/* Desktop sidebar */}
-      <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
-        <div className="flex flex-col flex-grow bg-white border-r border-gray-200">
-          <div className="flex h-16 items-center px-4">
-            <h1 className="text-xl font-bold">Admin Panel</h1>
-          </div>
-          <nav className="flex-1 space-y-1 px-2 py-4">
-            {navigation.map((item) => {
-              const isActive = pathname === item.href
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`group flex items-center px-2 py-2 text-sm font-medium rounded-md ${
-                    isActive
-                      ? 'bg-gray-100 text-gray-900'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                  }`}
-                >
-                  <item.icon className="mr-3 h-5 w-5" />
-                  {item.name}
-                </Link>
-              )
-            })}
-          </nav>
-          <div className="border-t border-gray-200 p-4">
-            <div className="flex items-center">
-              <User className="h-8 w-8 rounded-full bg-gray-300 p-1" />
-              <div className="ml-3">
-                <p className="text-sm font-medium text-gray-700">{profile?.email}</p>
-              </div>
-            </div>
-            <Button
-              variant="ghost"
-              className="mt-3 w-full justify-start"
-              onClick={logout}
-            >
-              <LogOut className="mr-2 h-4 w-4" />
-              Sign out
-            </Button>
-          </div>
+      <aside className="hidden lg:flex lg:flex-col lg:w-72 bg-card/80 border-r border-border shadow-2xl rounded-tr-3xl rounded-br-3xl backdrop-blur-xl animate-fade-in">
+        <div className="flex h-20 items-center px-6 border-b border-border/30">
+          <h1 className="text-2xl font-heading font-bold text-primary drop-shadow-lg">Admin Panel</h1>
         </div>
-      </div>
+        <nav className="flex-1 space-y-2 px-4 py-6">
+          {navigation.map((item) => {
+            const isActive = pathname === item.href
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`group flex items-center gap-3 px-4 py-3 text-base font-medium rounded-xl transition-all duration-200 ${
+                  isActive
+                    ? 'bg-primary/10 text-primary shadow-lg'
+                    : 'text-muted-foreground hover:bg-primary/5 hover:text-primary'
+                }`}
+              >
+                <item.icon className="h-5 w-5" />
+                {item.name}
+              </Link>
+            )
+          })}
+        </nav>
+        <div className="border-t border-border/30 p-6 flex flex-col gap-4">
+          <div className="flex items-center gap-3">
+            <User className="h-9 w-9 rounded-full bg-muted p-1 shadow" />
+            <div>
+              <p className="text-base font-semibold text-foreground">{profile?.email}</p>
+            </div>
+          </div>
+          <Button
+            variant="outline"
+            className="w-full justify-start"
+            onClick={logout}
+          >
+            <LogOut className="mr-2 h-5 w-5" />
+            Sign out
+          </Button>
+        </div>
+      </aside>
 
       {/* Main content */}
-      <div className="lg:pl-64">
+      <div className="flex-1 flex flex-col min-h-screen lg:pl-0">
         {/* Top bar */}
-        <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+        <header className="sticky top-0 z-40 flex h-20 items-center gap-x-4 border-b border-border bg-card/80 backdrop-blur-xl shadow-md px-4 sm:px-8 animate-fade-in">
           <Button
             variant="ghost"
-            className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
+            className="lg:hidden p-2.5 text-primary"
             onClick={() => setSidebarOpen(true)}
+            aria-label="Open sidebar"
           >
-            <Menu className="h-6 w-6" />
+            <Menu className="h-7 w-7" />
           </Button>
-          <Separator orientation="vertical" className="h-6" />
+          <Separator orientation="vertical" className="h-8" />
           <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
             <div className="flex flex-1"></div>
           </div>
-        </div>
+        </header>
 
         {/* Page content */}
-        <main className="py-6">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            {children}
-          </div>
+        <main className="flex-1 py-10 px-4 sm:px-8 max-w-7xl mx-auto w-full animate-fade-in">
+          {children}
         </main>
       </div>
     </div>

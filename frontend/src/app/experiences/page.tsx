@@ -6,7 +6,7 @@ import { Experience } from '../../data/types.data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
 import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
-import { ExternalLink, Calendar, Building2, GraduationCap } from 'lucide-react';
+import { ExternalLink, ChevronLeft, ChevronRight, MoreHorizontal, Building2, Zap } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -14,6 +14,8 @@ export default function ExperiencesPage() {
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const perPage = 4;
 
   useEffect(() => {
     const fetchExperiences = async () => {
@@ -29,97 +31,223 @@ export default function ExperiencesPage() {
     fetchExperiences();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  const totalPages = Math.ceil(experiences.length / perPage);
+  const startIndex = (currentPage - 1) * perPage;
+  const endIndex = startIndex + perPage;
+  const currentExperiences = experiences.slice(startIndex, endIndex);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const getPaginationNumbers = () => {
+    const delta = 2;
+    const range = [];
+    const rangeWithDots = [];
+
+    for (let i = Math.max(2, currentPage - delta); i <= Math.min(totalPages - 1, currentPage + delta); i++) {
+      range.push(i);
+    }
+
+    if (currentPage - delta > 2) {
+      rangeWithDots.push(1, '...');
+    } else {
+      rangeWithDots.push(1);
+    }
+
+    rangeWithDots.push(...range);
+
+    if (currentPage + delta < totalPages - 1) {
+      rangeWithDots.push('...', totalPages);
+    } else {
+      rangeWithDots.push(totalPages);
+    }
+
+    return rangeWithDots;
+  };
+
+  if (loading) return       (
+  <div className="h-screen bg-gradient-to-br from-background via-background to-muted/20 flex items-center justify-center">
+        <div className="flex flex-col items-center justify-center space-y-6">
+          <div className="relative">
+            <div className="w-16 h-16 border-4 border-primary/30 border-t-primary rounded-full animate-spin"></div>
+            <div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-secondary rounded-full animate-spin animate-reverse"></div>
+          </div>
+          <div className="text-center space-y-2">
+            <h2 className="text-xl font-heading text-foreground">Loading Experience</h2>
+            <p className="text-muted-foreground">Fetching amazing work...</p>
+          </div>
+        </div>
+      </div>
+    );
+
+  if (error) return       <div className="h-screen bg-gradient-to-br from-background via-background to-destructive/5 flex items-center justify-center">
+        <div className="flex flex-col items-center justify-center space-y-6">
+          <div className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center">
+            <Zap className="w-8 h-8 text-destructive" />
+          </div>
+          <div className="text-center space-y-2">
+            <h2 className="text-xl font-heading text-foreground">Oops! Something went wrong</h2>
+            <p className="text-muted-foreground">{error}</p>
+          </div>
+        </div>
+      </div>;
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">Work Experience</h1>
-        <p className="text-gray-600">My professional journey and contributions</p>
-      </div>
-      
-      {experiences.length === 0 ? (
-        <Card>
-          <CardContent className="text-center py-12">
-            <span className="text-gray-400 mb-4 inline-block">
-              <svg width="48" height="48" fill="none" viewBox="0 0 24 24"><path d="M12 17.75l-6.16 3.24 1.18-6.88L2 9.76l6.92-1.01L12 2.5l3.08 6.25L22 9.76l-5.02 4.35 1.18 6.88z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/></svg>
-            </span>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No experiences yet</h3>
-            <p className="text-gray-500 mb-4">Experiences will appear here when added.</p>
-          </CardContent>
-        </Card>
-      ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {experiences.map((experience) => (
-            <Card key={experience.inline?.id || experience.inline.id} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <CardTitle className="text-xl">{experience.position}</CardTitle>
-                    <CardDescription className="mt-2">
-                      {experience.company_name}
-                    </CardDescription>
-                    <p className="text-sm text-gray-500 mt-1">
-                      {new Date(experience.start_date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                      })} - {new Date(experience.end_date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                      })}
-                    </p>
-                  </div>
-                  {experience.company_logo && (
-                    <div className="relative h-12 w-12">
-                      <Image
-                        src={experience.company_logo}
-                        alt={`${experience.company_name} logo`}
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-                  )}
-                </div>
-              </CardHeader>
-              <CardContent className="flex-1 space-y-4">
-                <p className="text-sm text-gray-600 line-clamp-3">
-                  {experience.description.length > 150 
-                    ? `${experience.description.substring(0, 150)}...` 
-                    : experience.description
-                  }
-                </p>
-                
-                <div className="flex flex-wrap gap-2">
-                  {experience.technologies.map((tech, index) => (
-                    <Badge key={index} variant="outline" className="text-xs">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
+    <div className="h-screen bg-gradient-to-br from-background via-background to-muted/20 flex flex-col">
+      <div className="container mx-auto px-4 py-6 max-w-7xl flex-1 flex flex-col">
+        <div className="text-center mb-8 space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
+            <Building2 className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Experience</span>
+          </div>
 
-                {experience.certificate_url && (
-                  <a
-                    href={experience.certificate_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800"
-                  >
-                    <ExternalLink className="mr-1 h-4 w-4" />
-                    View Certificate
-                  </a>
-                )}
+          <h1 className="text-4xl md:text-5xl font-heading font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-tight">
+            Work Journey
+          </h1>
 
-                <Link href={`/experiences/${experience.inline?.id || experience.inline.id}`}>
-                  <Button variant="outline" className="w-full">
-                    View Details
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          ))}
+          <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Roles, contributions, and responsibilities across companies and domains
+          </p>
         </div>
-      )}
+
+        <div className="flex-1 flex flex-col">
+          {experiences.length === 0 ? (
+            <div className="flex-1 flex items-center justify-center text-muted-foreground">
+              No experiences yet.
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                {currentExperiences.map((experience, index) => (
+                  <Card
+                    key={experience.inline?.id || experience.inline.id}
+                    className="group relative overflow-hidden border-2 border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 bg-gradient-to-br from-card/50 to-card backdrop-blur-sm w-full"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <CardHeader className="relative z-10 pb-2">
+                      <div className="flex justify-between items-center gap-4">
+                        <div className="flex-1">
+                          <CardTitle className="text-lg font-heading group-hover:text-primary transition-colors duration-300 line-clamp-2">
+                            {experience.position}
+                          </CardTitle>
+                          <CardDescription className="text-sm text-muted-foreground">
+                            {experience.company_name}
+                          </CardDescription>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            {new Date(experience.start_date).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'short',
+                            })} - {new Date(experience.end_date).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'short',
+                            })}
+                          </p>
+                        </div>
+                      </div>
+                    </CardHeader>
+
+                    <CardContent className="relative z-10 flex-1 flex flex-col justify-between space-y-4">
+                      <p className="text-sm text-muted-foreground line-clamp-3">
+                        {experience.description.length > 150 ? experience.description.slice(0, 150) + '...' : experience.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-1.5">
+                        {experience.technologies.map((tech, idx) => (
+                          <Badge
+                            key={idx}
+                            variant="outline"
+                            className="text-xs px-2 py-1 bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20"
+                          >
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center justify-between pt-2">
+                        {experience.certificate_url && (
+                          <a
+                            href={experience.certificate_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-8 h-8 flex items-center justify-center rounded-lg bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 hover:border-primary/40 transition-all"
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
+                        )}
+
+                        <Link href={`/experiences/${experience.inline?.id || experience.inline.id}`}>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="border-2 border-primary/20 hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                          >
+                            Details
+                          </Button>
+                        </Link>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {totalPages > 1 && (
+                <div className="flex justify-center items-center space-x-2 py-4">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="px-3 py-2 rounded-lg border-2 border-border/20 hover:border-primary/40 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  >
+                    <ChevronLeft className="w-4 h-4 mr-1" /> Prev
+                  </Button>
+
+                  <div className="flex space-x-1">
+                    {getPaginationNumbers().map((pageNumber, index) => (
+                      <div key={index}>
+                        {pageNumber === '...' ? (
+                          <Button variant="ghost" size="sm" disabled className="px-2 py-2 text-muted-foreground">
+                            <MoreHorizontal className="w-4 h-4" />
+                          </Button>
+                        ) : (
+                          <Button
+                            variant={currentPage === pageNumber ? "default" : "outline"}
+                            size="sm"
+                            onClick={() => handlePageChange(pageNumber as number)}
+                            className={`px-3 py-2 rounded-lg border-2 transition-all ${
+                              currentPage === pageNumber
+                                ? 'bg-primary text-primary-foreground border-primary shadow-lg'
+                                : 'border-border/20 hover:border-primary/40 hover:bg-primary/10'
+                            }`}
+                          >
+                            {pageNumber}
+                          </Button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="px-3 py-2 rounded-lg border-2 border-border/20 hover:border-primary/40 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  >
+                    Next <ChevronRight className="w-4 h-4 ml-1" />
+                  </Button>
+                </div>
+              )}
+
+              <div className="text-center text-xs text-muted-foreground pb-2">
+                Showing {startIndex + 1}-{Math.min(endIndex, experiences.length)} of {experiences.length} experiences
+              </div>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
-} 
+}

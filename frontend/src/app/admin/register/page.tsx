@@ -16,23 +16,23 @@ export default function AdminRegisterPage() {
   }, [router])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 p-4">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/20 p-4">
+      <Card className="w-full max-w-md group relative overflow-hidden border-2 border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 bg-gradient-to-br from-card/50 to-card backdrop-blur-xl rounded-2xl animate-fade-in">
         <CardHeader className="text-center">
-          <UserPlus className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-          <CardTitle className="text-2xl font-bold">Admin Registration</CardTitle>
-          <CardDescription>
+          <UserPlus className="mx-auto h-12 w-12 text-primary mb-4 animate-fade-in" />
+          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Admin Registration</CardTitle>
+          <CardDescription className="text-muted-foreground">
             Registration and login are handled through the same endpoint.
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-sm text-gray-600 text-center">
-            The admin authentication system uses a single endpoint for both registration and login.
+        <CardContent className="space-y-6">
+          <p className="text-base text-muted-foreground text-center">
+            The admin authentication system uses a single endpoint for both registration and login.<br />
             If you&apos;re a new admin, you can register by using the login form with your credentials.
           </p>
           <Link href="/admin/login" className="block">
-            <Button className="w-full">
-              <LogIn className="mr-2 h-4 w-4" />
+            <Button className="w-full mt-2 shadow-md hover:shadow-xl transition-all duration-200">
+              <LogIn className="mr-2 h-5 w-5" />
               Go to Login
             </Button>
           </Link>

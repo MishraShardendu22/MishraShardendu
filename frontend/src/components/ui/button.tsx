@@ -46,14 +46,40 @@ function Button({
     asChild?: boolean
   }) {
   const Comp = asChild ? Slot : "button"
+  const rippleRef = React.useRef<HTMLSpanElement>(null)
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (props.onClick) props.onClick(e)
+    const button = e.currentTarget
+    const ripple = document.createElement('span')
+    const diameter = Math.max(button.clientWidth, button.clientHeight)
+    const radius = diameter / 2
+    ripple.style.width = ripple.style.height = `${diameter}px`
+    ripple.style.left = `${e.clientX - button.getBoundingClientRect().left - radius}px`
+    ripple.style.top = `${e.clientY - button.getBoundingClientRect().top - radius}px`
+    ripple.className =
+      'absolute pointer-events-none rounded-full bg-primary/30 dark:bg-primary/40 animate-ripple z-10'
+    button.appendChild(ripple)
+    setTimeout(() => {
+      ripple.remove()
+    }, 500)
+  }
 
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(
+        buttonVariants({ variant, size, className }),
+        'relative overflow-hidden focus:z-10'
+      )}
+      onClick={handleClick}
       {...props}
     />
   )
 }
+
+// Add ripple animation to global styles if not present
+// .animate-ripple { animation: ripple 0.5s linear; }
+// @keyframes ripple { to { opacity: 0; transform: scale(2); } }
 
 export { Button, buttonVariants }

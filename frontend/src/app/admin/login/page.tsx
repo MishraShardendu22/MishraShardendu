@@ -53,19 +53,20 @@ export default function AdminLoginPage() {
 
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center">Admin Login</CardTitle>
-          <CardDescription className="text-center">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/20 p-4">
+      <Card className="w-full max-w-md group relative overflow-hidden border-2 border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 bg-gradient-to-br from-card/50 to-card backdrop-blur-xl rounded-2xl animate-fade-in">
+        <CardHeader className="space-y-1 text-center">
+          <Shield className="mx-auto h-12 w-12 text-primary mb-4 animate-fade-in" />
+          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Admin Login</CardTitle>
+          <CardDescription className="text-muted-foreground">
             Enter your credentials to access the admin panel
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {/* Error message display for failed login */}
             {error && (
-              <Alert variant="destructive" className="flex items-center justify-between">
+              <Alert variant="destructive" className="flex items-center justify-between animate-fade-in">
                 <AlertDescription className="flex-1">{error}</AlertDescription>
                 <button
                   type="button"
@@ -81,7 +82,7 @@ export default function AdminLoginPage() {
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-3 h-4 w-4 text-foreground" />
+                <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
                   id="email"
                   type="email"
@@ -91,14 +92,14 @@ export default function AdminLoginPage() {
                 />
               </div>
               {errors.email && (
-                <p className="text-sm text-red-500">{errors.email.message}</p>
+                <p className="text-sm text-destructive">{errors.email.message}</p>
               )}
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-3 h-4 w-4 text-foreground" />
+                <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
@@ -121,14 +122,14 @@ export default function AdminLoginPage() {
                 </Button>
               </div>
               {errors.password && (
-                <p className="text-sm text-red-500">{errors.password.message}</p>
+                <p className="text-sm text-destructive">{errors.password.message}</p>
               )}
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="admin_pass">Admin Password</Label>
               <div className="relative">
-                <Shield className="absolute left-3 top-3 h-4 w-4 text-foreground" />
+                <Shield className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
                   id="admin_pass"
                   type={showAdminPass ? 'text' : 'password'}
@@ -151,11 +152,11 @@ export default function AdminLoginPage() {
                 </Button>
               </div>
               {errors.admin_pass && (
-                <p className="text-sm text-red-500">{errors.admin_pass.message}</p>
+                <p className="text-sm text-destructive">{errors.admin_pass.message}</p>
               )}
             </div>
 
-            <Button type="submit" className="w-full" disabled={isLoading}>
+            <Button type="submit" className="w-full mt-4 shadow-md hover:shadow-xl transition-all duration-200" disabled={isLoading}>
               {isLoading ? (
                 <span className="flex items-center justify-center">
                   <svg className="animate-spin h-4 w-4 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

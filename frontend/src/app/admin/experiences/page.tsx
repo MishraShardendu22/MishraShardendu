@@ -95,8 +95,22 @@ export default function AdminExperiencesPage() {
     fetchSkills();
   }, [])
 
-  if (loading) return <div>Loading...</div>
-  if (error) return <div>{error}</div>
+  if (loading) return (
+    <div className="min-h-[40vh] flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-primary border-solid"></div>
+    </div>
+  )
+  if (error) return (
+    <div className="min-h-[40vh] flex flex-col items-center justify-center gap-4">
+      <div className="w-20 h-20 rounded-full bg-destructive/10 flex items-center justify-center">
+        <span className="text-4xl">😢</span>
+      </div>
+      <div className="text-center space-y-2">
+        <h2 className="text-2xl font-heading text-foreground">Oops! Something went wrong</h2>
+        <p className="text-muted-foreground text-lg">{error}</p>
+      </div>
+    </div>
+  )
 
   const onSubmit = async (data: ExperienceFormData) => {
     try {
@@ -170,11 +184,23 @@ export default function AdminExperiencesPage() {
 
   return (
     <ProtectedRoute>
-      <div className="space-y-8">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 pb-2 border-b border-gray-200">
+      <div className="space-y-12">
+        <div className="text-center mb-12 space-y-8">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-secondary/10 border border-secondary/20 backdrop-blur-sm">
+            <span className="text-base font-medium text-secondary">Experience Management</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-heading font-bold bg-gradient-to-r from-secondary via-primary to-accent bg-clip-text text-transparent leading-tight">
+            Experiences
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Manage your professional experiences and work history.
+          </p>
+        </div>
+
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 pb-2 border-b border-border">
           <div>
-            <h1 className="text-4xl font-extrabold tracking-tight text-primary mb-1">Experiences</h1>
-            <p className="text-muted-foreground text-lg">Manage your professional experiences and work history.</p>
+            <h2 className="text-3xl font-bold text-secondary mb-1">Your Experiences</h2>
+            <p className="text-muted-foreground text-lg">Add, edit, or remove your professional experiences below.</p>
           </div>
           <ExperienceAddDialog
             open={isDialogOpen}
@@ -193,72 +219,60 @@ export default function AdminExperiencesPage() {
           />
         </div>
 
+        {success && (
+          <Alert className="animate-fade-in">
+            <AlertDescription>{success}</AlertDescription>
+          </Alert>
+        )}
         {error && (
           <Alert variant="destructive" className="animate-fade-in">
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
 
-        {success && (
-          <Alert className="animate-fade-in">
-            <AlertDescription>{success}</AlertDescription>
-          </Alert>
-        )}
-
         {experiences.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 animate-fade-in">
-            <ExperienceEmptyState onAdd={openDialog} />
+            <GraduationCap className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
+            <h3 className="text-2xl font-semibold text-foreground mb-2">No experiences yet</h3>
+            <p className="text-lg text-muted-foreground mb-6">Get started by adding your first experience.</p>
+            <Button onClick={openDialog} className="shadow-md hover:shadow-xl transition-all duration-200">
+              <Plus className="mr-2 h-5 w-5" />
+              Add Experience
+            </Button>
           </div>
         ) : (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {experiences.map((experience) => (
-              <Card key={experience.inline?.id || experience.inline.id} className="flex flex-col overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-200 border border-gray-200 bg-white animate-fade-in">
-                <CardHeader className="bg-gradient-to-r from-yellow-50 to-white pb-2">
-                  <CardTitle className="text-2xl font-semibold text-primary flex items-center gap-2">
-                    <Briefcase className="h-5 w-5 text-yellow-500" />
+            {experiences.map((experience, index) => (
+              <Card key={experience.inline?.id || experience.inline.id} className="group relative overflow-hidden border-2 border-border/50 hover:border-secondary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-secondary/10 hover:-translate-y-2 bg-gradient-to-br from-card/50 to-card backdrop-blur-sm rounded-2xl animate-fade-in flex flex-col">
+                <CardHeader className="bg-gradient-to-r from-secondary/10 to-card pb-2">
+                  <CardTitle className="text-2xl font-semibold text-secondary flex items-center gap-2">
+                    <Briefcase className="h-5 w-5 text-secondary" />
                     {experience.position}
                   </CardTitle>
-                  <CardDescription className="text-gray-500">
-                    {experience.company_name} &bull; {experience.start_date} to {experience.end_date}
+                  <CardDescription className="text-muted-foreground">
+                    {experience.company_name} &bull; {formatDate(experience.start_date)} to {formatDate(experience.end_date)}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex-1 flex flex-col gap-4 p-5">
-                  <p className="text-base text-gray-700 line-clamp-4">
+                  <p className="text-base text-foreground line-clamp-4">
                     {experience.description.length > 180 
                       ? `${experience.description.substring(0, 180)}...` 
                       : experience.description
                     }
                   </p>
-                  <div className="flex flex-wrap gap-2">
-                    {experience.technologies.map((tech, index) => (
-                      <Badge key={index} variant="secondary" className="text-xs px-2 py-1 rounded-full bg-yellow-50 text-yellow-700 border border-yellow-200">
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {experience.technologies.map((tech, idx) => (
+                      <Badge key={idx} variant="secondary" className="text-xs px-2 py-1 rounded-full bg-secondary/10 text-secondary border border-secondary/20">
                         {tech}
                       </Badge>
                     ))}
                   </div>
-                  <div className="flex gap-2 pt-2 mt-auto">
-                    <Link href={`/admin/experiences/${experience.inline?.id || experience.inline.id}`}>
-                      <Button variant="outline" size="sm" className="flex-1">
-                        View Details
-                      </Button>
-                    </Link>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => handleEdit(experience)}
-                      className="flex-1"
-                      aria-label="Edit experience"
-                    >
-                      <Edit className="h-4 w-4" />
+                  <div className="flex gap-2 mt-auto">
+                    <Button size="sm" variant="outline" onClick={() => handleEdit(experience)} className="flex-1">
+                      <Edit className="h-4 w-4 mr-1" /> Edit
                     </Button>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => handleDelete(experience.inline?.id || experience.inline.id)}
-                      className="text-red-600 hover:text-red-700"
-                      aria-label="Delete experience"
-                    >
-                      <Trash2 className="h-4 w-4" />
+                    <Button size="sm" variant="destructive" onClick={() => handleDelete(experience.inline.id)} className="flex-1">
+                      <Trash2 className="h-4 w-4 mr-1" /> Delete
                     </Button>
                   </div>
                 </CardContent>

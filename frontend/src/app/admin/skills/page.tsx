@@ -76,16 +76,42 @@ export default function AdminSkillsPage() {
     setIsDialogOpen(true)
   }
 
-  if (loading) return <div>Loading...</div>
-  if (error) return <div>{error}</div>
+  if (loading) return (
+    <div className="min-h-[40vh] flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-primary border-solid"></div>
+    </div>
+  )
+  if (error) return (
+    <div className="min-h-[40vh] flex flex-col items-center justify-center gap-4">
+      <div className="w-20 h-20 rounded-full bg-destructive/10 flex items-center justify-center">
+        <span className="text-4xl">😢</span>
+      </div>
+      <div className="text-center space-y-2">
+        <h2 className="text-2xl font-heading text-foreground">Oops! Something went wrong</h2>
+        <p className="text-muted-foreground text-lg">{error}</p>
+      </div>
+    </div>
+  )
 
   return (
     <ProtectedRoute>
-      <div className="space-y-8">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 pb-2 border-b border-gray-200">
+      <div className="space-y-12">
+        <div className="text-center mb-12 space-y-8">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-accent/10 border border-accent/20 backdrop-blur-sm">
+            <span className="text-base font-medium text-accent">Skills Management</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-heading font-bold bg-gradient-to-r from-accent via-primary to-secondary bg-clip-text text-transparent leading-tight">
+            Skills
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Manage your technical skills and competencies.
+          </p>
+        </div>
+
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 pb-2 border-b border-border">
           <div>
-            <h1 className="text-4xl font-extrabold tracking-tight text-primary mb-1">Skills</h1>
-            <p className="text-muted-foreground text-lg">Manage your technical skills and competencies.</p>
+            <h2 className="text-3xl font-bold text-accent mb-1">Your Skills</h2>
+            <p className="text-muted-foreground text-lg">Add, edit, or remove your skills below.</p>
           </div>
           <SkillsAddDialog
             open={isDialogOpen}
@@ -98,28 +124,33 @@ export default function AdminSkillsPage() {
           />
         </div>
 
+        {success && (
+          <Alert className="animate-fade-in">
+            <AlertDescription>{success}</AlertDescription>
+          </Alert>
+        )}
         {error && (
           <Alert variant="destructive" className="animate-fade-in">
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
 
-        {success && (
-          <Alert className="animate-fade-in">
-            <AlertDescription>{success}</AlertDescription>
-          </Alert>
-        )}
-
         {skills.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 animate-fade-in">
-            <SkillsEmptyState onAdd={openDialog} />
+            <Settings className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
+            <h3 className="text-2xl font-semibold text-foreground mb-2">No skills yet</h3>
+            <p className="text-lg text-muted-foreground mb-6">Get started by adding your first skill.</p>
+            <Button onClick={openDialog} className="shadow-md hover:shadow-xl transition-all duration-200">
+              <Plus className="mr-2 h-5 w-5" />
+              Add Skill
+            </Button>
           </div>
         ) : (
           <div className="space-y-8">
-            <div className="shadow-md hover:shadow-xl transition-shadow duration-200 border border-gray-200 bg-white rounded-lg animate-fade-in">
+            <div className="group relative overflow-hidden border-2 border-border/50 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-2 bg-gradient-to-br from-card/50 to-card backdrop-blur-sm rounded-2xl animate-fade-in">
               <SkillsOverview skills={skills} />
             </div>
-            <div className="shadow-md hover:shadow-xl transition-shadow duration-200 border border-gray-200 bg-white rounded-lg animate-fade-in">
+            <div className="group relative overflow-hidden border-2 border-border/50 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-2 bg-gradient-to-br from-card/50 to-card backdrop-blur-sm rounded-2xl animate-fade-in">
               <SkillsManagement skills={skills} />
             </div>
           </div>

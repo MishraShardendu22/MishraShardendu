@@ -22,6 +22,8 @@ import { Checkbox } from '../../../components/ui/checkbox';
 import { skillsAPI } from '../../../util/apiResponse.util';
 import { Popover, PopoverTrigger, PopoverContent } from '../../../components/ui/popover';
 import Link from 'next/link';
+import { Tooltip, TooltipTrigger, TooltipContent } from '../../../components/ui/tooltip';
+import toast from 'react-hot-toast';
 
 const projectSchema = z.object({
   project_name: z.string().min(1, 'Project name is required'),
@@ -80,8 +82,22 @@ export default function AdminProjectsPage() {
     fetchSkills();
   }, []);
 
-  if (loading) return <div>Loading...</div>
-  if (error) return <div>{error}</div>
+  if (loading) return (
+    <div className="min-h-[40vh] flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-primary border-solid"></div>
+    </div>
+  )
+  if (error) return (
+    <div className="min-h-[40vh] flex flex-col items-center justify-center gap-4">
+      <div className="w-20 h-20 rounded-full bg-destructive/10 flex items-center justify-center">
+        <span className="text-4xl">😢</span>
+      </div>
+      <div className="text-center space-y-2">
+        <h2 className="text-2xl font-heading text-foreground">Oops! Something went wrong</h2>
+        <p className="text-muted-foreground text-lg">{error}</p>
+      </div>
+    </div>
+  )
 
   const onSubmit = async (data: ProjectFormData) => {
     try {
@@ -93,9 +109,11 @@ export default function AdminProjectsPage() {
       if (editingProject) {
         await projectsAPI.updateProject(editingProject.inline.id, projectData)
         setSuccess('Project updated successfully')
+        toast.success('Project updated successfully')
       } else {
         await projectsAPI.createProject(projectData)
         setSuccess('Project created successfully')
+        toast.success('Project created successfully')
       }
 
       setIsDialogOpen(false)
@@ -105,6 +123,7 @@ export default function AdminProjectsPage() {
     } catch (error) {
       console.error('Error saving project:', error)
       setError('Failed to save project')
+      toast.error('Failed to save project')
     }
   }
 
@@ -127,10 +146,12 @@ export default function AdminProjectsPage() {
       try {
         await projectsAPI.deleteProject(projectId)
         setSuccess('Project deleted successfully')
+        toast.success('Project deleted successfully')
         fetchProjects()
       } catch (error) {
         console.error('Error deleting project:', error)
         setError('Failed to delete project')
+        toast.error('Failed to delete project')
       }
     }
   }
@@ -143,20 +164,37 @@ export default function AdminProjectsPage() {
 
   return (
     <ProtectedRoute>
-      <div className="space-y-8">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 pb-2 border-b border-gray-200">
+      <div className="space-y-12">
+        <div className="text-center mb-12 space-y-8">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
+            <span className="text-base font-medium text-primary">Project Management</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-heading font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-tight">
+            Projects
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Manage your portfolio projects and showcase your best work.
+          </p>
+        </div>
+
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 pb-2 border-b border-border">
           <div>
-            <h1 className="text-4xl font-extrabold tracking-tight text-primary mb-1">Projects</h1>
-            <p className="text-muted-foreground text-lg">Manage your portfolio projects and showcase your work.</p>
+            <h2 className="text-3xl font-bold text-primary mb-1">Your Projects</h2>
+            <p className="text-muted-foreground text-lg">Add, edit, or remove your portfolio projects below.</p>
           </div>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button onClick={openDialog}>
-                <Plus className="mr-2 h-4 w-4" />
-                Add Project
-              </Button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button onClick={openDialog} className="shadow-md hover:shadow-xl transition-all duration-200">
+                    <Plus className="mr-2 h-5 w-5" />
+                    Add Project
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>Add a new project</TooltipContent>
+              </Tooltip>
             </DialogTrigger>
-            <DialogContent className="w-[80vw] max-w-none max-h-[90vh] overflow-y-auto">
+            <DialogContent className="w-[90vw] max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl bg-card/90 backdrop-blur-xl animate-fade-in">
               <DialogHeader>
                 <DialogTitle>
                   {editingProject ? 'Edit Project' : 'Add New Project'}
@@ -267,106 +305,109 @@ export default function AdminProjectsPage() {
                 </div>
 
                 <div className="flex justify-end space-x-2">
-                  <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>
-                    Cancel
-                  </Button>
-                  <Button type="submit">
-                    {editingProject ? 'Update Project' : 'Create Project'}
-                  </Button>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>
+                        Cancel
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>Cancel</TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button type="submit">
+                        {editingProject ? 'Update Project' : 'Create Project'}
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>{editingProject ? 'Update this project' : 'Create new project'}</TooltipContent>
+                  </Tooltip>
                 </div>
               </form>
             </DialogContent>
           </Dialog>
         </div>
 
+        {success && (
+          <Alert className="animate-fade-in">
+            <AlertDescription>{success}</AlertDescription>
+          </Alert>
+        )}
         {error && (
           <Alert variant="destructive" className="animate-fade-in">
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
 
-        {success && (
-          <Alert className="animate-fade-in">
-            <AlertDescription>{success}</AlertDescription>
-          </Alert>
-        )}
-
         {projects.length === 0 ? (
-          <Card className="flex flex-col items-center justify-center py-16 animate-fade-in">
-            <CardContent className="text-center">
-              <Briefcase className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">No projects yet</h3>
-              <p className="text-gray-500 mb-4 text-lg">
-                Get started by adding your first project to showcase your work.
-              </p>
-              <Button onClick={openDialog} size="lg">
-                <Plus className="mr-2 h-5 w-5" />
-                Add Your First Project
-              </Button>
-            </CardContent>
-          </Card>
+          <div className="flex flex-col items-center justify-center py-16 animate-fade-in">
+            <Briefcase className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
+            <h3 className="text-2xl font-semibold text-foreground mb-2">No projects yet</h3>
+            <p className="text-lg text-muted-foreground mb-6">Get started by adding your first project.</p>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button onClick={openDialog} className="shadow-md hover:shadow-xl transition-all duration-200">
+                  <Plus className="mr-2 h-5 w-5" />
+                  Add Project
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Add a new project</TooltipContent>
+            </Tooltip>
+          </div>
         ) : (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
-              <Card key={project.inline?.id || project.inline.id} className="flex flex-col overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-200 border border-gray-200 bg-white animate-fade-in">
-                <CardHeader className="bg-gradient-to-r from-green-50 to-white pb-2">
+            {projects.map((project, index) => (
+              <Card key={project.inline?.id || project.inline.id} className="group relative overflow-hidden border-2 border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 bg-gradient-to-br from-card/50 to-card backdrop-blur-sm rounded-2xl animate-fade-in flex flex-col">
+                <CardHeader className="bg-gradient-to-r from-primary/10 to-card pb-2">
                   <CardTitle className="text-2xl font-semibold text-primary flex items-center gap-2">
-                    <Briefcase className="h-5 w-5 text-green-500" />
+                    <Briefcase className="h-5 w-5 text-primary" />
                     {project.project_name}
                   </CardTitle>
-                  <CardDescription className="text-gray-500">
+                  <CardDescription className="text-muted-foreground">
                     {project.small_description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex-1 flex flex-col gap-4 p-5">
-                  <div className="flex flex-wrap gap-2">
-                    {project.skills.map((skill, index) => (
-                      <Badge key={index} variant="secondary" className="text-xs px-2 py-1 rounded-full bg-green-50 text-green-700 border border-green-200">
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {project.skills.map((skill, idx) => (
+                      <Badge key={idx} variant="secondary" className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
                         {skill}
                       </Badge>
                     ))}
                   </div>
-                  <div className="flex items-center gap-3 pt-2">
+                  <div className="flex gap-2 mt-auto">
                     {project.project_repository && (
-                      <a href={project.project_repository} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 transition-colors" aria-label="Open repository">
+                      <a href={project.project_repository} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary">
                         <Github className="h-5 w-5" />
                       </a>
                     )}
                     {project.project_live_link && (
-                      <a href={project.project_live_link} target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 transition-colors" aria-label="Open live project">
+                      <a href={project.project_live_link} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent">
                         <ExternalLink className="h-5 w-5" />
                       </a>
                     )}
                     {project.project_video && (
-                      <a href={project.project_video} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-800 transition-colors" aria-label="Open project video">
+                      <a href={project.project_video} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-primary">
                         <Play className="h-5 w-5" />
                       </a>
                     )}
                   </div>
-                  <div className="flex gap-2 pt-2 mt-auto">
-                    <Link href={`/admin/projects/${project.inline?.id || project.inline.id}`}>
-                      <Button variant="outline" size="sm" className="flex-1">
-                        View Details
-                      </Button>
-                    </Link>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => handleEdit(project)}
-                      className="flex-1"
-                      aria-label="Edit project"
-                    >
-                      <Edit className="h-4 w-4" />
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => handleDelete(project.inline?.id || project.inline.id)}
-                      className="text-red-600 hover:text-red-700"
-                      aria-label="Delete project"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
+                  <div className="flex gap-2 mt-4">
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button size="sm" variant="outline" onClick={() => handleEdit(project)} className="flex-1">
+                          <Edit className="h-4 w-4 mr-1" /> Edit
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>Edit this project</TooltipContent>
+                    </Tooltip>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button size="sm" variant="destructive" onClick={() => handleDelete(project.inline.id)} className="flex-1">
+                          <Trash2 className="h-4 w-4 mr-1" /> Delete
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>Delete this project</TooltipContent>
+                    </Tooltip>
                   </div>
                 </CardContent>
               </Card>
