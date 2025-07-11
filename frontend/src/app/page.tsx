@@ -12,6 +12,7 @@ import ExperienceSection from '@/components/main/exp'
 import CertificationsSection from '@/components/main/certificate'
 import ContactSection from '@/components/main/contact'
 import FooterSection from '@/components/main/footer'
+import toast from 'react-hot-toast';
 
 export default function HomePage() {
   const [projects, setProjects] = useState<Project[]>([])
@@ -34,12 +35,14 @@ export default function HomePage() {
         setExperiences(Array.isArray(experiencesRes.data) ? experiencesRes.data : (experiencesRes.data === null ? [] : []))
         setSkills(Array.isArray(skillsRes.data) ? skillsRes.data : (skillsRes.data === null ? [] : []))
         setCertifications(Array.isArray(certificationsRes.data) ? certificationsRes.data : (certificationsRes.data === null ? [] : []))
+        toast.success('Homepage data loaded!');
       } catch (err) {
         setError('Failed to load homepage data')
         setProjects([])
         setExperiences([])
         setSkills([])
         setCertifications([])
+        toast.error('Failed to load homepage data');
       } finally {
         setLoading(false)
       }

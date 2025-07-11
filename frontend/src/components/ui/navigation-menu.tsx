@@ -155,6 +155,50 @@ function NavigationMenuIndicator({
   )
 }
 
+// Shared navigation bar for non-admin pages
+import Link from 'next/link';
+
+export function PublicNavBar() {
+  return (
+    <nav className="w-full bg-background/80 border-b sticky top-0 z-40 backdrop-blur-md">
+      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-6">
+          <Link href="/" className="font-bold text-lg tracking-tight text-primary hover:text-secondary transition-colors">Shardendu Mishra</Link>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <Link href="/projects" legacyBehavior passHref>
+                  <NavigationMenuLink className="px-3 py-2">Projects</NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/experiences" legacyBehavior passHref>
+                  <NavigationMenuLink className="px-3 py-2">Experiences</NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/certifications" legacyBehavior passHref>
+                  <NavigationMenuLink className="px-3 py-2">Certifications</NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="#contact" legacyBehavior passHref>
+                  <NavigationMenuLink className="px-3 py-2">Contact</NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
+        <div>
+          <Link href="/admin/login">
+            <button className="px-4 py-2 rounded-md border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors">Admin</button>
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
 export {
   NavigationMenu,
   NavigationMenuList,

@@ -42,6 +42,21 @@ export interface SkillsResponse {
   skills: string[]
 }
 
+export interface ProfileData {
+  inline: {
+    id: string
+    created_at: string
+    updated_at: string
+  }
+  email: string
+  password: string
+  admin_pass: string
+  skills: string[]
+  projects: string[]
+  experiences: string[]
+  certifications?: string[] | null
+}
+
 // Project Types
 export interface Project {
   inline: any

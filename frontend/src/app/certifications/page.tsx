@@ -9,6 +9,8 @@ import { Button } from '../../components/ui/button';
 import { ExternalLink, Award, ChevronLeft, ChevronRight, MoreHorizontal, Zap } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { PublicNavBar } from '@/components/ui/navigation-menu';
+import toast from 'react-hot-toast';
 
 export default function CertificationsPage() {
   const [certifications, setCertifications] = useState<Certification[]>([]);
@@ -39,6 +41,7 @@ export default function CertificationsPage() {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    toast.success(`Page changed to ${page}`);
   };
 
   const getPaginationNumbers = () => {
@@ -85,6 +88,7 @@ export default function CertificationsPage() {
   }
 
   if (error) {
+    toast.error(error);
     return (
       <div className="h-screen bg-gradient-to-br from-background via-background to-destructive/5 flex items-center justify-center">
         <div className="flex flex-col items-center justify-center space-y-6">
@@ -102,6 +106,7 @@ export default function CertificationsPage() {
 
   return (
     <div className="h-screen bg-gradient-to-br from-background via-background to-muted/20 flex flex-col">
+      <PublicNavBar />
       <div className="container mx-auto px-4 py-6 max-w-7xl flex-1 flex flex-col">
         <div className="text-center mb-8 space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">

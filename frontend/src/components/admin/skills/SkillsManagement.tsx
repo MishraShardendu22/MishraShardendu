@@ -7,13 +7,8 @@ type SkillsManagementProps = {
 
 export function SkillsManagement({ skills }: SkillsManagementProps) {
   return (
+    <div className="py-10">
     <Card>
-      <CardHeader>
-        <CardTitle>Manage Skills</CardTitle>
-        <CardDescription>
-          Add new skills or remove existing ones from your portfolio
-        </CardDescription>
-      </CardHeader>
       <CardContent>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {skills.map((skill, index) => (
@@ -27,5 +22,6 @@ export function SkillsManagement({ skills }: SkillsManagementProps) {
         </div>
       </CardContent>
     </Card>
+</div>
   );
 }

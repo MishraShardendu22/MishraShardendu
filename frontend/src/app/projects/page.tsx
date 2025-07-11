@@ -8,6 +8,8 @@ import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
 import { Github, ExternalLink, Play, Sparkles, Code2, Zap, ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
 import Link from 'next/link';
+import { PublicNavBar } from '@/components/ui/navigation-menu';
+import toast from 'react-hot-toast';
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -39,6 +41,7 @@ export default function ProjectsPage() {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    toast.success(`Page changed to ${page}`);
   };
 
   const getPaginationNumbers = () => {
@@ -85,6 +88,7 @@ export default function ProjectsPage() {
   }
 
   if (error) {
+    toast.error(error);
     return (
       <div className="h-screen bg-gradient-to-br from-background via-background to-destructive/5 flex items-center justify-center">
         <div className="flex flex-col items-center justify-center space-y-6">
@@ -102,6 +106,7 @@ export default function ProjectsPage() {
 
   return (
     <div className="h-screen bg-gradient-to-br from-background via-background to-muted/20 flex flex-col">
+      <PublicNavBar />
       <div className="container mx-auto px-4 py-6 max-w-7xl flex-1 flex flex-col">
         {/* Compact Header */}
         <div className="text-center mb-8 space-y-4">

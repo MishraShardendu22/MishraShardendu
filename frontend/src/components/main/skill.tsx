@@ -84,7 +84,7 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
         </div>
         
         {/* Pagination */}
-        {skills.length > 48 && (
+        {skills.length > 24 && (
           <div className="mt-16 flex items-center justify-center gap-4">
             <button
               onClick={goToPreviousPage}

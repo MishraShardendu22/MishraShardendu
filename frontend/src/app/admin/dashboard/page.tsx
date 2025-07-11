@@ -7,7 +7,7 @@ import { Button } from '../../../components/ui/button'
 import { Badge } from '../../../components/ui/badge'
 import { projectsAPI, experiencesAPI, skillsAPI, certificationsAPI } from '../../../util/apiResponse.util'
 import { Project, Experience, Certification } from '../../../data/types.data'
-import { Briefcase, GraduationCap, Settings, Plus, ExternalLink } from 'lucide-react'
+import { Briefcase, GraduationCap, Settings, Plus, ExternalLink, Medal } from 'lucide-react'
 import Link from 'next/link'
 
 export default function AdminDashboardPage() {
@@ -63,22 +63,16 @@ export default function AdminDashboardPage() {
 
   return (
     <ProtectedRoute>
-      <div className="space-y-12">
+      <div className="space-y-10">
         {/* Enhanced Header */}
-        <div className="text-center mb-12 space-y-8">
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
-            <span className="text-base font-medium text-primary">Admin Dashboard</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-heading font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-tight">
-            Welcome, Admin
+        <div className="text-center mb-12 space-y-6">
+          <h1 className="text-2xl md:text-3xl font-heading font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-tight">
+            Welcome, Admin Manage your professional experiences and work history.
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Manage your portfolio content, track your stats, and take quick actions below.
-          </p>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
           {/* Stat Card Example */}
           <div className="group relative overflow-hidden border-2 border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 bg-gradient-to-br from-card/50 to-card backdrop-blur-sm rounded-2xl p-6 flex flex-col items-center animate-fade-in">
             <Briefcase className="h-8 w-8 text-primary mb-2" />
@@ -96,7 +90,7 @@ export default function AdminDashboardPage() {
             <div className="text-base text-muted-foreground">Skills</div>
           </div>
           <div className="group relative overflow-hidden border-2 border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 bg-gradient-to-br from-card/50 to-card backdrop-blur-sm rounded-2xl p-6 flex flex-col items-center animate-fade-in">
-            <Badge variant="outline" className="h-8 w-8 text-primary mb-2 flex items-center justify-center" />
+            <Medal className="h-8 w-8 text-primary mb-2 flex items-center justify-center" />
             <div className="text-3xl font-bold text-foreground">{certifications.length}</div>
             <div className="text-base text-muted-foreground">Certifications</div>
           </div>

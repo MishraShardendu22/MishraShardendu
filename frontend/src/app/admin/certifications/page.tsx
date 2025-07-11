@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { ProtectedRoute } from "../../../components/auth/protected-route";
 import { Alert, AlertDescription } from "../../../components/ui/alert";
-import { certificationsAPI } from "../../../util/apiResponse.util";
+import { certificationsAPI, projectsAPI, skillsAPI } from "../../../util/apiResponse.util";
 import {
   Certification,
   CreateCertificationRequest,
@@ -11,13 +11,11 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { projectsAPI, skillsAPI } from '../../../util/apiResponse.util';
-import { CertificationAddDialog, CertificationEmptyState } from '../../../components/admin/certifications';
-import Link from 'next/link';
+import { CertificationAddDialog } from '../../../components/admin/certifications';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card";
 import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
-import { Edit, Trash2, ExternalLink, Award } from 'lucide-react';
+import { Edit, Trash2, ExternalLink, Award, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 
 const certificationSchema = z.object({
@@ -44,6 +42,9 @@ export default function AdminCertificationsPage() {
   const [allProjects, setAllProjects] = useState<{ id: string; name: string }[]>([]);
   const [allSkills, setAllSkills] = useState<string[]>([]);
 
+  const [page, setPage] = useState(1);
+  const limit = 4;
+
   const {
     register,
     handleSubmit,
@@ -56,16 +57,11 @@ export default function AdminCertificationsPage() {
     defaultValues: { skills: [], projects: [] },
   });
 
-  const selectedSkills = watch('skills');
-  const selectedProjects = watch('projects');
-
   const fetchCertifications = async () => {
     try {
       const response = await certificationsAPI.getAllCertifications();
-      console.log("Fetched certifications:", response);
-
-      setCertifications(Array.isArray(response.data) ? response.data : (response.data === null ? [] : []));
-    } catch (error) {
+      setCertifications(Array.isArray(response.data) ? response.data : []);
+    } catch {
       setError("Failed to fetch certifications");
       setCertifications([]);
     } finally {
@@ -75,21 +71,19 @@ export default function AdminCertificationsPage() {
 
   useEffect(() => {
     fetchCertifications();
-    // Fetch all projects and skills for dropdowns
-    const fetchProjectsAndSkills = async () => {
+    (async () => {
       const projectsRes = await projectsAPI.getAllProjects();
       setAllProjects(Array.isArray(projectsRes.data) ? projectsRes.data.map((p: any) => ({ id: p.inline.id, name: p.project_name })) : []);
       const skillsRes = await skillsAPI.getSkills();
       setAllSkills(Array.isArray(skillsRes.data) ? skillsRes.data : []);
-    };
-    fetchProjectsAndSkills();
+    })();
   }, []);
 
   if (loading) return (
     <div className="min-h-[40vh] flex items-center justify-center">
       <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-primary border-solid"></div>
     </div>
-  )
+  );
   if (error) return (
     <div className="min-h-[40vh] flex flex-col items-center justify-center gap-4">
       <div className="w-20 h-20 rounded-full bg-destructive/10 flex items-center justify-center">
@@ -97,16 +91,16 @@ export default function AdminCertificationsPage() {
       </div>
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-heading text-foreground">Oops! Something went wrong</h2>
-        <p className="text-muted-foreground text-lg">{error}</p>
+        <p className="text-foreground text-lg">{error}</p>
       </div>
     </div>
-  )
+  );
 
   const onSubmit = async (data: CertificationFormData) => {
     try {
       const certData: CreateCertificationRequest = {
         ...data,
-        images: data.images ? data.images.split(',').map((img) => img.trim()) : [],
+        images: data.images ? data.images.split(',').map(img => img.trim()) : [],
       };
       if (editingCertification) {
         await certificationsAPI.updateCertification(editingCertification.inline.id, certData);
@@ -119,7 +113,7 @@ export default function AdminCertificationsPage() {
       setEditingCertification(null);
       reset({ skills: [], projects: [] });
       fetchCertifications();
-    } catch (error) {
+    } catch {
       setError('Failed to save certification');
     }
   };
@@ -141,14 +135,14 @@ export default function AdminCertificationsPage() {
   };
 
   const handleDelete = async (certId: string) => {
-    if (confirm("Are you sure you want to delete this certification?")) {
-      try {
-        await certificationsAPI.deleteCertification(certId);
-        setSuccess("Certification deleted successfully");
-        fetchCertifications();
-      } catch (error) {
-        setError("Failed to delete certification");
-      }
+    if (!confirm("Are you sure you want to delete this certification?")) return;
+    try {
+      await certificationsAPI.deleteCertification(certId);
+      setSuccess("Certification deleted successfully");
+      fetchCertifications();
+      if ((page - 1) * limit >= certifications.length - 1 && page > 1) setPage(page - 1);
+    } catch {
+      setError("Failed to delete certification");
     }
   };
 
@@ -158,25 +152,22 @@ export default function AdminCertificationsPage() {
     setIsDialogOpen(true);
   };
 
+  const totalPages = Math.ceil(certifications.length / limit);
+  const currentData = certifications.slice((page - 1) * limit, page * limit);
+
   return (
     <ProtectedRoute>
-      <div className="space-y-12">
-        <div className="text-center mb-12 space-y-8">
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
-            <span className="text-base font-medium text-primary">Certifications Management</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-heading font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent leading-tight">
-            Certifications
+      <div className="space-y-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-6 space-y-4">
+          <h1 className="text-2xl md:text-3xl font-heading font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent leading-tight">
+            Certifications - Manage your certifications and professional achievements.
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Manage your certifications and professional achievements.
-          </p>
         </div>
 
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 pb-2 border-b border-border">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2 md:gap-0 border-b border-border">
           <div>
             <h2 className="text-3xl font-bold text-primary mb-1">Your Certifications</h2>
-            <p className="text-muted-foreground text-lg">Add, edit, or remove your certifications below.</p>
+            <p className="text-foreground text-lg">Add, edit, or remove your certifications below.</p>
           </div>
           <CertificationAddDialog
             open={isDialogOpen}
@@ -208,78 +199,75 @@ export default function AdminCertificationsPage() {
 
         {certifications.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 animate-fade-in">
-            <Award className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
+            <Award className="mx-auto h-16 w-16 text-foreground mb-4" />
             <h3 className="text-2xl font-semibold text-foreground mb-2">No certifications yet</h3>
-            <p className="text-lg text-muted-foreground mb-6">Get started by adding your first certification.</p>
-            <Button onClick={openDialog} className="shadow-md hover:shadow-xl transition-all duration-200">
-              <Award className="mr-2 h-5 w-5" />
-              Add Certification
+            <p className="text-lg text-foreground mb-6">Get started by adding your first certification.</p>
+            <Button onClick={openDialog} className="shadow-md hover:shadow-xl transition-all duration-200 flex items-center">
+              <Award className="mr-2 h-5 w-5" /> Add Certification
             </Button>
           </div>
         ) : (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {certifications.map((cert, index) => (
-              <Card key={cert.inline?.id || cert.inline.id} className="group relative overflow-hidden border-2 border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 bg-gradient-to-br from-card/50 to-card backdrop-blur-sm rounded-2xl animate-fade-in flex flex-col">
-                <CardHeader className="bg-gradient-to-r from-primary/10 to-card pb-2">
-                  <CardTitle className="text-2xl font-semibold text-primary flex items-center gap-2">
-                    <Award className="h-5 w-5 text-primary" />
-                    {cert.title}
-                  </CardTitle>
-                  <CardDescription className="text-muted-foreground">
-                    {cert.issuer} &bull; {cert.issue_date} to {cert.expiry_date}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="flex-1 flex flex-col gap-4 p-5">
-                  <p className="text-base text-foreground line-clamp-4">
-                    {cert.description.length > 180 
-                      ? `${cert.description.substring(0, 180)}...` 
-                      : cert.description
-                    }
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-2">
-                    {cert.skills.map((skill, idx) => (
-                      <Badge key={idx} variant="secondary" className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="flex items-center gap-3 pt-2">
-                    {cert.certificate_url && (
-                      <a
-                        href={cert.certificate_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:text-accent transition-colors"
-                        aria-label="Open certificate link"
-                      >
-                        <ExternalLink className="h-5 w-5" />
-                      </a>
-                    )}
-                    {cert.images && cert.images.length > 0 && cert.images[0] && (
-                      <div className="relative h-10 w-10 rounded overflow-hidden border border-border">
-                        <Image
-                          src={cert.images[0]}
-                          alt={cert.title + ' certificate image'}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex gap-2 mt-4">
-                    <Button size="sm" variant="outline" onClick={() => handleEdit(cert)} className="flex-1">
-                      <Edit className="h-4 w-4 mr-1" /> Edit
-                    </Button>
-                    <Button size="sm" variant="destructive" onClick={() => handleDelete(cert.inline.id)} className="flex-1">
-                      <Trash2 className="h-4 w-4 mr-1" /> Delete
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <>
+            <div className="grid gap-8 md:grid-cols-2">
+              {currentData.map((cert) => (
+                <Card key={cert.inline?.id || cert.inline.id} className="group relative overflow-hidden border-2 border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 bg-gradient-to-br from-card/50 to-card backdrop-blur-sm rounded-2xl animate-fade-in flex flex-col max-w-full">
+                  <CardHeader className="bg-gradient-to-r from-primary/10 to-card pb-1 px-4">
+                    <CardTitle className="text-xl font-semibold text-primary flex items-center gap-2">
+                      <Award className="h-5 w-5 text-primary" />
+                      {cert.title}
+                    </CardTitle>
+                    <CardDescription className="text-foreground text-sm">
+                      {cert.issuer} &bull; {cert.issue_date} to {cert.expiry_date}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex-1 flex flex-col gap-2 p-4">
+                    <p className="text-sm text-foreground">
+                      {cert.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      {cert.skills.map((skill, idx) => (
+                        <Badge key={idx} variant="secondary" className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex gap-2 mt-3">
+                      <Button size="sm" variant="outline" onClick={() => handleEdit(cert)} className="flex-1">
+                        <Edit className="h-4 w-4 mr-1" /> Edit
+                      </Button>
+                      <Button size="sm" variant="destructive" onClick={() => handleDelete(cert.inline.id)} className="flex-1">
+                        <Trash2 className="h-4 w-4 mr-1" /> Delete
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <div className="flex justify-center items-center gap-2 mt-8">
+              <Button
+                variant="outline"
+                disabled={page === 1}
+                onClick={() => setPage(p => Math.max(1, p - 1))}
+                className="flex items-center gap-1"
+              >
+                <ChevronLeft className="h-4 w-4" /> Prev
+              </Button>
+              <span className="text-foreground">
+                Page {page} of {totalPages}
+              </span>
+              <Button
+                variant="outline"
+                disabled={page === totalPages}
+                onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                className="flex items-center gap-1"
+              >
+                Next <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
+          </>
         )}
       </div>
     </ProtectedRoute>
   );
-} 
+}
