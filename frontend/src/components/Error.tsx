@@ -32,7 +32,7 @@ const Error = ({
         </CardHeader>
         <CardContent className="text-center space-y-6">
           <div className="bg-muted/50 rounded-lg p-4 border border-destructive/20">
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-foreground text-sm leading-relaxed">
               {error}
             </p>
           </div>
@@ -75,7 +75,7 @@ const Error = ({
           )}
           
           <div className="pt-4 border-t border-border">
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-foreground">
               If this problem persists, please contact support.
             </p>
           </div>

@@ -170,6 +170,11 @@ func SetUpRoutes(app *fiber.App, logger *slog.Logger) {
 	route.SetupCertificationRoutes(app, config.JWT_SECRET)
 	route.SetupAdminRoutes(app, config.AdminPass, config.JWT_SECRET)
 
-	api := app.Group("/api")
-	api.Get("/test", util.Testfunc)
+	app.Get("/api/leetcode", FetchLeetCodeData)
+	app.Get("/api/github", FetchGitHubProfile)
+	app.Get("/api/github/commits", FetchGitHubCommits)
+	app.Get("/api/github/languages", FetchGitHubLanguages)
+	app.Get("/api/github/stars", FetchGitHubStars)
+	app.Get("/api/github/top-repos", FetchTopStarredRepos)
+	app.Get("/api/github/calendar", FetchContributionCalendar)
 }

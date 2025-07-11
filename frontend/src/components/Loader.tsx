@@ -118,13 +118,13 @@ const Loader = () => {
           <p className="text-lg font-medium text-foreground animate-pulse">
             {messages[currentMessage]}{dots}
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-foreground">
             Hold tight, greatness is loading! ✨
           </p>
         </div>
 
         {/* Fun Stats */}
-        <div className="flex justify-center space-x-8 text-xs text-muted-foreground">
+        <div className="flex justify-center space-x-8 text-xs text-foreground">
           <div className="text-center">
             <div className="font-mono text-primary">99.9%</div>
             <div>Awesomeness</div>

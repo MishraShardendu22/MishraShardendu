@@ -5,6 +5,12 @@
 
 :root {
   font-family: var(--font-body);
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Fredoka', sans-serif;
+  --font-subheading: 'Poppins', sans-serif;
+  --font-geist-sans: 'Geist Sans', sans-serif;
+  --font-geist-mono: 'Geist Mono', monospace;
+
   --radius: 0.625rem;
 
   /* Light Theme */
@@ -16,11 +22,11 @@
   --popover-foreground: #1a1a1a;
   --primary: #00d49e;
   --primary-foreground: #1a1a1a;
-  --secondary: #7befff;
+  --secondary: #89cb0f;
   --secondary-foreground: #1a1a1a;
   --muted: #ffffcb;
   --muted-foreground: #1a1a1a;
-  --accent: #7befff;
+  --accent: #89cb0f;
   --accent-foreground: #1a1a1a;
   --destructive: #ff4d4f;
   --border: #1a1a1a;
@@ -28,7 +34,7 @@
   --ring: #00d49e;
 
   --chart-1: #00d49e;
-  --chart-2: #7befff;
+  --chart-2: #1a8290;
   --chart-3: #dfdd10;
   --chart-4: #f6cbe0;
   --chart-5: #ffffcb;
@@ -37,10 +43,52 @@
   --sidebar-foreground: #1a1a1a;
   --sidebar-primary: #00d49e;
   --sidebar-primary-foreground: #1a1a1a;
-  --sidebar-accent: #7befff;
+  --sidebar-accent: #89cb0f;
   --sidebar-accent-foreground: #1a1a1a;
   --sidebar-border: #1a1a1a;
   --sidebar-ring: #00d49e;
+}
+
+.dark {
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Fredoka', sans-serif;
+  --font-subheading: 'Poppins', sans-serif;
+  --font-geist-sans: 'Geist Sans', sans-serif;
+  --font-geist-mono: 'Geist Mono', monospace;
+
+  --background: #000d22;
+  --foreground: #f1f1f1;
+  --card: #000d22;
+  --card-foreground: #f1f1f1;
+  --popover: #000d22;
+  --popover-foreground: #f1f1f1;
+  --primary: #dfdd10;
+  --primary-foreground: #000d22;
+  --secondary: #4ed0ff;
+  --secondary-foreground: #000d22;
+  --muted: #d24df3;
+  --muted-foreground: #000d22;
+  --accent: #4ed0ff;
+  --accent-foreground: #000d22;
+  --destructive: #ff4d4f;
+  --border: #f1f1f1;
+  --input: #f1f1f1;
+  --ring: #4ed0ff;
+
+  --chart-1: #dfdd10;
+  --chart-2: #4ed0ff;
+  --chart-3: #d24df3;
+  --chart-4: #ffffcb;
+  --chart-5: #000d22;
+
+  --sidebar: #000d22;
+  --sidebar-foreground: #f1f1f1;
+  --sidebar-primary: #dfdd10;
+  --sidebar-primary-foreground: #000d22;
+  --sidebar-accent: #4ed0ff;
+  --sidebar-accent-foreground: #000d22;
+  --sidebar-border: #f1f1f1;
+  --sidebar-ring: #4ed0ff;
 }
 
 .ProseMirror ul {
@@ -111,47 +159,12 @@ h3, h4 {
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-.dark {
-  --background: #000d22;
-  --foreground: #f1f1f1;
-  --card: #000d22;
-  --card-foreground: #f1f1f1;
-  --popover: #000d22;
-  --popover-foreground: #f1f1f1;
-  --primary: #dfdd10;
-  --primary-foreground: #000d22;
-  --secondary: #4ed0ff;
-  --secondary-foreground: #000d22;
-  --muted: #d24df3;
-  --muted-foreground: #000d22;
-  --accent: #4ed0ff;
-  --accent-foreground: #000d22;
-  --destructive: #ff4d4f;
-  --border: #f1f1f1;
-  --input: #f1f1f1;
-  --ring: #4ed0ff;
-
-  --chart-1: #dfdd10;
-  --chart-2: #4ed0ff;
-  --chart-3: #d24df3;
-  --chart-4: #ffffcb;
-  --chart-5: #000d22;
-
-  --sidebar: #000d22;
-  --sidebar-foreground: #f1f1f1;
-  --sidebar-primary: #dfdd10;
-  --sidebar-primary-foreground: #000d22;
-  --sidebar-accent: #4ed0ff;
-  --sidebar-accent-foreground: #000d22;
-  --sidebar-border: #f1f1f1;
-  --sidebar-ring: #4ed0ff;
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
   }
 }

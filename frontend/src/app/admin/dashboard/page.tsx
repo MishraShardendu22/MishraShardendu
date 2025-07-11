@@ -52,7 +52,7 @@ export default function AdminDashboardPage() {
       <div className="space-y-6">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-          <p className="text-muted-foreground">
+          <p className="text-foreground">
             Welcome to your portfolio admin panel. Manage your projects, experiences, and skills.
           </p>
         </div>
@@ -62,11 +62,11 @@ export default function AdminDashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Projects</CardTitle>
-              <Briefcase className="h-4 w-4 text-muted-foreground" />
+              <Briefcase className="h-4 w-4 text-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{projects.length}</div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-foreground">
                 {projects.length === 0 ? 'No projects yet' : 'Active projects'}
               </p>
             </CardContent>
@@ -75,11 +75,11 @@ export default function AdminDashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Experiences</CardTitle>
-              <GraduationCap className="h-4 w-4 text-muted-foreground" />
+              <GraduationCap className="h-4 w-4 text-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{experiences.length}</div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-foreground">
                 {experiences.length === 0 ? 'No experiences yet' : 'Work experiences'}
               </p>
             </CardContent>
@@ -88,11 +88,11 @@ export default function AdminDashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Skills</CardTitle>
-              <Settings className="h-4 w-4 text-muted-foreground" />
+              <Settings className="h-4 w-4 text-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{skills.length}</div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-foreground">
                 {skills.length === 0 ? 'No skills yet' : 'Technical skills'}
               </p>
             </CardContent>
@@ -101,11 +101,11 @@ export default function AdminDashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Certifications</CardTitle>
-              <Badge variant="outline" className="h-4 w-4 text-muted-foreground" />
+              <Badge variant="outline" className="h-4 w-4 text-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{certifications.length}</div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-foreground">
                 {certifications.length === 0 ? 'No certifications yet' : 'Professional certifications'}
               </p>
             </CardContent>
@@ -114,11 +114,11 @@ export default function AdminDashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Portfolio Status</CardTitle>
-              <Badge variant="outline" className="h-4 w-4 text-muted-foreground" />
+              <Badge variant="outline" className="h-4 w-4 text-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">Live</div>
-              <p className="text-xs text-muted-foreground">Portfolio is active</p>
+              <p className="text-xs text-foreground">Portfolio is active</p>
             </CardContent>
           </Card>
         </div>

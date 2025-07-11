@@ -173,7 +173,7 @@ export default function AdminExperiencesPage() {
         <div className="flex justify-between items-center">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Experiences</h1>
-            <p className="text-muted-foreground">
+            <p className="text-foreground">
               Manage your work experiences and professional background.
             </p>
           </div>

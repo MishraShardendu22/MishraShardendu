@@ -49,7 +49,17 @@ export default function HomePage() {
 
   if (loading) return <Loader />
   
-  if (error) return <Error error={error} />
+if (error) {
+  return (
+    <Error
+      error={error}
+      onRetry={() => location.reload()}
+      showActions={true}
+      title="Failed to load homepage"
+    />
+  )
+}
+
 
   return (
     <div className="min-h-screen bg-background">

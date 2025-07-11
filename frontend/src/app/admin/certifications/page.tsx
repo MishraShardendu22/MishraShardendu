@@ -150,7 +150,7 @@ export default function AdminCertificationsPage() {
         <div className="flex justify-between items-center">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Certifications</h1>
-            <p className="text-muted-foreground">
+            <p className="text-foreground">
               Manage your certifications and professional achievements.
             </p>
           </div>
