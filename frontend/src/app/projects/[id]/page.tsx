@@ -1,34 +1,24 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { projectsAPI } from '../../../util/apiResponse.util';
 import { Project } from '../../../data/types.data';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../../components/ui/card';
 import { Badge } from '../../../components/ui/badge';
 import { Button } from '../../../components/ui/button';
-import { Separator } from '../../../components/ui/separator';
 import { 
   Github, 
-  ExternalLink, 
-  Play, 
   ArrowLeft, 
   Calendar, 
   Clock, 
   Code2, 
-  Sparkles, 
-  Star, 
   Zap,
   Globe,
   Video,
   FileText,
   Layers,
-  Target,
-  Lightbulb,
   Share2,
-  Heart,
-  Download,
-  ChevronRight
 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';

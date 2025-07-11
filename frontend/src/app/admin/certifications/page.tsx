@@ -15,8 +15,7 @@ import { CertificationAddDialog } from '../../../components/admin/certifications
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card";
 import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
-import { Edit, Trash2, ExternalLink, Award, ChevronLeft, ChevronRight } from 'lucide-react';
-import Image from 'next/image';
+import { Edit, Trash2, Award, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const certificationSchema = z.object({
   title: z.string().min(1, 'Title is required'),

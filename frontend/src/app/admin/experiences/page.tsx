@@ -1,8 +1,5 @@
 'use client'
 
-import dynamic from 'next/dynamic'
-const TiptapModalEditor = dynamic(() => import('../../../components/TipTap').then(mod => ({ default: mod.TiptapModalEditor })), { ssr: false })
-
 import { useEffect, useState } from 'react'
 import { ProtectedRoute } from '../../../components/auth/protected-route'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card'

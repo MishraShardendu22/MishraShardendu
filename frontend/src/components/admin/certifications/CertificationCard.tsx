@@ -4,7 +4,7 @@ import { Badge } from '../../ui/badge';
 import { Edit, Trash2, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
-import { Certification } from '../../../../data/types.data';
+import { Certification } from '@/data/types.data';
 
 type CertificationCardProps = {
   cert: Certification;

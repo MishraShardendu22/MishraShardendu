@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { ProtectedRoute } from '../../../components/auth/protected-route'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card'
 import { Button } from '../../../components/ui/button'
 import { Badge } from '../../../components/ui/badge'
 import { projectsAPI, experiencesAPI, skillsAPI, certificationsAPI } from '../../../util/apiResponse.util'

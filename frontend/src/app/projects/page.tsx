@@ -10,7 +10,6 @@ import { Github, ExternalLink, Play, Sparkles, Code2, Zap, ChevronLeft, ChevronR
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../../components/ui/select';
-import { Label } from '../../components/ui/label';
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -22,7 +21,7 @@ export default function ProjectsPage() {
 
   // Extract unique skills and years from projects
   const allSkills = Array.from(new Set(projects.flatMap(p => p.skills)));
-  const allYears = Array.from(new Set(projects.map(p => p.created_at ? new Date(p.created_at).getFullYear().toString() : ''))).filter(Boolean);
+
 
   // Filter logic
   const filteredProjects = projects.filter(project => {
@@ -171,23 +170,12 @@ export default function ProjectsPage() {
               ))}
             </SelectContent>
           </Select>
-          <Select value={selectedYear} onValueChange={setSelectedYear}>
-            <SelectTrigger className="min-w-[120px] px-2 py-2 rounded-md border border-border/30 bg-background focus:ring-2 focus:ring-primary/30">
-              <SelectValue placeholder="Year" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="__all__">All Years</SelectItem>
-              {allYears.map(year => (
-                <SelectItem key={year} value={year}>{year}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          {(selectedSkill !== "__all__" || selectedYear !== "__all__") && (
+          {(selectedSkill !== "__all__" ) && (
             <Button
               variant="secondary"
               size="sm"
               className="ml-2 px-3 py-2 rounded-md border border-border/30"
-              onClick={() => { setSelectedSkill("__all__"); setSelectedYear("__all__"); }}
+              onClick={() => { setSelectedSkill("__all__")}}
             >
               Clear Filters
             </Button>

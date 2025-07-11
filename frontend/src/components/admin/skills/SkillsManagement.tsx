@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../../ui/card';
+import { Card, CardContent } from '../../ui/card';
 import React from 'react';
 
 type SkillsManagementProps = {

@@ -2,8 +2,6 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Button } from '../../ui/button';
 import { Input } from '../../ui/input';
 import { Label } from '../../ui/label';
-import { Textarea } from '../../ui/textarea';
-import { Select, SelectTrigger, SelectContent, SelectItem } from '../../ui/select';
 import { Checkbox } from '../../ui/checkbox';
 import { Popover, PopoverTrigger, PopoverContent } from '../../ui/popover';
 import { Plus } from 'lucide-react';
@@ -102,7 +100,7 @@ export function CertificationAddDialog({
                         checked={selectedSkills.includes(skill)}
                         onCheckedChange={(checked) => {
                           if (checked) setValue('skills', [...selectedSkills, skill]);
-                          else setValue('skills', selectedSkills.filter((s) => s !== skill));
+                          else setValue('skills', selectedSkills.filter((s: string) => s !== skill));
                         }}
                       />
                       <span>{skill}</span>
@@ -129,7 +127,7 @@ export function CertificationAddDialog({
                         checked={selectedProjects.includes(project.id)}
                         onCheckedChange={(checked) => {
                           if (checked) setValue('projects', [...selectedProjects, project.id]);
-                          else setValue('projects', selectedProjects.filter((p) => p !== project.id));
+                          else setValue('projects', selectedProjects.filter((p: string) => p !== project.id));
                         }}
                       />
                       <span>{project.name}</span>

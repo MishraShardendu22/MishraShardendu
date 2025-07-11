@@ -30,7 +30,6 @@ export function ProjectAddDialog({
   errors,
   register,
   handleSubmit,
-  reset,
   setValue,
   watch,
   editingProject,
@@ -86,7 +85,7 @@ export function ProjectAddDialog({
                         checked={selectedSkills.includes(skill)}
                         onCheckedChange={(checked) => {
                           if (checked) setValue('skills', [...selectedSkills, skill]);
-                          else setValue('skills', selectedSkills.filter((s) => s !== skill));
+                          else setValue('skills', selectedSkills.filter((s: string) => s !== skill));
                         }}
                       />
                       <span>{skill}</span>
