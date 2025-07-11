@@ -29,24 +29,24 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: {
     template: '%s | Shardendu Mishra',
-    default: 'Shardendu Mishra - Full Stack Developer',
+    default: 'Shardendu Mishra | Software Developer and Engineer',
   },
-  description: 'Full Stack Developer passionate about building impactful applications with modern technologies. Specializing in Go, React, and cloud-native solutions.',
-  keywords: ['Shardendu Mishra', 'Full Stack Developer', 'Go', 'React', 'Portfolio', 'Software Engineer'],
+  description: 'Software Developer and Engineer passionate about building impactful applications with modern technologies. Specializing in Go, React, and cloud-native solutions.',
+  keywords: ['Shardendu Mishra', 'Software Developer and Engineer', 'Go', 'React', 'Portfolio', 'Software Engineer'],
   authors: [{ name: 'Shardendu Mishra' }],
   creator: 'Shardendu Mishra',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://mishrashardendu.com',
-    title: 'Shardendu Mishra - Full Stack Developer',
-    description: 'Full Stack Developer passionate about building impactful applications with modern technologies.',
+    title: 'Shardendu Mishra - Software Developer and Engineer',
+    description: 'Software Developer and Engineer passionate about building impactful applications with modern technologies.',
     siteName: 'Shardendu Mishra Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Shardendu Mishra - Full Stack Developer',
-    description: 'Full Stack Developer passionate about building impactful applications with modern technologies.',
+    title: 'Shardendu Mishra - Software Developer and Engineer',
+    description: 'Software Developer and Engineer passionate about building impactful applications with modern technologies.',
   },
   robots: {
     index: true,

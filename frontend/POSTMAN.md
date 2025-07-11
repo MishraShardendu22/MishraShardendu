@@ -306,7 +306,7 @@ pm.test("Response has experiences data", function () {
   ```json
   {
     "company_name": "Tech Innovation Corp",
-    "position": "Full Stack Developer",
+    "position": "Software Developer and Engineer",
     "start_date": "2023-01-01",
     "end_date": "2023-12-31",
     "description": "Developed and maintained web applications using modern technologies. Collaborated with cross-functional teams to deliver high-quality software solutions.",
@@ -364,7 +364,7 @@ pm.test("Experience retrieved successfully", function () {
   ```json
   {
     "company_name": "Updated Tech Innovation Corp",
-    "position": "Senior Full Stack Developer",
+    "position": "Senior Software Developer and Engineer",
     "start_date": "2023-01-01",
     "end_date": "2024-12-31",
     "description": "Updated: Led development of web applications using cutting-edge technologies. Mentored junior developers and architected scalable solutions.",

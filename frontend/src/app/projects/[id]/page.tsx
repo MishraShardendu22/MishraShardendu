@@ -125,8 +125,10 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Clean Navigation */}
+    <>
+      {project && <ProjectJsonLd project={project} />}
+      <div className="min-h-screen bg-background">
+        {/* Clean Navigation */}
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Button
@@ -364,6 +366,28 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
+  );
+}
+
+// Add JSON-LD structured data for the project
+function ProjectJsonLd({ project }: { project: Project }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.project_name,
+    description: project.small_description,
+    url: `https://mishrashardendu.com/projects/${project.id}`,
+    creator: {
+      '@type': 'Person',
+      name: 'Shardendu Mishra',
+    },
+    dateCreated: project.created_at,
+    keywords: project.skills,
+    image: project.images || [],
+  };
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
   );
 }
