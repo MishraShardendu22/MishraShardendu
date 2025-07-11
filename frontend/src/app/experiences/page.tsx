@@ -9,6 +9,8 @@ import { Button } from '../../components/ui/button';
 import { ExternalLink, ChevronLeft, ChevronRight, MoreHorizontal, Building2, Zap, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../../components/ui/select';
+import { Label } from '../../components/ui/label';
 
 export default function ExperiencesPage() {
   const [experiences, setExperiences] = useState<Experience[]>([]);
@@ -16,6 +18,9 @@ export default function ExperiencesPage() {
   const [error, setError] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 4;
+  const [selectedTech, setSelectedTech] = useState<string>("__all__");
+  const [selectedCompany, setSelectedCompany] = useState<string>("__all__");
+  const [selectedYear, setSelectedYear] = useState<string>("__all__");
 
   useEffect(() => {
     const fetchExperiences = async () => {
@@ -31,10 +36,24 @@ export default function ExperiencesPage() {
     fetchExperiences();
   }, []);
 
-  const totalPages = Math.ceil(experiences.length / perPage);
+  // Extract unique technologies, companies, and years from experiences
+  const allTechs = Array.from(new Set(experiences.flatMap(e => e.technologies)));
+  const allCompanies = Array.from(new Set(experiences.map(e => e.company_name)));
+  const allYears = Array.from(new Set(experiences.map(e => e.start_date ? new Date(e.start_date).getFullYear().toString() : ''))).filter(Boolean);
+
+  // Filter logic
+  const filteredExperiences = experiences.filter(exp => {
+    const matchesTech = selectedTech !== "__all__" ? exp.technologies.includes(selectedTech) : true;
+    const matchesCompany = selectedCompany !== "__all__" ? exp.company_name === selectedCompany : true;
+    const matchesYear = selectedYear !== "__all__" ? (exp.start_date && new Date(exp.start_date).getFullYear().toString() === selectedYear) : true;
+    return matchesTech && matchesCompany && matchesYear;
+  });
+
+  // Pagination on filteredExperiences
+  const totalPages = Math.ceil(filteredExperiences.length / perPage);
   const startIndex = (currentPage - 1) * perPage;
   const endIndex = startIndex + perPage;
-  const currentExperiences = experiences.slice(startIndex, endIndex);
+  const currentExperiences = filteredExperiences.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -120,9 +139,55 @@ export default function ExperiencesPage() {
             Roles, contributions, and responsibilities across companies and domains
           </p>
         </div>
+        {/* Filter Bar */}
+        <div className="flex flex-wrap md:flex-nowrap gap-3 md:gap-4 items-center justify-center mb-6 px-4 py-3 rounded-lg bg-muted/40 border border-border/30 shadow-sm">
+          <Select value={selectedTech} onValueChange={setSelectedTech}>
+            <SelectTrigger className="min-w-[140px] px-2 py-2 rounded-md border border-border/30 bg-background focus:ring-2 focus:ring-primary/30">
+              <SelectValue placeholder="Technology" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="__all__">All Technologies</SelectItem>
+              {allTechs.map(tech => (
+                <SelectItem key={tech} value={tech}>{tech}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select value={selectedCompany} onValueChange={setSelectedCompany}>
+            <SelectTrigger className="min-w-[140px] px-2 py-2 rounded-md border border-border/30 bg-background focus:ring-2 focus:ring-primary/30">
+              <SelectValue placeholder="Company" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="__all__">All Companies</SelectItem>
+              {allCompanies.map(company => (
+                <SelectItem key={company} value={company}>{company}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select value={selectedYear} onValueChange={setSelectedYear}>
+            <SelectTrigger className="min-w-[120px] px-2 py-2 rounded-md border border-border/30 bg-background focus:ring-2 focus:ring-primary/30">
+              <SelectValue placeholder="Year" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="__all__">All Years</SelectItem>
+              {allYears.map(year => (
+                <SelectItem key={year} value={year}>{year}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          {(selectedTech !== "__all__" || selectedCompany !== "__all__" || selectedYear !== "__all__") && (
+            <Button
+              variant="secondary"
+              size="sm"
+              className="ml-2 px-3 py-2 rounded-md border border-border/30"
+              onClick={() => { setSelectedTech("__all__"); setSelectedCompany("__all__"); setSelectedYear("__all__"); }}
+            >
+              Clear Filters
+            </Button>
+          )}
+        </div>
 
         <div className="flex-1 flex flex-col">
-          {experiences.length === 0 ? (
+          {filteredExperiences.length === 0 ? (
             <div className="flex-1 flex items-center justify-center text-foreground">
               No experiences yet.
             </div>
@@ -251,7 +316,7 @@ export default function ExperiencesPage() {
               )}
 
               <div className="text-center text-xs text-foreground pb-2">
-                Showing {startIndex + 1}-{Math.min(endIndex, experiences.length)} of {experiences.length} experiences
+                Showing {filteredExperiences.length === 0 ? 0 : startIndex + 1}-{Math.min(endIndex, filteredExperiences.length)} of {filteredExperiences.length} experiences
               </div>
             </>
           )}

@@ -9,6 +9,8 @@ import { Button } from '../../components/ui/button';
 import { Github, ExternalLink, Play, Sparkles, Code2, Zap, ChevronLeft, ChevronRight, MoreHorizontal, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../../components/ui/select';
+import { Label } from '../../components/ui/label';
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -16,6 +18,23 @@ export default function ProjectsPage() {
   const [error, setError] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 4; // 2 per row × 5 rows
+  const [selectedSkill, setSelectedSkill] = useState<string>("__all__");
+
+  // Extract unique skills and years from projects
+  const allSkills = Array.from(new Set(projects.flatMap(p => p.skills)));
+  const allYears = Array.from(new Set(projects.map(p => p.created_at ? new Date(p.created_at).getFullYear().toString() : ''))).filter(Boolean);
+
+  // Filter logic
+  const filteredProjects = projects.filter(project => {
+    const matchesSkill = selectedSkill !== "__all__" ? project.skills.includes(selectedSkill) : true;
+    return matchesSkill;
+  });
+
+  // Pagination on filteredProjects
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+  const startIndex = (currentPage - 1) * projectsPerPage;
+  const endIndex = startIndex + projectsPerPage;
+  const currentProjects = filteredProjects.slice(startIndex, endIndex);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -30,12 +49,6 @@ export default function ProjectsPage() {
     };
     fetchProjects();
   }, []);
-
-  // Calculate pagination
-  const totalPages = Math.ceil(projects.length / projectsPerPage);
-  const startIndex = (currentPage - 1) * projectsPerPage;
-  const endIndex = startIndex + projectsPerPage;
-  const currentProjects = projects.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -144,6 +157,41 @@ export default function ProjectsPage() {
               <div className="text-xs text-foreground">Current Page</div>
             </div>
           </div>
+        </div>
+        {/* Filter Bar */}
+        <div className="flex flex-wrap md:flex-nowrap gap-3 md:gap-4 items-center justify-center mb-6 px-4 py-3 rounded-lg bg-muted/40 border border-border/30 shadow-sm">
+          <Select value={selectedSkill} onValueChange={setSelectedSkill}>
+            <SelectTrigger className="min-w-[140px] px-2 py-2 rounded-md border border-border/30 bg-background focus:ring-2 focus:ring-primary/30">
+              <SelectValue placeholder="Skill" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="__all__">All Skills</SelectItem>
+              {allSkills.map(skill => (
+                <SelectItem key={skill} value={skill}>{skill}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select value={selectedYear} onValueChange={setSelectedYear}>
+            <SelectTrigger className="min-w-[120px] px-2 py-2 rounded-md border border-border/30 bg-background focus:ring-2 focus:ring-primary/30">
+              <SelectValue placeholder="Year" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="__all__">All Years</SelectItem>
+              {allYears.map(year => (
+                <SelectItem key={year} value={year}>{year}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          {(selectedSkill !== "__all__" || selectedYear !== "__all__") && (
+            <Button
+              variant="secondary"
+              size="sm"
+              className="ml-2 px-3 py-2 rounded-md border border-border/30"
+              onClick={() => { setSelectedSkill("__all__"); setSelectedYear("__all__"); }}
+            >
+              Clear Filters
+            </Button>
+          )}
         </div>
         
         {/* Main content area - flex-1 to fill remaining space */}
@@ -332,7 +380,7 @@ export default function ProjectsPage() {
 
               {/* Compact page info */}
               <div className="text-center text-xs text-foreground pb-2">
-                Showing {startIndex + 1}-{Math.min(endIndex, projects.length)} of {projects.length} projects
+                Showing {filteredProjects.length === 0 ? 0 : startIndex + 1}-{Math.min(endIndex, filteredProjects.length)} of {filteredProjects.length} projects
               </div>
             </>
           )}
