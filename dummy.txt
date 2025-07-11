@@ -59,3 +59,4 @@ Refactor language pie chart to display top 5 languages with usage details; updat
 Add Vercel Analytics and Speed Insights to layout; update package dependencies
 Update Admin link in Quick Links section to point to login page
 done
+Add Education section and enhance footer with social links; update protected route logic and improve hero section
