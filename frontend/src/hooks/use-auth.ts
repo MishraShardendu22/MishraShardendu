@@ -3,7 +3,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { authAPI } from '../util/apiResponse.util'
-import { AuthRequest, User } from '../data/types.data'
+import { AuthRequest } from '../data/types.data'
 
 interface AuthState {
   token: string | null
@@ -15,15 +15,6 @@ interface AuthState {
 }
 
 // Helper to normalize user object
-function normalizeUser(raw: any): User {
-  return {
-    _id: raw.inline?.id || raw._id || '',
-    email: raw.email || '',
-    skills: Array.isArray(raw.skills) ? raw.skills : [],
-    projects: Array.isArray(raw.projects) ? raw.projects : [],
-    experiences: Array.isArray(raw.experiences) ? raw.experiences : [],
-  }
-}
 
 /**
  * Zustand store for authentication state and actions.

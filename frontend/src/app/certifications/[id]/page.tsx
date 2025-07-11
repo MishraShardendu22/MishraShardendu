@@ -12,7 +12,7 @@ import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-export default function CertificationDetailPage({ params }: { params: { id: string } }) {
+export default function CertificationDetailPage({ params }: { params: any }) {
   const [certification, setCertification] = useState<Certification | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');

@@ -1,6 +1,6 @@
 import { projectsAPI } from '../../../util/apiResponse.util';
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: { params : any}) {
   const response = await projectsAPI.getProjectById(params.id);
   const project = response.data;
   if (!project) return {};

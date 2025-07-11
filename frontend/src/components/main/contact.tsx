@@ -22,11 +22,9 @@ import {
   Star, 
   Code, 
   Trophy, 
-  Calendar,
   TrendingUp,
   ExternalLink,
   User,
-  Target,
   Award,
   Activity
 } from "lucide-react"

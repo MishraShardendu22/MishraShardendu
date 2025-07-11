@@ -18,7 +18,6 @@ import { common, createLowlight } from 'lowlight'
 import { Markdown } from 'tiptap-markdown'
 import 'highlight.js/styles/github.css'
 import { Button } from './ui/button'
-import { Badge } from './ui/badge'
 import { 
   Bold, 
   Italic, 
@@ -39,13 +38,11 @@ import {
   Undo,
   Redo,
   Download,
-  Type,
   ChevronDown,
   Eye,
   Edit3,
   Palette,
   Plus,
-  RotateCcw
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 

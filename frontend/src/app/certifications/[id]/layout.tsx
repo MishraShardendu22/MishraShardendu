@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { certificationsAPI } from '../../../util/apiResponse.util';
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: { params: any }) {
   const response = await certificationsAPI.getCertificationById(params.id);
   const cert = response.data;
   if (!cert) return {};

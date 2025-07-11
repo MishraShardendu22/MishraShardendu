@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { experiencesAPI } from '../../../util/apiResponse.util';
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: { params: any }) {
   const response = await experiencesAPI.getExperienceById(params.id);
   const exp = response.data;
   if (!exp) return {};

@@ -12,7 +12,7 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 
-export default function ExperienceDetailPage({ params }: { params: { id: string } }) {
+export default function ExperienceDetailPage({ params }: { params: any }) {
   const [experience, setExperience] = useState<Experience | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');

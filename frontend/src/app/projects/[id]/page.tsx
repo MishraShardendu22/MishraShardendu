@@ -23,7 +23,7 @@ import {
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 
-export default function ProjectDetailPage({ params }: { params: { id: string } }) {
+export default function ProjectDetailPage({ params }: { params : any}) {
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
