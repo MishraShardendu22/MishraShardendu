@@ -127,15 +127,22 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
   return (
     <div className="min-h-screen bg-background">
       {/* Clean Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/projects">
-              <Button variant="ghost" className="flex items-center gap-2">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Projects
-              </Button>
-            </Link>
+            <Button
+              variant="ghost"
+              className="flex items-center gap-2"
+              onClick={() => {
+                if (window.history.length > 2) {
+                  router.back();
+                } else {
+                  router.push('/projects');
+                }
+              }}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back
+            </Button>
             <Button
               variant="outline"
               size="sm"
@@ -147,7 +154,6 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
             </Button>
           </div>
         </div>
-      </nav>
 
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Hero Section */}

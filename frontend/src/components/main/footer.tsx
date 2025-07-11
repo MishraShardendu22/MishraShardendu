@@ -107,16 +107,7 @@ export default function FooterSection() {
               <p className="text-sm text-foreground/60">
                 © {currentYear} Shardendu Mishra. All rights reserved.
               </p>
-              <div className="flex items-center space-x-4 text-xs text-foreground/50">
-                <Link href="/privacy" className="hover:text-primary transition-colors">
-                  Privacy
-                </Link>
-                <span>•</span>
-                <Link href="/terms" className="hover:text-primary transition-colors">
-                  Terms
-                </Link>
-              </div>
-            </div>
+             </div>
             
             <Button
               onClick={scrollToTop}

@@ -10,11 +10,13 @@ import { ExternalLink, ArrowLeft, Calendar, Award, Zap } from 'lucide-react';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function CertificationDetailPage({ params }: { params: { id: string } }) {
   const [certification, setCertification] = useState<Certification | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const router = useRouter();
 
   useEffect(() => {
     const fetchCertification = async () => {
@@ -75,16 +77,22 @@ export default function CertificationDetailPage({ params }: { params: { id: stri
 
   return (
     <div className="min-h-screen bg-background">
-      <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/certifications">
-            <Button variant="ghost" className="flex items-center gap-2">
-              <ArrowLeft className="w-4 h-4" />
-              Back to Certifications
-            </Button>
-          </Link>
+          <Button
+            variant="ghost"
+            className="flex items-center gap-2"
+            onClick={() => {
+              if (window.history.length > 2) {
+                router.back();
+              } else {
+                router.push('/certifications');
+              }
+            }}
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </Button>
         </div>
-      </nav>
 
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         <div className="text-center space-y-4 mb-10">

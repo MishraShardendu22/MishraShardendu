@@ -80,16 +80,22 @@ export default function ExperienceDetailPage({ params }: { params: { id: string 
 
   return (
     <div className="min-h-screen bg-background">
-      <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/experiences">
-            <Button variant="ghost" className="flex items-center gap-2">
-              <ArrowLeft className="w-4 h-4" />
-              Back to Experiences
-            </Button>
-          </Link>
+          <Button
+            variant="ghost"
+            className="flex items-center gap-2"
+            onClick={() => {
+              if (window.history.length > 2) {
+                router.back();
+              } else {
+                router.push('/experiences');
+              }
+            }}
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </Button>
         </div>
-      </nav>
 
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         <div className="text-center space-y-4 mb-10">

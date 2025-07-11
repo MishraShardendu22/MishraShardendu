@@ -27,7 +27,7 @@ export default function CertificationsSection({ certifications }: Certifications
   }
 
   return (
-    <section className="relative py-24 sm:py-32 bg-background overflow-hidden">
+    <section className="relative py-12 sm:py-16 bg-background overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[linear-gradient(30deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%,transparent_100%)] bg-[length:30px_30px]" />

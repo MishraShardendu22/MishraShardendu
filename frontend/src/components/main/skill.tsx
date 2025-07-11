@@ -28,7 +28,7 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
   }
   
   return (
-    <section className="relative py-24 sm:py-32 bg-card overflow-hidden">
+    <section className="relative py-12 sm:py-16 bg-card overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]" />

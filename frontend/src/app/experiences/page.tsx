@@ -6,7 +6,7 @@ import { Experience } from '../../data/types.data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
 import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
-import { ExternalLink, ChevronLeft, ChevronRight, MoreHorizontal, Building2, Zap } from 'lucide-react';
+import { ExternalLink, ChevronLeft, ChevronRight, MoreHorizontal, Building2, Zap, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 
@@ -98,6 +98,14 @@ export default function ExperiencesPage() {
   return (
     <div className="h-screen bg-gradient-to-br from-background via-background to-muted/20 flex flex-col">
       <div className="container mx-auto px-4 py-6 max-w-7xl flex-1 flex flex-col">
+        <div className="mb-4">
+          <Link href="/">
+            <Button variant="ghost" className="flex items-center gap-2">
+              <ArrowLeft className="w-4 h-4" />
+              Back to Home
+            </Button>
+          </Link>
+        </div>
         <div className="text-center mb-8 space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
             <Building2 className="w-4 h-4 text-primary" />

@@ -29,7 +29,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   };
 
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-card via-card/90 to-secondary/5 relative overflow-hidden">
+    <section className="py-12 sm:py-16 bg-gradient-to-br from-card via-card/90 to-secondary/5 relative overflow-hidden">
       {/* Background radial gradients */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,theme(colors.primary/4),transparent_70%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,theme(colors.secondary/4),transparent_70%)]"></div>
