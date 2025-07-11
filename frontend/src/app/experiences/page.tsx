@@ -7,9 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
 import { ExternalLink, ChevronLeft, ChevronRight, MoreHorizontal, Building2, Zap } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
-import { PublicNavBar } from '@/components/ui/navigation-menu';
 import toast from 'react-hot-toast';
 
 export default function ExperiencesPage() {
@@ -79,7 +77,7 @@ export default function ExperiencesPage() {
           </div>
           <div className="text-center space-y-2">
             <h2 className="text-xl font-heading text-foreground">Loading Experience</h2>
-            <p className="text-muted-foreground">Fetching amazing work...</p>
+            <p className="text-foreground">Fetching amazing work...</p>
           </div>
         </div>
       </div>
@@ -92,14 +90,13 @@ export default function ExperiencesPage() {
           </div>
           <div className="text-center space-y-2">
             <h2 className="text-xl font-heading text-foreground">Oops! Something went wrong</h2>
-            <p className="text-muted-foreground">{error}</p>
+            <p className="text-foreground">{error}</p>
           </div>
         </div>
       </div>;
 
   return (
     <div className="h-screen bg-gradient-to-br from-background via-background to-muted/20 flex flex-col">
-      <PublicNavBar />
       <div className="container mx-auto px-4 py-6 max-w-7xl flex-1 flex flex-col">
         <div className="text-center mb-8 space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
@@ -111,14 +108,14 @@ export default function ExperiencesPage() {
             Work Journey
           </h1>
 
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base text-foreground max-w-2xl mx-auto leading-relaxed">
             Roles, contributions, and responsibilities across companies and domains
           </p>
         </div>
 
         <div className="flex-1 flex flex-col">
           {experiences.length === 0 ? (
-            <div className="flex-1 flex items-center justify-center text-muted-foreground">
+            <div className="flex-1 flex items-center justify-center text-foreground">
               No experiences yet.
             </div>
           ) : (
@@ -136,10 +133,10 @@ export default function ExperiencesPage() {
                           <CardTitle className="text-lg font-heading group-hover:text-primary transition-colors duration-300 line-clamp-2">
                             {experience.position}
                           </CardTitle>
-                          <CardDescription className="text-sm text-muted-foreground">
+                          <CardDescription className="text-sm text-foreground">
                             {experience.company_name}
                           </CardDescription>
-                          <p className="text-xs text-muted-foreground mt-1">
+                          <p className="text-xs text-foreground mt-1">
                             {new Date(experience.start_date).toLocaleDateString('en-US', {
                               year: 'numeric',
                               month: 'short',
@@ -153,7 +150,7 @@ export default function ExperiencesPage() {
                     </CardHeader>
 
                     <CardContent className="relative z-10 flex-1 flex flex-col justify-between space-y-4">
-                      <p className="text-sm text-muted-foreground line-clamp-3">
+                      <p className="text-sm text-foreground line-clamp-3">
                         {experience.description.length > 150 ? experience.description.slice(0, 150) + '...' : experience.description}
                       </p>
 
@@ -212,7 +209,7 @@ export default function ExperiencesPage() {
                     {getPaginationNumbers().map((pageNumber, index) => (
                       <div key={index}>
                         {pageNumber === '...' ? (
-                          <Button variant="ghost" size="sm" disabled className="px-2 py-2 text-muted-foreground">
+                          <Button variant="ghost" size="sm" disabled className="px-2 py-2 text-foreground">
                             <MoreHorizontal className="w-4 h-4" />
                           </Button>
                         ) : (
@@ -245,7 +242,7 @@ export default function ExperiencesPage() {
                 </div>
               )}
 
-              <div className="text-center text-xs text-muted-foreground pb-2">
+              <div className="text-center text-xs text-foreground pb-2">
                 Showing {startIndex + 1}-{Math.min(endIndex, experiences.length)} of {experiences.length} experiences
               </div>
             </>

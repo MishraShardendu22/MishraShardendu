@@ -91,7 +91,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
           </div>
           <div className="text-center space-y-2">
             <h2 className="text-xl font-heading text-foreground">Loading Projects</h2>
-            <p className="text-muted-foreground">Fetching amazing work...</p>
+            <p className="text-foreground">Fetching amazing work...</p>
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
                 <Zap className="w-8 h-8 text-destructive" />
               </div>
               <h2 className="text-2xl font-bold">Project Not Found</h2>
-              <p className="text-muted-foreground max-w-md">
+              <p className="text-foreground max-w-md">
                 {error || 'The project you\'re looking for doesn\'t exist or has been removed.'}
               </p>
               <Link href="/projects">
@@ -156,7 +156,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               {project.project_name}
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-foreground max-w-3xl mx-auto leading-relaxed">
               {project.small_description}
             </p>
           </div>
@@ -204,7 +204,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
           </div>
 
           {/* Project Meta */}
-          <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-muted-foreground">
+          <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-foreground">
             {project.created_at && (
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
@@ -301,7 +301,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
                     </pre>
                   ),
                   blockquote: ({ children }) => (
-                    <blockquote className="border-l-4 border-border pl-4 italic text-muted-foreground mb-4">
+                    <blockquote className="border-l-4 border-border pl-4 italic text-foreground mb-4">
                       {children}
                     </blockquote>
                   ),

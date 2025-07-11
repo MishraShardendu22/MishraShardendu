@@ -42,7 +42,7 @@ export default function ExperienceDetailPage({ params }: { params: { id: string 
           </div>
           <div className="text-center space-y-2">
             <h2 className="text-xl font-heading text-foreground">Loading Experience</h2>
-            <p className="text-muted-foreground">Fetching amazing work...</p>
+            <p className="text-foreground">Fetching amazing work...</p>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@ export default function ExperienceDetailPage({ params }: { params: { id: string 
                 <Zap className="w-8 h-8 text-destructive" />
               </div>
               <h2 className="text-2xl font-bold">Experiences Not Found</h2>
-              <p className="text-muted-foreground max-w-md">
+              <p className="text-foreground max-w-md">
                 {error || 'The project you\'re looking for doesn\'t exist or has been removed.'}
               </p>
               <Link href="/experiences">
@@ -94,8 +94,8 @@ export default function ExperienceDetailPage({ params }: { params: { id: string 
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         <div className="text-center space-y-4 mb-10">
           <h1 className="text-4xl md:text-5xl font-bold">{experience.position}</h1>
-          <p className="text-muted-foreground text-lg">{experience.company_name}</p>
-          <div className="flex justify-center gap-4 text-sm text-muted-foreground">
+          <p className="text-foreground text-lg">{experience.company_name}</p>
+          <div className="flex justify-center gap-4 text-sm text-foreground">
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
               <span>{formatDate(experience.start_date)} - {formatDate(experience.end_date)}</span>

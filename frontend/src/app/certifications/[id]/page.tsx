@@ -40,7 +40,7 @@ export default function CertificationDetailPage({ params }: { params: { id: stri
           </div>
           <div className="text-center space-y-2">
             <h2 className="text-xl font-heading text-foreground">Loading Certification</h2>
-            <p className="text-muted-foreground">Fetching amazing work...</p>
+            <p className="text-foreground">Fetching amazing work...</p>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@ export default function CertificationDetailPage({ params }: { params: { id: stri
                 <Zap className="w-8 h-8 text-destructive" />
               </div>
               <h2 className="text-2xl font-bold">Certification Not Found</h2>
-              <p className="text-muted-foreground max-w-md">
+              <p className="text-foreground max-w-md">
                 {error || 'The project you\'re looking for doesn\'t exist or has been removed.'}
               </p>
               <Link href="/certifications">
@@ -89,8 +89,8 @@ export default function CertificationDetailPage({ params }: { params: { id: stri
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         <div className="text-center space-y-4 mb-10">
           <h1 className="text-4xl md:text-5xl font-bold">{certification.title}</h1>
-          <p className="text-muted-foreground text-lg">{certification.issuer}</p>
-          <div className="flex justify-center gap-4 text-sm text-muted-foreground">
+          <p className="text-foreground text-lg">{certification.issuer}</p>
+          <div className="flex justify-center gap-4 text-sm text-foreground">
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
               <span>{certification.issue_date} - {certification.expiry_date}</span>

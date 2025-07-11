@@ -8,7 +8,6 @@ import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
 import { Github, ExternalLink, Play, Sparkles, Code2, Zap, ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
 import Link from 'next/link';
-import { PublicNavBar } from '@/components/ui/navigation-menu';
 import toast from 'react-hot-toast';
 
 export default function ProjectsPage() {
@@ -80,7 +79,7 @@ export default function ProjectsPage() {
           </div>
           <div className="text-center space-y-2">
             <h2 className="text-xl font-heading text-foreground">Loading Projects</h2>
-            <p className="text-muted-foreground">Fetching amazing work...</p>
+            <p className="text-foreground">Fetching amazing work...</p>
           </div>
         </div>
       </div>
@@ -97,7 +96,7 @@ export default function ProjectsPage() {
           </div>
           <div className="text-center space-y-2">
             <h2 className="text-xl font-heading text-foreground">Oops! Something went wrong</h2>
-            <p className="text-muted-foreground">{error}</p>
+            <p className="text-foreground">{error}</p>
           </div>
         </div>
       </div>
@@ -106,7 +105,6 @@ export default function ProjectsPage() {
 
   return (
     <div className="h-screen bg-gradient-to-br from-background via-background to-muted/20 flex flex-col">
-      <PublicNavBar />
       <div className="container mx-auto px-4 py-6 max-w-7xl flex-1 flex flex-col">
         {/* Compact Header */}
         <div className="text-center mb-8 space-y-4">
@@ -119,7 +117,7 @@ export default function ProjectsPage() {
             Projects
           </h1>
           
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base text-foreground max-w-2xl mx-auto leading-relaxed">
             A curated collection of my latest work, experiments, and contributions to the world of code
           </p>
 
@@ -127,15 +125,15 @@ export default function ProjectsPage() {
           <div className="flex justify-center gap-6 pt-2">
             <div className="text-center">
               <div className="text-xl font-bold text-primary">{projects.length}</div>
-              <div className="text-xs text-muted-foreground">Total Projects</div>
+              <div className="text-xs text-foreground">Total Projects</div>
             </div>
             <div className="text-center">
               <div className="text-xl font-bold text-secondary">{totalPages}</div>
-              <div className="text-xs text-muted-foreground">Pages</div>
+              <div className="text-xs text-foreground">Pages</div>
             </div>
             <div className="text-center">
               <div className="text-xl font-bold text-accent">{currentPage}</div>
-              <div className="text-xs text-muted-foreground">Current Page</div>
+              <div className="text-xs text-foreground">Current Page</div>
             </div>
           </div>
         </div>
@@ -157,7 +155,7 @@ export default function ProjectsPage() {
                   
                   <div className="space-y-2">
                     <h3 className="text-lg font-heading text-foreground">No projects yet</h3>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-foreground text-sm">
                       Amazing projects will appear here soon. Stay tuned for updates!
                     </p>
                   </div>
@@ -183,7 +181,7 @@ export default function ProjectsPage() {
                           <CardTitle className="text-lg font-heading group-hover:text-primary transition-colors duration-300 leading-tight line-clamp-2">
                             {project.project_name}
                           </CardTitle>
-                          <CardDescription className="text-sm leading-relaxed text-muted-foreground line-clamp-2">
+                          <CardDescription className="text-sm leading-relaxed text-foreground line-clamp-2">
                             {project.small_description}
                           </CardDescription>
                         </div>
@@ -289,7 +287,7 @@ export default function ProjectsPage() {
                             variant="ghost"
                             size="sm"
                             disabled
-                            className="px-2 py-2 text-muted-foreground"
+                            className="px-2 py-2 text-foreground"
                           >
                             <MoreHorizontal className="w-4 h-4" />
                           </Button>
@@ -325,7 +323,7 @@ export default function ProjectsPage() {
               )}
 
               {/* Compact page info */}
-              <div className="text-center text-xs text-muted-foreground pb-2">
+              <div className="text-center text-xs text-foreground pb-2">
                 Showing {startIndex + 1}-{Math.min(endIndex, projects.length)} of {projects.length} projects
               </div>
             </>

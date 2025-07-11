@@ -21,12 +21,12 @@ export default function AdminRegisterPage() {
         <CardHeader className="text-center">
           <UserPlus className="mx-auto h-12 w-12 text-primary mb-4 animate-fade-in" />
           <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Admin Registration</CardTitle>
-          <CardDescription className="text-muted-foreground">
+          <CardDescription className="text-foreground">
             Registration and login are handled through the same endpoint.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          <p className="text-base text-muted-foreground text-center">
+          <p className="text-base text-foreground text-center">
             The admin authentication system uses a single endpoint for both registration and login.<br />
             If you&apos;re a new admin, you can register by using the login form with your credentials.
           </p>

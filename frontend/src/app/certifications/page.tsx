@@ -9,7 +9,6 @@ import { Button } from '../../components/ui/button';
 import { ExternalLink, Award, ChevronLeft, ChevronRight, MoreHorizontal, Zap } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PublicNavBar } from '@/components/ui/navigation-menu';
 import toast from 'react-hot-toast';
 
 export default function CertificationsPage() {
@@ -80,7 +79,7 @@ export default function CertificationsPage() {
           </div>
           <div className="text-center space-y-2">
             <h2 className="text-xl font-heading text-foreground">Loading Certification</h2>
-            <p className="text-muted-foreground">Fetching amazing work...</p>
+            <p className="text-foreground">Fetching amazing work...</p>
           </div>
         </div>
       </div>
@@ -97,7 +96,7 @@ export default function CertificationsPage() {
           </div>
           <div className="text-center space-y-2">
             <h2 className="text-xl font-heading text-foreground">Oops! Something went wrong</h2>
-            <p className="text-muted-foreground">{error}</p>
+            <p className="text-foreground">{error}</p>
           </div>
         </div>
       </div>
@@ -106,7 +105,6 @@ export default function CertificationsPage() {
 
   return (
     <div className="h-screen bg-gradient-to-br from-background via-background to-muted/20 flex flex-col">
-      <PublicNavBar />
       <div className="container mx-auto px-4 py-6 max-w-7xl flex-1 flex flex-col">
         <div className="text-center mb-8 space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
@@ -118,14 +116,14 @@ export default function CertificationsPage() {
             Credentials
           </h1>
 
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base text-foreground max-w-2xl mx-auto leading-relaxed">
             Verified certifications and achievements across platforms and domains
           </p>
         </div>
 
         <div className="flex-1 flex flex-col">
           {certifications.length === 0 ? (
-            <div className="flex-1 flex items-center justify-center text-muted-foreground">
+            <div className="flex-1 flex items-center justify-center text-foreground">
               No certifications yet.
             </div>
           ) : (
@@ -145,7 +143,7 @@ export default function CertificationsPage() {
                           <CardTitle className="text-lg font-heading group-hover:text-primary transition-colors duration-300 line-clamp-2">
                             {cert.title}
                           </CardTitle>
-                          <CardDescription className="text-sm text-muted-foreground">
+                          <CardDescription className="text-sm text-foreground">
                             {cert.issuer} • {cert.issue_date} to {cert.expiry_date}
                           </CardDescription>
                         </div>
@@ -158,7 +156,7 @@ export default function CertificationsPage() {
                     </CardHeader>
 
                     <CardContent className="relative z-10 flex-1 flex flex-col justify-between space-y-4">
-                      <p className="text-sm text-muted-foreground line-clamp-3">
+                      <p className="text-sm text-foreground line-clamp-3">
                         {cert.description.length > 150 ? cert.description.slice(0, 150) + '...' : cert.description}
                       </p>
 
@@ -223,7 +221,7 @@ export default function CertificationsPage() {
                             variant="ghost"
                             size="sm"
                             disabled
-                            className="px-2 py-2 text-muted-foreground"
+                            className="px-2 py-2 text-foreground"
                           >
                             <MoreHorizontal className="w-4 h-4" />
                           </Button>
@@ -258,7 +256,7 @@ export default function CertificationsPage() {
                 </div>
               )}
 
-              <div className="text-center text-xs text-muted-foreground pb-2">
+              <div className="text-center text-xs text-foreground pb-2">
                 Showing {startIndex + 1}-{Math.min(endIndex, certifications.length)} of {certifications.length} certifications
               </div>
             </>

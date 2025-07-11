@@ -58,7 +58,7 @@ export default function AdminLoginPage() {
         <CardHeader className="space-y-1 text-center">
           <Shield className="mx-auto h-12 w-12 text-primary mb-4 animate-fade-in" />
           <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Admin Login</CardTitle>
-          <CardDescription className="text-muted-foreground">
+          <CardDescription className="text-foreground">
             Enter your credentials to access the admin panel
           </CardDescription>
         </CardHeader>
@@ -82,7 +82,7 @@ export default function AdminLoginPage() {
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <Mail className="absolute left-3 top-3 h-4 w-4 text-foreground" />
                 <Input
                   id="email"
                   type="email"
@@ -99,7 +99,7 @@ export default function AdminLoginPage() {
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <Lock className="absolute left-3 top-3 h-4 w-4 text-foreground" />
                 <Input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
@@ -129,7 +129,7 @@ export default function AdminLoginPage() {
             <div className="space-y-2">
               <Label htmlFor="admin_pass">Admin Password</Label>
               <div className="relative">
-                <Shield className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <Shield className="absolute left-3 top-3 h-4 w-4 text-foreground" />
                 <Input
                   id="admin_pass"
                   type={showAdminPass ? 'text' : 'password'}
