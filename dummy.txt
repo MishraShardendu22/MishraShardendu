@@ -73,3 +73,4 @@ testing new changes
 Refactor GetSkills function to improve readability and maintainability
 testing new changes
 Update environment variable in init function for graceful shutdown
+Update main.yml
