@@ -10,27 +10,15 @@ import (
 )
 
 func GetExperiences(c *fiber.Ctx) error {
-	uid := c.Locals("user_id").(string)
-	userObjID, err := primitive.ObjectIDFromHex(uid)
-	if err != nil {
-		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid user ID", nil, "")
-	}
-
-	var user models.User
-	if err := mgm.Coll(&models.User{}).FindByID(userObjID, &user); err != nil {
-		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
-	}
-
-	if len(user.Experiences) == 0 {
-		return util.ResponseAPI(c, fiber.StatusOK, "No experiences found", nil, "")
-	}
-
+	// Since there's only one user and we want public access,
+	// fetch all experiences directly from the database
 	var exps []models.Experience
-	for _, expID := range user.Experiences {
-		var e models.Experience
-		if err := mgm.Coll(&models.Experience{}).FindByID(expID, &e); err == nil {
-			exps = append(exps, e)
-		}
+	if err := mgm.Coll(&models.Experience{}).SimpleFind(&exps, bson.M{}); err != nil {
+		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to fetch experiences", nil, "")
+	}
+
+	if len(exps) == 0 {
+		return util.ResponseAPI(c, fiber.StatusOK, "No experiences found", nil, "")
 	}
 
 	return util.ResponseAPI(c, fiber.StatusOK, "Experiences retrieved successfully", exps, "")
@@ -69,14 +57,9 @@ func AddExperiences(c *fiber.Ctx) error {
 		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to add experience", nil, "")
 	}
 
-	uid := c.Locals("user_id").(string)
-	userObjID, err := primitive.ObjectIDFromHex(uid)
-	if err != nil {
-		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid user ID", nil, "")
-	}
-
+	// Since there's only one user, get the first user from the database
 	var user models.User
-	if err := mgm.Coll(&models.User{}).FindByID(userObjID, &user); err != nil {
+	if err := mgm.Coll(&models.User{}).First(bson.M{}, &user); err != nil {
 		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
 	}
 
@@ -129,20 +112,15 @@ func UpdateExperiences(c *fiber.Ctx) error {
 }
 
 func RemoveExperiences(c *fiber.Ctx) error {
-	uid := c.Locals("user_id").(string)
-	userObjID, err := primitive.ObjectIDFromHex(uid)
-	if err != nil {
-		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid user ID", nil, "")
+	// Since there's only one user, get the first user from the database
+	var user models.User
+	if err := mgm.Coll(&models.User{}).First(bson.M{}, &user); err != nil {
+		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
 	}
 
 	eid := c.Params("id")
 	if eid == "" {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Experience ID is required", nil, "")
-	}
-
-	var user models.User
-	if err := mgm.Coll(&models.User{}).FindByID(userObjID, &user); err != nil {
-		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
 	}
 
 	var updated []primitive.ObjectID

@@ -10,27 +10,15 @@ import (
 )
 
 func GetCertifications(c *fiber.Ctx) error {
-	uid := c.Locals("user_id").(string)
-	userObjID, err := primitive.ObjectIDFromHex(uid)
-	if err != nil {
-		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid user ID", nil, "")
+	// Since there's only one user and we want public access,
+	// fetch all certifications directly from the database
+	var certs []models.CertificationOrAchievements
+	if err := mgm.Coll(&models.CertificationOrAchievements{}).SimpleFind(&certs, bson.M{}); err != nil {
+		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to fetch certifications", nil, "")
 	}
 
-	var user models.User
-	if err := mgm.Coll(&models.User{}).FindByID(userObjID, &user); err != nil {
-		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
-	}
-
-	if len(user.Certifications) == 0 {
+	if len(certs) == 0 {
 		return util.ResponseAPI(c, fiber.StatusOK, "No certifications found", nil, "")
-	}
-
-	certs := make([]models.CertificationOrAchievements, 0, len(user.Certifications))
-	for _, certID := range user.Certifications {
-		var cert models.CertificationOrAchievements
-		if err := mgm.Coll(&models.CertificationOrAchievements{}).FindByID(certID, &cert); err == nil {
-			certs = append(certs, cert)
-		}
 	}
 
 	return util.ResponseAPI(c, fiber.StatusOK, "Certifications retrieved successfully", certs, "")
@@ -69,14 +57,9 @@ func AddCertification(c *fiber.Ctx) error {
 		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to add certification", nil, "")
 	}
 
-	uid := c.Locals("user_id").(string)
-	userObjID, err := primitive.ObjectIDFromHex(uid)
-	if err != nil {
-		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid user ID", nil, "")
-	}
-
+	// Since there's only one user, get the first user from the database
 	var user models.User
-	if err := mgm.Coll(&models.User{}).FindByID(userObjID, &user); err != nil {
+	if err := mgm.Coll(&models.User{}).First(bson.M{}, &user); err != nil {
 		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
 	}
 
@@ -128,10 +111,10 @@ func UpdateCertification(c *fiber.Ctx) error {
 }
 
 func RemoveCertification(c *fiber.Ctx) error {
-	uid := c.Locals("user_id").(string)
-	userObjID, err := primitive.ObjectIDFromHex(uid)
-	if err != nil {
-		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid user ID", nil, "")
+	// Since there's only one user, get the first user from the database
+	var user models.User
+	if err := mgm.Coll(&models.User{}).First(bson.M{}, &user); err != nil {
+		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
 	}
 
 	cid := c.Params("id")
@@ -142,11 +125,6 @@ func RemoveCertification(c *fiber.Ctx) error {
 	certObjID, err := primitive.ObjectIDFromHex(cid)
 	if err != nil {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid certification ID", nil, "")
-	}
-
-	var user models.User
-	if err := mgm.Coll(&models.User{}).FindByID(userObjID, &user); err != nil {
-		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
 	}
 
 	filtered := make([]primitive.ObjectID, 0, len(user.Certifications))

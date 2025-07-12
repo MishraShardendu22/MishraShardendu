@@ -5,7 +5,7 @@ import (
 	"github.com/MishraShardendu22/util"
 	"github.com/gofiber/fiber/v2"
 	"github.com/kamva/mgm/v3"
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/bson"
 )
 
 func AddSkills(c *fiber.Ctx) error {
@@ -21,15 +21,10 @@ func AddSkills(c *fiber.Ctx) error {
 	if len(payload.Skills) == 0 {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Skills cannot be empty", nil, "")
 	}
-	userID := c.Locals("user_id").(string)
 
-	objID, err := primitive.ObjectIDFromHex(userID)
-	if err != nil {
-		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid user ID", nil, "")
-	}
-
+	// Since there's only one user, get the first user from the database
 	user := &models.User{}
-	err = mgm.Coll(user).FindByID(objID, user)
+	err = mgm.Coll(user).First(bson.M{}, user)
 	if err != nil {
 		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
 	}
@@ -44,14 +39,10 @@ func AddSkills(c *fiber.Ctx) error {
 }
 
 func GetSkills(c *fiber.Ctx) error {
-	userID := c.Locals("user_id").(string)
-	objID, err := primitive.ObjectIDFromHex(userID)
-	if err != nil {
-		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid user ID", nil, "")
-	}
-
+	// Since there's only one user and we want public access,
+	// fetch skills from the first user in the database
 	user := &models.User{}
-	err = mgm.Coll(user).FindByID(objID, user)
+	err := mgm.Coll(user).First(bson.M{}, user)
 	if err != nil {
 		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
 	}

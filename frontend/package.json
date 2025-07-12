@@ -45,10 +45,10 @@
     "url": "https://github.com/sponsors/ShardenduMishra22"
   },
   "scripts": {
-    "dev": "pnpm exec next dev --turbopack",
-    "build": "pnpm exec next build",
-    "start": "pnpm exec next start",
-    "lint": "pnpm exec next lint",
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -94,6 +94,8 @@
     "@tiptap/pm": "^2.25.0",
     "@tiptap/react": "^2.25.0",
     "@tiptap/starter-kit": "^2.25.0",
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "axios": "^1.10.0",
     "chart.js": "^4.5.0",
     "class-variance-authority": "^0.7.1",

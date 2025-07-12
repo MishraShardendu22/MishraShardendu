@@ -10,26 +10,17 @@ import (
 )
 
 func GetProjects(c *fiber.Ctx) error {
-	uid := c.Locals("user_id").(string)
-	userObjID, err := primitive.ObjectIDFromHex(uid)
-	if err != nil {
-		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid user ID", nil, "")
+	// Since there's only one user and we want public access,
+	// fetch all projects directly from the database
+	var projects []models.Project
+	if err := mgm.Coll(&models.Project{}).SimpleFind(&projects, bson.M{}); err != nil {
+		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to fetch projects", nil, "")
 	}
-	var user models.User
-	if err := mgm.Coll(&models.User{}).FindByID(userObjID, &user); err != nil {
-		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
-	}
-	if len(user.Projects) == 0 {
+
+	if len(projects) == 0 {
 		return util.ResponseAPI(c, fiber.StatusOK, "No projects found", nil, "")
 	}
 
-	projects := make([]models.Project, 0, len(user.Projects))
-	for _, projID := range user.Projects {
-		var p models.Project
-		if err := mgm.Coll(&models.Project{}).FindByID(projID, &p); err == nil {
-			projects = append(projects, p)
-		}
-	}
 	return util.ResponseAPI(c, fiber.StatusOK, "Projects retrieved successfully", projects, "")
 }
 
@@ -61,13 +52,9 @@ func AddProjects(c *fiber.Ctx) error {
 		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to add project", nil, "")
 	}
 
-	uid := c.Locals("user_id").(string)
-	userObjID, err := primitive.ObjectIDFromHex(uid)
-	if err != nil {
-		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid user ID", nil, "")
-	}
+	// Since there's only one user, get the first user from the database
 	var user models.User
-	if err := mgm.Coll(&models.User{}).FindByID(userObjID, &user); err != nil {
+	if err := mgm.Coll(&models.User{}).First(bson.M{}, &user); err != nil {
 		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
 	}
 	user.Projects = append(user.Projects, p.ID)
@@ -111,18 +98,15 @@ func UpdateProjects(c *fiber.Ctx) error {
 }
 
 func RemoveProjects(c *fiber.Ctx) error {
-	uid := c.Locals("user_id").(string)
-	userObjID, err := primitive.ObjectIDFromHex(uid)
-	if err != nil {
-		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid user ID", nil, "")
+	// Since there's only one user, get the first user from the database
+	var user models.User
+	if err := mgm.Coll(&models.User{}).First(bson.M{}, &user); err != nil {
+		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
 	}
+
 	pid := c.Params("id")
 	if pid == "" {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Project ID is required", nil, "")
-	}
-	var user models.User
-	if err := mgm.Coll(&models.User{}).FindByID(userObjID, &user); err != nil {
-		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
 	}
 
 	updated := make([]primitive.ObjectID, 0, len(user.Projects))

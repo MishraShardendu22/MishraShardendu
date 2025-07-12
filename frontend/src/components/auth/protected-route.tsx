@@ -20,7 +20,7 @@ export function ProtectedRoute({ children, fallback }: ProtectedRouteProps) {
 
   useEffect(() => {
     if (hydrated && !isLoading && !isAuthenticated) {
-      router.push('/admin/login')
+      router.push('/')
     }
   }, [hydrated, isAuthenticated, isLoading, router])
 

@@ -7,9 +7,12 @@ import (
 )
 
 func SetupCertificationRoutes(app *fiber.App, secret string) {
-	app.Get("/api/certifications", middleware.JWTMiddleware(secret), controller.GetCertifications)
+	// Public routes - no authentication required
+	app.Get("/api/certifications", controller.GetCertifications)
+	app.Get("/api/certifications/:id", controller.GetCertificationByID)
+
+	// Admin routes - authentication required
 	app.Post("/api/certifications", middleware.JWTMiddleware(secret), controller.AddCertification)
-	app.Get("/api/certifications/:id", middleware.JWTMiddleware(secret), controller.GetCertificationByID)
 	app.Put("/api/certifications/:id", middleware.JWTMiddleware(secret), controller.UpdateCertification)
 	app.Delete("/api/certifications/:id", middleware.JWTMiddleware(secret), controller.RemoveCertification)
 }

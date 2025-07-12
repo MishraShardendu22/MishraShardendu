@@ -6,7 +6,10 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func SetupSkillRoutes(app *fiber.App,secret string) {
-	app.Get("/api/skills",middleware.JWTMiddleware(secret), controller.GetSkills)
-	app.Post("/api/skills",middleware.JWTMiddleware(secret) ,controller.AddSkills)
+func SetupSkillRoutes(app *fiber.App, secret string) {
+	// Public routes - no authentication required
+	app.Get("/api/skills", controller.GetSkills)
+
+	// Admin routes - authentication required
+	app.Post("/api/skills", middleware.JWTMiddleware(secret), controller.AddSkills)
 }

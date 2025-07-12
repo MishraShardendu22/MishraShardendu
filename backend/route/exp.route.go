@@ -7,8 +7,11 @@ import (
 )
 
 func SetupExpRoutes(app *fiber.App, secret string) {
-	app.Get("/api/experiences", middleware.JWTMiddleware(secret), controller.GetExperiences)
-	app.Get("/api/experiences/:id", middleware.JWTMiddleware(secret), controller.GetExperienceByID)
+	// Public routes - no authentication required
+	app.Get("/api/experiences", controller.GetExperiences)
+	app.Get("/api/experiences/:id", controller.GetExperienceByID)
+
+	// Admin routes - authentication required
 	app.Post("/api/experiences", middleware.JWTMiddleware(secret), controller.AddExperiences)
 	app.Put("/api/experiences/:id", middleware.JWTMiddleware(secret), controller.UpdateExperiences)
 	app.Delete("/api/experiences/:id", middleware.JWTMiddleware(secret), controller.RemoveExperiences)
