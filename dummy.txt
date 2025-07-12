@@ -56,3 +56,4 @@ Update URLs in metadata for admin and project pages to new domain
 Update usage text color in language pie chart for better visibility
 done
 Refactor language pie chart to display top 5 languages with usage details; update chart styling and labels
+Add Vercel Analytics and Speed Insights to layout; update package dependencies
