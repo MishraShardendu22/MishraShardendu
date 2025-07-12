@@ -54,3 +54,4 @@ Enhance admin experiences page with toast notifications for success and error me
 Add toast notification for successful project link copy
 Update URLs in metadata for admin and project pages to new domain
 Update usage text color in language pie chart for better visibility
+done
