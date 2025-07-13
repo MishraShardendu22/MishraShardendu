@@ -67,3 +67,4 @@ Refactor GetCertifications function to include reverseCerts for improved data pr
 Refactor RemoveCertification function for improved clarity and error handling
 done
 Refactor GetExperiences and reverseExperiences functions for improved clarity and functionality
+Enhance RemoveExperiences function to include error handling for invalid ID and deletion process
