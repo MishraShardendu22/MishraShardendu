@@ -51,3 +51,4 @@ Update certification expiry date to be optional; enhance certification detail an
 Refactor experience detail page to remove LinkedIn post rendering; streamline image display logic
 Add media and related projects sections to experience detail page; improve error messages and loading states
 Enhance admin experiences page with toast notifications for success and error messages; refactor form handling and improve technology/project selection
+Add toast notification for successful project link copy
