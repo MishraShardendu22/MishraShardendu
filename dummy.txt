@@ -70,3 +70,4 @@ Refactor GetExperiences and reverseExperiences functions for improved clarity an
 Enhance RemoveExperiences function to include error handling for invalid ID and deletion process
 Refactor RemoveProjects function to enhance clarity and error handling
 testing new changes
+Refactor GetSkills function to improve readability and maintainability
