@@ -49,3 +49,4 @@ Refactor API configuration to use a consistent proxy base URL; implement proxy h
 Update hero.tsx
 Update certification expiry date to be optional; enhance certification detail and list pages with improved media handling and markdown support
 Refactor experience detail page to remove LinkedIn post rendering; streamline image display logic
+Add media and related projects sections to experience detail page; improve error messages and loading states
