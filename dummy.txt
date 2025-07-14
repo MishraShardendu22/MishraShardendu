@@ -47,3 +47,4 @@ Implement proxy routing for certifications, experiences, projects, and skills; e
 Fix proxy URL construction by removing redundant '/api' prefix
 Refactor API configuration to use a consistent proxy base URL; implement proxy handling for API requests with error management
 Update hero.tsx
+Update certification expiry date to be optional; enhance certification detail and list pages with improved media handling and markdown support
