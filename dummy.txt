@@ -63,3 +63,4 @@ Add Education section and enhance footer with social links; update protected rou
 done
 Implement code changes to enhance functionality and improve performance
 first commit
+Refactor GetCertifications function to include reverseCerts for improved data presentation
