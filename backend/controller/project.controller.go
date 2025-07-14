@@ -21,6 +21,10 @@ func GetProjects(c *fiber.Ctx) error {
 		return util.ResponseAPI(c, fiber.StatusOK, "No projects found", nil, "")
 	}
 
+	for i, j := 0, len(projects)-1; i < j; i, j = i+1, j-1 {
+		projects[i], projects[j] = projects[j], projects[i]
+	}
+
 	return util.ResponseAPI(c, fiber.StatusOK, "Projects retrieved successfully", projects, "")
 }
 
@@ -98,7 +102,6 @@ func UpdateProjects(c *fiber.Ctx) error {
 }
 
 func RemoveProjects(c *fiber.Ctx) error {
-	// Since there's only one user, get the first user from the database
 	var user models.User
 	if err := mgm.Coll(&models.User{}).First(bson.M{}, &user); err != nil {
 		return util.ResponseAPI(c, fiber.StatusNotFound, "User not found", nil, "")
@@ -109,17 +112,31 @@ func RemoveProjects(c *fiber.Ctx) error {
 		return util.ResponseAPI(c, fiber.StatusBadRequest, "Project ID is required", nil, "")
 	}
 
-	updated := make([]primitive.ObjectID, 0, len(user.Projects))
-	for _, projID := range user.Projects {
-		if projID.Hex() == pid {
-			continue
-		}
-		updated = append(updated, projID)
+	// Convert pid to ObjectID
+	objID, err := primitive.ObjectIDFromHex(pid)
+	if err != nil {
+		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid project ID", nil, "")
 	}
 
+	// Remove reference from user.Projects
+	updated := make([]primitive.ObjectID, 0, len(user.Projects))
+	for _, projID := range user.Projects {
+		if projID != objID {
+			updated = append(updated, projID)
+		}
+	}
 	user.Projects = updated
+
+	// Update user
 	if err := mgm.Coll(&models.User{}).Update(&user); err != nil {
-		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to remove project from user", nil, "")
+		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to update user", nil, "")
+	}
+
+	// Delete actual project
+	proj := &models.Project{}
+	proj.SetID(objID)
+	if err := mgm.Coll(proj).Delete(proj); err != nil {
+		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to delete project", nil, "")
 	}
 
 	return util.ResponseAPI(c, fiber.StatusOK, "Project removed successfully", nil, "")

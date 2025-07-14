@@ -21,7 +21,16 @@ func GetExperiences(c *fiber.Ctx) error {
 		return util.ResponseAPI(c, fiber.StatusOK, "No experiences found", nil, "")
 	}
 
+	exps = reverseExperiences(exps)
+
 	return util.ResponseAPI(c, fiber.StatusOK, "Experiences retrieved successfully", exps, "")
+}
+
+func reverseExperiences(exps []models.Experience) []models.Experience {
+	for i, j := 0, len(exps)-1; i < j; i, j = i+1, j-1 {
+		exps[i], exps[j] = exps[j], exps[i]
+	}
+	return exps
 }
 
 func GetExperienceByID(c *fiber.Ctx) error {
@@ -140,6 +149,17 @@ func RemoveExperiences(c *fiber.Ctx) error {
 	user.Experiences = updated
 	if err := mgm.Coll(&models.User{}).Update(&user); err != nil {
 		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to remove experience", nil, "")
+	}
+
+	expObjID, err := primitive.ObjectIDFromHex(eid)
+	if err != nil {
+		return util.ResponseAPI(c, fiber.StatusBadRequest, "Invalid experience ID", nil, "")
+	}
+
+	proj := &models.Experience{}
+	proj.SetID(expObjID)
+	if err := mgm.Coll(proj).Delete(proj); err != nil {
+		return util.ResponseAPI(c, fiber.StatusInternalServerError, "Failed to delete experience", nil, "")
 	}
 
 	return util.ResponseAPI(c, fiber.StatusOK, "Experience removed successfully", nil, "")

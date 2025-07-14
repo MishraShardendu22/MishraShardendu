@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 
 export default function ProjectDetailPage({ params }: { params : any}) {
   const [project, setProject] = useState<Project | null>(null);
@@ -57,6 +58,7 @@ export default function ProjectDetailPage({ params }: { params : any}) {
         console.log('Error sharing:', err);
       }
     } else {
+      toast.success('Project link copied to clipboard!');
       navigator.clipboard.writeText(window.location.href);
     }
     setTimeout(() => setShareClicked(false), 1500);
@@ -368,7 +370,7 @@ function ProjectJsonLd({ project }: { project: Project }) {
     '@type': 'CreativeWork',
     name: project.project_name,
     description: project.small_description,
-    url: `https://mishrashardendu.com/projects/${project.id}`,
+    url: `https://mishrashardendu22.is-a.dev/projects/${project.id}`,
     creator: {
       '@type': 'Person',
       name: 'Shardendu Mishra',
