@@ -1,9 +1,0 @@
-{
-  "project_name": "Google-Trends",
-  "small_description": "A Go CLI tool for parsing Google Trends RSS feeds",
-  "description": "Google-Trends is a Go CLI application that fetches and parses trending search topics from Google Trends RSS feeds. It uses the req package for HTTP requests, parses XML data to extract trend information including titles, traffic estimates, article links, and news sources. The application is structured with separate modules for data fetching and type definitions, demonstrating clean Go architecture for RSS feed processing.",
-  "skills": ["GoLang", "RSS Parsing", "XML Processing", "HTTP Requests", "CLI Application", "Data Fetching", "Struct Definitions"],
-  "project_repository": "https://github.com/MishraShardendu22/Google-Trends",
-  "project_live_link": "",
-  "project_video": ""
-} 

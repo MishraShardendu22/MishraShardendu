@@ -1,9 +1,0 @@
-{
-  "project_name": "PaymentGateway-LLD",
-  "small_description": "A C++ payment gateway system implementing multiple design patterns for payment processing",
-  "description": "PaymentGateway-LLD is a comprehensive C++ implementation of a payment gateway system that demonstrates several design patterns. It uses the Template Method Pattern for defining payment flow, Strategy Pattern for different banking systems, Proxy Pattern for retry mechanisms, Factory Pattern for gateway creation, and multiple Singleton patterns for services. The system supports multiple payment gateways (Paytm, Razorpay) with validation, initiation, and confirmation steps, following SOLID principles.",
-  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Template Method Pattern", "Strategy Pattern", "Proxy Pattern", "Factory Pattern", "Singleton Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism"],
-  "project_repository": "https://github.com/MishraShardendu22/PaymentGateway-LLD",
-  "project_live_link": "",
-  "project_video": ""
-} 

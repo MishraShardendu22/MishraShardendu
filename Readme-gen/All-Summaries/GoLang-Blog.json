@@ -1,9 +1,0 @@
-{
-  "project_name": "GoLang-Blog",
-  "small_description": "A full-stack blog platform built with Go backend and React frontend",
-  "description": "GoLang-Blog is a full-stack blog platform featuring a Go backend with MongoDB integration and a React frontend. The application includes user authentication with OTP verification, CRUD operations for blog posts, and secure email functionality using Go's net/smtp package. The frontend is built with React, Tailwind CSS, and Vite for optimal development experience and performance.",
-  "skills": ["GoLang", "React", "MongoDB", "Mongoose", "Tailwind CSS", "Vite", "SMTP", "OTP", "CRUD Operations", "User Authentication"],
-  "project_repository": "https://github.com/MishraShardendu22/GoLang-Blog",
-  "project_live_link": "https://frontend-goblog.onrender.com",
-  "project_video": ""
-} 

@@ -1,9 +1,0 @@
-{
-  "project_name": "Documentation-DragonBallAPI",
-  "small_description": "Comprehensive documentation for the Dragon Ball API built with Nextra",
-  "description": "Documentation-DragonBallAPI is a comprehensive documentation site built with Nextra for the Dragon Ball API. It provides detailed guides, visual documentation, and API reference for the Dragon Ball trivia API. The documentation includes interactive examples, usage guides, and visual representations to help developers understand and integrate with the Dragon Ball API effectively.",
-  "skills": ["Next.js", "Nextra", "React", "TypeScript", "Documentation", "API Documentation", "MDX"],
-  "project_repository": "https://github.com/MishraShardendu22/Documentation-DragonBallAPI",
-  "project_live_link": "https://shardendu-mishra-documentation-dragon-ball-api.vercel.app/",
-  "project_video": ""
-} 

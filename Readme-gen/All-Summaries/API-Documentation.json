@@ -1,9 +1,0 @@
-{
-  "project_name": "API-Documentation",
-  "small_description": "A comprehensive API documentation hub showcasing both SOAP and REST APIs",
-  "description": "API Hub is a comprehensive documentation platform built with Nextra that showcases two different types of APIs: a Project Management System using SOAP and a Dragon Ball API using REST. The project demonstrates versatility in working with both SOAP and REST APIs in a single application, featuring complete CRUD operations, intuitive interfaces for managing projects, and character information from the Dragon Ball universe.",
-  "skills": ["Next.js", "Nextra", "React", "TypeScript", "Tailwind CSS", "SOAP", "REST", "GraphQL", "Apollo", "Vite", "Bootstrap"],
-  "project_repository": "https://github.com/MishraShardendu22/API-Documentation",
-  "project_live_link": "https://api-documentation-git-main-shardendu-mishra-s-projects.vercel.app/",
-  "project_video": ""
-} 

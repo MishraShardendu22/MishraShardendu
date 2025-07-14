@@ -1,9 +1,0 @@
-{
-  "project_name": "Zepto-LLD",
-  "small_description": "A C++ implementation of a Zepto-like delivery system using multiple design patterns",
-  "description": "Zepto-LLD is a comprehensive C++ implementation of a Zepto-like hyperlocal delivery system that demonstrates several design patterns. It uses the Factory Pattern for product creation, Strategy Pattern for inventory replenishment, Singleton Pattern for managers, and follows SOLID principles. The system supports inventory management, dark store operations, user carts, order placement, and delivery partner assignment, providing a modular and extensible architecture for delivery platforms.",
-  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Factory Pattern", "Strategy Pattern", "Singleton Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism"],
-  "project_repository": "https://github.com/MishraShardendu22/Zepto-LLD",
-  "project_live_link": "",
-  "project_video": ""
-} 

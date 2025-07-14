@@ -1,9 +1,0 @@
-{
-  "project_name": "BloodBank",
-  "small_description": "A blood bank management system to ease the blood donation process",
-  "description": "BloodBank is a full-stack web application designed to streamline blood donation processes. The project features a React frontend with TypeScript, Vite, and comprehensive UI components from Radix UI, along with an Express.js backend with TypeScript. The system includes user authentication, blood donation management, and modern UI with dark mode support and animations.",
-  "skills": ["React", "TypeScript", "Vite", "Express.js", "Node.js", "MongoDB", "Mongoose", "Redux Toolkit", "Zustand", "Radix UI", "Tailwind CSS", "Framer Motion", "React Hook Form", "Zod", "JWT", "bcryptjs", "Axios"],
-  "project_repository": "https://github.com/MishraShardendu22/BloodBank",
-  "project_live_link": "",
-  "project_video": ""
-} 

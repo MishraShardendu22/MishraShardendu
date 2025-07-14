@@ -1,9 +1,0 @@
-{
-  "project_name": "Internship-Authentication",
-  "small_description": "A comprehensive authentication system for internship applications with JWT and OTP verification",
-  "description": "Internship-Authentication is a full-stack authentication system built for internship applications. It features a Node.js backend with JWT authentication, Nodemailer for email services, and cron jobs for automatic account cleanup. The frontend is built with Vite, React, Tailwind CSS, and Shadcn UI components. The system includes user registration, login, password recovery via OTP, and automatic deletion of unverified accounts after 24 hours using cron jobs.",
-  "skills": ["Node.js", "React", "Vite", "JWT", "Nodemailer", "Mongoose", "Cron Jobs", "Tailwind CSS", "Shadcn UI", "Authentication", "OTP Verification"],
-  "project_repository": "https://github.com/MishraShardendu22/Internship-Authentication",
-  "project_live_link": "https://frontend-internship.onrender.com/",
-  "project_video": ""
-} 

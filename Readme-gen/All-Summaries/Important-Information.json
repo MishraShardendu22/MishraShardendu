@@ -1,9 +1,0 @@
-{
-  "project_name": "Important-Information",
-  "small_description": "A comprehensive knowledge base containing important documentation and learning resources for web development",
-  "description": "Important-Information is a comprehensive repository containing essential documentation and learning resources for web development. It includes detailed guides on various technologies such as Go, Node.js, React, Next.js, Docker, Kubernetes, Redis, Redux Toolkit, and many more. The repository serves as a personal knowledge base with practical examples, code snippets, and best practices for modern web development technologies and tools.",
-  "skills": ["Documentation", "Go", "Node.js", "React", "Next.js", "Docker", "Kubernetes", "Redis", "Redux", "MongoDB", "Technical Writing", "Learning Resources"],
-  "project_repository": "https://github.com/MishraShardendu22/Important-Information",
-  "project_live_link": "",
-  "project_video": ""
-} 

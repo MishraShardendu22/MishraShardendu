@@ -1,9 +1,0 @@
-{
-  "project_name": "Go-TransferScript",
-  "small_description": "A Go script for automating GitHub repository transfers between accounts",
-  "description": "Go-TransferScript is a Go-based automation tool for transferring multiple GitHub repositories between personal accounts or organizations. It uses Go routines for parallel processing, Resty for optimized HTTP requests, and includes automatic retry mechanisms. The script reads GitHub tokens from environment variables and provides a lightweight solution for developers managing multiple GitHub accounts, especially useful for moving repositories from learning accounts to project accounts.",
-  "skills": ["GoLang", "GitHub API", "Resty", "GoDotEnv", "Concurrent Programming", "HTTP Requests", "Environment Variables", "Automation"],
-  "project_repository": "https://github.com/MishraShardendu22/Go-TransferScript",
-  "project_live_link": "",
-  "project_video": ""
-} 

@@ -1,9 +1,0 @@
-{
-  "project_name": "Documentation-Archive",
-  "small_description": "A comprehensive collection of important documentation covering Docker, Python types, and C++ unit testing",
-  "description": "Documentation-Archive is a repository containing important documentation files covering various technologies and concepts. It includes detailed guides on Docker containerization with comprehensive commands, Dockerfile structure, Docker Compose, networking, and volumes. The repository also contains documentation on Python types and C++ unit testing generation. This serves as a reference collection for development practices and learning materials.",
-  "skills": ["Documentation", "Docker", "Python", "C++", "Technical Writing", "Containerization", "Unit Testing"],
-  "project_repository": "https://github.com/MishraShardendu22/Documentation-Archive",
-  "project_live_link": "",
-  "project_video": ""
-} 

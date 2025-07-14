@@ -1,9 +1,0 @@
-{
-  "project_name": "frontend-neuro-assist-v2",
-  "small_description": "A React-based frontend application with comprehensive UI components and PWA capabilities",
-  "description": "frontend-neuro-assist-v2 is a modern React application built with TypeScript and Vite, featuring a comprehensive UI component library using Radix UI, Material-UI, and Tailwind CSS. The project includes PWA capabilities, image editing functionality with Filestack, advanced form handling, and state management with Zustand. It supports responsive design, animations with Framer Motion, and includes various UI components for building sophisticated user interfaces.",
-  "skills": ["React", "TypeScript", "Vite", "Tailwind CSS", "Radix UI", "Material-UI", "Zustand", "React Hook Form", "Framer Motion", "PWA", "Filestack", "Axios", "React Router", "Embla Carousel", "DaisyUI"],
-  "project_repository": "https://github.com/MishraShardendu22/frontend-neuro-assist-v2",
-  "project_live_link": "",
-  "project_video": ""
-} 

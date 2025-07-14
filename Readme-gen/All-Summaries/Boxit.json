@@ -1,9 +1,0 @@
-{
-  "project_name": "Boxit",
-  "small_description": "A Next.js application with modern UI components and database integration",
-  "description": "Boxit is a Next.js application built with modern web technologies including TypeScript, Tailwind CSS, and Radix UI components. The project features Clerk authentication, Drizzle ORM for database management, ImageKit integration for media handling, and comprehensive form handling with React Hook Form and Zod validation. The application includes advanced UI components and database migration tools.",
-  "skills": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Drizzle ORM", "Clerk", "Radix UI", "ImageKit", "React Hook Form", "Zod", "Neon Database", "Axios", "Framer Motion", "Embla Carousel"],
-  "project_repository": "https://github.com/MishraShardendu22/Boxit",
-  "project_live_link": "",
-  "project_video": ""
-} 

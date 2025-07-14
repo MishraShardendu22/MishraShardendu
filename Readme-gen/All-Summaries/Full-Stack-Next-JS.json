@@ -1,9 +1,0 @@
-{
-  "project_name": "Full-Stack-Next-JS",
-  "small_description": "A Next.js authentication system with MongoDB integration and comprehensive API testing",
-  "description": "Full-Stack-Next-JS is a complete authentication system built with Next.js, featuring user registration, login, logout, and email verification. The project integrates MongoDB Atlas for data persistence, uses JWT for authentication, bcryptjs for password hashing, and Nodemailer for email verification. It includes comprehensive API testing with Postman and features a modern UI built with Tailwind CSS, Radix UI components, and Framer Motion animations.",
-  "skills": ["Next.js", "React", "TypeScript", "MongoDB", "Mongoose", "JWT", "bcryptjs", "Nodemailer", "Tailwind CSS", "Radix UI", "Framer Motion", "Axios", "React Hot Toast", "React Toastify", "Postman"],
-  "project_repository": "https://github.com/MishraShardendu22/Full-Stack-Next-JS",
-  "project_live_link": "https://nextauth-git-main-shardendu-mishra.vercel.app/",
-  "project_video": ""
-} 

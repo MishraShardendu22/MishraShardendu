@@ -1,9 +1,0 @@
-{
-  "project_name": "AI-Agent-Ticketing",
-  "small_description": "A full-stack ticketing platform with AI-powered ticket analysis and automated moderator assignment",
-  "description": "AI-Agent-Ticketing is a MERN stack application that provides a comprehensive ticketing system with intelligent automation. The platform uses Agentic AI to analyze ticket descriptions, extract relevant skills, and automatically assign the most suitable moderators. It features Inngest for background workflow orchestration, user authentication, and automated email notifications for ticket routing and moderator assignments.",
-  "skills": ["React", "Vite", "Express.js", "Node.js", "MongoDB", "Mongoose", "Inngest", "Agentic AI", "JWT", "bcrypt", "Nodemailer", "Tailwind CSS", "DaisyUI", "React Router", "React Markdown"],
-  "project_repository": "https://github.com/MishraShardendu22/AI-Agent-Ticketing",
-  "project_live_link": "",
-  "project_video": ""
-} 

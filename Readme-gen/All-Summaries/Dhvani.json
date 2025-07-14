@@ -1,9 +1,0 @@
-{
-  "project_name": "Dhvani",
-  "small_description": "A multi-service health management platform with AI, nutrition, and blood bank modules",
-  "description": "Dhvani is a comprehensive health management platform integrating multiple microservices built with Go, Node.js, and Python, and a React-based frontend. It offers user and organization management, blood bank operations, an AI-powered chatbot, AI-driven medical image analysis (including TB detection), and personalized nutrition advice. The system features role-based dashboards, secure authentication, and advanced analytics, leveraging MongoDB and Redis for data storage and caching.",
-  "skills": ["React", "TypeScript", "Vite", "Tailwind CSS", "Shadcn/UI", "Framer Motion", "Zustand", "Leaflet", "Recharts", "Node.js", "Express.js", "MongoDB", "Mongoose", "JWT", "Bcryptjs", "Nodemailer", "Multer", "GoLang", "Fiber", "Redis", "Google Gemini API", "DeepSeek API", "OpenAI API", "Python", "Flask", "PyTorch", "Torchvision", "OpenCV", "Hugging Face Hub", "Grad-CAM"],
-  "project_repository": "https://github.com/MishraShardendu22/Dhvani",
-  "project_live_link": "",
-  "project_video": ""
-} 

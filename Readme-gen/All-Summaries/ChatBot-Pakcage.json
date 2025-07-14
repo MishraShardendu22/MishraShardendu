@@ -1,9 +1,0 @@
-{
-  "project_name": "ChatBot-Pakcage",
-  "small_description": "A plug-and-play chatbot widget and Go backend for real-time chat integration",
-  "description": "ChatBot-Pakcage provides a custom, reusable chatbot widget as an npm package for React applications, along with a Go backend for real-time chat and Redis integration. The package is designed for easy integration into any React project, supporting unique user sessions and scalable backend communication. The Go backend leverages Fiber and Redis for efficient, concurrent chat handling.",
-  "skills": ["React", "TypeScript", "Vite", "Rollup", "GoLang", "Fiber", "Redis", "UUID"],
-  "project_repository": "https://github.com/MishraShardendu22/chatbot-widget",
-  "project_live_link": "",
-  "project_video": ""
-} 

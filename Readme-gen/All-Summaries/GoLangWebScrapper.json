@@ -1,9 +1,0 @@
-{
-  "project_name": "GoLangWebScrapper",
-  "small_description": "A Go web scraper for extracting book data and exporting to CSV",
-  "description": "GoLangWebScrapper is a Go-based web scraping application that extracts book information from BooksToScrape.com. It uses the Colly framework for efficient web scraping, handles pagination automatically, and exports the scraped data (book titles and prices) to a CSV file. The application demonstrates web scraping best practices including domain restrictions, error handling, and structured data extraction.",
-  "skills": ["GoLang", "Colly", "Web Scraping", "CSV Export", "HTTP Requests", "HTML Parsing", "Data Extraction"],
-  "project_repository": "https://github.com/MishraShardendu22/GoLangWebScrapper",
-  "project_live_link": "",
-  "project_video": ""
-} 

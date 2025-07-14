@@ -1,9 +1,0 @@
-{
-  "project_name": "GitHub-Cleaner-Go",
-  "small_description": "A Go utility for cleaning unused UI components from React repositories",
-  "description": "GitHub-Cleaner-Go is a Go-based utility that automates the cleanup of unused UI components from React repositories. It clones repositories from GitHub, analyzes package.json files to identify React projects, scans for unused components in the ui directory, removes them, and automatically commits the changes. The tool uses GitHub's REST API and Git commands to streamline repository maintenance.",
-  "skills": ["GoLang", "GitHub API", "Git", "File System Operations", "Regular Expressions", "JSON Parsing", "HTTP Requests"],
-  "project_repository": "https://github.com/MishraShardendu22/GitHub-Cleaner-Go",
-  "project_live_link": "",
-  "project_video": ""
-} 

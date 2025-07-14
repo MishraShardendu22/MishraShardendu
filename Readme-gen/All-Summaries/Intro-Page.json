@@ -1,9 +1,0 @@
-{
-  "project_name": "Intro-Page",
-  "small_description": "A personal portfolio webpage built with HTML, CSS, and JavaScript",
-  "description": "Intro-Page is a personal portfolio webpage created as part of an assignment to develop a personal portfolio using HTML, CSS, and JavaScript. The page features a clean design with personal information, social media links, and responsive styling. It serves as a simple yet effective introduction page showcasing personal details and professional links.",
-  "skills": ["HTML", "CSS", "JavaScript", "Portfolio", "Responsive Design"],
-  "project_repository": "https://github.com/MishraShardendu22/Intro-Page",
-  "project_live_link": "https://intro-name-shardendu-mishra.netlify.app/",
-  "project_video": ""
-} 

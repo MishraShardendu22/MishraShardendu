@@ -1,9 +1,0 @@
-{
-  "project_name": "Docker-Project-1",
-  "small_description": "A simple Express.js application containerized with Docker for learning purposes",
-  "description": "Docker-Project-1 is a basic Express.js web application that serves as a learning project for Docker containerization. The project demonstrates Docker fundamentals including containerization, port mapping, and deployment. It features a simple landing page that navigates to the developer's GitHub account and showcases Docker's isolation, portability, and scalability features.",
-  "skills": ["Docker", "Express.js", "Node.js", "CORS", "Containerization"],
-  "project_repository": "https://github.com/MishraShardendu22/Docker-Project-1",
-  "project_live_link": "",
-  "project_video": ""
-} 

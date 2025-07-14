@@ -1,9 +1,0 @@
-{
-  "project_name": "AI-Chat-Bot",
-  "small_description": "A ChatGPT-like chatbot built with Gemini API and modern web technologies",
-  "description": "AI-Chat-Bot is a full-stack chatbot application that provides a ChatGPT-like experience using Google's Gemini API. The application features a modern React frontend with smooth animations powered by Framer Motion, Redux Toolkit for state management, and an Express.js backend that handles API communication with Gemini. The project is deployed on Render and includes features like real-time chat, toast notifications, and responsive design.",
-  "skills": ["React", "Vite", "Express.js", "Node.js", "MongoDB", "Mongoose", "Google Generative AI", "Redux Toolkit", "Framer Motion", "Tailwind CSS", "Axios", "React Hot Toast", "React Toastify", "CORS", "Nodemon"],
-  "project_repository": "https://github.com/MishraShardendu22/AI-Chat-Bot",
-  "project_live_link": "https://ai-front-yrlv.onrender.com",
-  "project_video": ""
-} 

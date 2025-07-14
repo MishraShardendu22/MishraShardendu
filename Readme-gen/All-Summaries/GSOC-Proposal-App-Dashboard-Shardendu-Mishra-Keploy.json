@@ -1,9 +1,0 @@
-{
-  "project_name": "GSOC-Proposal-App-Dashboard-Shardendu-Mishra-Keploy",
-  "small_description": "A GitHub user stats dashboard application built for GSoC proposal with Next.js frontend and Go backend",
-  "description": "GSOC-Proposal-App-Dashboard is a comprehensive GitHub user statistics application built as part of a Google Summer of Code proposal for Keploy. The application displays detailed statistics for GitHub users and their repositories with a modern UI built using Next.js, React.js, Tailwind CSS, and Shadcn UI. It features secure authentication using auth.js and a fast backend built with Go using the Go-Fiber framework. The project includes detailed documentation, wireframes, and a complete GSoC proposal.",
-  "skills": ["Next.js", "React.js", "Tailwind CSS", "Shadcn UI", "Go", "Go-Fiber", "auth.js", "GitHub API", "Dashboard Development", "GSoC"],
-  "project_repository": "https://github.com/MishraShardendu22/GSOC-Proposal-App-Dashboard-Shardendu-Mishra-Keploy",
-  "project_live_link": "https://keploy-dashboard-shardendu-mishra-gsoc.vercel.app",
-  "project_video": ""
-} 

@@ -1,9 +1,0 @@
-{
-  "project_name": "Language-Translate-TUI",
-  "small_description": "A terminal-based language translation CLI tool built with Go and bubbletea",
-  "description": "Language-Translate-TUI is a command-line interface (CLI) application built with Go that provides language translation functionality directly in the terminal. It uses the bubbletea library for creating interactive terminal user interfaces with scrollable menus for language selection. The application integrates with the Lingva API for translations and uses Cobra for command-line argument handling. Users can select source and target languages using arrow keys and get instant translations of their text input.",
-  "skills": ["Go", "CLI", "bubbletea", "Cobra", "API Integration", "Terminal UI", "Language Translation"],
-  "project_repository": "https://github.com/MishraShardendu22/Language-Translate-TUI",
-  "project_live_link": "",
-  "project_video": "https://www.youtube.com/watch?v=a3mmvskLweo"
-} 

@@ -1,9 +1,0 @@
-{
-  "project_name": "Nutrition-Calculator-MishraShardendu22",
-  "small_description": "A Go-based nutrition calculator application for dietary planning and health tracking",
-  "description": "Nutrition-Calculator-MishraShardendu22 is a Go application designed for nutrition calculation and dietary planning. The application helps users calculate nutritional values, track dietary intake, and plan healthy meals. Built with Go, it features modular architecture with separate packages for calculations, models, and utilities, providing a robust foundation for nutrition-related computations and health tracking.",
-  "skills": ["Go", "Nutrition Calculation", "Health Tracking", "Modular Architecture", "CLI Application"],
-  "project_repository": "https://github.com/MishraShardendu22/Nutrition-Calculator-MishraShardendu22",
-  "project_live_link": "https://nutrition-calculator-hvzj.onrender.com",
-  "project_video": ""
-} 

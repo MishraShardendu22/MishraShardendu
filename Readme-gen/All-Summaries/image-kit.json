@@ -1,9 +1,0 @@
-{
-  "project_name": "image-kit",
-  "small_description": "A Next.js application for image management and processing with ImageKit integration",
-  "description": "image-kit is a Next.js application built with modern web technologies for image management and processing. It features ImageKit integration for cloud-based image handling, comprehensive UI components using Radix UI, and authentication with NextAuth. The application includes form handling with React Hook Form and Zod validation, database integration with MongoDB and Mongoose, and a responsive design with Tailwind CSS and Framer Motion animations.",
-  "skills": ["Next.js", "React", "TypeScript", "ImageKit", "MongoDB", "Mongoose", "NextAuth", "Radix UI", "Tailwind CSS", "React Hook Form", "Zod", "Framer Motion"],
-  "project_repository": "https://github.com/MishraShardendu22/image-kit",
-  "project_live_link": "",
-  "project_video": ""
-} 

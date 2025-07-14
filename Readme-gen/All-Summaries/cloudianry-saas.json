@@ -1,9 +1,0 @@
-{
-  "project_name": "cloudianry-saas",
-  "small_description": "A SaaS platform for image and video upload, resizing, and management with Cloudinary integration",
-  "description": "Cloudinary SaaS Application is a modern web platform that enables users to upload, resize, and manage images and videos. It features Cloudinary AI for video processing, image resizing for social media, and secure authentication via Clerk. Built with Next.js, TypeScript, Tailwind CSS, and Prisma ORM, the app offers a responsive, user-friendly interface and seamless media management capabilities.",
-  "skills": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "Neon", "Cloudinary", "Clerk", "Axios", "DaisyUI", "Next-Cloudinary", "React Hot Toast", "React Toastify"],
-  "project_repository": "https://github.com/MishraShardendu22/cloudianry-saas",
-  "project_live_link": "https://cloudianry-saas.vercel.app",
-  "project_video": ""
-} 
