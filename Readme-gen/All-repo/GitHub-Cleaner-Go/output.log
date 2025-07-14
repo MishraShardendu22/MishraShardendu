@@ -1,0 +1,31 @@
+Starting in: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit
+Checking folder: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit
+Files: [.gitignore README.md Screenshot From 2025-06-28 14-13-18.pdf components.json drizzle.config.ts eslint.config.mjs middleware.ts next.config.ts package-lock.json package.json postcss.config.mjs tsconfig.json]
+No UI dir: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/src/components/ui
+Checking folder: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/.git
+Files: [FETCH_HEAD HEAD config description index packed-refs]
+No package.json in: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/.git
+Checking folder: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/Learning
+Files: [Drizzle.md]
+No package.json in: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/Learning
+Checking folder: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/app
+Files: [favicon.ico globals.css layout.tsx page.tsx provider.tsx]
+No package.json in: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/app
+Checking folder: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/components
+Files: [dashboard.tsx files.tsx landing.tsx profile.tsx sign-out.tsx signIn.tsx signUp.tsx]
+No package.json in: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/components
+Checking folder: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/drizzle
+Files: [0000_thin_dexter_bennett.sql]
+No package.json in: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/drizzle
+Checking folder: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/hooks
+Files: [use-mobile.ts]
+No package.json in: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/hooks
+Checking folder: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/lib
+Files: [utils.ts]
+No package.json in: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/lib
+Checking folder: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/public
+Files: []
+No package.json in: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/public
+Checking folder: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/schema
+Files: [signUpSchema.ts singInSchema.ts]
+No package.json in: /home/mishrashardendu22/Coding_Stuff_Fedora/Dev/Cleanup-Script/Boxit/schema

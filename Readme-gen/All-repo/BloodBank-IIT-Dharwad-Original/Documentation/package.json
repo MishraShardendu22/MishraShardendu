@@ -1,0 +1,31 @@
+{
+  "name": "blood-bank-management-system",
+  "version": "0.0.1",
+  "description": "Blood Bank Management System",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shuding/nextra-docs-template.git"
+  },
+  "author": "Shardendu Mishra",
+  "license": "IIIT Dharwad",
+  "bugs": {
+    "url": "https://github.com/MishraShardendu22"
+  },
+  "dependencies": {
+    "lucide-react": "^0.474.0",
+    "next": "^13.0.6",
+    "nextra": "latest",
+    "nextra-theme-docs": "latest",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.10",
+    "typescript": "^4.9.3"
+  }
+}

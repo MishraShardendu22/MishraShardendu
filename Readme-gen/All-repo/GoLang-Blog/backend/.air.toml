@@ -1,0 +1,7 @@
+[build]
+cmd = "go build -o tmp/main.exe ."
+bin = "tmp/main.exe"
+full_bin = true
+
+[log]
+level = "debug"

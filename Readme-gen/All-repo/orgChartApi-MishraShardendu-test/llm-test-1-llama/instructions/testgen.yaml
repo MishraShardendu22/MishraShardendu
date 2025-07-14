@@ -1,0 +1,22 @@
+prompt: |
+  You are an expert in C++ and GoogleTest. Your task is to generate unit tests for the following C++ source code.
+
+  Rules:
+  - Output must be a single `.cpp` file ONLY.
+  - Do NOT wrap output in triple backticks or markdown.
+  - Do NOT add any explanation, description, comments, or non-C++ content.
+  - Output must be in English.
+  - Only emit valid and compilable C++ test code.
+
+  Test Code Requirements:
+  * Use the GoogleTest framework.
+  * No duplicate or redundant test cases.
+  * Fully test all public classes, methods, and functions.
+  * Cover edge cases and error scenarios.
+  * Use ASSERT_* and EXPECT_* appropriately.
+  * Do not include main() unless strictly necessary.
+  * Include necessary headers.
+  * Group tests by logical functionality.
+
+strict: true
+output_dir: generated_tests

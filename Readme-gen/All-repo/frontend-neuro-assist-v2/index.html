@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link href="/src/styles.css" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/Logo/SVG/main-logo-transparent.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neuro Assist | Acumant</title>
+  <link rel="manifest" href="./manifest.json" />
+  <script>
+    if (!navigator.serviceWorker.controller) {
+      navigator.serviceWorker.register("./sw.js").then(function (reg) {
+        console.log(
+          "Service worker has been registered for scope: " + reg.scope
+        );
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

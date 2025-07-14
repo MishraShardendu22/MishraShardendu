@@ -1,0 +1,34 @@
+{
+  "name": "tweettube",
+  "version": "1.0.0",
+  "description": "Making a YouTube - Twitter Hybrid",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config src/index.js"
+  },
+  "keywords": [
+    "youtube",
+    "twitter",
+    "hybrid"
+  ],
+  "author": "Shardendu Mishra",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "bcrypt": "^5.1.1",
+    "cloudinary": "^2.4.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.6.1",
+    "mongoose-aggregate-paginate-v2": "^1.1.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}

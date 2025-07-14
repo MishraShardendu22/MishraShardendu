@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 250 40% 98%;
+    --foreground: 255 15% 20%;
+    --card: 250 40% 100%;
+    --card-foreground: 255 15% 20%;
+    --popover: 250 40% 100%;
+    --popover-foreground: 255 15% 20%;
+
+    --primary: 270 70% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 260 50% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 250 40% 90%;
+    --muted-foreground: 255 15% 45%;
+
+    --accent: 280 60% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 350 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 255 20% 85%;
+    --input: 255 20% 85%;
+    --ring: 270 70% 60%;
+
+    --chart-1: 270 70% 55%;
+    --chart-2: 280 60% 50%;
+    --chart-3: 260 50% 45%;
+    --chart-4: 250 60% 50%;
+    --chart-5: 290 50% 55%;
+
+    --radius: 0.75rem;
+    --sidebar-background: 250 40% 95%;
+    --sidebar-foreground: 255 15% 20%;
+    --sidebar-primary: 270 70% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 280 60% 60%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 255 20% 85%;
+    --sidebar-ring: 270 70% 60%;
+  }
+}
+
+@layer base {
+  .dark {
+    --background: 280 30% 8%;
+    --foreground: 250 30% 98%;
+
+    --card: 280 30% 12%;
+    --card-foreground: 250 30% 98%;
+
+    --popover: 280 30% 12%;
+    --popover-foreground: 250 30% 98%;
+
+    --primary: 270 85% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 280 75% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 280 30% 15%;
+    --muted-foreground: 250 30% 85%;
+
+    --accent: 280 75% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 350 75% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 280 30% 20%;
+    --input: 280 30% 20%;
+    --ring: 270 85% 70%;
+
+    --chart-1: 270 85% 65%;
+    --chart-2: 280 75% 60%;
+    --chart-3: 260 65% 55%;
+    --chart-4: 250 75% 60%;
+    --chart-5: 290 65% 65%;
+
+    --sidebar-background: 280 30% 8%;
+    --sidebar-foreground: 250 30% 98%;
+    --sidebar-primary: 270 85% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 280 75% 60%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 280 30% 20%;
+    --sidebar-ring: 270 85% 70%;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fade-in 0.5s ease-out;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+}
+
+* {
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

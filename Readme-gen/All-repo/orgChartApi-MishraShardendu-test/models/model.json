@@ -1,0 +1,59 @@
+{
+    //rdbms: server type, postgresql,mysql or sqlite3
+    "rdbms": "postgresql",
+    //filename: sqlite3 db file name
+    //"filename":"",
+    //host: server address,localhost by default;
+    "host": "127.0.0.1",
+    //port: server port, 5432 by default;
+    "port": 5433,
+    //dbname: Database name;
+    "dbname": "org_chart",
+    //schema: valid for postgreSQL, "public" by default;
+    "schema": "public",
+    //user: User name
+    "user": "postgres",
+    //password or passwd: Password
+    "password": "password",
+    //client_encoding: The character set used by drogon_ctl. it is empty string by default which
+    //means use the default character set.
+    //"client_encoding": "",
+    //table: An array of tables to be modelized. if the array is empty, all revealed tables are modelized.
+    "tables": [],
+    "relationships": {
+        "enabled": true,
+        "items": [
+            {
+                "type": "has many",
+                "original_table_name": "department",
+                "original_table_alias": "department",
+                "original_key": "id",
+                "target_table_name": "person",
+                "target_table_alias": "persons",
+                "target_key": "department_id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "job",
+                "original_table_alias": "job",
+                "original_key": "id",
+                "target_table_name": "person",
+                "target_table_alias": "persons",
+                "target_key": "job_id",
+                "enable_reverse": true
+            },
+            {
+                "type": "has many",
+                "original_table_name": "person",
+                "original_table_alias": "person",
+                "original_key": "id",
+                "target_table_name": "person",
+                "target_table_alias": "persons",
+                "target_key": "manager_id",
+                "enable_reverse": false
+            }
+
+        ]
+    }
+}

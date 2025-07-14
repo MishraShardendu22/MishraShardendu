@@ -1,0 +1,9 @@
+{
+  "project_name": "TicTacToe-LLD",
+  "small_description": "A C++ implementation of Tic Tac Toe game using design patterns and OOP principles",
+  "description": "TicTacToe-LLD is a C++ implementation of the classic Tic Tac Toe game that demonstrates object-oriented design principles and design patterns. It uses the Observer Pattern for game notifications, Strategy Pattern for different game rules, Factory Pattern for game creation, and follows SOLID principles. The system supports multiple players, customizable board sizes, and extensible rule sets for different game variations.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Observer Pattern", "Strategy Pattern", "Factory Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism"],
+  "project_repository": "https://github.com/MishraShardendu22/TicTacToe-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} 

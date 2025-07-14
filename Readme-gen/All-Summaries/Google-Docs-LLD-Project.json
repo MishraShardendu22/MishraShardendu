@@ -1,0 +1,9 @@
+{
+  "project_name": "Google-Docs-LLD-Project",
+  "small_description": "A C++ implementation of Google Docs-like document editor using design patterns",
+  "description": "Google-Docs-LLD-Project is a C++ implementation of a document editor that demonstrates several key design patterns and object-oriented principles. The project uses the Composite Pattern for document elements, Strategy Pattern for persistence strategies, and follows SOLID principles. It supports text, images, line breaks, and tab spaces, with extensible storage options including file and database persistence.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Composite Pattern", "Strategy Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism"],
+  "project_repository": "https://github.com/MishraShardendu22/Google-Docs-LLD-Project",
+  "project_live_link": "",
+  "project_video": ""
+} 

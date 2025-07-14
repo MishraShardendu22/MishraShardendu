@@ -1,0 +1,9 @@
+{
+  "project_name": "5Chan",
+  "small_description": "A feedback platform where users can share and receive anonymous feedback with OTP verification",
+  "description": "5Chan is a Next.js-based platform that allows users to share and receive anonymous feedback in a safe manner. Non-logged-in users can provide feedback for others, while logged-in users can receive feedback after completing OTP verification during signup. The platform includes server-side rendering, SEO optimization, and integrates with Gemini API for enhanced user experience.",
+  "skills": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB", "Mongoose", "NextAuth", "Nodemailer", "Zod", "Google Generative AI", "Embla Carousel", "Radix UI", "React Hook Form", "bcryptjs", "Axios"],
+  "project_repository": "https://github.com/MishraShardendu22/5-chan",
+  "project_live_link": "https://5-chan-shardendu-mishra.vercel.app",
+  "project_video": "https://youtu.be/FIjMpPrWSkM"
+} 

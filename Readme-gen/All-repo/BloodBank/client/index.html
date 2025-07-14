@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Blood Bank: A platform for managing blood donations and requests."
+    />
+    <meta
+      property="og:description"
+      content="A platform for managing blood donations and requests."
+    />
+    <meta
+      name="keywords"
+      content="blood bank, donations, blood, healthcare, medical"
+    />
+    <meta property="og:title" content="Blood Bank: Made By Shardendu Mishra" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:image" content="/OurBloodBank.png" />
+
+    <link rel="icon" href="/OurBloodBank.webp" type="webp" />
+    <title>Our Blood Bank ❣️</title>
+    <style>
+      #theme-toggle {
+        position: fixed;
+        z-index: 1000;
+        bottom: 10px;
+        left: 10px;
+        padding: 1px;
+        cursor: pointer;
+        background: #2c00cd;
+        border: none;
+        border-radius: 50%;
+        font-size: 20px;
+        transition:
+          transform 0.3s ease,
+          opacity 0.3s ease;
+      }
+
+      #theme-toggle:hover {
+        transform: scale(1.2);
+      }
+
+      #theme-toggle span {
+        display: inline-block;
+        transition: transform 0.5s ease;
+      }
+
+      .icon-rotate {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <button id="theme-toggle" aria-label="Toggle Theme">
+      <span>🌑</span>
+    </button>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+      const htmlElement = document.documentElement;
+      const themeIcon = themeToggle.querySelector('span');
+
+      if (localStorage.getItem('theme') === 'light') {
+        htmlElement.classList.remove('dark');
+        themeIcon.textContent = '☀️';
+      } else {
+        htmlElement.classList.add('dark');
+        themeIcon.textContent = '🌑';
+      }
+
+      // Add event listener to toggle button
+      themeToggle.addEventListener('click', () => {
+        themeIcon.classList.add('icon-rotate');
+        setTimeout(() => themeIcon.classList.remove('icon-rotate'), 200);
+
+        if (htmlElement.classList.contains('dark')) {
+          htmlElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+          themeIcon.textContent = '☀️';
+        } else {
+          htmlElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+          themeIcon.textContent = '🌑';
+        }
+      });
+    </script>
+  </body>
+</html>

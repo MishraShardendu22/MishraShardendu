@@ -1,0 +1,9 @@
+{
+  "project_name": "DragonBallAPI-GoLang",
+  "small_description": "A Go-based REST API for DragonBall character and episode data using Fiber framework",
+  "description": "DragonBallAPI-GoLang is a high-performance REST API built with Go and the Fiber framework, providing comprehensive DragonBall data including characters, arcs, and episodes. This is an advanced version of the TypeScript-based DragonBall API, optimized for performance and scalability. The API is free to use and can be integrated with any frontend application.",
+  "skills": ["GoLang", "Fiber", "MongoDB", "REST API", "Air (Hot Reload)"],
+  "project_repository": "https://github.com/MishraShardendu22/DragonBallAPI-GoLang",
+  "project_live_link": "https://dragonballapi-golang-1qjq.onrender.com",
+  "project_video": ""
+} 

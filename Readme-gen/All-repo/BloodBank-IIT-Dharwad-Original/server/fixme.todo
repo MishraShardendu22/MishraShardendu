@@ -1,0 +1,13 @@
+// No, Auth only after login
+//TODO: send jwt in register routes also
+
+// It's Fine
+//TODO: validation for email in all auth routes
+
+// Done
+//TODO: forgot to make post blood request route for patient
+//IMPROVE: function level try catches are not a good coding practice
+//Add /bloodbank in the end of mongo_db url to create a database named bloodbank in the mongodb cluster
+//TODO: updateInventory in organisation controller should recieve all the blood groups together in the body to update all of them at once
+//TODO: Inventory with zero values should be created when an organisation is registered
+//TODO: change the add blood donated route in organisation controller to take email of donor and then get the donorId from that email id and then use that donorid to add entry to database

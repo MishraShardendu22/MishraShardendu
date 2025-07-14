@@ -1,0 +1,12 @@
+name: Ping API every 2 minutes
+
+on:
+  schedule:
+    - cron: '*/2 * * * *'
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl API
+        run: curl -s https://portfolio-backend-i96y.onrender.com/api/test123

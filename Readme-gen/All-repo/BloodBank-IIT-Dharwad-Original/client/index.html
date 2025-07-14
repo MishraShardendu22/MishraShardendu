@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Blood Bank: A platform for managing blood donations and requests." />
+  <meta property="og:description" content="A platform for managing blood donations and requests." />
+  <meta name="keywords" content="blood bank, donations, blood, healthcare, medical" />
+  <meta property="og:title" content="Blood Bank: Made By Shardendu Mishra" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta property="og:image" content="/OurBloodBank.png" />
+
+  <link rel="icon" href="/blood-test.png" type="image/webp" />
+  <title>BloodSphere</title>
+  <style>
+    /* Reset and base styles for cross-browser compatibility */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #121212;
+      --bg-light: #f4f4f4;
+      --text-dark: #ffffff;
+      --text-light: #000000;
+      --toggle-bg-dark: #2c00cd;
+      --toggle-bg-light: #6a11cb;
+    }
+
+    html {
+      font-size: 16px;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Dark mode styles */
+    html.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    /* Light mode styles */
+    html:not(.dark) {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    /* Theme toggle button */
+    #theme-toggle {
+      position: fixed;
+      z-index: 1000;
+      bottom: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--toggle-bg-dark);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    html:not(.dark) #theme-toggle {
+      background: var(--toggle-bg-light);
+    }
+
+    #theme-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #theme-toggle span {
+      font-size: 24px;
+      display: inline-block;
+      transition:
+        transform 0.5s ease,
+        opacity 0.3s ease;
+    }
+
+    .icon-rotate {
+      transform: rotate(180deg);
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 600px) {
+      #theme-toggle {
+        width: 40px;
+        height: 40px;
+        bottom: 10px;
+        left: 10px;
+      }
+
+      #theme-toggle span {
+        font-size: 20px;
+      }
+    }
+
+    /* Ensure no horizontal scrolling */
+    @media screen and (max-width: 480px) {
+      body {
+        overflow-x: hidden;
+      }
+    }
+
+    /* Improve text legibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

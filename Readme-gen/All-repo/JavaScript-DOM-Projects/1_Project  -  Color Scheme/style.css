@@ -1,0 +1,49 @@
+  .body {
+      margin: 0;
+  }
+  
+  span {
+    display: block;
+  }
+
+
+  .name {
+    font-size: 3rem;
+    text-align: center;
+    align-content: center;
+    font-weight: 900;
+    color: aqua;
+    border: 10px solid 0;
+    border-radius: 10px;
+    text-shadow: 2px 2px 4px rgba(2, 2, 2, 2);
+  }
+
+  .canvas {
+    margin: 200px auto 100px;
+    width: 90%;
+    text-align: center;
+  }
+  
+  .button {
+    width: 100px;
+    height: 100px;
+    border: solid black 2px;
+    margin: 2rem;
+    display: inline-block;    
+  }
+  
+  #grey {
+    background: grey;
+  }
+  #white {
+    background: white;
+  }
+  #violet {
+    background: violet;
+  }
+  #yellow {
+    background: yellow;
+  }
+  #purple {
+    background: purple;
+  }

@@ -1,0 +1,55 @@
+{
+  "project_name": "Real-Time-Chat-Application",
+  "description": "WhatsGram2.0 is a real-time chat application built with React frontend and Express backend. Features user-friendly UI with Tailwind CSS, responsive design, real-time messaging capabilities, and modern UI components from shadcn and Acentricity UI. Deployed on Render with separate frontend and backend services.",
+  "project_repository": "https://github.com/MishraShardendu22/Real-Time-Chat-Application",
+  "project_live_link": "https://whatsgram2-0-front-1.onrender.com/",
+  "project_video": "",
+  "skills": [
+    "React",
+    "TypeScript",
+    "Express.js",
+    "Node.js",
+    "Tailwind CSS",
+    "Socket.IO",
+    "Vite",
+    "shadcn UI",
+    "Radix UI",
+    "Framer Motion",
+    "Zustand",
+    "Axios",
+    "React Router",
+    "React Icons",
+    "Lucide React",
+    "Render"
+  ],
+  "design_patterns": [
+    "Real-Time Communication",
+    "Client-Server Architecture",
+    "Component-Based Design",
+    "State Management",
+    "WebSocket Integration",
+    "Responsive Design",
+    "RESTful API Design",
+    "Event-Driven Architecture"
+  ],
+  "system_design": {
+    "architecture": "Full-Stack Real-Time Chat Application",
+    "frontend": "React with TypeScript and Vite",
+    "backend": "Express.js with Node.js",
+    "real_time": "Socket.IO for live messaging",
+    "styling": "Tailwind CSS with shadcn UI components",
+    "state_management": "Zustand for client-side state",
+    "deployment": "Render for both frontend and backend",
+    "features": [
+      "Real-time messaging",
+      "User-friendly chat interface",
+      "Responsive design for mobile and desktop",
+      "Modern UI with animations",
+      "Icon integration with React Icons and Lucide",
+      "Toast notifications",
+      "Avatar and user management",
+      "Scroll area for chat history",
+      "Dialog components for interactions"
+    ]
+  }
+} 

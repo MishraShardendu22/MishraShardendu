@@ -1,0 +1,9 @@
+{
+  "project_name": "JavaScript-DOM-Projects",
+  "small_description": "A collection of interactive JavaScript DOM projects for learning and practice",
+  "description": "JavaScript-DOM-Projects is a comprehensive collection of interactive web applications built with JavaScript and DOM manipulation. The repository includes 7 different projects: Color Scheme Generator, BMI Calculator, Real-time Clock, Guess The Number Game, Key Press Detector, Unlimited Colors Generator, and Personal Card using API. Each project demonstrates different aspects of JavaScript DOM manipulation, event handling, and API integration for learning purposes.",
+  "skills": ["JavaScript", "DOM Manipulation", "HTML", "CSS", "API Integration", "Event Handling", "Interactive Web Apps"],
+  "project_repository": "https://github.com/MishraShardendu22/JavaScript-DOM-Projects",
+  "project_live_link": "",
+  "project_video": ""
+} 

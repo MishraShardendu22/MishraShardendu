@@ -1,0 +1,11 @@
+1.) How to add Tailwind
+    - npx astro add tailwind
+
+
+2.) File based Routing in Astro : 
+    - ( In Pages either directly create a route with .astro to visit that or create a folve with that route anem and add an index.astro file )
+
+    1. Direct .astro file: You can create a `.astro` file in the `src/pages` directory, and it will be directly accessible as a route. For example, `src/pages/about.astro` will be available at `/about`.
+    2. Folder with index.astro: You can also create a folder with the route name and include an `index.astro` file inside it. For example, creating `src/pages/blog/index.astro` will make it accessible at `/blog`.
+
+    Both methods are correct for creating routes in Astro.

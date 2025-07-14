@@ -1,0 +1,187 @@
+/* EmailTemplate.css */
+.email-container {
+    min-height: 100vh;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f3e5f5 0%, #ede7f6 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .email-card {
+    max-width: 600px;
+    width: 100%;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
+  }
+  
+  .email-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .header-icon {
+    width: 48px;
+    height: 48px;
+    color: #673ab7;
+    margin-bottom: 1rem;
+  }
+  
+  .email-header h1 {
+    color: #4a148c;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .header-line {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #9c27b0, #673ab7);
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+  
+  .greeting {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .greeting-icon {
+    width: 20px;
+    height: 20px;
+    color: #673ab7;
+  }
+  
+  .greeting p {
+    font-size: 1.125rem;
+    color: #333;
+  }
+  
+  .greeting strong {
+    color: #4a148c;
+  }
+  
+  .message {
+    margin-left: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  .otp-section {
+    text-align: center;
+    margin: 2rem 0;
+  }
+  
+  .otp-container {
+    display: inline-block;
+    background: linear-gradient(135deg, #ede7f6 0%, #f3e5f5 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #d1c4e9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .otp-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .otp-icon {
+    width: 24px;
+    height: 24px;
+    color: #673ab7;
+  }
+  
+  .otp-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4a148c;
+    letter-spacing: 0.25em;
+  }
+  
+  .otp-validity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #673ab7;
+    font-size: 0.875rem;
+  }
+  
+  .validity-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .warning-box {
+    background-color: #f3e5f5;
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  .warning-icon {
+    width: 20px;
+    height: 20px;
+    color: #673ab7;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  
+  .warning-box p {
+    color: #4a148c;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  
+  .divider {
+    height: 1px;
+    background-color: #e1bee7;
+    margin: 2rem 0;
+  }
+  
+  .footer-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #666;
+    font-size: 0.875rem;
+  }
+  
+  .footer-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .copyright {
+    margin-top: 1.5rem;
+    color: #9575cd;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+  
+  @media (max-width: 640px) {
+    .email-container {
+      padding: 1rem;
+    }
+  
+    .email-card {
+      padding: 1.5rem;
+    }
+  
+    .otp-number {
+      font-size: 2rem;
+    }
+  }

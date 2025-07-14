@@ -1,0 +1,51 @@
+{
+  "project_name": "MishraShardendu",
+  "description": "A comprehensive full-stack portfolio application showcasing Shardendu Mishra's work. Features a modern Next.js frontend with TypeScript and Tailwind CSS, and a robust Go backend with JWT authentication, MongoDB integration, and RESTful APIs. The application includes project management, skills tracking, and experience documentation with both public and protected endpoints.",
+  "project_repository": "https://github.com/MishraShardendu22/MishraShardendu",
+  "project_live_link": "",
+  "project_video": "",
+  "skills": [
+    "Go",
+    "Fiber",
+    "MongoDB",
+    "JWT",
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Radix UI",
+    "React Hook Form",
+    "Zod",
+    "Zustand",
+    "Chart.js",
+    "TipTap",
+    "Vercel Analytics"
+  ],
+  "design_patterns": [
+    "RESTful API Design",
+    "JWT Authentication",
+    "MVC Architecture",
+    "Repository Pattern",
+    "Middleware Pattern",
+    "Component-Based Architecture",
+    "State Management",
+    "Form Validation",
+    "Error Handling"
+  ],
+  "system_design": {
+    "architecture": "Full-Stack Web Application",
+    "frontend": "Next.js with TypeScript and Tailwind CSS",
+    "backend": "Go with Fiber framework and MongoDB",
+    "authentication": "JWT-based authentication with admin routes",
+    "database": "MongoDB with Mongoose ODM",
+    "deployment": "Vercel for frontend, backend deployment ready",
+    "features": [
+      "Public portfolio display",
+      "Admin authentication",
+      "CRUD operations for projects",
+      "Skills management",
+      "Experience tracking",
+      "Responsive design",
+      "Real-time data updates"
+    ]
+  }
+} 

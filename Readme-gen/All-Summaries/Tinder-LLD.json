@@ -1,0 +1,9 @@
+{
+  "project_name": "Tinder-LLD",
+  "small_description": "A C++ dating app system implementing multiple design patterns for user matching and communication",
+  "description": "Tinder-LLD is a comprehensive C++ implementation of a dating application that demonstrates several design patterns. It uses the Observer Pattern for notifications, Strategy Pattern for different matching algorithms (Basic, Interests-based, Location-based), Factory Pattern for matcher creation, and Singleton Pattern for services. The system supports user profiles, location-based matching, chat functionality, swipe mechanics, and follows SOLID principles for extensible dating platform design.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Observer Pattern", "Strategy Pattern", "Factory Pattern", "Singleton Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism", "Smart Pointers"],
+  "project_repository": "https://github.com/MishraShardendu22/Tinder-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} 

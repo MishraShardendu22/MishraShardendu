@@ -1,0 +1,8 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+.hover\:bg-orange-600:hover {
+    background-color: #ed8936; /* Change this color to the desired hover color */
+}

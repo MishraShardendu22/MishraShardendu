@@ -1,0 +1,361 @@
+
+
+## Organisation Endpoints
+
+**Organisation User Type:**  
+Organisations (such as hospitals and NGOs) can manage blood donation camps, update blood inventories, view blood requests from patients, and manage donation locations. They also have access to analytical data regarding donations and requests.
+
+### 1. Register Organisation
+
+- **URL:** `/register`
+- **Method:** `POST`
+- **Description:** Creates a new organisation account.
+- **Request Body Example:**
+  ```json
+  {
+    "organisationName": "City Hospital",
+    "email": "contact@cityhospital.com",
+    "password": "orgPassword123",
+    "phoneNo": "1010101010"
+  }
+  ```
+- **Response Example:**
+  ```json
+  {
+    "message": "Organisation registered successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### 2. Login Organisation
+
+- **URL:** `/login`
+- **Method:** `POST`
+- **Description:** Authenticates an organisation and returns an access token.
+- **Request Body Example:**
+  ```json
+  {
+    "email": "contact@cityhospital.com",
+    "password": "orgPassword123"
+  }
+  ```
+- **Response Example:**
+  ```json
+  {
+    "message": "Organisation login successful",
+    "data": "eyJhbGciOiJIUzI1..."
+  }
+  ```
+
+---
+
+### 3. Send OTP (Organisation)
+
+- **URL:** `/sendOtpOrganisation`
+- **Method:** `POST`
+- **Description:** Sends an OTP to the organisation’s registered email for password reset.
+- **Request Body Example:**
+  ```json
+  {
+    "email": "contact@cityhospital.com"
+  }
+  ```
+- **Response Example:**
+  ```json
+  {
+    "message": "OTP sent successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### 4. Verify OTP (Organisation)
+
+- **URL:** `/verifyOtpOrganisation`
+- **Method:** `POST`
+- **Description:** Validates the OTP provided by the organisation.
+- **Request Body Example:**
+  ```json
+  {
+    "email": "contact@cityhospital.com",
+    "otp": "112233"
+  }
+  ```
+- **Response Example:**
+  ```json
+  {
+    "message": "OTP verified successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### 5. Reset Password (Organisation)
+
+- **URL:** `/resetPassOrganisation`
+- **Method:** `POST`
+- **Description:** Resets the organisation’s password using the provided new password.
+- **Request Body Example:**
+  ```json
+  {
+    "email": "contact@cityhospital.com",
+    "newPassword": "newOrgPassword456"
+  }
+  ```
+- **Response Example:**
+  ```json
+  {
+    "message": "Password reset successful",
+    "data": []
+  }
+  ```
+
+---
+
+### 6. Get Analytics
+
+- **URL:** `/getAnalytics`
+- **Method:** `GET`
+- **Middleware:** `organisationMiddleware`
+- **Description:** Retrieves analytical data for the organisation, such as total donations, pending requests, and completed requests.
+- **Response Example:**
+  ```json
+  {
+    "message": "Analytics data fetched successfully",
+    "data": {
+      "totalDonations": 120,
+      "pendingRequests": 5,
+      "completedRequests": 95
+    }
+  }
+  ```
+
+---
+
+### 7. Get Inventory
+
+- **URL:** `/getInventory`
+- **Method:** `GET`
+- **Middleware:** `organisationMiddleware`
+- **Description:** Retrieves the current blood inventory of the organisation, detailing available blood types and their quantities.
+- **Response Example:**
+  ```json
+  {
+    "message": "Inventory fetched successfully",
+    "data": [
+      { "bloodType": "A+", "quantity": 10 },
+      { "bloodType": "B-", "quantity": 5 }
+    ]
+  }
+  ```
+
+---
+
+### 8. Get Blood Requests
+
+- **URL:** `/getBloodRequests`
+- **Method:** `GET`
+- **Middleware:** `organisationMiddleware`
+- **Description:** Retrieves all blood requests that have been submitted by patients and directed to the organisation.
+- **Response Example:**
+  ```json
+  {
+    "message": "Blood requests fetched successfully",
+    "data": [
+      {
+        "requestId": "req_001",
+        "patientName": "Jane Smith",
+        "bloodType": "B-",
+        "status": "Pending"
+      }
+    ]
+  }
+  ```
+
+---
+
+### 9. Get Donation Locations
+
+- **URL:** `/getDonationLocations`
+- **Method:** `GET`
+- **Middleware:** `organisationMiddleware`
+- **Description:** Retrieves a list of all donation locations managed by the organisation.
+- **Response Example:**
+  ```json
+  {
+    "message": "Donation locations fetched successfully",
+    "data": [
+      {
+        "locationId": "loc_001",
+        "name": "City Hospital Main Campus",
+        "address": "123 Health Blvd, City"
+      }
+    ]
+  }
+  ```
+
+---
+
+### 10. Add Donation Location
+
+- **URL:** `/addDonationLocation`
+- **Method:** `POST`
+- **Middleware:** `organisationMiddleware`
+- **Description:** Adds a new donation location under the organisation’s management.
+- **Request Body Example:**
+  ```json
+  {
+    "name": "City Hospital West Wing",
+    "address": "456 West St, City",
+    "phoneNo": "1011121314"
+  }
+  ```
+- **Response Example:**
+  ```json
+  {
+    "message": "Donation location added successfully",
+    "data": {
+      "locationId": "loc_002"
+    }
+  }
+  ```
+
+---
+
+### 11. Add Blood Donated
+
+- **URL:** `/addBloodDonated`
+- **Method:** `POST`
+- **Middleware:** `organisationMiddleware`
+- **Description:** Records a new blood donation event using donor details.
+- **Request Body Example:**
+  ```json
+  {
+    "donorId": "donor_001",
+    "bloodType": "A+",
+    "quantity": 1,
+    "donationDate": "2025-01-20"
+  }
+  ```
+- **Response Example:**
+  ```json
+  {
+    "message": "Donation record added successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### 12. Update Inventory
+
+- **URL:** `/updateInventory`
+- **Method:** `PATCH`
+- **Middleware:** `organisationMiddleware`
+- **Description:** Updates the blood inventory of the organisation by modifying the quantity for a specific blood type.
+- **Request Body Example:**
+  ```json
+  {
+    "bloodType": "A+",
+    "quantity": 15
+  }
+  ```
+- **Response Example:**
+  ```json
+  {
+    "message": "Inventory updated successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### 13. Complete Blood Request
+
+- **URL:** `/completeBloodRequest`
+- **Method:** `PATCH`
+- **Middleware:** `organisationMiddleware`
+- **Description:** Marks a patient’s blood request as completed, updating its status.
+- **Request Body Example:**
+  ```json
+  {
+    "requestId": "req_001",
+    "status": "Completed"
+  }
+  ```
+- **Response Example:**
+  ```json
+  {
+    "message": "Blood request marked as completed",
+    "data": []
+  }
+  ```
+
+---
+
+### 14. Update Donation Location
+
+- **URL:** `/updateDonationLocation`
+- **Method:** `PATCH`
+- **Middleware:** `organisationMiddleware`
+- **Description:** Updates the details of an existing donation location managed by the organisation.
+- **Request Body Example:**
+  ```json
+  {
+    "locationId": "loc_002",
+    "name": "City Hospital Updated West Wing",
+    "address": "456 West St, New City"
+  }
+  ```
+- **Response Example:**
+  ```json
+  {
+    "message": "Donation location updated successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### 15. Delete Donation Location
+
+- **URL:** `/deleteDonationLocation`
+- **Method:** `DELETE`
+- **Middleware:** `organisationMiddleware`
+- **Description:** Deletes a donation location managed by the organisation. The location identifier can be provided as a query parameter or in the request body.
+- **Response Example:**
+  ```json
+  {
+    "message": "Donation location deleted successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### 16. Update Organisation Account
+
+- **URL:** `/updateorganisation`
+- **Method:** `PUT`
+- **Middleware:** `organisationMiddleware`
+- **Description:** Updates the authenticated organisation’s account details, such as contact information or address.
+- **Request Body Example:**
+  ```json
+  {
+    "phoneNo": "1010102020",
+    "address": "Updated Address, City"
+  }
+  ```
+- **Response Example:**
+  ```json
+  {
+    "message": "Organisation account updated successfully",
+    "data": []
+  }
+  ```
+
+---

@@ -1,0 +1,365 @@
+Below is the complete MDX file content with your improved Admin Endpoints documentation:
+
+```mdx
+---
+title: Admin Endpoints
+---
+
+## Admin Endpoints
+
+The following endpoints are available to the Admin user. Admins are responsible for overseeing the entire system, managing user accounts (donors, patients, organisations), blood requests, donation locations, and accessing system-wide analytics.
+
+---
+
+### 1. Register Admin
+
+- **URL:** `/register`
+- **Method:** `POST`
+- **Description:** Creates a new admin account.
+- **Request Body:**
+  ```json
+  {
+    "username": "adminUser",
+    "email": "admin@example.com",
+    "password": "adminPassword123"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "message": "Admin registered successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### 2. Login Admin
+
+- **URL:** `/login`
+- **Method:** `POST`
+- **Description:** Authenticates an admin and returns an access token.
+- **Request Body:**
+  ```json
+  {
+    "email": "admin@example.com",
+    "password": "adminPassword123"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "message": "Admin login successful",
+    "data": "Bearer eyJhbGciOiJIUzI1..."
+  }
+  ```
+
+---
+
+### 3. Send OTP (Admin)
+
+- **URL:** `/sendOtpAdmin`
+- **Method:** `POST`
+- **Description:** Sends an OTP to the admin’s registered email for password reset.
+- **Request Body:**
+  ```json
+  {
+    "email": "admin@example.com"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "message": "OTP sent successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### 4. Verify OTP (Admin)
+
+- **URL:** `/verifyOtpAdmin`
+- **Method:** `POST`
+- **Description:** Validates the OTP provided by the admin.
+- **Request Body:**
+  ```json
+  {
+    "email": "admin@example.com",
+    "otp": "445566"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "message": "OTP verified successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### 5. Reset Password (Admin)
+
+- **URL:** `/resetPassAdmin`
+- **Method:** `POST`
+- **Description:** Resets the admin’s password.
+- **Request Body:**
+  ```json
+  {
+    "email": "admin@example.com",
+    "newPassword": "newAdminPassword456"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "message": "Password reset successful",
+    "data": []
+  }
+  ```
+
+---
+
+### 6. Verify Admin
+
+- **URL:** `/verifyAdmin`
+- **Method:** `GET`
+- **Middleware:** `adminMiddleware`
+- **Description:** Confirms that the admin is authenticated and returns the admin’s profile details.
+- **Response:**
+  ```json
+  {
+    "message": "Admin is authenticated",
+    "data": {
+      "id": "admin_001",
+      "username": "adminUser",
+      "email": "admin@example.com"
+    }
+  }
+  ```
+
+---
+
+### 7. Get Donors
+
+- **URL:** `/getDonors`
+- **Method:** `GET`
+- **Middleware:** `adminMiddleware`
+- **Description:** Retrieves a list of all donor accounts.
+- **Response:**
+  ```json
+  {
+    "message": "Donors fetched successfully",
+    "data": [
+      {
+        "id": "donor_001",
+        "name": "John Doe",
+        "email": "johndoe@example.com"
+      }
+    ]
+  }
+  ```
+
+---
+
+### 8. Get Patients
+
+- **URL:** `/getPatients`
+- **Method:** `GET`
+- **Middleware:** `adminMiddleware`
+- **Description:** Retrieves a list of all patient accounts.
+- **Response:**
+  ```json
+  {
+    "message": "Patients fetched successfully",
+    "data": [
+      {
+        "id": "patient_001",
+        "name": "Jane Smith",
+        "email": "janesmith@example.com"
+      }
+    ]
+  }
+  ```
+
+---
+
+### 9. Get Organisations
+
+- **URL:** `/getOrganisation`
+- **Method:** `GET`
+- **Middleware:** `adminMiddleware`
+- **Description:** Retrieves a list of all organisation accounts.
+- **Response:**
+  ```json
+  {
+    "message": "Organisations fetched successfully",
+    "data": [
+      {
+        "id": "org_001",
+        "organisationName": "City Hospital",
+        "email": "contact@cityhospital.com"
+      }
+    ]
+  }
+  ```
+
+---
+
+### 10. Get Blood Requests
+
+- **URL:** `/getBloodRequests`
+- **Method:** `GET`
+- **Middleware:** `adminMiddleware`
+- **Description:** Retrieves all blood requests across the system.
+- **Response:**
+  ```json
+  {
+    "message": "Blood requests fetched successfully",
+    "data": [
+      {
+        "requestId": "req_001",
+        "bloodType": "B-",
+        "patientName": "Jane Smith",
+        "status": "Pending"
+      }
+    ]
+  }
+  ```
+
+---
+
+### 11. Get Donation Locations
+
+- **URL:** `/getDonationLocations`
+- **Method:** `GET`
+- **Middleware:** `adminMiddleware`
+- **Description:** Retrieves all donation locations from registered organisations.
+- **Response:**
+  ```json
+  {
+    "message": "Donation locations fetched successfully",
+    "data": [
+      {
+        "id": "loc_001",
+        "name": "City Hospital Main Campus",
+        "address": "123 Health Blvd, City"
+      }
+    ]
+  }
+  ```
+
+---
+
+### 12. Delete Donor
+
+- **URL:** `/deleteDonor`
+- **Method:** `DELETE`
+- **Middleware:** `adminMiddleware`
+- **Description:** Deletes a donor account using the provided donor ID.
+- **Request Parameter:**  
+  - `donorId` (passed via query string or request body)
+- **Response:**
+  ```json
+  {
+    "message": "Donor deleted successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### 13. Delete Patient
+
+- **URL:** `/deletePatient`
+- **Method:** `DELETE`
+- **Middleware:** `adminMiddleware`
+- **Description:** Deletes a patient account.
+- **Response:**
+  ```json
+  {
+    "message": "Patient deleted successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### 14. Delete Organisation
+
+- **URL:** `/deleteOrganisation`
+- **Method:** `DELETE`
+- **Middleware:** `adminMiddleware`
+- **Description:** Deletes an organisation account.
+- **Response:**
+  ```json
+  {
+    "message": "Organisation deleted successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### 15. Delete Blood Request
+
+- **URL:** `/deleteBloodRequest`
+- **Method:** `DELETE`
+- **Middleware:** `adminMiddleware`
+- **Description:** Deletes a blood request from the system.
+- **Response:**
+  ```json
+  {
+    "message": "Blood request deleted successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### 16. Delete Donation Location
+
+- **URL:** `/deleteDonationLocation`
+- **Method:** `DELETE`
+- **Middleware:** `adminMiddleware`
+- **Description:** Deletes a donation location.
+- **Response:**
+  ```json
+  {
+    "message": "Donation location deleted successfully",
+    "data": []
+  }
+  ```
+
+---
+
+### Additional Admin Endpoint
+
+#### Get Admin Data
+
+- **URL:** `/admin/getAdminData`
+- **Method:** `GET`
+- **Middleware:** `adminMiddleware`
+- **Description:** Retrieves the profile details of the authenticated admin. The admin's ID is extracted from the JWT token.
+- **Sample Request:**
+  ```
+  GET /admin/getAdminData HTTP/1.1
+  Host: your-api-domain.com
+  Authorization: Bearer eyJhbGciOiJIUzI1...
+  ```
+- **Sample Response:**
+  ```json
+  {
+    "message": "Admin user found successfully",
+    "admin": {
+      "id": "603dcd9a2e8b2b3d1c8a1234",
+      "name": "Admin User",
+      "email": "admin@example.com",
+      "phoneNo": "1234567890",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    }
+  }
+  ```
+```

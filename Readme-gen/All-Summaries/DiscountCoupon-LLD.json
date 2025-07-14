@@ -1,0 +1,9 @@
+{
+  "project_name": "DiscountCoupon-LLD",
+  "small_description": "A C++ implementation of a discount coupon system (Low-Level Design)",
+  "description": "DiscountCoupon-LLD is a C++ project that implements the low-level design of a discount coupon system. The codebase demonstrates object-oriented design principles for managing coupons, applying discounts, and handling user interactions. The project is structured for clarity and extensibility, suitable for educational and interview preparation purposes.",
+  "skills": ["C++"],
+  "project_repository": "https://github.com/MishraShardendu22/DiscountCoupon-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} 

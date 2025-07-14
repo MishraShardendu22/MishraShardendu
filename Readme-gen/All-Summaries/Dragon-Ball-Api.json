@@ -1,0 +1,9 @@
+{
+  "project_name": "Dragon-Ball-Api",
+  "small_description": "A RESTful API for Dragon Ball trivia with JWT authentication and comprehensive testing",
+  "description": "Dragon-Ball-Api is a comprehensive REST API built with Express.js and TypeScript for managing Dragon Ball trivia. It features MongoDB integration with Mongoose, JWT-based authentication for admin actions, OpenAPI/Swagger documentation, and AI-powered testing with Keploy. The API supports full CRUD operations, includes GitHub Actions CI/CD, and provides both public and admin-only endpoints for managing Dragon Ball questions and series data.",
+  "skills": ["Express.js", "TypeScript", "MongoDB", "Mongoose", "JWT", "Swagger", "OpenAPI", "Keploy", "Jest", "Supertest", "GitHub Actions", "CORS", "Rate Limiting", "Nodemon"],
+  "project_repository": "https://github.com/MishraShardendu22/Dragon-Ball-Api",
+  "project_live_link": "https://dragon-ball-api-grlr.onrender.com/",
+  "project_video": ""
+} 

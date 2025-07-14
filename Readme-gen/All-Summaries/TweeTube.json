@@ -1,0 +1,49 @@
+{
+  "project_name": "TweeTube",
+  "description": "An ambitious YouTube-Twitter hybrid application backend built with Node.js and Express. Features user authentication with JWT, MongoDB database integration, Cloudinary for media storage, and comprehensive API endpoints. Currently in development phase as a learning project for building production-grade social media applications.",
+  "project_repository": "https://github.com/MishraShardendu22/TweeTube",
+  "project_live_link": "",
+  "project_video": "",
+  "skills": [
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Mongoose",
+    "JWT",
+    "bcrypt",
+    "Cloudinary",
+    "Multer",
+    "Axios",
+    "CORS",
+    "Cookie Parser",
+    "dotenv",
+    "Nodemon"
+  ],
+  "design_patterns": [
+    "RESTful API Design",
+    "JWT Authentication",
+    "MongoDB Aggregation",
+    "File Upload Handling",
+    "Middleware Pattern",
+    "Environment Configuration",
+    "Error Handling"
+  ],
+  "system_design": {
+    "architecture": "Backend API for Social Media Platform",
+    "framework": "Express.js with Node.js",
+    "database": "MongoDB with Mongoose ODM",
+    "authentication": "JWT with bcrypt password hashing",
+    "media_storage": "Cloudinary for file uploads",
+    "development": "Nodemon for hot reloading",
+    "features": [
+      "User authentication and authorization",
+      "Media file upload and storage",
+      "Database aggregation and pagination",
+      "RESTful API endpoints",
+      "Cross-origin resource sharing",
+      "Cookie-based session management",
+      "Environment variable configuration",
+      "Production-ready backend structure"
+    ]
+  }
+} 

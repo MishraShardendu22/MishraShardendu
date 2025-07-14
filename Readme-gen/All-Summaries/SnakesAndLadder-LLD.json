@@ -1,0 +1,9 @@
+{
+  "project_name": "SnakesAndLadder-LLD",
+  "small_description": "A C++ implementation of Snakes and Ladders game using multiple design patterns",
+  "description": "SnakesAndLadder-LLD is a comprehensive C++ implementation of the classic Snakes and Ladders board game that demonstrates several design patterns. It uses the Observer Pattern for game notifications, Strategy Pattern for different board setup strategies (Random, Custom, Standard), Factory Pattern for game creation, and Template Method Pattern for game rules. The system supports multiple difficulty levels, custom board configurations, and follows SOLID principles for extensible game mechanics.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Observer Pattern", "Strategy Pattern", "Factory Pattern", "Template Method Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism"],
+  "project_repository": "https://github.com/MishraShardendu22/SnakesAndLadder-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} 

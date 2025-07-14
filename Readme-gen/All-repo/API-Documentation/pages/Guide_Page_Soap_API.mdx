@@ -1,0 +1,102 @@
+# SOAP API Usage Guide
+
+## Steps to Use the API
+
+1. **Copy the API Link**  
+   Start by copying the link to the API documentation.
+
+2. **Make Requests Using SOAP**  
+   Use a SOAP client to send requests to the API. Make sure to configure the client with the WSDL URL.
+
+3. **Performing Operations**  
+   You can perform various operations using the defined SOAP methods:
+
+   - **Get Clients**: Retrieve a list of clients.
+     ```xml
+     <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+       <soap:Body>
+         <getClients xmlns="http://your-soap-api-url">
+         </getClients>
+       </soap:Body>
+     </soap:Envelope>
+     ```
+
+   - **Get Projects**: Retrieve a list of projects.
+     ```xml
+     <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+       <soap:Body>
+         <getProjects xmlns="http://your-soap-api-url">
+         </getProjects>
+       </soap:Body>
+     </soap:Envelope>
+     ```
+
+   - **Add Client**: Create a new client.
+     ```xml
+     <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+       <soap:Body>
+         <addClient xmlns="http://your-soap-api-url">
+           <name>Client Name</name>
+           <email>client@example.com</email>
+           <phone>1234567890</phone>
+         </addClient>
+       </soap:Body>
+     </soap:Envelope>
+     ```
+
+   - **Delete Client**: Remove a client.
+     ```xml
+     <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+       <soap:Body>
+         <deleteClient xmlns="http://your-soap-api-url">
+           <id>CLIENT_ID</id>
+         </deleteClient>
+       </soap:Body>
+     </soap:Envelope>
+     ```
+
+   - **Add Project**: Create a new project.
+     ```xml
+     <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+       <soap:Body>
+         <addProject xmlns="http://your-soap-api-url">
+           <name>Project Name</name>
+           <description>Project Description</description>
+           <status>In Progress</status>
+           <clientId>CLIENT_ID</clientId>
+         </addProject>
+       </soap:Body>
+     </soap:Envelope>
+     ```
+
+   - **Delete Project**: Remove a project.
+     ```xml
+     <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+       <soap:Body>
+         <deleteProject xmlns="http://your-soap-api-url">
+           <id>PROJECT_ID</id>
+         </deleteProject>
+       </soap:Body>
+     </soap:Envelope>
+     ```
+
+   - **Update Project**: Update an existing project.
+     ```xml
+     <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+       <soap:Body>
+         <updateProject xmlns="http://your-soap-api-url">
+           <id>PROJECT_ID</id>
+           <name>Updated Project Name</name>
+           <description>Updated Description</description>
+           <status>Completed</status>
+         </updateProject>
+       </soap:Body>
+     </soap:Envelope>
+     ```
+
+4. **User Reviews**  
+   Users are encouraged to provide feedback. You can submit your review [Anonymous-Feedback](https://shardendu-mishra-secret-message-application.vercel.app/u/ShardenduMishra22).
+
+5. **Chat with Me**  
+   If you have any questions or need assistance, feel free to chat with me at [WhatsGram](https://whatsgram-jm9c.onrender.com/).  
+   My ID: `shardendu@gmail.com`

@@ -1,0 +1,62 @@
+{
+  "project_name": "Project-Management",
+  "description": "Project Zen is a cutting-edge personal task management system built with Next.js 15, TypeScript, and PostgreSQL. Features comprehensive task and project management with priority levels, due dates, categorization, and user authentication. Includes a responsive dashboard, calendar view, statistical insights, and modern UI with Tailwind CSS and ShadCN components.",
+  "project_repository": "https://github.com/MishraShardendu22/Project-Management",
+  "project_live_link": "https://project-management-internhsip-shardendu-mishra.vercel.app",
+  "project_video": "https://www.loom.com/share/17111c76016545f2b255316369e9defb?sid=67bd8ecb-f003-48e7-9db9-6ba5351e1437",
+  "skills": [
+    "Next.js 15",
+    "TypeScript",
+    "PostgreSQL",
+    "Drizzle ORM",
+    "Tailwind CSS",
+    "ShadCN UI",
+    "Zustand",
+    "React Query",
+    "React Hook Form",
+    "Zod",
+    "bcryptjs",
+    "Nodemailer",
+    "NextAuth.js",
+    "Axios",
+    "Day.js",
+    "date-fns",
+    "Recharts",
+    "TinyMCE",
+    "Radix UI",
+    "Vercel"
+  ],
+  "design_patterns": [
+    "Full-Stack Architecture",
+    "JWT Authentication",
+    "Global State Management",
+    "Component-Based Design",
+    "RESTful API Design",
+    "Form Validation",
+    "Data Fetching Patterns",
+    "Responsive Design",
+    "Type-Safe Database Operations"
+  ],
+  "system_design": {
+    "architecture": "Full-Stack Task Management Application",
+    "frontend": "Next.js 15 with App Router and TypeScript",
+    "backend": "Next.js API Routes",
+    "database": "PostgreSQL with Drizzle ORM",
+    "authentication": "NextAuth.js with bcrypt password hashing",
+    "styling": "Tailwind CSS with ShadCN UI components",
+    "state_management": "Zustand for global state, React Query for server state",
+    "deployment": "Vercel with Neon PostgreSQL hosting",
+    "features": [
+      "Task CRUD operations with priority levels",
+      "Project management and organization",
+      "User authentication and registration",
+      "Responsive dashboard with sidebar navigation",
+      "Calendar view for deadline tracking",
+      "Statistical insights and progress tracking",
+      "Email notifications and verification",
+      "Real-time data synchronization",
+      "Form validation with Zod",
+      "Rich text editing with TinyMCE"
+    ]
+  }
+} 

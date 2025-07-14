@@ -1,0 +1,37 @@
+// Prefer online only 
+
+
+1.) Install Tailwind
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+
+2.) Add in content
+    /** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+3.) In index.css
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+
+############################################
+
+used to fetch json data from an api call
+1.) Set up Axios 
+    npm i axios
+
+############################################
+
+used to make pseudo multi page web site where header and footer is constant
+1.) Set up React Router DOM
+    npm i react-router-dom

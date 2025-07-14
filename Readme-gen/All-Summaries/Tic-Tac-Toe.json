@@ -1,0 +1,49 @@
+{
+  "project_name": "Tic-Tac-Toe",
+  "description": "A real-time multiplayer Tic-Tac-Toe game built with React frontend and Express backend using Socket.IO for real-time communication. Features modern UI with Tailwind CSS, Framer Motion animations, and hot toast notifications. Demonstrates Socket.IO implementation for real-time game state synchronization between players.",
+  "project_repository": "https://github.com/MishraShardendu22/Tic-Tac-Toe",
+  "project_live_link": "",
+  "project_video": "https://youtu.be/5EjkDbj_ykk",
+  "skills": [
+    "React",
+    "TypeScript",
+    "Express.js",
+    "Socket.IO",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Vite",
+    "Node.js",
+    "CORS",
+    "Cookie Parser",
+    "Hot Toast",
+    "Lucide React"
+  ],
+  "design_patterns": [
+    "Real-Time Multiplayer Game",
+    "WebSocket Communication",
+    "Client-Server Architecture",
+    "Component-Based Design",
+    "State Synchronization",
+    "Event-Driven Architecture",
+    "Responsive Design"
+  ],
+  "system_design": {
+    "architecture": "Real-Time Multiplayer Game",
+    "frontend": "React with TypeScript and Vite",
+    "backend": "Express.js with Socket.IO",
+    "real_time": "Socket.IO for game state synchronization",
+    "styling": "Tailwind CSS with animations",
+    "build_tool": "Vite for fast development",
+    "features": [
+      "Real-time multiplayer gameplay",
+      "Socket.IO WebSocket communication",
+      "Game state synchronization",
+      "Modern responsive UI",
+      "Framer Motion animations",
+      "Hot toast notifications",
+      "Cross-origin resource sharing",
+      "Cookie-based session management",
+      "TypeScript for type safety"
+    ]
+  }
+} 

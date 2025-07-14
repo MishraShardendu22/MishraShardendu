@@ -1,0 +1,1598 @@
+{
+  "project_name": "5Chan",
+  "small_description": "A feedback platform where users can share and receive anonymous feedback with OTP verification",
+  "description": "5Chan is a Next.js-based platform that allows users to share and receive anonymous feedback in a safe manner. Non-logged-in users can provide feedback for others, while logged-in users can receive feedback after completing OTP verification during signup. The platform includes server-side rendering, SEO optimization, and integrates with Gemini API for enhanced user experience.",
+  "skills": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB", "Mongoose", "NextAuth", "Nodemailer", "Zod", "Google Generative AI", "Embla Carousel", "Radix UI", "React Hook Form", "bcryptjs", "Axios"],
+  "project_repository": "https://github.com/MishraShardendu22/5-chan",
+  "project_live_link": "https://5-chan-shardendu-mishra.vercel.app",
+  "project_video": "https://youtu.be/FIjMpPrWSkM"
+} {
+  "project_name": "AI-Agent-Ticketing",
+  "small_description": "A full-stack ticketing platform with AI-powered ticket analysis and automated moderator assignment",
+  "description": "AI-Agent-Ticketing is a MERN stack application that provides a comprehensive ticketing system with intelligent automation. The platform uses Agentic AI to analyze ticket descriptions, extract relevant skills, and automatically assign the most suitable moderators. It features Inngest for background workflow orchestration, user authentication, and automated email notifications for ticket routing and moderator assignments.",
+  "skills": ["React", "Vite", "Express.js", "Node.js", "MongoDB", "Mongoose", "Inngest", "Agentic AI", "JWT", "bcrypt", "Nodemailer", "Tailwind CSS", "DaisyUI", "React Router", "React Markdown"],
+  "project_repository": "https://github.com/MishraShardendu22/AI-Agent-Ticketing",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "AI-Chat-Bot",
+  "small_description": "A ChatGPT-like chatbot built with Gemini API and modern web technologies",
+  "description": "AI-Chat-Bot is a full-stack chatbot application that provides a ChatGPT-like experience using Google's Gemini API. The application features a modern React frontend with smooth animations powered by Framer Motion, Redux Toolkit for state management, and an Express.js backend that handles API communication with Gemini. The project is deployed on Render and includes features like real-time chat, toast notifications, and responsive design.",
+  "skills": ["React", "Vite", "Express.js", "Node.js", "MongoDB", "Mongoose", "Google Generative AI", "Redux Toolkit", "Framer Motion", "Tailwind CSS", "Axios", "React Hot Toast", "React Toastify", "CORS", "Nodemon"],
+  "project_repository": "https://github.com/MishraShardendu22/AI-Chat-Bot",
+  "project_live_link": "https://ai-front-yrlv.onrender.com",
+  "project_video": ""
+} {
+  "project_name": "API-Documentation",
+  "small_description": "A comprehensive API documentation hub showcasing both SOAP and REST APIs",
+  "description": "API Hub is a comprehensive documentation platform built with Nextra that showcases two different types of APIs: a Project Management System using SOAP and a Dragon Ball API using REST. The project demonstrates versatility in working with both SOAP and REST APIs in a single application, featuring complete CRUD operations, intuitive interfaces for managing projects, and character information from the Dragon Ball universe.",
+  "skills": ["Next.js", "Nextra", "React", "TypeScript", "Tailwind CSS", "SOAP", "REST", "GraphQL", "Apollo", "Vite", "Bootstrap"],
+  "project_repository": "https://github.com/MishraShardendu22/API-Documentation",
+  "project_live_link": "https://api-documentation-git-main-shardendu-mishra-s-projects.vercel.app/",
+  "project_video": ""
+} {
+  "project_name": "BloodBank-IIT-Dharwad-Original",
+  "small_description": "A comprehensive blood bank management system built during a hackathon at IIT Dharwad",
+  "description": "BloodBank-IIT-Dharwad is a full-stack blood bank management platform developed during a 36-hour hackathon. It features a React and TypeScript frontend, a backend built with both TypeScript (Node.js/Express) and GoLang microservices, and MongoDB for data storage. The system supports user authentication, scheduling, notifications, and advanced workflow integration, with a focus on security and performance.",
+  "skills": ["React", "TypeScript", "Vite", "Express.js", "Node.js", "MongoDB", "Mongoose", "GoLang", "Fiber", "JWT", "bcryptjs", "Nodemailer", "Node Cron", "Zustand", "Radix UI", "Tailwind CSS", "DaisyUI", "Axios", "React Toastify"],
+  "project_repository": "https://github.com/MishraShardendu22/BloodBank-IIT-Dharwad-Original",
+  "project_live_link": "https://parshu-velocity-blood-bank.vercel.app",
+  "project_video": ""
+} {
+  "project_name": "BloodBank",
+  "small_description": "A blood bank management system to ease the blood donation process",
+  "description": "BloodBank is a full-stack web application designed to streamline blood donation processes. The project features a React frontend with TypeScript, Vite, and comprehensive UI components from Radix UI, along with an Express.js backend with TypeScript. The system includes user authentication, blood donation management, and modern UI with dark mode support and animations.",
+  "skills": ["React", "TypeScript", "Vite", "Express.js", "Node.js", "MongoDB", "Mongoose", "Redux Toolkit", "Zustand", "Radix UI", "Tailwind CSS", "Framer Motion", "React Hook Form", "Zod", "JWT", "bcryptjs", "Axios"],
+  "project_repository": "https://github.com/MishraShardendu22/BloodBank",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Boxit",
+  "small_description": "A Next.js application with modern UI components and database integration",
+  "description": "Boxit is a Next.js application built with modern web technologies including TypeScript, Tailwind CSS, and Radix UI components. The project features Clerk authentication, Drizzle ORM for database management, ImageKit integration for media handling, and comprehensive form handling with React Hook Form and Zod validation. The application includes advanced UI components and database migration tools.",
+  "skills": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Drizzle ORM", "Clerk", "Radix UI", "ImageKit", "React Hook Form", "Zod", "Neon Database", "Axios", "Framer Motion", "Embla Carousel"],
+  "project_repository": "https://github.com/MishraShardendu22/Boxit",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "ChatBot-Pakcage",
+  "small_description": "A plug-and-play chatbot widget and Go backend for real-time chat integration",
+  "description": "ChatBot-Pakcage provides a custom, reusable chatbot widget as an npm package for React applications, along with a Go backend for real-time chat and Redis integration. The package is designed for easy integration into any React project, supporting unique user sessions and scalable backend communication. The Go backend leverages Fiber and Redis for efficient, concurrent chat handling.",
+  "skills": ["React", "TypeScript", "Vite", "Rollup", "GoLang", "Fiber", "Redis", "UUID"],
+  "project_repository": "https://github.com/MishraShardendu22/chatbot-widget",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "cloudianry-saas",
+  "small_description": "A SaaS platform for image and video upload, resizing, and management with Cloudinary integration",
+  "description": "Cloudinary SaaS Application is a modern web platform that enables users to upload, resize, and manage images and videos. It features Cloudinary AI for video processing, image resizing for social media, and secure authentication via Clerk. Built with Next.js, TypeScript, Tailwind CSS, and Prisma ORM, the app offers a responsive, user-friendly interface and seamless media management capabilities.",
+  "skills": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "Neon", "Cloudinary", "Clerk", "Axios", "DaisyUI", "Next-Cloudinary", "React Hot Toast", "React Toastify"],
+  "project_repository": "https://github.com/MishraShardendu22/cloudianry-saas",
+  "project_live_link": "https://cloudianry-saas.vercel.app",
+  "project_video": ""
+} {
+  "project_name": "Dhvani",
+  "small_description": "A multi-service health management platform with AI, nutrition, and blood bank modules",
+  "description": "Dhvani is a comprehensive health management platform integrating multiple microservices built with Go, Node.js, and Python, and a React-based frontend. It offers user and organization management, blood bank operations, an AI-powered chatbot, AI-driven medical image analysis (including TB detection), and personalized nutrition advice. The system features role-based dashboards, secure authentication, and advanced analytics, leveraging MongoDB and Redis for data storage and caching.",
+  "skills": ["React", "TypeScript", "Vite", "Tailwind CSS", "Shadcn/UI", "Framer Motion", "Zustand", "Leaflet", "Recharts", "Node.js", "Express.js", "MongoDB", "Mongoose", "JWT", "Bcryptjs", "Nodemailer", "Multer", "GoLang", "Fiber", "Redis", "Google Gemini API", "DeepSeek API", "OpenAI API", "Python", "Flask", "PyTorch", "Torchvision", "OpenCV", "Hugging Face Hub", "Grad-CAM"],
+  "project_repository": "https://github.com/MishraShardendu22/Dhvani",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "DiscountCoupon-LLD",
+  "small_description": "A C++ implementation of a discount coupon system (Low-Level Design)",
+  "description": "DiscountCoupon-LLD is a C++ project that implements the low-level design of a discount coupon system. The codebase demonstrates object-oriented design principles for managing coupons, applying discounts, and handling user interactions. The project is structured for clarity and extensibility, suitable for educational and interview preparation purposes.",
+  "skills": ["C++"],
+  "project_repository": "https://github.com/MishraShardendu22/DiscountCoupon-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Djando-NotesApplication",
+  "small_description": "A Django-based notes application with CRUD operations and modern UI",
+  "description": "Djando-NotesApplication is a simple web app for managing notes, built with Django and featuring a modern frontend using TypeScript, Tailwind CSS, and Shadcn UI. The app supports creating, reading, updating, and deleting notes, and is designed for responsiveness and ease of use. It is suitable for learning and demonstration purposes.",
+  "skills": ["Django", "TypeScript", "Tailwind CSS", "Shadcn UI", "Choreo"],
+  "project_repository": "https://github.com/MishraShardendu22/Django-NotesApplication",
+  "project_live_link": "https://frontend-okmy.onrender.com",
+  "project_video": "https://youtu.be/DkfKO5gsNRM"
+} {
+  "project_name": "Docker-Project-1",
+  "small_description": "A simple Express.js application containerized with Docker for learning purposes",
+  "description": "Docker-Project-1 is a basic Express.js web application that serves as a learning project for Docker containerization. The project demonstrates Docker fundamentals including containerization, port mapping, and deployment. It features a simple landing page that navigates to the developer's GitHub account and showcases Docker's isolation, portability, and scalability features.",
+  "skills": ["Docker", "Express.js", "Node.js", "CORS", "Containerization"],
+  "project_repository": "https://github.com/MishraShardendu22/Docker-Project-1",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Documentation-Archive",
+  "small_description": "A comprehensive collection of important documentation covering Docker, Python types, and C++ unit testing",
+  "description": "Documentation-Archive is a repository containing important documentation files covering various technologies and concepts. It includes detailed guides on Docker containerization with comprehensive commands, Dockerfile structure, Docker Compose, networking, and volumes. The repository also contains documentation on Python types and C++ unit testing generation. This serves as a reference collection for development practices and learning materials.",
+  "skills": ["Documentation", "Docker", "Python", "C++", "Technical Writing", "Containerization", "Unit Testing"],
+  "project_repository": "https://github.com/MishraShardendu22/Documentation-Archive",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Documentation-DragonBallAPI",
+  "small_description": "Comprehensive documentation for the Dragon Ball API built with Nextra",
+  "description": "Documentation-DragonBallAPI is a comprehensive documentation site built with Nextra for the Dragon Ball API. It provides detailed guides, visual documentation, and API reference for the Dragon Ball trivia API. The documentation includes interactive examples, usage guides, and visual representations to help developers understand and integrate with the Dragon Ball API effectively.",
+  "skills": ["Next.js", "Nextra", "React", "TypeScript", "Documentation", "API Documentation", "MDX"],
+  "project_repository": "https://github.com/MishraShardendu22/Documentation-DragonBallAPI",
+  "project_live_link": "https://shardendu-mishra-documentation-dragon-ball-api.vercel.app/",
+  "project_video": ""
+} {
+  "project_name": "DragonBallAPI-GoLang",
+  "small_description": "A Go-based REST API for DragonBall character and episode data using Fiber framework",
+  "description": "DragonBallAPI-GoLang is a high-performance REST API built with Go and the Fiber framework, providing comprehensive DragonBall data including characters, arcs, and episodes. This is an advanced version of the TypeScript-based DragonBall API, optimized for performance and scalability. The API is free to use and can be integrated with any frontend application.",
+  "skills": ["GoLang", "Fiber", "MongoDB", "REST API", "Air (Hot Reload)"],
+  "project_repository": "https://github.com/MishraShardendu22/DragonBallAPI-GoLang",
+  "project_live_link": "https://dragonballapi-golang-1qjq.onrender.com",
+  "project_video": ""
+} {
+  "project_name": "Dragon-Ball-Api",
+  "small_description": "A RESTful API for Dragon Ball trivia with JWT authentication and comprehensive testing",
+  "description": "Dragon-Ball-Api is a comprehensive REST API built with Express.js and TypeScript for managing Dragon Ball trivia. It features MongoDB integration with Mongoose, JWT-based authentication for admin actions, OpenAPI/Swagger documentation, and AI-powered testing with Keploy. The API supports full CRUD operations, includes GitHub Actions CI/CD, and provides both public and admin-only endpoints for managing Dragon Ball questions and series data.",
+  "skills": ["Express.js", "TypeScript", "MongoDB", "Mongoose", "JWT", "Swagger", "OpenAPI", "Keploy", "Jest", "Supertest", "GitHub Actions", "CORS", "Rate Limiting", "Nodemon"],
+  "project_repository": "https://github.com/MishraShardendu22/Dragon-Ball-Api",
+  "project_live_link": "https://dragon-ball-api-grlr.onrender.com/",
+  "project_video": ""
+} {
+  "project_name": "Entrepreneurr",
+  "small_description": "A platform for entrepreneurs to showcase startups and connect with like-minded individuals",
+  "description": "Entrepreneurr is a modern web platform built with Next.js and Sanity.io that enables entrepreneurs to showcase their startups and connect with the community. The application features a headless CMS for content management, SEO optimization, and a responsive design using Tailwind CSS and ShadCN components. It provides a seamless, visually stunning experience for startup discovery and networking.",
+  "skills": ["Next.js", "React", "TypeScript", "Sanity.io", "Tailwind CSS", "ShadCN", "Radix UI", "NextAuth", "Framer Motion", "Embla Carousel", "React Hook Form", "Zod", "Axios", "Markdown", "Styled Components"],
+  "project_repository": "https://github.com/MishraShardendu22/Entrepreneurr",
+  "project_live_link": "https://entrepreneurr.vercel.app/",
+  "project_video": ""
+} {
+  "project_name": "frontend-neuro-assist-v2",
+  "small_description": "A React-based frontend application with comprehensive UI components and PWA capabilities",
+  "description": "frontend-neuro-assist-v2 is a modern React application built with TypeScript and Vite, featuring a comprehensive UI component library using Radix UI, Material-UI, and Tailwind CSS. The project includes PWA capabilities, image editing functionality with Filestack, advanced form handling, and state management with Zustand. It supports responsive design, animations with Framer Motion, and includes various UI components for building sophisticated user interfaces.",
+  "skills": ["React", "TypeScript", "Vite", "Tailwind CSS", "Radix UI", "Material-UI", "Zustand", "React Hook Form", "Framer Motion", "PWA", "Filestack", "Axios", "React Router", "Embla Carousel", "DaisyUI"],
+  "project_repository": "https://github.com/MishraShardendu22/frontend-neuro-assist-v2",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "FullStack-Mini-Projects",
+  "small_description": "A collection of full-stack mini projects demonstrating front-end and back-end integration",
+  "description": "FullStack-Mini-Projects is a collection of mini applications that demonstrate the integration of front-end and back-end technologies. The project includes various sub-projects like 'Making Models', 'Template', and 'Jokes On You', each showcasing different aspects of full-stack development using Node.js, Express, and Axios for seamless front-end and back-end communication.",
+  "skills": ["Node.js", "Express", "Axios", "Full-Stack Development"],
+  "project_repository": "https://github.com/MishraShardendu22/FullStack-Mini-Projects",
+  "project_live_link": "https://integrating-front-and-backend.onrender.com/",
+  "project_video": ""
+} {
+  "project_name": "Full-Stack-Next-JS",
+  "small_description": "A Next.js authentication system with MongoDB integration and comprehensive API testing",
+  "description": "Full-Stack-Next-JS is a complete authentication system built with Next.js, featuring user registration, login, logout, and email verification. The project integrates MongoDB Atlas for data persistence, uses JWT for authentication, bcryptjs for password hashing, and Nodemailer for email verification. It includes comprehensive API testing with Postman and features a modern UI built with Tailwind CSS, Radix UI components, and Framer Motion animations.",
+  "skills": ["Next.js", "React", "TypeScript", "MongoDB", "Mongoose", "JWT", "bcryptjs", "Nodemailer", "Tailwind CSS", "Radix UI", "Framer Motion", "Axios", "React Hot Toast", "React Toastify", "Postman"],
+  "project_repository": "https://github.com/MishraShardendu22/Full-Stack-Next-JS",
+  "project_live_link": "https://nextauth-git-main-shardendu-mishra.vercel.app/",
+  "project_video": ""
+} {
+  "project_name": "GitHub-Cleaner-Go",
+  "small_description": "A Go utility for cleaning unused UI components from React repositories",
+  "description": "GitHub-Cleaner-Go is a Go-based utility that automates the cleanup of unused UI components from React repositories. It clones repositories from GitHub, analyzes package.json files to identify React projects, scans for unused components in the ui directory, removes them, and automatically commits the changes. The tool uses GitHub's REST API and Git commands to streamline repository maintenance.",
+  "skills": ["GoLang", "GitHub API", "Git", "File System Operations", "Regular Expressions", "JSON Parsing", "HTTP Requests"],
+  "project_repository": "https://github.com/MishraShardendu22/GitHub-Cleaner-Go",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "GoLang-Blog",
+  "small_description": "A full-stack blog platform built with Go backend and React frontend",
+  "description": "GoLang-Blog is a full-stack blog platform featuring a Go backend with MongoDB integration and a React frontend. The application includes user authentication with OTP verification, CRUD operations for blog posts, and secure email functionality using Go's net/smtp package. The frontend is built with React, Tailwind CSS, and Vite for optimal development experience and performance.",
+  "skills": ["GoLang", "React", "MongoDB", "Mongoose", "Tailwind CSS", "Vite", "SMTP", "OTP", "CRUD Operations", "User Authentication"],
+  "project_repository": "https://github.com/MishraShardendu22/GoLang-Blog",
+  "project_live_link": "https://frontend-goblog.onrender.com",
+  "project_video": ""
+} {
+  "project_name": "GoLang-Practise-API",
+  "small_description": "A RESTful API practice project built with Go and Gorilla Mux",
+  "description": "GoLang-Practise-API is a RESTful API practice project built with Go and Gorilla Mux router. It implements a course management system with full CRUD operations including GET, POST, PUT, PATCH, and DELETE endpoints. The API handles JSON data, includes proper error handling, and demonstrates Go's HTTP server capabilities with structured data handling and routing.",
+  "skills": ["GoLang", "Gorilla Mux", "RESTful API", "HTTP Server", "JSON Handling", "CRUD Operations", "Error Handling"],
+  "project_repository": "https://github.com/MishraShardendu22/GoLang-Practise-API",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "GoLangToDoList",
+  "small_description": "A full-stack todo application with Go backend and TypeScript frontend",
+  "description": "GoLangToDoList is a full-stack todo application featuring a Go backend with hot reload using Air, and a TypeScript frontend built with ShadCN, Tailwind CSS, and Vite. The application provides CRUD operations for tasks with a responsive design and smooth animations using Framer Motion. It demonstrates modern full-stack development practices with separate frontend and backend repositories.",
+  "skills": ["GoLang", "TypeScript", "ShadCN", "Tailwind CSS", "Vite", "Framer Motion", "Air (Hot Reload)", "Full-Stack Development", "CRUD Operations"],
+  "project_repository": "https://github.com/MishraShardendu22/GoLangToDoList",
+  "project_live_link": "https://golangtodo-front.onrender.com/",
+  "project_video": ""
+} {
+  "project_name": "GoLangWebScrapper",
+  "small_description": "A Go web scraper for extracting book data and exporting to CSV",
+  "description": "GoLangWebScrapper is a Go-based web scraping application that extracts book information from BooksToScrape.com. It uses the Colly framework for efficient web scraping, handles pagination automatically, and exports the scraped data (book titles and prices) to a CSV file. The application demonstrates web scraping best practices including domain restrictions, error handling, and structured data extraction.",
+  "skills": ["GoLang", "Colly", "Web Scraping", "CSV Export", "HTTP Requests", "HTML Parsing", "Data Extraction"],
+  "project_repository": "https://github.com/MishraShardendu22/GoLangWebScrapper",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Google-Docs-LLD-Project",
+  "small_description": "A C++ implementation of Google Docs-like document editor using design patterns",
+  "description": "Google-Docs-LLD-Project is a C++ implementation of a document editor that demonstrates several key design patterns and object-oriented principles. The project uses the Composite Pattern for document elements, Strategy Pattern for persistence strategies, and follows SOLID principles. It supports text, images, line breaks, and tab spaces, with extensible storage options including file and database persistence.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Composite Pattern", "Strategy Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism"],
+  "project_repository": "https://github.com/MishraShardendu22/Google-Docs-LLD-Project",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Google-Trends",
+  "small_description": "A Go CLI tool for parsing Google Trends RSS feeds",
+  "description": "Google-Trends is a Go CLI application that fetches and parses trending search topics from Google Trends RSS feeds. It uses the req package for HTTP requests, parses XML data to extract trend information including titles, traffic estimates, article links, and news sources. The application is structured with separate modules for data fetching and type definitions, demonstrating clean Go architecture for RSS feed processing.",
+  "skills": ["GoLang", "RSS Parsing", "XML Processing", "HTTP Requests", "CLI Application", "Data Fetching", "Struct Definitions"],
+  "project_repository": "https://github.com/MishraShardendu22/Google-Trends",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Go-TransferScript",
+  "small_description": "A Go script for automating GitHub repository transfers between accounts",
+  "description": "Go-TransferScript is a Go-based automation tool for transferring multiple GitHub repositories between personal accounts or organizations. It uses Go routines for parallel processing, Resty for optimized HTTP requests, and includes automatic retry mechanisms. The script reads GitHub tokens from environment variables and provides a lightweight solution for developers managing multiple GitHub accounts, especially useful for moving repositories from learning accounts to project accounts.",
+  "skills": ["GoLang", "GitHub API", "Resty", "GoDotEnv", "Concurrent Programming", "HTTP Requests", "Environment Variables", "Automation"],
+  "project_repository": "https://github.com/MishraShardendu22/Go-TransferScript",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "GraphQL-Project-Management",
+  "small_description": "A full-stack project management system using GraphQL and React",
+  "description": "GraphQL-Project-Management is a comprehensive project management system built with GraphQL, React, and Express. It features real-time project tracking, team collaboration tools, and efficient data fetching using Apollo Client. The application uses Vite for fast development, Tailwind CSS and Bootstrap for responsive design, and is deployed on Render. It demonstrates modern full-stack development with GraphQL for optimized data queries and mutations.",
+  "skills": ["GraphQL", "React", "Express", "Apollo Client", "Vite", "Tailwind CSS", "Bootstrap", "Node.js", "Real-time Updates", "Project Management"],
+  "project_repository": "https://github.com/MishraShardendu22/GraphQL-Project-Management",
+  "project_live_link": "https://project-management-shardendumishra.onrender.com",
+  "project_video": ""
+} {
+  "project_name": "GSOC-Proposal-App-Dashboard-Shardendu-Mishra-Keploy",
+  "small_description": "A GitHub user stats dashboard application built for GSoC proposal with Next.js frontend and Go backend",
+  "description": "GSOC-Proposal-App-Dashboard is a comprehensive GitHub user statistics application built as part of a Google Summer of Code proposal for Keploy. The application displays detailed statistics for GitHub users and their repositories with a modern UI built using Next.js, React.js, Tailwind CSS, and Shadcn UI. It features secure authentication using auth.js and a fast backend built with Go using the Go-Fiber framework. The project includes detailed documentation, wireframes, and a complete GSoC proposal.",
+  "skills": ["Next.js", "React.js", "Tailwind CSS", "Shadcn UI", "Go", "Go-Fiber", "auth.js", "GitHub API", "Dashboard Development", "GSoC"],
+  "project_repository": "https://github.com/MishraShardendu22/GSOC-Proposal-App-Dashboard-Shardendu-Mishra-Keploy",
+  "project_live_link": "https://keploy-dashboard-shardendu-mishra-gsoc.vercel.app",
+  "project_video": ""
+} {
+  "project_name": "image-kit",
+  "small_description": "A Next.js application for image management and processing with ImageKit integration",
+  "description": "image-kit is a Next.js application built with modern web technologies for image management and processing. It features ImageKit integration for cloud-based image handling, comprehensive UI components using Radix UI, and authentication with NextAuth. The application includes form handling with React Hook Form and Zod validation, database integration with MongoDB and Mongoose, and a responsive design with Tailwind CSS and Framer Motion animations.",
+  "skills": ["Next.js", "React", "TypeScript", "ImageKit", "MongoDB", "Mongoose", "NextAuth", "Radix UI", "Tailwind CSS", "React Hook Form", "Zod", "Framer Motion"],
+  "project_repository": "https://github.com/MishraShardendu22/image-kit",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Important-Information",
+  "small_description": "A comprehensive knowledge base containing important documentation and learning resources for web development",
+  "description": "Important-Information is a comprehensive repository containing essential documentation and learning resources for web development. It includes detailed guides on various technologies such as Go, Node.js, React, Next.js, Docker, Kubernetes, Redis, Redux Toolkit, and many more. The repository serves as a personal knowledge base with practical examples, code snippets, and best practices for modern web development technologies and tools.",
+  "skills": ["Documentation", "Go", "Node.js", "React", "Next.js", "Docker", "Kubernetes", "Redis", "Redux", "MongoDB", "Technical Writing", "Learning Resources"],
+  "project_repository": "https://github.com/MishraShardendu22/Important-Information",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Internship-Authentication",
+  "small_description": "A comprehensive authentication system for internship applications with JWT and OTP verification",
+  "description": "Internship-Authentication is a full-stack authentication system built for internship applications. It features a Node.js backend with JWT authentication, Nodemailer for email services, and cron jobs for automatic account cleanup. The frontend is built with Vite, React, Tailwind CSS, and Shadcn UI components. The system includes user registration, login, password recovery via OTP, and automatic deletion of unverified accounts after 24 hours using cron jobs.",
+  "skills": ["Node.js", "React", "Vite", "JWT", "Nodemailer", "Mongoose", "Cron Jobs", "Tailwind CSS", "Shadcn UI", "Authentication", "OTP Verification"],
+  "project_repository": "https://github.com/MishraShardendu22/Internship-Authentication",
+  "project_live_link": "https://frontend-internship.onrender.com/",
+  "project_video": ""
+} {
+  "project_name": "Intro-Page",
+  "small_description": "A personal portfolio webpage built with HTML, CSS, and JavaScript",
+  "description": "Intro-Page is a personal portfolio webpage created as part of an assignment to develop a personal portfolio using HTML, CSS, and JavaScript. The page features a clean design with personal information, social media links, and responsive styling. It serves as a simple yet effective introduction page showcasing personal details and professional links.",
+  "skills": ["HTML", "CSS", "JavaScript", "Portfolio", "Responsive Design"],
+  "project_repository": "https://github.com/MishraShardendu22/Intro-Page",
+  "project_live_link": "https://intro-name-shardendu-mishra.netlify.app/",
+  "project_video": ""
+} {
+  "project_name": "JavaScript-DOM-Projects",
+  "small_description": "A collection of interactive JavaScript DOM projects for learning and practice",
+  "description": "JavaScript-DOM-Projects is a comprehensive collection of interactive web applications built with JavaScript and DOM manipulation. The repository includes 7 different projects: Color Scheme Generator, BMI Calculator, Real-time Clock, Guess The Number Game, Key Press Detector, Unlimited Colors Generator, and Personal Card using API. Each project demonstrates different aspects of JavaScript DOM manipulation, event handling, and API integration for learning purposes.",
+  "skills": ["JavaScript", "DOM Manipulation", "HTML", "CSS", "API Integration", "Event Handling", "Interactive Web Apps"],
+  "project_repository": "https://github.com/MishraShardendu22/JavaScript-DOM-Projects",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Language-Translate-TUI",
+  "small_description": "A terminal-based language translation CLI tool built with Go and bubbletea",
+  "description": "Language-Translate-TUI is a command-line interface (CLI) application built with Go that provides language translation functionality directly in the terminal. It uses the bubbletea library for creating interactive terminal user interfaces with scrollable menus for language selection. The application integrates with the Lingva API for translations and uses Cobra for command-line argument handling. Users can select source and target languages using arrow keys and get instant translations of their text input.",
+  "skills": ["Go", "CLI", "bubbletea", "Cobra", "API Integration", "Terminal UI", "Language Translation"],
+  "project_repository": "https://github.com/MishraShardendu22/Language-Translate-TUI",
+  "project_live_link": "",
+  "project_video": "https://www.youtube.com/watch?v=a3mmvskLweo"
+} {
+  "project_name": "Mishra-Music-Academy",
+  "small_description": "A Next.js music course platform showcasing modern web development skills",
+  "description": "Mishra-Music-Academy is a Next.js-based music course platform designed to demonstrate proficiency in modern web development practices. The website showcases a music academy with course offerings, instructor profiles, and a professional design. Built with Next.js, TypeScript, and Tailwind CSS, it features responsive design, modern UI components, and serves as a portfolio piece highlighting web development skills and best practices.",
+  "skills": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Portfolio", "Responsive Design", "Modern Web Development"],
+  "project_repository": "https://github.com/MishraShardendu22/Mishra-Music-Academy",
+  "project_live_link": "https://mishra-music-academy-delta.vercel.app/",
+  "project_video": ""
+} {
+  "project_name": "MishraShardendu22",
+  "description": "Personal GitHub profile repository showcasing Shardendu Mishra's professional information, skills, and project details. Features a comprehensive tech stack display, social media links, and animated profile elements. The repository serves as a central hub for professional networking and portfolio presentation.",
+  "project_repository": "https://github.com/MishraShardendu22/MishraShardendu22",
+  "project_live_link": "",
+  "project_video": "",
+  "skills": [
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Go",
+    "Python",
+    "C++",
+    "C#",
+    "Django",
+    "FastAPI",
+    "Flask",
+    "Node.js",
+    "MongoDB",
+    "MySQL",
+    "Docker",
+    "Kubernetes",
+    "AWS",
+    "Azure",
+    "Google Cloud",
+    "Firebase",
+    "GraphQL",
+    "REST APIs",
+    "Redux",
+    "Tailwind CSS",
+    "Bootstrap",
+    "Material UI",
+    "TensorFlow",
+    "PyTorch",
+    "Jupyter",
+    "Linux",
+    "Git",
+    "VS Code"
+  ],
+  "design_patterns": [
+    "Profile Showcase",
+    "Social Media Integration",
+    "Tech Stack Visualization",
+    "Responsive Design",
+    "GitHub Profile Enhancement"
+  ],
+  "system_design": {
+    "architecture": "GitHub Profile Repository",
+    "frontend": "Markdown with HTML and CSS",
+    "features": [
+      "Professional bio and introduction",
+      "Social media links integration",
+      "Comprehensive tech stack display",
+      "Animated profile elements",
+      "Project showcase links",
+      "Contact information",
+      "GitHub statistics integration"
+    ]
+  }
+} {
+  "project_name": "MishraShardendu",
+  "description": "A comprehensive full-stack portfolio application showcasing Shardendu Mishra's work. Features a modern Next.js frontend with TypeScript and Tailwind CSS, and a robust Go backend with JWT authentication, MongoDB integration, and RESTful APIs. The application includes project management, skills tracking, and experience documentation with both public and protected endpoints.",
+  "project_repository": "https://github.com/MishraShardendu22/MishraShardendu",
+  "project_live_link": "",
+  "project_video": "",
+  "skills": [
+    "Go",
+    "Fiber",
+    "MongoDB",
+    "JWT",
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Radix UI",
+    "React Hook Form",
+    "Zod",
+    "Zustand",
+    "Chart.js",
+    "TipTap",
+    "Vercel Analytics"
+  ],
+  "design_patterns": [
+    "RESTful API Design",
+    "JWT Authentication",
+    "MVC Architecture",
+    "Repository Pattern",
+    "Middleware Pattern",
+    "Component-Based Architecture",
+    "State Management",
+    "Form Validation",
+    "Error Handling"
+  ],
+  "system_design": {
+    "architecture": "Full-Stack Web Application",
+    "frontend": "Next.js with TypeScript and Tailwind CSS",
+    "backend": "Go with Fiber framework and MongoDB",
+    "authentication": "JWT-based authentication with admin routes",
+    "database": "MongoDB with Mongoose ODM",
+    "deployment": "Vercel for frontend, backend deployment ready",
+    "features": [
+      "Public portfolio display",
+      "Admin authentication",
+      "CRUD operations for projects",
+      "Skills management",
+      "Experience tracking",
+      "Responsive design",
+      "Real-time data updates"
+    ]
+  }
+} {
+  "project_name": "MishraShardendu-Porfolio",
+  "description": "A modern full-stack portfolio application built with Next.js frontend and Go backend. Features GSAP animations, dark/light mode, blog content rendering with react-markdown, and comprehensive backend services including JWT authentication, MongoDB integration, Cloudinary for media management, and SMTP email functionality.",
+  "project_repository": "https://github.com/MishraShardendu22/MishraShardendu-Porfolio",
+  "project_live_link": "",
+  "project_video": "",
+  "skills": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "GSAP",
+    "React Markdown",
+    "Go",
+    "Fiber",
+    "MongoDB",
+    "JWT",
+    "Cloudinary",
+    "SMTP",
+    "Docker",
+    "Vercel"
+  ],
+  "design_patterns": [
+    "Full-Stack Architecture",
+    "JWT Authentication",
+    "MVC Pattern",
+    "Component-Based Design",
+    "RESTful API Design",
+    "Environment Configuration",
+    "Responsive Design",
+    "Animation Integration"
+  ],
+  "system_design": {
+    "architecture": "Full-Stack Portfolio Application",
+    "frontend": "Next.js with TypeScript and Tailwind CSS",
+    "backend": "Go with Fiber framework",
+    "database": "MongoDB with Mongoose ODM",
+    "authentication": "JWT-based authentication",
+    "media": "Cloudinary for file storage",
+    "email": "SMTP integration",
+    "deployment": "Vercel for frontend, Railway/Render for backend",
+    "features": [
+      "Advanced GSAP animations",
+      "Dark/light mode toggle",
+      "Blog content rendering",
+      "Responsive design",
+      "JWT authentication",
+      "File upload with Cloudinary",
+      "Email functionality",
+      "MongoDB data persistence"
+    ]
+  }
+} {
+  "project_name": "News-Aggregation",
+  "small_description": "A Chrome extension for news aggregation with top headlines and updates",
+  "description": "News-Aggregation is a Chrome extension that provides effortless access to the latest headlines and news updates. The extension aggregates news from various sources and presents them in a clean, user-friendly interface. Built with modern web technologies, it offers real-time news updates and helps users stay informed with the latest headlines directly from their browser.",
+  "skills": ["Chrome Extension", "JavaScript", "News API", "Browser Extension", "Web Development"],
+  "project_repository": "https://github.com/MishraShardendu22/News-Aggregation",
+  "project_live_link": "https://youtu.be/7s0jAgrxq-o?si=AshDMQRNuZyMkpwA",
+  "project_video": "https://www.youtube.com/watch?v=7s0jAgrxq-o"
+} {
+  "project_name": "Notification-System-LLD",
+  "small_description": "A C++ notification system implementing multiple design patterns for extensible messaging",
+  "description": "Notification-System-LLD is a comprehensive C++ implementation of a notification system that demonstrates multiple design patterns. It uses the Observer Pattern for notification distribution, Decorator Pattern for adding features like timestamps and signatures, Strategy Pattern for different notification delivery methods (Email, SMS, Popup), and Singleton Pattern for the notification service. The system supports extensible notification strategies and follows SOLID principles for maintainable code.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Observer Pattern", "Decorator Pattern", "Strategy Pattern", "Singleton Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism"],
+  "project_repository": "https://github.com/MishraShardendu22/Notification-System-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Nutrition-Calculator-MishraShardendu22",
+  "small_description": "A Go-based nutrition calculator application for dietary planning and health tracking",
+  "description": "Nutrition-Calculator-MishraShardendu22 is a Go application designed for nutrition calculation and dietary planning. The application helps users calculate nutritional values, track dietary intake, and plan healthy meals. Built with Go, it features modular architecture with separate packages for calculations, models, and utilities, providing a robust foundation for nutrition-related computations and health tracking.",
+  "skills": ["Go", "Nutrition Calculation", "Health Tracking", "Modular Architecture", "CLI Application"],
+  "project_repository": "https://github.com/MishraShardendu22/Nutrition-Calculator-MishraShardendu22",
+  "project_live_link": "https://nutrition-calculator-hvzj.onrender.com",
+  "project_video": ""
+} {
+  "project_name": "orgChartApi-MishraShardendu-test",
+  "description": "A high-performance RESTful API built with Drogon C++ framework for managing organizational structures. Features JWT authentication, PostgreSQL database integration, and comprehensive CRUD operations for persons, departments, and job roles. Includes Docker containerization, automated testing with Google Test, and production-ready deployment configuration.",
+  "project_repository": "https://github.com/MishraShardendu22/orgChartApi-MishraShardendu-test",
+  "project_live_link": "",
+  "project_video": "",
+  "skills": [
+    "C++",
+    "Drogon Framework",
+    "PostgreSQL",
+    "JWT",
+    "Docker",
+    "CMake",
+    "Google Test",
+    "RESTful APIs",
+    "bcrypt",
+    "OpenSSL",
+    "JSON",
+    "Git Submodules"
+  ],
+  "design_patterns": [
+    "MVC Architecture",
+    "RESTful API Design",
+    "JWT Authentication",
+    "Repository Pattern",
+    "Dependency Injection",
+    "Middleware Pattern",
+    "Test-Driven Development",
+    "Containerization"
+  ],
+  "system_design": {
+    "architecture": "High-Performance REST API",
+    "framework": "Drogon C++ Web Framework",
+    "database": "PostgreSQL with connection pooling",
+    "authentication": "JWT-based token authentication",
+    "containerization": "Docker with docker-compose",
+    "testing": "Google Test framework with coverage",
+    "deployment": "Docker containerization ready",
+    "features": [
+      "Organizational chart management",
+      "Person CRUD operations",
+      "Department management",
+      "Job role management",
+      "JWT authentication",
+      "Pagination and sorting",
+      "Direct reports tracking",
+      "Database seeding",
+      "Automated testing",
+      "Docker deployment"
+    ]
+  }
+} {
+  "project_name": "PaymentGateway-LLD",
+  "small_description": "A C++ payment gateway system implementing multiple design patterns for payment processing",
+  "description": "PaymentGateway-LLD is a comprehensive C++ implementation of a payment gateway system that demonstrates several design patterns. It uses the Template Method Pattern for defining payment flow, Strategy Pattern for different banking systems, Proxy Pattern for retry mechanisms, Factory Pattern for gateway creation, and multiple Singleton patterns for services. The system supports multiple payment gateways (Paytm, Razorpay) with validation, initiation, and confirmation steps, following SOLID principles.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Template Method Pattern", "Strategy Pattern", "Proxy Pattern", "Factory Pattern", "Singleton Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism"],
+  "project_repository": "https://github.com/MishraShardendu22/PaymentGateway-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Portfolio-Website",
+  "description": "A dynamic portfolio website built with React, Vite, and Three.js featuring interactive 3D models and animations. Includes project showcase, responsive design, contact form integration with EmailJS, and modern UI with Tailwind CSS. Deployed on Vercel with GSAP animations and Three.js 3D graphics.",
+  "project_repository": "https://github.com/MishraShardendu22/Portfolio-Website",
+  "project_live_link": "https://shardendu-mishra-portfolio-website.vercel.app/",
+  "project_video": "",
+  "skills": [
+    "React",
+    "Vite",
+    "Three.js",
+    "React Three Fiber",
+    "GSAP",
+    "Tailwind CSS",
+    "EmailJS",
+    "TypeScript",
+    "Axios",
+    "Lucide React",
+    "Typed.js",
+    "React Globe.gl",
+    "Vercel"
+  ],
+  "design_patterns": [
+    "3D Web Graphics",
+    "Component-Based Architecture",
+    "Responsive Design",
+    "Animation Integration",
+    "Contact Form Integration",
+    "Modern UI/UX",
+    "Performance Optimization"
+  ],
+  "system_design": {
+    "architecture": "Modern Portfolio Website",
+    "framework": "React with Vite build tool",
+    "3d_graphics": "Three.js with React Three Fiber",
+    "animations": "GSAP for smooth animations",
+    "styling": "Tailwind CSS for responsive design",
+    "deployment": "Vercel for hosting",
+    "features": [
+      "Interactive 3D models and graphics",
+      "Project showcase and experience display",
+      "Responsive design for all devices",
+      "Contact form with EmailJS integration",
+      "GSAP animations and transitions",
+      "Three.js 3D visualizations",
+      "React Globe.gl for globe visualization",
+      "Typed.js for text animations",
+      "Modern UI components",
+      "Performance optimized build"
+    ]
+  }
+} {
+  "project_name": "Project-Astro-Framework",
+  "description": "A modern personal blog website built with Astro framework, featuring responsive design and interactive UI elements. The blog showcases articles on computer science, history, technology, and personal projects. Built with TypeScript, Tailwind CSS, and deployed on Vercel for optimal performance and SEO.",
+  "project_repository": "https://github.com/MishraShardendu22/Project-Astro-Framework",
+  "project_live_link": "https://astro-j29f8jhok-shardendu-mishra.vercel.app/",
+  "project_video": "",
+  "skills": [
+    "Astro",
+    "TypeScript",
+    "React",
+    "Tailwind CSS",
+    "JavaScript",
+    "HTML5",
+    "CSS3",
+    "Vercel",
+    "Three.js",
+    "Typed.js",
+    "Axios",
+    "FontAwesome",
+    "Heroicons",
+    "Lucide React"
+  ],
+  "design_patterns": [
+    "Static Site Generation",
+    "Component-Based Architecture",
+    "Responsive Design",
+    "Progressive Enhancement",
+    "SEO Optimization",
+    "Content-First Design"
+  ],
+  "system_design": {
+    "architecture": "Static Site Generator",
+    "framework": "Astro with React integration",
+    "styling": "Tailwind CSS for responsive design",
+    "deployment": "Vercel for static hosting",
+    "features": [
+      "Personal blog with articles",
+      "Responsive design",
+      "Interactive UI elements",
+      "Project showcase",
+      "Skills demonstration",
+      "SEO optimized",
+      "Fast loading times",
+      "Modern web technologies"
+    ]
+  }
+} {
+  "project_name": "Project-Management",
+  "description": "Project Zen is a cutting-edge personal task management system built with Next.js 15, TypeScript, and PostgreSQL. Features comprehensive task and project management with priority levels, due dates, categorization, and user authentication. Includes a responsive dashboard, calendar view, statistical insights, and modern UI with Tailwind CSS and ShadCN components.",
+  "project_repository": "https://github.com/MishraShardendu22/Project-Management",
+  "project_live_link": "https://project-management-internhsip-shardendu-mishra.vercel.app",
+  "project_video": "https://www.loom.com/share/17111c76016545f2b255316369e9defb?sid=67bd8ecb-f003-48e7-9db9-6ba5351e1437",
+  "skills": [
+    "Next.js 15",
+    "TypeScript",
+    "PostgreSQL",
+    "Drizzle ORM",
+    "Tailwind CSS",
+    "ShadCN UI",
+    "Zustand",
+    "React Query",
+    "React Hook Form",
+    "Zod",
+    "bcryptjs",
+    "Nodemailer",
+    "NextAuth.js",
+    "Axios",
+    "Day.js",
+    "date-fns",
+    "Recharts",
+    "TinyMCE",
+    "Radix UI",
+    "Vercel"
+  ],
+  "design_patterns": [
+    "Full-Stack Architecture",
+    "JWT Authentication",
+    "Global State Management",
+    "Component-Based Design",
+    "RESTful API Design",
+    "Form Validation",
+    "Data Fetching Patterns",
+    "Responsive Design",
+    "Type-Safe Database Operations"
+  ],
+  "system_design": {
+    "architecture": "Full-Stack Task Management Application",
+    "frontend": "Next.js 15 with App Router and TypeScript",
+    "backend": "Next.js API Routes",
+    "database": "PostgreSQL with Drizzle ORM",
+    "authentication": "NextAuth.js with bcrypt password hashing",
+    "styling": "Tailwind CSS with ShadCN UI components",
+    "state_management": "Zustand for global state, React Query for server state",
+    "deployment": "Vercel with Neon PostgreSQL hosting",
+    "features": [
+      "Task CRUD operations with priority levels",
+      "Project management and organization",
+      "User authentication and registration",
+      "Responsive dashboard with sidebar navigation",
+      "Calendar view for deadline tracking",
+      "Statistical insights and progress tracking",
+      "Email notifications and verification",
+      "Real-time data synchronization",
+      "Form validation with Zod",
+      "Rich text editing with TinyMCE"
+    ]
+  }
+} {
+  "project_name": "ProjectsMade",
+  "description": "A comprehensive repository documenting all projects created by Shardendu Mishra across multiple technologies and frameworks. Includes detailed lists of Go projects, Next.js applications, MERN stack projects, JavaScript projects, Python applications, mobile app development, Docker projects, and open source contributions with live deployment links and demo videos.",
+  "project_repository": "https://github.com/MishraShardendu22/ProjectsMade",
+  "project_live_link": "",
+  "project_video": "",
+  "skills": [
+    "Go",
+    "Next.js",
+    "React",
+    "Node.js",
+    "MongoDB",
+    "Express.js",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "Docker",
+    "Mobile Development",
+    "Open Source",
+    "API Development",
+    "Web Scraping",
+    "Database Design",
+    "Full-Stack Development"
+  ],
+  "design_patterns": [
+    "Project Documentation",
+    "Portfolio Organization",
+    "Technology Categorization",
+    "Deployment Tracking",
+    "Project Showcase"
+  ],
+  "system_design": {
+    "architecture": "Project Documentation Repository",
+    "content": "Text-based project listings with links",
+    "organization": "Technology-based categorization",
+    "features": [
+      "Go projects with live deployments",
+      "Next.js applications with Vercel hosting",
+      "MERN stack projects",
+      "JavaScript DOM projects",
+      "Python applications",
+      "Mobile app development projects",
+      "Docker containerization projects",
+      "Open source contributions",
+      "Live deployment links",
+      "Demo video links",
+      "GitHub repository links"
+    ]
+  }
+} {
+  "project_name": "Purrfect-ide",
+  "description": "A fully integrated development environment built from scratch with Next.js and Convex. Features a customizable Monaco editor, multi-language support, user authentication with Clerk, and a modern UI built with Tailwind CSS and ShadCN components. Designed to enhance developer productivity with a sleek, responsive interface.",
+  "project_repository": "https://github.com/MishraShardendu22/purrfect-ide",
+  "project_live_link": "",
+  "project_video": "https://youtu.be/ksNoJqxavnM",
+  "skills": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Convex",
+    "Monaco Editor",
+    "Clerk Authentication",
+    "Tailwind CSS",
+    "ShadCN UI",
+    "Radix UI",
+    "Framer Motion",
+    "Zustand",
+    "React Hook Form",
+    "Zod",
+    "Axios",
+    "Lucide React"
+  ],
+  "design_patterns": [
+    "Integrated Development Environment",
+    "Component-Based Architecture",
+    "Real-time Collaboration",
+    "Authentication System",
+    "Editor Integration",
+    "Responsive Design",
+    "State Management",
+    "Form Validation"
+  ],
+  "system_design": {
+    "architecture": "Full-Stack IDE Application",
+    "frontend": "Next.js with TypeScript and Tailwind CSS",
+    "backend": "Convex for real-time database and functions",
+    "editor": "Monaco Editor for code editing",
+    "authentication": "Clerk for user management",
+    "styling": "Tailwind CSS with ShadCN UI components",
+    "deployment": "Vercel-ready configuration",
+    "features": [
+      "Customizable code editor",
+      "Multi-language support",
+      "User authentication and profiles",
+      "Real-time collaboration",
+      "Modern responsive UI",
+      "Code syntax highlighting",
+      "File management system",
+      "Developer productivity tools"
+    ]
+  }
+} {
+  "project_name": "React-Projects",
+  "description": "A comprehensive React learning repository showcasing fundamental concepts and mini-projects built with React.js and Vite. Features 8 interactive projects including password generators, currency converters, theme toggles, live typing displays, to-do lists with Redux, and background color changers. All projects are deployed on Netlify with live demos.",
+  "project_repository": "https://github.com/MishraShardendu22/React-Projects",
+  "project_live_link": "",
+  "project_video": "",
+  "skills": [
+    "React.js",
+    "Vite",
+    "JavaScript",
+    "CSS3",
+    "HTML5",
+    "Redux Toolkit",
+    "Context API",
+    "Hooks",
+    "JSX",
+    "Netlify",
+    "Local Storage",
+    "State Management"
+  ],
+  "design_patterns": [
+    "Component-Based Architecture",
+    "State Management",
+    "Context API Pattern",
+    "Redux Pattern",
+    "Custom Hooks",
+    "Event Handling",
+    "Responsive Design",
+    "Progressive Enhancement"
+  ],
+  "system_design": {
+    "architecture": "React Learning Projects Collection",
+    "build_tool": "Vite for fast development",
+    "deployment": "Netlify for static hosting",
+    "projects": [
+      "Random Password Generator",
+      "Exchange Rate Converter",
+      "Toggle Theme Changer",
+      "Live Typing Display",
+      "To-Do List with Redux",
+      "To-Do List Manager",
+      "Background Color Changer",
+      "Introduction Page"
+    ],
+    "features": [
+      "Interactive UI components",
+      "Real-time data updates",
+      "Theme switching functionality",
+      "Local storage persistence",
+      "Redux state management",
+      "Context API implementation",
+      "Responsive design",
+      "Live demos for all projects"
+    ]
+  }
+} {
+  "project_name": "Real-Time-Chat-Application",
+  "description": "WhatsGram2.0 is a real-time chat application built with React frontend and Express backend. Features user-friendly UI with Tailwind CSS, responsive design, real-time messaging capabilities, and modern UI components from shadcn and Acentricity UI. Deployed on Render with separate frontend and backend services.",
+  "project_repository": "https://github.com/MishraShardendu22/Real-Time-Chat-Application",
+  "project_live_link": "https://whatsgram2-0-front-1.onrender.com/",
+  "project_video": "",
+  "skills": [
+    "React",
+    "TypeScript",
+    "Express.js",
+    "Node.js",
+    "Tailwind CSS",
+    "Socket.IO",
+    "Vite",
+    "shadcn UI",
+    "Radix UI",
+    "Framer Motion",
+    "Zustand",
+    "Axios",
+    "React Router",
+    "React Icons",
+    "Lucide React",
+    "Render"
+  ],
+  "design_patterns": [
+    "Real-Time Communication",
+    "Client-Server Architecture",
+    "Component-Based Design",
+    "State Management",
+    "WebSocket Integration",
+    "Responsive Design",
+    "RESTful API Design",
+    "Event-Driven Architecture"
+  ],
+  "system_design": {
+    "architecture": "Full-Stack Real-Time Chat Application",
+    "frontend": "React with TypeScript and Vite",
+    "backend": "Express.js with Node.js",
+    "real_time": "Socket.IO for live messaging",
+    "styling": "Tailwind CSS with shadcn UI components",
+    "state_management": "Zustand for client-side state",
+    "deployment": "Render for both frontend and backend",
+    "features": [
+      "Real-time messaging",
+      "User-friendly chat interface",
+      "Responsive design for mobile and desktop",
+      "Modern UI with animations",
+      "Icon integration with React Icons and Lucide",
+      "Toast notifications",
+      "Avatar and user management",
+      "Scroll area for chat history",
+      "Dialog components for interactions"
+    ]
+  }
+} {
+  "project_name": "Re-writing-History",
+  "description": "A Go script that retroactively edits Git commit metadata (author name, email, date) for cloned GitHub repositories. Uses AI integration via OpenRouter API to generate realistic commit dates and rewrites repository history using git filter-branch. Features automated cloning, metadata extraction, AI-powered date generation, and force-push capabilities.",
+  "project_repository": "https://github.com/MishraShardendu22/Re-writing-History",
+  "project_live_link": "",
+  "project_video": "",
+  "skills": [
+    "Go",
+    "Git",
+    "GitHub API",
+    "OpenRouter API",
+    "AI Integration",
+    "Shell Scripting",
+    "Environment Variables",
+    "File I/O",
+    "HTTP Requests",
+    "Error Handling"
+  ],
+  "design_patterns": [
+    "Command-Line Tool",
+    "API Integration",
+    "File Processing",
+    "Error Handling",
+    "Modular Architecture",
+    "Environment Configuration",
+    "Automated Workflow"
+  ],
+  "system_design": {
+    "architecture": "Git History Rewriting Tool",
+    "language": "Go with modular design",
+    "ai_integration": "OpenRouter API for date generation",
+    "git_operations": "git filter-branch for history rewriting",
+    "deployment": "Command-line executable",
+    "features": [
+      "Clone any public GitHub repository",
+      "Extract commit metadata to text files",
+      "AI-powered realistic date generation",
+      "Rewrite Git commit history",
+      "Force-push to remote repository",
+      "Automated cleanup of temporary files",
+      "Environment variable configuration",
+      "Error handling and validation",
+      "Modular utility functions"
+    ]
+  }
+} {
+  "project_name": "ScrollHub",
+  "small_description": "An ultimate shorts platform with AI-driven recommendations and seamless scrolling experience for productivity-focused content",
+  "description": "ScrollHub is a Next.js-based shorts platform that provides the best scrolling experience with an algorithm designed to encourage productivity. It features AI-driven recommendations and a seamless interface where users can effortlessly upload and watch short videos while staying focused. The platform includes aggressive upload capabilities, high SEO optimization, and a highly secure backend with AI model integration trained on social media wellness datasets for better content curation. Users can upload videos, watch content with seamless scrolling, and benefit from AI-powered content recommendations.",
+  "skills": ["Next.js", "React", "TypeScript", "MongoDB", "Mongoose", "Next-Auth", "bcryptjs", "ImageKit", "Tailwind CSS", "ShadCN UI", "DaisyUI", "Framer Motion", "Google Generative AI", "Postman", "RESTful APIs", "Authentication", "Video Upload", "Video Streaming", "AI Integration", "SEO Optimization", "Responsive Design", "Database Design", "API Development", "Full Stack Development"],
+  "project_repository": "https://github.com/MishraShardendu22/Scroll-Hub",
+  "project_live_link": "https://scroll-hub.vercel.app/",
+  "project_video": ""
+} {
+  "project_name": "Secret-Message-Application",
+  "description": "A production-grade anonymous feedback application built with Next.js and TypeScript. Features AI integration for message generation, JWT authentication, email notifications via Resend and EmailJS, and a modern UI with Tailwind CSS and ShadCN components. Allows users to send and receive anonymous feedback with profile sharing capabilities.",
+  "project_repository": "https://github.com/MishraShardendu22/Secret-Message-Application",
+  "project_live_link": "https://5-chan-shardendu-mishra.vercel.app/",
+  "project_video": "",
+  "skills": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "ShadCN UI",
+    "JWT",
+    "OpenAI API",
+    "Hugging Face API",
+    "Resend Email",
+    "EmailJS",
+    "MongoDB",
+    "bcryptjs",
+    "React Hook Form",
+    "Zod",
+    "Framer Motion",
+    "Vercel"
+  ],
+  "design_patterns": [
+    "Full-Stack Architecture",
+    "JWT Authentication",
+    "AI Integration",
+    "Anonymous Feedback System",
+    "Component-Based Design",
+    "Form Validation",
+    "Email Service Integration",
+    "Responsive Design",
+    "Debouncing"
+  ],
+  "system_design": {
+    "architecture": "Full-Stack Anonymous Feedback Platform",
+    "frontend": "Next.js with TypeScript and Tailwind CSS",
+    "backend": "Next.js API routes",
+    "database": "MongoDB with Mongoose",
+    "authentication": "JWT-based authentication",
+    "ai_integration": "OpenAI and Hugging Face APIs",
+    "email_services": "Resend and EmailJS for notifications",
+    "deployment": "Vercel for hosting",
+    "features": [
+      "Anonymous feedback system",
+      "AI-powered message generation",
+      "User profile sharing",
+      "JWT authentication",
+      "Email notifications",
+      "Responsive design",
+      "Form validation with Zod",
+      "Debounced performance optimization",
+      "Modern UI with animations",
+      "Profile management dashboard"
+    ]
+  }
+} {
+  "project_name": "SnakesAndLadder-LLD",
+  "small_description": "A C++ implementation of Snakes and Ladders game using multiple design patterns",
+  "description": "SnakesAndLadder-LLD is a comprehensive C++ implementation of the classic Snakes and Ladders board game that demonstrates several design patterns. It uses the Observer Pattern for game notifications, Strategy Pattern for different board setup strategies (Random, Custom, Standard), Factory Pattern for game creation, and Template Method Pattern for game rules. The system supports multiple difficulty levels, custom board configurations, and follows SOLID principles for extensible game mechanics.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Observer Pattern", "Strategy Pattern", "Factory Pattern", "Template Method Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism"],
+  "project_repository": "https://github.com/MishraShardendu22/SnakesAndLadder-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Spotify-LLD",
+  "small_description": "A C++ music player system implementing multiple design patterns for audio playback",
+  "description": "Spotify-LLD is a comprehensive C++ implementation of a music player system that demonstrates several design patterns. It uses the Adapter Pattern for different audio output devices (Bluetooth, Wired, Headphones), Strategy Pattern for different play strategies (Sequential, Random, Custom Queue), Factory Pattern for device creation, and Facade Pattern for simplified client interface. The system supports playlist management, multiple device types, and various playback strategies, following SOLID principles for extensible audio system design.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Adapter Pattern", "Strategy Pattern", "Factory Pattern", "Facade Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism", "Smart Pointers"],
+  "project_repository": "https://github.com/MishraShardendu22/Spotify-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "System-Manager-ElectronJS",
+  "description": "A cross-platform desktop system manager application built with Electron, React, and TypeScript. Features system monitoring capabilities, modern UI with Recharts for data visualization, and comprehensive build scripts for Windows, macOS, and Linux. Includes development and production build configurations with Vite for fast development.",
+  "project_repository": "https://github.com/MishraShardendu22/System-Manager-ElectronJS",
+  "project_live_link": "",
+  "project_video": "",
+  "skills": [
+    "Electron",
+    "React",
+    "TypeScript",
+    "Vite",
+    "Node.js",
+    "os-utils",
+    "Recharts",
+    "Lucide React",
+    "Electron Builder",
+    "Playwright",
+    "Vitest",
+    "Cross-platform Development"
+  ],
+  "design_patterns": [
+    "Desktop Application Architecture",
+    "Main Process and Renderer Process",
+    "Component-Based Design",
+    "Cross-Platform Development",
+    "Build System Configuration",
+    "Testing Strategy",
+    "Development Workflow"
+  ],
+  "system_design": {
+    "architecture": "Cross-Platform Desktop Application",
+    "framework": "Electron with React frontend",
+    "build_tool": "Vite for fast development",
+    "language": "TypeScript for type safety",
+    "testing": "Playwright for E2E, Vitest for unit tests",
+    "deployment": "Electron Builder for distribution",
+    "features": [
+      "System monitoring and management",
+      "Cross-platform compatibility (Windows, macOS, Linux)",
+      "Real-time data visualization with Recharts",
+      "Modern UI with Lucide React icons",
+      "Development and production builds",
+      "Automated testing with Playwright",
+      "Unit testing with Vitest",
+      "Hot reload during development",
+      "System utilities integration"
+    ]
+  }
+} {
+  "project_name": "Third-Party-Services",
+  "description": "A comprehensive documentation repository listing essential third-party services for modern web development. Covers payment gateways, notification systems, authentication providers, CMS platforms, search engines, monitoring tools, databases, and media services. Serves as a reference guide for integrating external services into web applications.",
+  "project_repository": "https://github.com/MishraShardendu22/Third-Party-Services",
+  "project_live_link": "",
+  "project_video": "",
+  "skills": [
+    "Payment Integration",
+    "Authentication Systems",
+    "Content Management",
+    "Search Engines",
+    "Monitoring Tools",
+    "Database Services",
+    "Media Management",
+    "API Integration",
+    "Service Architecture"
+  ],
+  "design_patterns": [
+    "Service Integration",
+    "API-First Design",
+    "Microservices Architecture",
+    "Third-Party Integration",
+    "Documentation Management",
+    "Reference Architecture"
+  ],
+  "system_design": {
+    "architecture": "Service Integration Reference",
+    "content": "Documentation and service listings",
+    "categories": [
+      "Payment gateways (Lemon Squeezy, Stripe, Razorpay)",
+      "Notification systems (Twilio, Resend, OneSignal, Firebase)",
+      "Authentication (Auth0, Firebase Auth, Clerk, Supabase)",
+      "CMS platforms (Sanity, Strapi, Contentful, Ghost)",
+      "Search engines (Algolia, Meilisearch, Typesense)",
+      "Monitoring tools (Sentry, LogRocket, PostHog, Mixpanel)",
+      "Databases (Supabase, Firebase, MongoDB, PlanetScale)",
+      "Media services (Cloudinary, ImageKit, Uploadcare, AWS S3)"
+    ],
+    "features": [
+      "Comprehensive service listings",
+      "Categorized documentation",
+      "Integration reference guide",
+      "Modern web development services",
+      "Cloud service recommendations",
+      "API integration examples"
+    ]
+  }
+} {
+  "project_name": "Tic-Tac-Toe",
+  "description": "A real-time multiplayer Tic-Tac-Toe game built with React frontend and Express backend using Socket.IO for real-time communication. Features modern UI with Tailwind CSS, Framer Motion animations, and hot toast notifications. Demonstrates Socket.IO implementation for real-time game state synchronization between players.",
+  "project_repository": "https://github.com/MishraShardendu22/Tic-Tac-Toe",
+  "project_live_link": "",
+  "project_video": "https://youtu.be/5EjkDbj_ykk",
+  "skills": [
+    "React",
+    "TypeScript",
+    "Express.js",
+    "Socket.IO",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Vite",
+    "Node.js",
+    "CORS",
+    "Cookie Parser",
+    "Hot Toast",
+    "Lucide React"
+  ],
+  "design_patterns": [
+    "Real-Time Multiplayer Game",
+    "WebSocket Communication",
+    "Client-Server Architecture",
+    "Component-Based Design",
+    "State Synchronization",
+    "Event-Driven Architecture",
+    "Responsive Design"
+  ],
+  "system_design": {
+    "architecture": "Real-Time Multiplayer Game",
+    "frontend": "React with TypeScript and Vite",
+    "backend": "Express.js with Socket.IO",
+    "real_time": "Socket.IO for game state synchronization",
+    "styling": "Tailwind CSS with animations",
+    "build_tool": "Vite for fast development",
+    "features": [
+      "Real-time multiplayer gameplay",
+      "Socket.IO WebSocket communication",
+      "Game state synchronization",
+      "Modern responsive UI",
+      "Framer Motion animations",
+      "Hot toast notifications",
+      "Cross-origin resource sharing",
+      "Cookie-based session management",
+      "TypeScript for type safety"
+    ]
+  }
+} {
+  "project_name": "TicTacToe-LLD",
+  "small_description": "A C++ implementation of Tic Tac Toe game using design patterns and OOP principles",
+  "description": "TicTacToe-LLD is a C++ implementation of the classic Tic Tac Toe game that demonstrates object-oriented design principles and design patterns. It uses the Observer Pattern for game notifications, Strategy Pattern for different game rules, Factory Pattern for game creation, and follows SOLID principles. The system supports multiple players, customizable board sizes, and extensible rule sets for different game variations.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Observer Pattern", "Strategy Pattern", "Factory Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism"],
+  "project_repository": "https://github.com/MishraShardendu22/TicTacToe-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Tinder-LLD",
+  "small_description": "A C++ dating app system implementing multiple design patterns for user matching and communication",
+  "description": "Tinder-LLD is a comprehensive C++ implementation of a dating application that demonstrates several design patterns. It uses the Observer Pattern for notifications, Strategy Pattern for different matching algorithms (Basic, Interests-based, Location-based), Factory Pattern for matcher creation, and Singleton Pattern for services. The system supports user profiles, location-based matching, chat functionality, swipe mechanics, and follows SOLID principles for extensible dating platform design.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Observer Pattern", "Strategy Pattern", "Factory Pattern", "Singleton Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism", "Smart Pointers"],
+  "project_repository": "https://github.com/MishraShardendu22/Tinder-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "TokeNova-ShardenduMishra",
+  "description": "A comprehensive Web3 application built for BITS Hackathon featuring blockchain integration, smart contracts, and modern frontend. Includes React frontend with Web3 wallet integration, Hardhat smart contract development, and agentic AI components. Features Material-UI, Radix UI components, and comprehensive blockchain development tools.",
+  "project_repository": "https://github.com/MishraShardendu22/TokeNova-ShardenduMishra",
+  "project_live_link": "https://tokenova.vercel.app/",
+  "project_video": "",
+  "skills": [
+    "React",
+    "TypeScript",
+    "Web3",
+    "Ethers.js",
+    "Wagmi",
+    "Viem",
+    "Hardhat",
+    "Solidity",
+    "OpenZeppelin",
+    "Material-UI",
+    "Radix UI",
+    "Tailwind CSS",
+    "ConnectKit",
+    "Framer Motion",
+    "Vite",
+    "Blockchain Development"
+  ],
+  "design_patterns": [
+    "Web3 Architecture",
+    "Smart Contract Development",
+    "Wallet Integration",
+    "Component-Based Design",
+    "Blockchain State Management",
+    "Agentic AI Integration",
+    "Responsive Design"
+  ],
+  "system_design": {
+    "architecture": "Full-Stack Web3 Application",
+    "frontend": "React with TypeScript and Vite",
+    "blockchain": "Hardhat with Solidity smart contracts",
+    "wallet_integration": "Wagmi and ConnectKit for Web3 connectivity",
+    "ui_framework": "Material-UI and Radix UI components",
+    "deployment": "Vercel for frontend",
+    "features": [
+      "Web3 wallet integration",
+      "Smart contract interaction",
+      "Blockchain state management",
+      "Modern responsive UI",
+      "Agentic AI components",
+      "Image editing capabilities",
+      "QR code generation",
+      "Form validation",
+      "Real-time data visualization",
+      "Cross-platform compatibility"
+    ]
+  }
+} {
+  "project_name": "TweeTube",
+  "description": "An ambitious YouTube-Twitter hybrid application backend built with Node.js and Express. Features user authentication with JWT, MongoDB database integration, Cloudinary for media storage, and comprehensive API endpoints. Currently in development phase as a learning project for building production-grade social media applications.",
+  "project_repository": "https://github.com/MishraShardendu22/TweeTube",
+  "project_live_link": "",
+  "project_video": "",
+  "skills": [
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Mongoose",
+    "JWT",
+    "bcrypt",
+    "Cloudinary",
+    "Multer",
+    "Axios",
+    "CORS",
+    "Cookie Parser",
+    "dotenv",
+    "Nodemon"
+  ],
+  "design_patterns": [
+    "RESTful API Design",
+    "JWT Authentication",
+    "MongoDB Aggregation",
+    "File Upload Handling",
+    "Middleware Pattern",
+    "Environment Configuration",
+    "Error Handling"
+  ],
+  "system_design": {
+    "architecture": "Backend API for Social Media Platform",
+    "framework": "Express.js with Node.js",
+    "database": "MongoDB with Mongoose ODM",
+    "authentication": "JWT with bcrypt password hashing",
+    "media_storage": "Cloudinary for file uploads",
+    "development": "Nodemon for hot reloading",
+    "features": [
+      "User authentication and authorization",
+      "Media file upload and storage",
+      "Database aggregation and pagination",
+      "RESTful API endpoints",
+      "Cross-origin resource sharing",
+      "Cookie-based session management",
+      "Environment variable configuration",
+      "Production-ready backend structure"
+    ]
+  }
+} {
+  "project_name": "URL-Shortening-Service",
+  "description": "A simple and efficient URL shortening service built with Go and Fiber framework. Features MD5 hash-based URL generation, in-memory storage, RESTful API endpoints for URL shortening and redirection, and JSON response handling. Demonstrates Go web development with clean architecture and error handling.",
+  "project_repository": "https://github.com/MishraShardendu22/URL-Shortening-Service",
+  "project_live_link": "",
+  "project_video": "https://youtu.be/slbRjnZbZ5E",
+  "skills": [
+    "Go",
+    "Fiber Framework",
+    "RESTful APIs",
+    "MD5 Hashing",
+    "JSON Handling",
+    "HTTP Redirects",
+    "In-Memory Storage",
+    "Error Handling",
+    "Web Development"
+  ],
+  "design_patterns": [
+    "RESTful API Design",
+    "Hash-Based URL Generation",
+    "In-Memory Data Storage",
+    "HTTP Redirect Pattern",
+    "Error Handling",
+    "Clean Architecture"
+  ],
+  "system_design": {
+    "architecture": "URL Shortening Service",
+    "framework": "Fiber web framework",
+    "storage": "In-memory map for URL storage",
+    "url_generation": "MD5 hash-based shortening",
+    "api_endpoints": "RESTful endpoints for shortening and redirection",
+    "features": [
+      "URL shortening with POST /shorten",
+      "URL redirection with GET /redirect/:id",
+      "MD5 hash-based short URL generation",
+      "In-memory URL storage",
+      "JSON request/response handling",
+      "HTTP status code management",
+      "Error handling for invalid URLs",
+      "Creation timestamp tracking"
+    ]
+  }
+} {
+  "project_name": "Vasini-Singh-Portfolio",
+  "description": "A professional portfolio website built for client Vasini Singh using React, TypeScript, and Vite. Features modern UI components from Radix UI, GSAP animations, Framer Motion, and comprehensive styling with Tailwind CSS. Includes contact form integration with EmailJS and responsive design for optimal user experience.",
+  "project_repository": "https://github.com/MishraShardendu22/Vasini-Singh-Portfolio",
+  "project_live_link": "https://vasini-singh-portfolio.onrender.com/",
+  "project_video": "",
+  "skills": [
+    "React",
+    "TypeScript",
+    "Vite",
+    "Tailwind CSS",
+    "Radix UI",
+    "GSAP",
+    "Framer Motion",
+    "EmailJS",
+    "React Hook Form",
+    "Zod",
+    "Lucide React",
+    "Recharts",
+    "Render"
+  ],
+  "design_patterns": [
+    "Client Portfolio Design",
+    "Component-Based Architecture",
+    "Responsive Design",
+    "Animation Integration",
+    "Form Validation",
+    "Modern UI/UX",
+    "Contact Integration"
+  ],
+  "system_design": {
+    "architecture": "Client Portfolio Website",
+    "framework": "React with TypeScript",
+    "build_tool": "Vite for fast development",
+    "styling": "Tailwind CSS with Radix UI components",
+    "animations": "GSAP and Framer Motion",
+    "deployment": "Render for hosting",
+    "features": [
+      "Professional portfolio showcase",
+      "Modern responsive design",
+      "GSAP animations",
+      "Contact form with EmailJS",
+      "Interactive UI components",
+      "Data visualization with Recharts",
+      "Form validation with Zod",
+      "Toast notifications",
+      "Accessible design patterns",
+      "Cross-browser compatibility"
+    ]
+  }
+} {
+  "project_name": "WebScrapperNewsWebsite",
+  "description": "A full-stack web scraping application that extracts live news data from The Hindu website and generates downloadable CSV files based on user-selected genres. Features Go backend with Colly web scraping framework, React frontend with modern UI components, and real-time data processing capabilities.",
+  "project_repository": "https://github.com/MishraShardendu22/WebScrapperNewsWebsite",
+  "project_live_link": "https://ws-golang-front.onrender.com",
+  "project_video": "",
+  "skills": [
+    "Go",
+    "Fiber Framework",
+    "Colly Web Scraping",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "ShadCN UI",
+    "DaisyUI",
+    "Axios",
+    "Framer Motion",
+    "Clerk Authentication",
+    "CSV Generation",
+    "Web Scraping"
+  ],
+  "design_patterns": [
+    "Web Scraping Architecture",
+    "Full-Stack Application",
+    "Data Processing Pipeline",
+    "Component-Based Design",
+    "API Integration",
+    "File Generation",
+    "Responsive Design"
+  ],
+  "system_design": {
+    "architecture": "Full-Stack Web Scraping Application",
+    "backend": "Go with Fiber framework and Colly scraper",
+    "frontend": "React with TypeScript and Vite",
+    "scraping": "Colly framework for web data extraction",
+    "styling": "Tailwind CSS with ShadCN and DaisyUI",
+    "deployment": "Render for hosting",
+    "features": [
+      "Genre-based news scraping",
+      "CSV file generation and download",
+      "Real-time data extraction",
+      "Modern responsive UI",
+      "User authentication with Clerk",
+      "Toast notifications",
+      "Framer Motion animations",
+      "Cross-origin data fetching",
+      "Error handling and validation"
+    ]
+  }
+} {
+  "project_name": "WebSiteHealthCheck",
+  "description": "A microservice built with Go and Cobra framework for checking website availability and health status. Features command-line interface for easy website monitoring, HTTP status checking, and executable binary generation. Demonstrates Go microservice development with CLI tools.",
+  "project_repository": "https://github.com/MishraShardendu22/WebSiteHealthCheck",
+  "project_live_link": "",
+  "project_video": "https://youtu.be/lVQKG2omhYk",
+  "skills": [
+    "Go",
+    "Cobra Framework",
+    "CLI Development",
+    "HTTP Client",
+    "Microservices",
+    "Command Line Tools",
+    "Binary Generation",
+    "Website Monitoring"
+  ],
+  "design_patterns": [
+    "Microservice Architecture",
+    "Command Line Interface",
+    "HTTP Health Checking",
+    "CLI Tool Design",
+    "Error Handling",
+    "Modular Design"
+  ],
+  "system_design": {
+    "architecture": "CLI Microservice",
+    "framework": "Cobra for CLI development",
+    "language": "Go for high performance",
+    "deployment": "Executable binary generation",
+    "features": [
+      "Website availability checking",
+      "HTTP status monitoring",
+      "Command-line interface",
+      "Easy extensibility",
+      "Cross-platform compatibility",
+      "Simple usage patterns",
+      "Error reporting",
+      "Health status indicators"
+    ]
+  }
+} {
+  "project_name": "WhatsGram",
+  "description": "A real-time chat application built with React frontend and Express backend using Socket.IO for live messaging. Features user authentication with JWT, MongoDB database integration, responsive design with Tailwind CSS, and modern UI components. Deployed on Render with comprehensive chat functionality.",
+  "project_repository": "https://github.com/MishraShardendu22/WhatsGram",
+  "project_live_link": "https://whatsgram-jm9c.onrender.com",
+  "project_video": "",
+  "skills": [
+    "React",
+    "Express.js",
+    "Node.js",
+    "Socket.IO",
+    "MongoDB",
+    "Mongoose",
+    "JWT",
+    "bcryptjs",
+    "Tailwind CSS",
+    "React Icons",
+    "Lucide React",
+    "Cookie Parser",
+    "Render"
+  ],
+  "design_patterns": [
+    "Real-Time Chat Architecture",
+    "Client-Server Communication",
+    "JWT Authentication",
+    "WebSocket Integration",
+    "MVC Pattern",
+    "Middleware Pattern",
+    "Responsive Design"
+  ],
+  "system_design": {
+    "architecture": "Full-Stack Real-Time Chat Application",
+    "frontend": "React with modern UI components",
+    "backend": "Express.js with Socket.IO",
+    "database": "MongoDB with Mongoose ODM",
+    "authentication": "JWT with bcrypt password hashing",
+    "real_time": "Socket.IO for live messaging",
+    "deployment": "Render for hosting",
+    "features": [
+      "Real-time messaging",
+      "User authentication and registration",
+      "MongoDB data persistence",
+      "Responsive design for all devices",
+      "Modern UI with Tailwind CSS",
+      "Icon integration with React Icons",
+      "Cookie-based session management",
+      "WebSocket communication",
+      "Error handling and validation"
+    ]
+  }
+} {
+  "project_name": "where-iss-at",
+  "description": "A cross-platform React Native application that tracks the live location of the International Space Station (ISS) on an interactive map. Built with Expo, TypeScript, and React Native Maps, featuring real-time ISS tracking, responsive design for Android and iOS, and intuitive user interface.",
+  "project_repository": "https://github.com/MishraShardendu22/where-iss-at",
+  "project_live_link": "",
+  "project_video": "https://youtube.com/shorts/jZiHJCX0OBk?si=Cwu50opty32gZQhG",
+  "skills": [
+    "React Native",
+    "Expo",
+    "TypeScript",
+    "React Native Maps",
+    "Tailwind CSS",
+    "Axios",
+    "Expo Router",
+    "Lottie",
+    "Moti",
+    "React Navigation",
+    "Expo Vector Icons",
+    "Mobile Development"
+  ],
+  "design_patterns": [
+    "Cross-Platform Mobile Development",
+    "Real-Time Data Integration",
+    "Map-Based UI Design",
+    "Navigation Patterns",
+    "Component-Based Architecture",
+    "Responsive Mobile Design"
+  ],
+  "system_design": {
+    "architecture": "Cross-Platform Mobile Application",
+    "framework": "React Native with Expo",
+    "navigation": "Expo Router for app navigation",
+    "maps": "React Native Maps for ISS tracking",
+    "styling": "Tailwind CSS for mobile styling",
+    "deployment": "Expo platform for distribution",
+    "features": [
+      "Real-time ISS location tracking",
+      "Interactive map display",
+      "Cross-platform compatibility (iOS/Android)",
+      "Expo platform integration",
+      "Responsive mobile design",
+      "Lottie animations",
+      "Gesture handling",
+      "Haptic feedback",
+      "Linear gradient effects",
+      "Vector icons integration"
+    ]
+  }
+} {
+  "project_name": "Zepto-LLD",
+  "small_description": "A C++ implementation of a Zepto-like delivery system using multiple design patterns",
+  "description": "Zepto-LLD is a comprehensive C++ implementation of a Zepto-like hyperlocal delivery system that demonstrates several design patterns. It uses the Factory Pattern for product creation, Strategy Pattern for inventory replenishment, Singleton Pattern for managers, and follows SOLID principles. The system supports inventory management, dark store operations, user carts, order placement, and delivery partner assignment, providing a modular and extensible architecture for delivery platforms.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Factory Pattern", "Strategy Pattern", "Singleton Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism"],
+  "project_repository": "https://github.com/MishraShardendu22/Zepto-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} {
+  "project_name": "Zomato-LLD",
+  "small_description": "A C++ implementation of a Zomato-like food delivery system using multiple design patterns",
+  "description": "Zomato-LLD is a comprehensive C++ implementation of a Zomato-like food delivery system that demonstrates several design patterns. It uses the Strategy Pattern for different payment methods (Credit Card, UPI), Factory Pattern for order creation (Now vs Scheduled), Inheritance for different order types (Delivery vs Pickup), and follows SOLID principles. The system supports restaurant management, user carts, order processing, payment handling, and notification services, providing a modular architecture for food delivery platforms.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Strategy Pattern", "Factory Pattern", "Inheritance", "Abstract Classes", "Virtual Functions", "Polymorphism", "Smart Pointers"],
+  "project_repository": "https://github.com/MishraShardendu22/Zomato-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} 

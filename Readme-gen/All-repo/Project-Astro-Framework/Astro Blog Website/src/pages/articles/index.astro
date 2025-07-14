@@ -1,0 +1,24 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
+import { ARTICLES_PER_PAGE } from "../../constants";
+
+const currentPage: number | null = +Astro.url.searchParams.get('page')! || 1;
+
+const allBlogArticles: CollectionEntry<'blog'>[] = (await getCollection('blog'))
+  .sort((a:CollectionEntry<'blog'>, b:CollectionEntry<'blog'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+---
+
+<MainLayout>
+<h1 class="text-2xl pb-3">All Articles</h1>
+
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  {allBlogArticles.map(article => (
+    <ArticleCard article={article} />
+  ))}
+</div>
+  
+</MainLayout>

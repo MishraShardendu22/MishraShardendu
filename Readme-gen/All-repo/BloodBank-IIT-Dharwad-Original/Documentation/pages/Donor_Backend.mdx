@@ -1,0 +1,522 @@
+## Donor Endpoints
+
+**Donor User Type:**  
+Donors are individuals who are willing to donate blood or have donated in the past. They can view available donation locations, their donation history, and manage their account details.
+
+### 1. Register Donor
+
+- **URL:** `/register`
+- **Method:** `POST`
+- **Description:** Creates a new donor account in the system.
+- **Request Body Example:**
+
+```json
+{
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "password": "securePassword123",
+  "phoneNo": "1234567890"
+}
+```
+
+- **Response Example:**
+
+```json
+{
+  "message": "Donor registered successfully",
+  "data": []
+}
+```
+
+---
+
+### 2. Login Donor
+
+- **URL:** `/login`
+- **Method:** `POST`
+- **Description:** Authenticates a donor using email and password, returning an access token for future requests.
+- **Request Body Example:**
+
+```json
+{
+  "email": "johndoe@example.com",
+  "password": "securePassword123"
+}
+```
+
+- **Response Example:**
+
+```json
+{
+  "message": "Donor logged in successfully",
+  "data": "eyJhbGciOiJIUzI1..."
+}
+```
+
+---
+
+### 3. Send OTP (Donor)
+
+- **URL:** `/sendOtpDonor`
+- **Method:** `POST`
+- **Description:** Sends a One-Time Password to the donor’s registered email for password reset.
+- **Request Body Example:**
+
+```json
+{
+  "email": "johndoe@example.com"
+}
+```
+
+- **Response Example:**
+
+```json
+{
+  "message": "OTP sent successfully",
+  "data": []
+}
+```
+
+---
+
+### 4. Verify OTP (Donor)
+
+- **URL:** `/verifyOtpDonor`
+- **Method:** `POST`
+- **Description:** Validates the OTP provided by the donor.
+- **Request Body Example:**
+
+```json
+{
+  "email": "johndoe@example.com",
+  "otp": "123456"
+}
+```
+
+- **Response Example:**
+
+```json
+{
+  "message": "OTP verified successfully",
+  "data": []
+}
+```
+
+---
+
+### 5. Reset Password (Donor)
+
+- **URL:** `/resetPassDonor`
+- **Method:** `POST`
+- **Description:** Resets the donor’s password using the provided OTP and new password.
+- **Request Body Example:**
+
+```json
+{
+  "email": "johndoe@example.com",
+  "password": "newSecurePassword456",
+  "otp": "123456"
+}
+```
+
+- **Response Example:**
+
+```json
+{
+  "message": "Password reset successfully",
+  "data": []
+}
+```
+
+---
+
+### 6. Get Donation Locations
+
+- **URL:** `/donation-location`
+- **Method:** `GET`
+- **Middleware:** `donorMiddleware`
+- **Description:** Retrieves a list of donation locations where the donor can donate blood. Each location includes details such as organisation, address, timings, and contact information.
+- **Response Example:**
+
+```json
+{
+  "message": "Donation location fetched successfully",
+  "data": [
+    {
+      "_id": "8q34f...",
+      "organisationId": "2f433...",
+      "name": "City Hospital",
+      "contactDetails": "johndoe@email.com 9876543210",
+      "location": "123 Main St, City, Country",
+      "timings": "5 Feb to 9 Feb from 1pm to 6pm",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z",
+      "__v": 0
+    },
+    {
+      "_id": "5vb58...",
+      "organisationId": "5v87o...",
+      "name": "State Hospital",
+      "contactDetails": "johndoe@email.com 9876543210",
+      "location": "456 Main St, City, Country",
+      "timings": "3 Feb to 4 Feb from 6am to 12pm",
+      "createdAt": "2025-01-02T10:00:00Z",
+      "updatedAt": "2025-01-02T10:00:00Z",
+      "__v": 0
+    }
+  ]
+}
+```
+
+---
+
+### 7. Get Donation History
+
+- **URL:** `/donation-history`
+- **Method:** `GET`
+- **Middleware:** `donorMiddleware`
+- **Description:** Retrieves a list of past blood donations made by the donor, including details about the donation date, quantity, and the organisation where the donation took place.
+- **Response Example:**
+
+```json
+{
+  "message": "Donation history fetched successfully",
+  "data": [
+    {
+      "_id": "679bt...",
+      "donorId": "679ve...",
+      "organisationId": {
+        "_id": "679fr...",
+        "name": "Abc Def Hospital"
+      },
+      "quantity": "2",
+      "createdAt": "2025-01-15T14:00:00Z",
+      "updatedAt": "2025-01-15T14:00:00Z",
+      "__v": 0
+    },
+    {
+      "_id": "6798k...",
+      "donorId": "6796v...",
+      "organisationId": {
+        "_id": "6796d...",
+        "name": "John Doe Clinic"
+      },
+      "quantity": "5",
+      "createdAt": "2024-12-20T09:00:00Z",
+      "updatedAt": "2024-12-20T09:00:00Z",
+      "__v": 0
+    }
+  ]
+}
+```
+
+---
+
+### 8. Verify Donor
+
+- **URL:** `/verifyDonor`
+- **Method:** `GET`
+- **Middleware:** `donorMiddleware`
+- **Description:** Confirms that the donor is authenticated and returns the donor’s profile details.
+- **Response Example:**
+
+```json
+{
+  "message": "Donor verified successfully",
+  "data": {
+    "_id": "vwfc3...",
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "phoneNo": "1234567890",
+    "password": "******",
+    "createdAt": "2025-01-01T10:00:00Z",
+    "updatedAt": "2025-01-01T10:00:00Z",
+    "__v": 0
+  }
+}
+```
+
+---
+
+### 9. Update Donor Account
+
+- **URL:** `/updateDonor`
+- **Method:** `PUT`
+- **Middleware:** `donorMiddleware`
+- **Description:** Updates the authenticated donor’s account information. Fields such as name, email, or phone number can be updated.
+- **Request Body Example:**
+
+```json
+{
+  "name": "Johnathan Doe",
+  "phoneNo": "0987654321",
+  "email": "Johndoe@email.com"
+}
+```
+
+- **Response Example:**
+
+```json
+{
+  "message": "Donor updated successfully",
+  "data": []
+}
+```
+
+---
+
+## Patient Endpoints
+
+### 6. Post Blood Request
+
+- **URL:** `/bloodRequest`
+- **Method:** `POST`
+- **Middleware:** `patientMiddleware`
+- **Description:** Submits a new blood request to the central database. The request includes details such as blood type and quantity.
+- **Request Body Example:**
+
+```json
+{
+  "bloodType": "B-",
+  "quantity": 2
+}
+```
+
+- **Response Example:**
+
+```json
+{
+  "message": "Blood request submitted successfully",
+  "data": []
+}
+```
+
+---
+
+### 7. Get Blood Requests
+
+- **URL:** `/bloodRequests`
+- **Method:** `GET`
+- **Middleware:** `patientMiddleware`
+- **Description:** Retrieves a list of blood requests made by the authenticated patient.
+- **Response Example:**
+
+```json
+{
+  "message": "Blood requests fetched successfully",
+  "data": [
+    {
+      "requestId": "req_001",
+      "bloodType": "B-",
+      "quantity": 2,
+      "status": "Pending"
+    }
+  ]
+}
+```
+
+---
+
+### 8. Get Blood Availability
+
+- **URL:** `/bloodAvailable`
+- **Method:** `GET`
+- **Middleware:** `patientMiddleware`
+- **Description:** Retrieves the current blood inventory across different organisations, showing available blood types and quantities.
+- **Response Example:**
+
+```json
+{
+  "message": "Blood availability fetched successfully",
+  "data": [
+    {
+      "organisation": "City Hospital",
+      "bloodType": "B-",
+      "quantity": 5
+    },
+    {
+      "organisation": "Community Clinic",
+      "bloodType": "A+",
+      "quantity": 10
+    }
+  ]
+}
+```
+
+---
+
+### 9. Verify Patient
+
+- **URL:** `/verifyPatient`
+- **Method:** `GET`
+- **Middleware:** `patientMiddleware`
+- **Description:** Confirms that the patient is authenticated and returns the patient’s profile information.
+- **Response Example:**
+
+```json
+{
+  "message": "Patient is authenticated",
+  "data": {
+    "id": "patient_001",
+    "name": "Jane Smith",
+    "email": "janesmith@example.com"
+  }
+}
+```
+
+---
+
+### 10. Delete Blood Request
+
+- **URL:** `/bloodRequest/:requestId`
+- **Method:** `DELETE`
+- **Middleware:** `patientMiddleware`
+- **Description:** Deletes a specific blood request identified by its unique request ID.
+- **URL Parameter:**
+  - `requestId` – Unique identifier for the blood request.
+- **Response Example:**
+
+```json
+{
+  "message": "Blood request deleted successfully",
+  "data": []
+}
+```
+
+---
+
+### 11. Update Patient Account
+
+- **URL:** `/updatePatient`
+- **Method:** `PUT`
+- **Middleware:** `patientMiddleware`
+- **Description:** Updates the authenticated patient’s account details such as contact information and address.
+- **Request Body Example:**
+
+```json
+{
+  "phoneNo": "6677889900",
+  "address": "789 New Street, City"
+}
+```
+
+- **Response Example:**
+
+```json
+{
+  "message": "Patient account updated successfully",
+  "data": {
+    "id": "patient_001",
+    "name": "Jane Smith",
+    "phoneNo": "6677889900",
+    "address": "789 New Street, City"
+  }
+}
+```
+
+---
+
+## Additional Donor Endpoints
+
+#### 1. Get Donor Data
+
+- **URL:** `/donor/getDonorData`
+- **Method:** `GET`
+- **Middleware:** `DonorMiddleware`
+- **Description:** Retrieves the profile details of the authenticated donor. The donor's ID is taken from the JWT token.
+- **Sample Request:**
+
+```http
+GET /donor/getDonorData HTTP/1.1
+Host: your-api-domain.com
+Authorization: Bearer eyJhbGciOiJIUzI1...
+```
+
+- **Sample Response:**
+
+```json
+{
+  "message": "Donor user found successfully",
+  "donor": {
+    "id": "603dcd9a2e8b2b3d1c8a5678",
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "phoneNo": "1234567890",
+    "createdAt": "2025-01-01T10:00:00Z",
+    "updatedAt": "2025-01-01T10:00:00Z"
+  }
+}
+```
+
+---
+
+#### 2. Post Donor Survey
+
+- **URL:** `/donor/postDonorSurvey`
+- **Method:** `POST`
+- **Middleware:** `DonorMiddleware`
+- **Description:** Accepts a survey submission from the authenticated donor. The survey is stored in the `donorSurvey` collection. In addition, the JSON representation of the survey is sent as a file upload to an external API (Vectara) for further processing.
+- **Sample Request:**
+
+```http
+POST /donor/postDonorSurvey HTTP/1.1
+Host: your-api-domain.com
+Authorization: Bearer eyJhbGciOiJIUzI1...
+Content-Type: application/json
+
+{
+  "symptoms_illness": "Fever and cough",
+  "recent_medical_procedures": "None",
+  "travel_history": "Traveled internationally in last 14 days",
+  "medical_conditions": "None",
+  "high_risk_exposure": "No",
+  "other_issues": ["asthma"]
+}
+```
+
+- **Sample Response:**
+
+```json
+{
+  "message": "Survey added successfully",
+  "entry": {
+    "insertedID": "603e0b9f2e8b2b3d1c8a9abc"
+  }
+}
+```
+
+---
+
+## Organisation Endpoints
+
+#### 1. Get Organisation Data
+
+- **URL:** `/organisation/getOrganisationData`
+- **Method:** `GET`
+- **Middleware:** `OrganisationMiddleware`
+- **Description:** Retrieves the profile details of the authenticated organisation. The organisation's ID is obtained from the JWT token.
+- **Sample Request:**
+
+```http
+GET /organisation/getOrganisationData HTTP/1.1
+Host: your-api-domain.com
+Authorization: Bearer eyJhbGciOiJIUzI1...
+```
+
+- **Sample Response:**
+
+```json
+{
+  "message": "Org found successfully",
+  "donor": {
+    "id": "603dcd9a2e8b2b3d1c8a9876",
+    "organisationName": "City Hospital",
+    "email": "contact@cityhospital.com",
+    "phoneNo": "1010101010",
+    "createdAt": "2025-01-01T10:00:00Z",
+    "updatedAt": "2025-01-01T10:00:00Z"
+  }
+}
+```
+
+> **Note:** Although the returned key is labeled `"donor"` in the response, it represents organisation data. Consider renaming the response field for clarity.

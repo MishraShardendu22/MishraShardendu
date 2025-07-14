@@ -1,0 +1,9 @@
+{
+  "project_name": "Notification-System-LLD",
+  "small_description": "A C++ notification system implementing multiple design patterns for extensible messaging",
+  "description": "Notification-System-LLD is a comprehensive C++ implementation of a notification system that demonstrates multiple design patterns. It uses the Observer Pattern for notification distribution, Decorator Pattern for adding features like timestamps and signatures, Strategy Pattern for different notification delivery methods (Email, SMS, Popup), and Singleton Pattern for the notification service. The system supports extensible notification strategies and follows SOLID principles for maintainable code.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Observer Pattern", "Decorator Pattern", "Strategy Pattern", "Singleton Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism"],
+  "project_repository": "https://github.com/MishraShardendu22/Notification-System-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} 

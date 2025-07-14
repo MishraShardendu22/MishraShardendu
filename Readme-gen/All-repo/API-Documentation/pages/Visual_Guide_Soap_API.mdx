@@ -1,0 +1,91 @@
+# Project Management System - Route Documentation
+
+This document provides a visual representation and explanation of all available queries and mutations in the GraphQL Project Management System. Each image corresponds to a specific query or mutation, followed by a brief explanation of its functionality.
+
+---
+
+## 1. GraphIQL Interface
+
+![GraphIQL Interface](https://github.com/MishraShardendu22/GraphQL-Project-Management/blob/main/Project%20Management%20Application%20Using%20GraphQL/GraphIQL.png?raw=true)
+
+This image shows the GraphIQL interface, which is used to interact with the Project Management GraphQL API. It allows users to write and execute queries and mutations directly.
+
+---
+
+## 2. Add Project
+
+![Add Project](https://github.com/MishraShardendu22/GraphQL-Project-Management/blob/main/Project%20Management%20Application%20Using%20GraphQL/add%20project.png?raw=true)
+
+Use this mutation to add a new project to the system. Provide project details such as name, description, and the client ID it belongs to.
+
+---
+
+## 3. Delete Client
+
+![Delete Client](https://github.com/MishraShardendu22/GraphQL-Project-Management/blob/main/Project%20Management%20Application%20Using%20GraphQL/delete%20client.png?raw=true)
+
+This mutation deletes a client from the database. You must provide the client ID to successfully remove the client.
+
+---
+
+## 4. Get All Clients
+
+![Get All Clients](https://github.com/MishraShardendu22/GraphQL-Project-Management/blob/main/Project%20Management%20Application%20Using%20GraphQL/get%20all%20client.png?raw=true)
+
+This query retrieves all clients in the system, returning their IDs, names, and other relevant information.
+
+---
+
+## 5. Get All Projects
+
+![Get All Projects](https://github.com/MishraShardendu22/GraphQL-Project-Management/blob/main/Project%20Management%20Application%20Using%20GraphQL/get%20all%20projects.png?raw=true)
+
+Use this query to get details of all the projects in the system, including their names, descriptions, and associated client IDs.
+
+---
+
+## 6. Get Client by ID
+
+![Get Client by ID](https://github.com/MishraShardendu22/GraphQL-Project-Management/blob/main/Project%20Management%20Application%20Using%20GraphQL/get%20client%20by%20id.png?raw=true)
+
+This query allows you to retrieve a specific client by providing their ID. The response includes all available client details.
+
+---
+
+## 7. Get Client Data
+
+![Get Client Data](https://github.com/MishraShardendu22/GraphQL-Project-Management/blob/main/Project%20Management%20Application%20Using%20GraphQL/get%20client%20data.png?raw=true)
+
+This query fetches detailed data for a client, including their associated projects, names, and contact information.
+
+---
+
+## 8. Get Projects by Client ID
+
+![Get Projects by Client ID](https://github.com/MishraShardendu22/GraphQL-Project-Management/blob/main/Project%20Management%20Application%20Using%20GraphQL/get%20projects%20by%20client%20id.png?raw=true)
+
+Use this query to retrieve all projects associated with a specific client by passing the client ID.
+
+---
+
+## 9. Delete Project Using Client ID
+
+This section illustrates the steps to delete a project using the client ID, from the database state before deletion to the execution of the deletion query and the final state of the database.
+
+### Before Deletion
+
+![Delete Project Using Client ID (Before)](https://github.com/MishraShardendu22/GraphQL-Project-Management/blob/main/Project%20Management%20Application%20Using%20GraphQL/delete%20project%20using%20client%20id%20before.png?raw=true)
+
+This image shows the state of the database before a project associated with a client ID is deleted.
+
+### GraphIQL Query Execution
+
+![Delete Project Using Client ID (Query)](https://github.com/MishraShardendu22/GraphQL-Project-Management/blob/main/Project%20Management%20Application%20Using%20GraphQL/delete%20project%20using%20client%20id%20query%20in%20graphiql.png?raw=true)
+
+This image shows the GraphIQL interface where the delete project query is executed using the client ID.
+
+### After Deletion
+
+![Database After Deletion](https://github.com/MishraShardendu22/GraphQL-Project-Management/blob/main/Project%20Management%20Application%20Using%20GraphQL/delete%20project%20using%20client%20id%20working%20in%20database.png?raw=true)
+
+This image demonstrates the final state of the database after the project has been deleted using the client ID query.

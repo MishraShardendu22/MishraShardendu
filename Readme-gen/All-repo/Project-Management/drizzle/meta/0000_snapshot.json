@@ -1,0 +1,303 @@
+{
+ "id": "24d62fbd-1a44-4c08-a6a8-1b787e98547e",
+ "prevId": "00000000-0000-0000-0000-000000000000",
+ "version": "7",
+ "dialect": "postgresql",
+ "tables": {
+  "public.categories": {
+   "name": "categories",
+   "schema": "",
+   "columns": {
+    "userId": {
+     "name": "userId",
+     "type": "integer",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "name": {
+     "name": "name",
+     "type": "varchar(255)",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "id": {
+     "name": "id",
+     "type": "integer",
+     "primaryKey": true,
+     "notNull": true,
+     "identity": {
+      "type": "always",
+      "name": "categories_id_seq",
+      "schema": "public",
+      "increment": "1",
+      "startWith": "1",
+      "minValue": "1",
+      "maxValue": "2147483647",
+      "cache": "1",
+      "cycle": false
+     }
+    }
+   },
+   "indexes": {},
+   "foreignKeys": {},
+   "compositePrimaryKeys": {},
+   "uniqueConstraints": {},
+   "policies": {},
+   "checkConstraints": {},
+   "isRLSEnabled": false
+  },
+  "public.projects": {
+   "name": "projects",
+   "schema": "",
+   "columns": {
+    "dueDate": {
+     "name": "dueDate",
+     "type": "date",
+     "primaryKey": false,
+     "notNull": false
+    },
+    "userId": {
+     "name": "userId",
+     "type": "integer",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "categoryId": {
+     "name": "categoryId",
+     "type": "integer",
+     "primaryKey": false,
+     "notNull": false
+    },
+    "description": {
+     "name": "description",
+     "type": "varchar(255)",
+     "primaryKey": false,
+     "notNull": false
+    },
+    "name": {
+     "name": "name",
+     "type": "varchar(255)",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "id": {
+     "name": "id",
+     "type": "integer",
+     "primaryKey": true,
+     "notNull": true,
+     "identity": {
+      "type": "always",
+      "name": "projects_id_seq",
+      "schema": "public",
+      "increment": "1",
+      "startWith": "1",
+      "minValue": "1",
+      "maxValue": "2147483647",
+      "cache": "1",
+      "cycle": false
+     }
+    },
+    "createdAt": {
+     "name": "createdAt",
+     "type": "timestamp with time zone",
+     "primaryKey": false,
+     "notNull": false,
+     "default": "now()"
+    },
+    "updatedAt": {
+     "name": "updatedAt",
+     "type": "timestamp with time zone",
+     "primaryKey": false,
+     "notNull": false,
+     "default": "now()"
+    }
+   },
+   "indexes": {},
+   "foreignKeys": {},
+   "compositePrimaryKeys": {},
+   "uniqueConstraints": {},
+   "policies": {},
+   "checkConstraints": {},
+   "isRLSEnabled": false
+  },
+  "public.tasks": {
+   "name": "tasks",
+   "schema": "",
+   "columns": {
+    "dueDate": {
+     "name": "dueDate",
+     "type": "date",
+     "primaryKey": false,
+     "notNull": false
+    },
+    "priority": {
+     "name": "priority",
+     "type": "integer",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "projectId": {
+     "name": "projectId",
+     "type": "integer",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "description": {
+     "name": "description",
+     "type": "varchar(255)",
+     "primaryKey": false,
+     "notNull": false
+    },
+    "isCompleted": {
+     "name": "isCompleted",
+     "type": "boolean",
+     "primaryKey": false,
+     "notNull": false,
+     "default": false
+    },
+    "title": {
+     "name": "title",
+     "type": "varchar(255)",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "id": {
+     "name": "id",
+     "type": "integer",
+     "primaryKey": true,
+     "notNull": true,
+     "identity": {
+      "type": "always",
+      "name": "tasks_id_seq",
+      "schema": "public",
+      "increment": "1",
+      "startWith": "1",
+      "minValue": "1",
+      "maxValue": "2147483647",
+      "cache": "1",
+      "cycle": false
+     }
+    },
+    "createdAt": {
+     "name": "createdAt",
+     "type": "timestamp with time zone",
+     "primaryKey": false,
+     "notNull": false,
+     "default": "now()"
+    },
+    "updatedAt": {
+     "name": "updatedAt",
+     "type": "timestamp with time zone",
+     "primaryKey": false,
+     "notNull": false,
+     "default": "now()"
+    }
+   },
+   "indexes": {},
+   "foreignKeys": {},
+   "compositePrimaryKeys": {},
+   "uniqueConstraints": {},
+   "policies": {},
+   "checkConstraints": {},
+   "isRLSEnabled": false
+  },
+  "public.users": {
+   "name": "users",
+   "schema": "",
+   "columns": {
+    "username": {
+     "name": "username",
+     "type": "varchar(255)",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "passwordHash": {
+     "name": "passwordHash",
+     "type": "varchar(255)",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "email": {
+     "name": "email",
+     "type": "varchar(255)",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "id": {
+     "name": "id",
+     "type": "integer",
+     "primaryKey": true,
+     "notNull": true,
+     "identity": {
+      "type": "always",
+      "name": "users_id_seq",
+      "schema": "public",
+      "increment": "1",
+      "startWith": "1",
+      "minValue": "1",
+      "maxValue": "2147483647",
+      "cache": "1",
+      "cycle": false
+     }
+    },
+    "verify_code": {
+     "name": "verify_code",
+     "type": "varchar(6)",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "verify_code_expiry": {
+     "name": "verify_code_expiry",
+     "type": "timestamp",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "is_verified": {
+     "name": "is_verified",
+     "type": "boolean",
+     "primaryKey": false,
+     "notNull": true,
+     "default": false
+    },
+    "createdAt": {
+     "name": "createdAt",
+     "type": "timestamp with time zone",
+     "primaryKey": false,
+     "notNull": false,
+     "default": "now()"
+    },
+    "updatedAt": {
+     "name": "updatedAt",
+     "type": "timestamp with time zone",
+     "primaryKey": false,
+     "notNull": false,
+     "default": "now()"
+    }
+   },
+   "indexes": {},
+   "foreignKeys": {},
+   "compositePrimaryKeys": {},
+   "uniqueConstraints": {
+    "users_email_unique": {
+     "name": "users_email_unique",
+     "nullsNotDistinct": false,
+     "columns": ["email"]
+    }
+   },
+   "policies": {},
+   "checkConstraints": {},
+   "isRLSEnabled": false
+  }
+ },
+ "enums": {},
+ "schemas": {},
+ "sequences": {},
+ "roles": {},
+ "policies": {},
+ "views": {},
+ "_meta": {
+  "columns": {},
+  "schemas": {},
+  "tables": {}
+ }
+}

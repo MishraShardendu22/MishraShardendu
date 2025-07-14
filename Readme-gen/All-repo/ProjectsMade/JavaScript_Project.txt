@@ -1,0 +1,13 @@
+Projects 
+
+1. News Aggregation Chrome Extension 
+   - GitHub: https://github.com/MishraShardendu22/News-Aggregation
+   - Demo Video: https://youtu.be/7s0jAgrxq-o?si=AshDMQRNuZyMkpwA
+
+2. JavaScript DOM Projects (All Live)
+   - GitHub: https://github.com/MishraShardendu22/JavaScript-DOM-Projects
+   - Live Deployment: https://main-shardendumishra.netlify.app/
+
+3. Intro Page
+   - GitHub: https://github.com/MishraShardendu22/Intro-Page
+   - Live Deployment: https://intro-name-shardendu-mishra.netlify.app/

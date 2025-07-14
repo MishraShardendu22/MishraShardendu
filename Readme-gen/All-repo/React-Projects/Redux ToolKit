@@ -1,0 +1,17 @@
+React Redux 
+
+# If you use npm:
+npm install react-redux
+npm install @reduxjs/toolkit
+
+Steps : 
+
+1.) configure store :
+    /* eslint-disable no-unused-vars */
+    import { configureStore } from '@reduxjs/toolkit'
+
+    export const store = configureStore({
+        
+    })
+
+2.)

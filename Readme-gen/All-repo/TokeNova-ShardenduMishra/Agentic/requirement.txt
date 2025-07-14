@@ -1,0 +1,4 @@
+python-dotenv
+google-generativeai
+flask
+flask_cors

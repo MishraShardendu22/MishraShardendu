@@ -1,0 +1,9 @@
+{
+  "project_name": "GoLang-Practise-API",
+  "small_description": "A RESTful API practice project built with Go and Gorilla Mux",
+  "description": "GoLang-Practise-API is a RESTful API practice project built with Go and Gorilla Mux router. It implements a course management system with full CRUD operations including GET, POST, PUT, PATCH, and DELETE endpoints. The API handles JSON data, includes proper error handling, and demonstrates Go's HTTP server capabilities with structured data handling and routing.",
+  "skills": ["GoLang", "Gorilla Mux", "RESTful API", "HTTP Server", "JSON Handling", "CRUD Operations", "Error Handling"],
+  "project_repository": "https://github.com/MishraShardendu22/GoLang-Practise-API",
+  "project_live_link": "",
+  "project_video": ""
+} 

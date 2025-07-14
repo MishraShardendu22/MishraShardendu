@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shardendu Mishra Docker Project</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        .feature {
+            flex: 1;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .feature i {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #764ba2;
+        }
+
+        #dockerLogo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: auto;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffcc00;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .popup button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #667eea;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img id="dockerLogo" src="https://imgs.search.brave.com/G8i_afQAUJrPfFD6fKm5AQSmWNRN76ZRTPkR_V8uujo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG40/Lmljb25maW5kZXIu/Y29tL2RhdGEvaWNv/bnMvbG9nb3MtYW5k/LWJyYW5kcy81MTIv/OTdfRG9ja2VyX2xv/Z29fbG9nb3MtNTEy/LnBuZw" alt="Docker Logo">
+    <div class="container">
+        <h1>Welcome to My GitHub Project Account</h1>
+        <p>Explore my projects and contributions on GitHub. Experience seamless development and cutting-edge technology through my carefully crafted solutions.</p>
+        <button class="btn" id="actionBtn">Visit Project Account</button>
+        <button class="btn" id="learnBtn">My Main Account</button>
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-code"></i>
+                <h3>Innovative</h3>
+                <p>Creative solutions for modern problems.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-globe"></i>
+                <h3>Global</h3>
+                <p>Accessible from anywhere in the world.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-user-shield"></i>
+                <h3>Secure</h3>
+                <p>Built with security best practices.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <h2>Navigating to GitHub Project Account...</h2>
+        <p>You will be redirected shortly.</p>
+        <button id="closePopup">Close</button>
+    </div>
+
+    <div class="popup" id="popupMain">
+        <h2>Navigating to Main GitHub Account...</h2>
+        <p>You will be redirected shortly.</p>
+        <button id="closePopupMain">Close</button>
+    </div>
+
+    <script>
+        document.getElementById('actionBtn').addEventListener('click', function() {
+            const popup = document.getElementById('popup');
+            popup.classList.add('active');
+
+            setTimeout(() => {
+                window.open('https://github.com/MishraShardendu22', '_blank');
+                popup.classList.remove('active');
+            }, 2000);
+        });
+
+        document.getElementById('learnBtn').addEventListener('click', function() {
+            const popupMain = document.getElementById('popupMain');
+            popupMain.classList.add('active');
+
+            setTimeout(() => {
+                window.open('https://github.com/ShardenduMishra22', '_blank');
+                popupMain.classList.remove('active');
+            }, 2000);
+        });
+
+        document.getElementById('closePopup').addEventListener('click', function() {
+            document.getElementById('popup').classList.remove('active');
+        });
+
+        document.getElementById('closePopupMain').addEventListener('click', function() {
+            document.getElementById('popupMain').classList.remove('active');
+        });
+    </script>
+</body>
+</html>

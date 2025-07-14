@@ -1,0 +1,9 @@
+{
+  "project_name": "GraphQL-Project-Management",
+  "small_description": "A full-stack project management system using GraphQL and React",
+  "description": "GraphQL-Project-Management is a comprehensive project management system built with GraphQL, React, and Express. It features real-time project tracking, team collaboration tools, and efficient data fetching using Apollo Client. The application uses Vite for fast development, Tailwind CSS and Bootstrap for responsive design, and is deployed on Render. It demonstrates modern full-stack development with GraphQL for optimized data queries and mutations.",
+  "skills": ["GraphQL", "React", "Express", "Apollo Client", "Vite", "Tailwind CSS", "Bootstrap", "Node.js", "Real-time Updates", "Project Management"],
+  "project_repository": "https://github.com/MishraShardendu22/GraphQL-Project-Management",
+  "project_live_link": "https://project-management-shardendumishra.onrender.com",
+  "project_video": ""
+} 

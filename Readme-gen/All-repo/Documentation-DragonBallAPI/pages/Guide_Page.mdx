@@ -1,0 +1,125 @@
+# Dragon Ball - API Usage Guide
+
+## Steps to Use the API
+
+1. **Copy the API Link**  
+   Start by copying the link to the API documentation.
+
+2. **Make Requests Using Axios**  
+   Use Axios to send requests to the API. Install Axios if you haven't already:
+
+   ```bash
+   npm install axios
+    ```
+
+
+3. **Performing HTTP Requests**  
+   You can perform various operations using different HTTP methods:
+
+   - **GET Request**: Retrieve data from the server.
+     ```javascript
+     axios.get('API_ENDPOINT')
+       .then(response => console.log(response.data))
+       .catch(error => console.error(error));
+     ```
+     <button onClick={() => {
+       navigator.clipboard.writeText(`axios.get('API_ENDPOINT')
+         .then(response => console.log(response.data))
+         .catch(error => console.error(error));`);
+       alert('Copied to clipboard!');
+     }}>Copy</button>
+
+   - **POST Request**: Send data to the server to create a new entry.
+     ```javascript
+     axios.post('API_ENDPOINT', { key: 'value' })
+       .then(response => console.log(response.data))
+       .catch(error => console.error(error));
+     ```
+     <button onClick={() => {
+       navigator.clipboard.writeText(`axios.post('API_ENDPOINT', { key: 'value' })
+         .then(response => console.log(response.data))
+         .catch(error => console.error(error));`);
+       alert('Copied to clipboard!');
+     }}>Copy</button>
+
+   - **PUT Request**: Update an existing entry completely.
+     ```javascript
+     axios.put('API_ENDPOINT/id', { key: 'updatedValue' })
+       .then(response => console.log(response.data))
+       .catch(error => console.error(error));
+     ```
+     <button onClick={() => {
+       navigator.clipboard.writeText(`axios.put('API_ENDPOINT/id', { key: 'updatedValue' })
+         .then(response => console.log(response.data))
+         .catch(error => console.error(error));`);
+       alert('Copied to clipboard!');
+     }}>Copy</button>
+
+   - **PATCH Request**: Update an existing entry partially.
+     ```javascript
+     axios.patch('API_ENDPOINT/id', { key: 'newValue' })
+       .then(response => console.log(response.data))
+       .catch(error => console.error(error));
+     ```
+     <button onClick={() => {
+       navigator.clipboard.writeText(`axios.patch('API_ENDPOINT/id', { key: 'newValue' })
+         .then(response => console.log(response.data))
+         .catch(error => console.error(error));`);
+       alert('Copied to clipboard!');
+     }}>Copy</button>
+
+   - **DELETE Request**: Remove an entry from the server.
+     ```javascript
+     axios.delete('API_ENDPOINT/id')
+       .then(response => console.log(response.data))
+       .catch(error => console.error(error));
+     ```
+     <button onClick={() => {
+       navigator.clipboard.writeText(`axios.delete('API_ENDPOINT/id')
+         .then(response => console.log(response.data))
+         .catch(error => console.error(error));`);
+       alert('Copied to clipboard!');
+     }}>Copy</button>
+
+4. **Contribute to the API**  
+   If you're an admin and need to perform administrative actions, you can obtain a token:
+   ```javascript
+   axios.post('API_ENDPOINT/GetTokenAdmin', { username: 'yourUsername', password: 'yourPassword' })
+     .then(response => {
+       const token = response.data.token;
+       // Use this token for subsequent requests
+     })
+     .catch(error => console.error(error));
+   ```
+   <button onClick={() => {
+     navigator.clipboard.writeText(`axios.post('API_ENDPOINT/GetTokenAdmin', { username: 'yourUsername', password: 'yourPassword' })
+       .then(response => {
+         const token = response.data.token;
+         // Use this token for subsequent requests
+       })
+       .catch(error => console.error(error));`);
+     alert('Copied to clipboard!');
+   }}>Copy</button>
+
+5. **Using Authentication for Admin Actions**  
+   For any admin-specific actions, include the token in the authorization header:
+   ```javascript
+   axios.delete('API_ENDPOINT/id', { headers: { Authorization: \`Bearer \${token}\` } })
+     .then(response => console.log(response.data))
+     .catch(error => console.error(error));
+   ```
+   <button onClick={() => {
+     navigator.clipboard.writeText(`axios.delete('API_ENDPOINT/id', { headers: { Authorization: \`Bearer \${token}\` } })
+       .then(response => console.log(response.data))
+       .catch(error => console.error(error));`);
+     alert('Copied to clipboard!');
+   }}>Copy</button>
+
+## User Reviews
+Users are encouraged to provide feedback. You can submit your review [Anoynymous-FeedBack](https://shardendu-mishra-secret-message-application.vercel.app/u/ShardenduMishra22).
+
+## Chat with Me
+If you have any questions or need assistance, feel free to chat with me at [WhatsGram](https://whatsgram-jm9c.onrender.com/).  
+My ID: `shardendu@gmail.com`
+
+```

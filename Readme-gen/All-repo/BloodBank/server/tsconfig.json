@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "target": "ES6",
+    "strict": true
+  }
+}

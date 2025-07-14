@@ -1,0 +1,56 @@
+version: '3.8'
+services:
+ db:
+   image: postgres:15
+   container_name: pg
+   restart: always
+   environment:
+     POSTGRES_PASSWORD: password
+   ports:
+     - "5433:5432"
+   volumes:
+     - pg_data:/var/lib/postgresql/data
+   healthcheck:
+     test: ["CMD-SHELL", "pg_isready -U postgres"]
+     interval: 5s
+     timeout: 3s
+     retries: 5
+
+
+ db-init:
+   image: postgres:15
+   depends_on:
+     db:
+       condition: service_healthy
+   volumes:
+     - ./scripts:/scripts
+   entrypoint: >
+     bash -c "
+      sleep 5 &&
+      psql postgresql://postgres:password@db:5432/postgres -c 'CREATE DATABASE org_chart;' &&
+      psql postgresql://postgres:password@db:5432/org_chart -f /scripts/create_db.sql &&
+      psql postgresql://postgres:password@db:5432/org_chart -f /scripts/seed_db.sql
+      "
+
+ app:
+   build: .
+   container_name: drogon_app
+   ports:
+     - "3000:3000"
+   depends_on:
+     db-init:
+       condition: service_completed_successfully
+   environment:
+     - DB_HOST=db
+     - DB_PORT=5432
+     - DB_USER=postgres
+     - DB_PASSWORD=password
+     - DB_NAME=org_chart
+   working_dir: /app/build
+   command: ["./org_chart"]
+
+
+volumes:
+ pg_data:
+
+

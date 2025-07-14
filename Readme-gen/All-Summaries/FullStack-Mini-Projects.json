@@ -1,0 +1,9 @@
+{
+  "project_name": "FullStack-Mini-Projects",
+  "small_description": "A collection of full-stack mini projects demonstrating front-end and back-end integration",
+  "description": "FullStack-Mini-Projects is a collection of mini applications that demonstrate the integration of front-end and back-end technologies. The project includes various sub-projects like 'Making Models', 'Template', and 'Jokes On You', each showcasing different aspects of full-stack development using Node.js, Express, and Axios for seamless front-end and back-end communication.",
+  "skills": ["Node.js", "Express", "Axios", "Full-Stack Development"],
+  "project_repository": "https://github.com/MishraShardendu22/FullStack-Mini-Projects",
+  "project_live_link": "https://integrating-front-and-backend.onrender.com/",
+  "project_video": ""
+} 

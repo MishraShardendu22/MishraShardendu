@@ -1,0 +1,9 @@
+{
+  "project_name": "Djando-NotesApplication",
+  "small_description": "A Django-based notes application with CRUD operations and modern UI",
+  "description": "Djando-NotesApplication is a simple web app for managing notes, built with Django and featuring a modern frontend using TypeScript, Tailwind CSS, and Shadcn UI. The app supports creating, reading, updating, and deleting notes, and is designed for responsiveness and ease of use. It is suitable for learning and demonstration purposes.",
+  "skills": ["Django", "TypeScript", "Tailwind CSS", "Shadcn UI", "Choreo"],
+  "project_repository": "https://github.com/MishraShardendu22/Django-NotesApplication",
+  "project_live_link": "https://frontend-okmy.onrender.com",
+  "project_video": "https://youtu.be/DkfKO5gsNRM"
+} 

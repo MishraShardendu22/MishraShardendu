@@ -1,0 +1,9 @@
+{
+  "project_name": "ScrollHub",
+  "small_description": "An ultimate shorts platform with AI-driven recommendations and seamless scrolling experience for productivity-focused content",
+  "description": "ScrollHub is a Next.js-based shorts platform that provides the best scrolling experience with an algorithm designed to encourage productivity. It features AI-driven recommendations and a seamless interface where users can effortlessly upload and watch short videos while staying focused. The platform includes aggressive upload capabilities, high SEO optimization, and a highly secure backend with AI model integration trained on social media wellness datasets for better content curation. Users can upload videos, watch content with seamless scrolling, and benefit from AI-powered content recommendations.",
+  "skills": ["Next.js", "React", "TypeScript", "MongoDB", "Mongoose", "Next-Auth", "bcryptjs", "ImageKit", "Tailwind CSS", "ShadCN UI", "DaisyUI", "Framer Motion", "Google Generative AI", "Postman", "RESTful APIs", "Authentication", "Video Upload", "Video Streaming", "AI Integration", "SEO Optimization", "Responsive Design", "Database Design", "API Development", "Full Stack Development"],
+  "project_repository": "https://github.com/MishraShardendu22/Scroll-Hub",
+  "project_live_link": "https://scroll-hub.vercel.app/",
+  "project_video": ""
+} 

@@ -1,0 +1,15 @@
+# .air.toml example
+
+# Watch all Go files and exclude unnecessary directories
+root = "."
+tmp_dir = "tmp"
+
+[build]
+  cmd = "go run main.go"  # Use go run instead of go build
+  bin = "main"  # Output file name
+  exclude_dirs = ["tmp", "node_modules"]
+
+[watch]
+  # Add any directories or files you need to watch
+  include = ["*.go", "some_other_directory"]
+  exclude = ["tmp", "node_modules"]

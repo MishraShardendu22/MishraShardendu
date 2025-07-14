@@ -1,0 +1,1402 @@
+[
+    {
+        "question_number": 1,
+        "Difficulty": "medium",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 2,
+        "Difficulty": "hard",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 3,
+        "Difficulty": "easy",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 4,
+        "Difficulty": "medium",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 5,
+        "Difficulty": "hard",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 6,
+        "Difficulty": "easy",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 7,
+        "Difficulty": "medium",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 8,
+        "Difficulty": "hard",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 9,
+        "Difficulty": "easy",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 10,
+        "Difficulty": "medium",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 11,
+        "Difficulty": "hard",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 12,
+        "Difficulty": "easy",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 13,
+        "Difficulty": "medium",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 14,
+        "Difficulty": "hard",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 15,
+        "Difficulty": "easy",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 16,
+        "Difficulty": "medium",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 17,
+        "Difficulty": "hard",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 18,
+        "Difficulty": "easy",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 19,
+        "Difficulty": "medium",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 20,
+        "Difficulty": "hard",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 21,
+        "Difficulty": "easy",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 22,
+        "Difficulty": "medium",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 23,
+        "Difficulty": "hard",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 24,
+        "Difficulty": "easy",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 25,
+        "Difficulty": "medium",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 26,
+        "Difficulty": "hard",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 27,
+        "Difficulty": "easy",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 28,
+        "Difficulty": "medium",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 29,
+        "Difficulty": "hard",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 30,
+        "Difficulty": "easy",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 31,
+        "Difficulty": "medium",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 32,
+        "Difficulty": "hard",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 33,
+        "Difficulty": "easy",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 34,
+        "Difficulty": "medium",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 35,
+        "Difficulty": "hard",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 36,
+        "Difficulty": "easy",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 37,
+        "Difficulty": "medium",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 38,
+        "Difficulty": "hard",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 39,
+        "Difficulty": "easy",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 40,
+        "Difficulty": "medium",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 41,
+        "Difficulty": "hard",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 42,
+        "Difficulty": "easy",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 43,
+        "Difficulty": "medium",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 44,
+        "Difficulty": "hard",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 45,
+        "Difficulty": "easy",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 46,
+        "Difficulty": "medium",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 47,
+        "Difficulty": "hard",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 48,
+        "Difficulty": "easy",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 49,
+        "Difficulty": "medium",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 50,
+        "Difficulty": "hard",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 51,
+        "Difficulty": "easy",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 52,
+        "Difficulty": "medium",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 53,
+        "Difficulty": "hard",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 54,
+        "Difficulty": "easy",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 55,
+        "Difficulty": "medium",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 56,
+        "Difficulty": "hard",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 57,
+        "Difficulty": "easy",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 58,
+        "Difficulty": "medium",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 59,
+        "Difficulty": "hard",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 60,
+        "Difficulty": "easy",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 61,
+        "Difficulty": "medium",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 62,
+        "Difficulty": "hard",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 63,
+        "Difficulty": "easy",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 64,
+        "Difficulty": "medium",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 65,
+        "Difficulty": "hard",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 66,
+        "Difficulty": "easy",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 67,
+        "Difficulty": "medium",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 68,
+        "Difficulty": "hard",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 69,
+        "Difficulty": "easy",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 70,
+        "Difficulty": "medium",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 71,
+        "Difficulty": "hard",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 72,
+        "Difficulty": "easy",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 73,
+        "Difficulty": "medium",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 74,
+        "Difficulty": "hard",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 75,
+        "Difficulty": "easy",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 76,
+        "Difficulty": "medium",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 77,
+        "Difficulty": "hard",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 78,
+        "Difficulty": "easy",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 79,
+        "Difficulty": "medium",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 80,
+        "Difficulty": "hard",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 81,
+        "Difficulty": "easy",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 82,
+        "Difficulty": "medium",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 83,
+        "Difficulty": "hard",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 84,
+        "Difficulty": "easy",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 85,
+        "Difficulty": "medium",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 86,
+        "Difficulty": "hard",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 87,
+        "Difficulty": "easy",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 88,
+        "Difficulty": "medium",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 89,
+        "Difficulty": "hard",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 90,
+        "Difficulty": "easy",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 91,
+        "Difficulty": "medium",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 92,
+        "Difficulty": "hard",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 93,
+        "Difficulty": "easy",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 94,
+        "Difficulty": "medium",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 95,
+        "Difficulty": "hard",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 96,
+        "Difficulty": "easy",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 97,
+        "Difficulty": "medium",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 98,
+        "Difficulty": "hard",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 99,
+        "Difficulty": "easy",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 100,
+        "Difficulty": "medium",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 101,
+        "Difficulty": "hard",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 102,
+        "Difficulty": "easy",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 103,
+        "Difficulty": "medium",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 104,
+        "Difficulty": "hard",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 105,
+        "Difficulty": "easy",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 106,
+        "Difficulty": "medium",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 107,
+        "Difficulty": "hard",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 108,
+        "Difficulty": "easy",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 109,
+        "Difficulty": "medium",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 110,
+        "Difficulty": "hard",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 111,
+        "Difficulty": "easy",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 112,
+        "Difficulty": "medium",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 113,
+        "Difficulty": "hard",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 114,
+        "Difficulty": "easy",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 115,
+        "Difficulty": "medium",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 116,
+        "Difficulty": "hard",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 117,
+        "Difficulty": "easy",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 118,
+        "Difficulty": "medium",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 119,
+        "Difficulty": "hard",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 120,
+        "Difficulty": "easy",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 121,
+        "Difficulty": "medium",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 122,
+        "Difficulty": "hard",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 123,
+        "Difficulty": "easy",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 124,
+        "Difficulty": "medium",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 125,
+        "Difficulty": "hard",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 126,
+        "Difficulty": "easy",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 127,
+        "Difficulty": "medium",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 128,
+        "Difficulty": "hard",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 129,
+        "Difficulty": "easy",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 130,
+        "Difficulty": "medium",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 131,
+        "Difficulty": "hard",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 132,
+        "Difficulty": "easy",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 133,
+        "Difficulty": "medium",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 134,
+        "Difficulty": "hard",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 135,
+        "Difficulty": "easy",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 136,
+        "Difficulty": "medium",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 137,
+        "Difficulty": "hard",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 138,
+        "Difficulty": "easy",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 139,
+        "Difficulty": "medium",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 140,
+        "Difficulty": "hard",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 141,
+        "Difficulty": "easy",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 142,
+        "Difficulty": "medium",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 143,
+        "Difficulty": "hard",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 144,
+        "Difficulty": "easy",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 145,
+        "Difficulty": "medium",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 146,
+        "Difficulty": "hard",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 147,
+        "Difficulty": "easy",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 148,
+        "Difficulty": "medium",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 149,
+        "Difficulty": "hard",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 150,
+        "Difficulty": "easy",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 151,
+        "Difficulty": "medium",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 152,
+        "Difficulty": "hard",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 153,
+        "Difficulty": "easy",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 154,
+        "Difficulty": "medium",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 155,
+        "Difficulty": "hard",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 156,
+        "Difficulty": "easy",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 157,
+        "Difficulty": "medium",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 158,
+        "Difficulty": "hard",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 159,
+        "Difficulty": "easy",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 160,
+        "Difficulty": "medium",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 161,
+        "Difficulty": "hard",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 162,
+        "Difficulty": "easy",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 163,
+        "Difficulty": "medium",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 164,
+        "Difficulty": "hard",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 165,
+        "Difficulty": "easy",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 166,
+        "Difficulty": "medium",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 167,
+        "Difficulty": "hard",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 168,
+        "Difficulty": "easy",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 169,
+        "Difficulty": "medium",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 170,
+        "Difficulty": "hard",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 171,
+        "Difficulty": "easy",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 172,
+        "Difficulty": "medium",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 173,
+        "Difficulty": "hard",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 174,
+        "Difficulty": "easy",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 175,
+        "Difficulty": "medium",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 176,
+        "Difficulty": "hard",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 177,
+        "Difficulty": "easy",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 178,
+        "Difficulty": "medium",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 179,
+        "Difficulty": "hard",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 180,
+        "Difficulty": "easy",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 181,
+        "Difficulty": "medium",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 182,
+        "Difficulty": "hard",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 183,
+        "Difficulty": "easy",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 184,
+        "Difficulty": "medium",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 185,
+        "Difficulty": "hard",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 186,
+        "Difficulty": "easy",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 187,
+        "Difficulty": "medium",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 188,
+        "Difficulty": "hard",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 189,
+        "Difficulty": "easy",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 190,
+        "Difficulty": "medium",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    },
+    {
+        "question_number": 191,
+        "Difficulty": "hard",
+        "Rating": 70,
+        "Question": "Who is Goku\u2019s main rival during the Saiyan Saga?",
+        "Answer": "Vegeta is Goku's main rival during the Saiyan Saga."
+    },
+    {
+        "question_number": 192,
+        "Difficulty": "easy",
+        "Rating": 71,
+        "Question": "What planet is the home of the Saiyan race?",
+        "Answer": "Planet Vegeta is the home planet of the Saiyan race."
+    },
+    {
+        "question_number": 193,
+        "Difficulty": "medium",
+        "Rating": 72,
+        "Question": "What technique allows Goku to teleport instantly to another location?",
+        "Answer": "Instant Transmission allows Goku to teleport instantly."
+    },
+    {
+        "question_number": 194,
+        "Difficulty": "hard",
+        "Rating": 73,
+        "Question": "Which character uses the Special Beam Cannon?",
+        "Answer": "Piccolo uses the Special Beam Cannon."
+    },
+    {
+        "question_number": 195,
+        "Difficulty": "easy",
+        "Rating": 74,
+        "Question": "Who is the main villain of the Frieza Saga?",
+        "Answer": "Frieza is the main villain of the Frieza Saga."
+    },
+    {
+        "question_number": 196,
+        "Difficulty": "medium",
+        "Rating": 75,
+        "Question": "What transformation does Goku achieve on Namek that shocks everyone?",
+        "Answer": "Goku achieves Super Saiyan transformation on Namek."
+    },
+    {
+        "question_number": 197,
+        "Difficulty": "hard",
+        "Rating": 76,
+        "Question": "Who trains Gohan in the wilderness after the Saiyan Saga?",
+        "Answer": "Piccolo trains Gohan in the wilderness."
+    },
+    {
+        "question_number": 198,
+        "Difficulty": "easy",
+        "Rating": 77,
+        "Question": "Which character is known for their tri-beam attack?",
+        "Answer": "Tien is known for the tri-beam attack."
+    },
+    {
+        "question_number": 199,
+        "Difficulty": "medium",
+        "Rating": 78,
+        "Question": "In the Android Saga, who is Android 18\u2019s twin?",
+        "Answer": "Android 17 is Android 18's twin."
+    },
+    {
+        "question_number": 200,
+        "Difficulty": "hard",
+        "Rating": 79,
+        "Question": "What is the name of Goku\u2019s second son?",
+        "Answer": "Goten is Goku's second son."
+    }
+]

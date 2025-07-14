@@ -1,0 +1,9 @@
+{
+  "project_name": "Entrepreneurr",
+  "small_description": "A platform for entrepreneurs to showcase startups and connect with like-minded individuals",
+  "description": "Entrepreneurr is a modern web platform built with Next.js and Sanity.io that enables entrepreneurs to showcase their startups and connect with the community. The application features a headless CMS for content management, SEO optimization, and a responsive design using Tailwind CSS and ShadCN components. It provides a seamless, visually stunning experience for startup discovery and networking.",
+  "skills": ["Next.js", "React", "TypeScript", "Sanity.io", "Tailwind CSS", "ShadCN", "Radix UI", "NextAuth", "Framer Motion", "Embla Carousel", "React Hook Form", "Zod", "Axios", "Markdown", "Styled Components"],
+  "project_repository": "https://github.com/MishraShardendu22/Entrepreneurr",
+  "project_live_link": "https://entrepreneurr.vercel.app/",
+  "project_video": ""
+} 

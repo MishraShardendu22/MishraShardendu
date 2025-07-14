@@ -1,0 +1,21 @@
+**Overview of the Website Architecture**
+
+The website is divided into three main components:
+
+### 1. Frontend
+- **Framework**: Built with React 19 using Vite for a fast and optimized development environment.
+- **Data Fetching**: Utilizes Axios to handle API requests and data fetching.
+- **Notifications**: Implements React Hot Toast for user-friendly toast notifications.
+- **UI Components**: Leverages the Sahdcn library for pre-designed UI components.
+
+### 2. Main Backend
+- **Language**: Developed in TypeScript.
+- **User Management**: Supports four distinct user roles, each with its own controller implementations:
+  - **Admin**: Manages the overall platform and system configurations.
+  - **Donor**: Handles donor-specific actions and data.
+  - **Patient**: Manages patient-specific requests and interactions.
+  - **Organization**: Caters to hospitals, NGOs, or other organizations facilitating blood donations.
+
+### 3. AI Microservice
+- **Implementation**: Written in Go, this microservice handles AI-related functionalities.
+- **Design**: Engineered for seamless and fast communication, ensuring high performance and reliability.

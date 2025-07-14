@@ -1,0 +1,9 @@
+{
+  "project_name": "GoLangToDoList",
+  "small_description": "A full-stack todo application with Go backend and TypeScript frontend",
+  "description": "GoLangToDoList is a full-stack todo application featuring a Go backend with hot reload using Air, and a TypeScript frontend built with ShadCN, Tailwind CSS, and Vite. The application provides CRUD operations for tasks with a responsive design and smooth animations using Framer Motion. It demonstrates modern full-stack development practices with separate frontend and backend repositories.",
+  "skills": ["GoLang", "TypeScript", "ShadCN", "Tailwind CSS", "Vite", "Framer Motion", "Air (Hot Reload)", "Full-Stack Development", "CRUD Operations"],
+  "project_repository": "https://github.com/MishraShardendu22/GoLangToDoList",
+  "project_live_link": "https://golangtodo-front.onrender.com/",
+  "project_video": ""
+} 

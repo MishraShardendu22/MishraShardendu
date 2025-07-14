@@ -1,0 +1,47 @@
+{
+  "project_name": "Project-Astro-Framework",
+  "description": "A modern personal blog website built with Astro framework, featuring responsive design and interactive UI elements. The blog showcases articles on computer science, history, technology, and personal projects. Built with TypeScript, Tailwind CSS, and deployed on Vercel for optimal performance and SEO.",
+  "project_repository": "https://github.com/MishraShardendu22/Project-Astro-Framework",
+  "project_live_link": "https://astro-j29f8jhok-shardendu-mishra.vercel.app/",
+  "project_video": "",
+  "skills": [
+    "Astro",
+    "TypeScript",
+    "React",
+    "Tailwind CSS",
+    "JavaScript",
+    "HTML5",
+    "CSS3",
+    "Vercel",
+    "Three.js",
+    "Typed.js",
+    "Axios",
+    "FontAwesome",
+    "Heroicons",
+    "Lucide React"
+  ],
+  "design_patterns": [
+    "Static Site Generation",
+    "Component-Based Architecture",
+    "Responsive Design",
+    "Progressive Enhancement",
+    "SEO Optimization",
+    "Content-First Design"
+  ],
+  "system_design": {
+    "architecture": "Static Site Generator",
+    "framework": "Astro with React integration",
+    "styling": "Tailwind CSS for responsive design",
+    "deployment": "Vercel for static hosting",
+    "features": [
+      "Personal blog with articles",
+      "Responsive design",
+      "Interactive UI elements",
+      "Project showcase",
+      "Skills demonstration",
+      "SEO optimized",
+      "Fast loading times",
+      "Modern web technologies"
+    ]
+  }
+} 

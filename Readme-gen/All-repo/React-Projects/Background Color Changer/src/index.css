@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+    
+.header {
+  display: flex;
+  justify-content: center; 
+  padding: 20px;
+  width: 100vh; 
+  background-color: aquamarine; 
+}
+
+.ButtonContainer {
+  display: inline-flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.bodyContainer {
+  background-color: aquamarine;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: larger;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}

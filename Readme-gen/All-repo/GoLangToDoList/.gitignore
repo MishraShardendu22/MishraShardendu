@@ -1,0 +1,29 @@
+# Go binary files
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go package files
+*.test
+
+# Dependency directories
+/vendor/
+
+# Environment variables file
+.env
+
+# Build artifacts
+/bin/
+/obj/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db

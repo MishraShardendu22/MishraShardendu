@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Lost in Space</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            color: #00ff00;
+            background-color: #000;
+        }
+        #scene {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+            width: 90%;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 6rem;
+            margin-bottom: 0;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        @keyframes glitch {
+            2%, 64% {
+                transform: translate(2px,0) skew(0deg);
+            }
+            4%, 60% {
+                transform: translate(-2px,0) skew(0deg);
+            }
+            62% {
+                transform: translate(0,0) skew(5deg); 
+            }
+        }
+        p {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+        .home-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #00ff00;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .home-button:hover {
+            background-color: #000;
+            color: #00ff00;
+            box-shadow: 0 0 20px #00ff00;
+        }
+        #terminal {
+            font-family: 'Courier New', monospace;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #00ff00;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            text-align: left;
+            border: 1px solid #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+        }
+        #terminal p {
+            margin: 5px 0;
+            font-size: 1rem;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        .astronaut {
+            position: absolute;
+            width: 100px;
+            height: auto;
+            animation: float 6s ease-in-out infinite;
+        }
+        #astronaut1 { top: 10%; left: 10%; }
+        #astronaut2 { top: 20%; right: 15%; animation-delay: -2s; }
+        #astronaut3 { bottom: 15%; left: 20%; animation-delay: -4s; }
+    </style>
+</head>
+<body>
+    <div id="scene"></div>
+    <img src="https://github.com/ShardenduMishra22/ShardenduMishra22/blob/main/1000_F_519325685_Wy96q7w50hNTxNjTUYyQbkQnSmHIQxjv-removebg-preview.png?raw=true" alt="Floating astronaut" class="astronaut" id="astronaut1">
+    <img src="https://github.com/ShardenduMishra22/ShardenduMishra22/blob/main/1000_F_519325685_Wy96q7w50hNTxNjTUYyQbkQnSmHIQxjv-removebg-preview.png?raw=true" alt="Floating astronaut" class="astronaut" id="astronaut2">
+    <img src="https://github.com/ShardenduMishra22/ShardenduMishra22/blob/main/1000_F_519325685_Wy96q7w50hNTxNjTUYyQbkQnSmHIQxjv-removebg-preview.png?raw=true" alt="Floating astronaut" class="astronaut" id="astronaut3">
+    <div class="content">
+        <h1>404</h1>
+        <p>SYSTEM ERROR: PAGE NOT FOUND</p>
+        <div id="terminal">
+            <p>> Initiating space rescue protocol...</p>
+            <p>> Scanning for nearest exit...</p>
+            <p>> Exit found: Homepage</p>
+            <p>> Prepare for immediate evacuation!</p>
+        </div>
+        <a href="/" class="home-button">EMERGENCY EVACUATION</a>
+    </div>
+    <script>
+        // Create starry background
+        const scene = document.getElementById('scene');
+        if (scene) {
+            for (let i = 0; i < 500; i++) {
+                const star = document.createElement('div');
+                star.style.position = 'absolute';
+                star.style.width = '2px';
+                star.style.height = '2px';
+                star.style.background = '#fff';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animation = `twinkle ${Math.random() * 5 + 5}s linear infinite`;
+                scene.appendChild(star);
+            }
+        }
+
+        // Animate terminal text
+        const terminalLines = document.querySelectorAll('#terminal p');
+        terminalLines.forEach((line, index) => {
+            setTimeout(() => {
+                (line as HTMLElement).style.display = 'block';
+                setTimeout(() => {
+                    (line as HTMLElement).style.opacity = '1';
+                }, 50);
+            }, index * 1000);
+        });
+    </script>
+</body>
+</html>

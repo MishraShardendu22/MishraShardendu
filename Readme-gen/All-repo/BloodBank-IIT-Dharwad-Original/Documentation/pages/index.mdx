@@ -1,0 +1,76 @@
+# Blood Donation 
+
+This microservice provides specialized chat functionality using a **Retrieval-Augmented Generation (RAG) model**, alongside managing user data and surveys for various user types: **Admin, Donor, Organisation, and Patient**. It integrates **MongoDB** for data storage and uses **JWT-based authentication** for securing endpoints.  
+
+Additionally, the microservice interacts with an **external chat API (Vectara)** to generate **context-aware responses** and maintains **separate collections for donor and patient surveys**.  
+
+## 📌 Features Overview  
+
+- **🔒 Secure Authentication** – Uses JWT tokens for role-based access.  
+- **💉 Blood Donation Management** – Facilitates donations at registered institutions.  
+- **🩸 Patient Requests** – Enables urgent blood requests with instant donor connections.  
+- **📊 Admin Dashboard** – Centralized control for managing users, organizations, and requests.  
+
+## 👥 User Roles  
+
+### 👨‍💼 Admin  
+- Full control over platform operations.  
+- Approves organizations, monitors donations, and manages requests.  
+- Accesses analytics and reporting tools.  
+
+### ❤️ Donor  
+- Registers and selects donation centers.  
+- Schedules blood donation appointments.  
+- Contributes to maintaining a balanced blood supply.  
+
+### 🚑 Patient  
+- Submits blood requests for urgent medical needs.  
+- Tracks request status.  
+- Connects with nearby donors and organizations.  
+
+### 🏥 Organisation  
+- Hosts and manages blood donation camps.  
+- Ensures proper storage and distribution of donated blood.  
+- Promotes blood donation awareness.  
+
+---
+
+## 🔗 API Endpoints  
+
+### 🔄 Common Routes  
+- **Register** – Create a new account.  
+- **Login** – Authenticate an existing user.  
+- **Send OTP** – Request an OTP for verification/reset.  
+- **Verify OTP** – Validate the OTP.  
+- **Reset Password** – Securely update the password.  
+- **Verify** – Check authentication status.  
+- **Update Profile** – Modify account details.  
+
+### 🩸 Donor Endpoints  
+- Submit health surveys.  
+- View donation history.  
+- Get personalized donation reminders.  
+
+### 🚑 Patient Endpoints  
+- Submit urgent blood requests.  
+- Track request status.  
+- Connect with nearby donors and organizations.  
+
+### 🏥 Organisation Endpoints  
+- Create and manage donation events.  
+- View donor participation stats.  
+- Manage blood storage records.  
+
+### 👨‍💼 Admin Endpoints  
+- Approve/reject organizations.  
+- Oversee patient requests.  
+- Monitor platform analytics.  
+
+### 💬 Chat Endpoint  
+- Generates AI-powered responses using **Vectara** for **context-aware assistance**.  
+
+---
+
+## ⚠️ Error Handling  
+- Standardized error responses for authentication failures, invalid requests, and system errors.  
+- Ensures a **consistent and secure** experience for all users.  

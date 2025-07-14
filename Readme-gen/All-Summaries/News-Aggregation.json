@@ -1,0 +1,9 @@
+{
+  "project_name": "News-Aggregation",
+  "small_description": "A Chrome extension for news aggregation with top headlines and updates",
+  "description": "News-Aggregation is a Chrome extension that provides effortless access to the latest headlines and news updates. The extension aggregates news from various sources and presents them in a clean, user-friendly interface. Built with modern web technologies, it offers real-time news updates and helps users stay informed with the latest headlines directly from their browser.",
+  "skills": ["Chrome Extension", "JavaScript", "News API", "Browser Extension", "Web Development"],
+  "project_repository": "https://github.com/MishraShardendu22/News-Aggregation",
+  "project_live_link": "https://youtu.be/7s0jAgrxq-o?si=AshDMQRNuZyMkpwA",
+  "project_video": "https://www.youtube.com/watch?v=7s0jAgrxq-o"
+} 

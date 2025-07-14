@@ -1,0 +1,3 @@
+1. Django NotesApplication
+  - GitHub: https://github.com/MishraShardendu22/Djando-NotesApplication
+  - Live Deployment: https://frontend-okmy.onrender.com/

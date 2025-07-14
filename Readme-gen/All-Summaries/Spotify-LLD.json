@@ -1,0 +1,9 @@
+{
+  "project_name": "Spotify-LLD",
+  "small_description": "A C++ music player system implementing multiple design patterns for audio playback",
+  "description": "Spotify-LLD is a comprehensive C++ implementation of a music player system that demonstrates several design patterns. It uses the Adapter Pattern for different audio output devices (Bluetooth, Wired, Headphones), Strategy Pattern for different play strategies (Sequential, Random, Custom Queue), Factory Pattern for device creation, and Facade Pattern for simplified client interface. The system supports playlist management, multiple device types, and various playback strategies, following SOLID principles for extensible audio system design.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Adapter Pattern", "Strategy Pattern", "Factory Pattern", "Facade Pattern", "Abstract Classes", "Virtual Functions", "Inheritance", "Polymorphism", "Smart Pointers"],
+  "project_repository": "https://github.com/MishraShardendu22/Spotify-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} 

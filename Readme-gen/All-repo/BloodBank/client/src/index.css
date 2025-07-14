@@ -1,0 +1,144 @@
+/* 
+Color Palette:
+- Red: Represents life, urgency, and action (e.g., buttons, CTAs, and alerts).
+- White: Symbolizes purity and cleanliness (e.g., backgrounds and cards).
+- Light Gray: Used for neutral sections and to maintain clarity.
+- Dark Blue: Represents trust and professionalism (e.g., text and headers).
+- Accent Colors: Subtle highlights like muted tones, greens, and blues for charts or secondary elements.
+Purpose: This palette ensures a professional, clean, and user-friendly design while conveying trust and urgency, key themes for a blood bank website.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&family=Roboto+Slab:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 0 84.2% 60.2%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 214.3 31.8% 91.4%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 214.3 31.8% 91.4%;
+    --muted-foreground: 222.2 20% 20%;
+    --accent: 222.2 47.4% 11.2%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 0 84.2% 60.2%;
+    --chart-1: 0 84.2% 60.2%;
+    --chart-2: 222.2 47.4% 11.2%;
+    --chart-3: 27 87% 67%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 240 40% 80%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 222.2 47.4% 11.2%;
+    --sidebar-primary: 0 84.2% 60.2%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 214.3 31.8% 91.4%;
+    --sidebar-accent-foreground: 222.2 47.4% 11.2%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 0 84.2% 60.2%;
+  }
+
+  .dark {
+    --background: 222.2 47.4% 11.2%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 47.4% 11.2%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 47.4% 11.2%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 0 84.2% 60.2%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 0 84.2% 60.2%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 0 84.2% 60.2%;
+    --sidebar-background: 222.2 47.4% 11.2%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 0 84.2% 60.2%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 0 84.2% 60.2%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Merriweather', 'Roboto Slab', serif;
+    font-weight: 700;
+  }
+
+  p,
+  span,
+  label,
+  input,
+  button,
+  textarea {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+  }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  /* background: hsl(var(--background)); */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: hsl(60, 100%, 35%);
+  border: 1px dotted hsl(298, 100%, 35%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(60, 100%, 35%);
+}
+
+::-webkit-scrollbar-corner {
+  background: hsl(60, 100%, 35%);
+}

@@ -1,0 +1,51 @@
+{
+  "project_name": "Portfolio-Website",
+  "description": "A dynamic portfolio website built with React, Vite, and Three.js featuring interactive 3D models and animations. Includes project showcase, responsive design, contact form integration with EmailJS, and modern UI with Tailwind CSS. Deployed on Vercel with GSAP animations and Three.js 3D graphics.",
+  "project_repository": "https://github.com/MishraShardendu22/Portfolio-Website",
+  "project_live_link": "https://shardendu-mishra-portfolio-website.vercel.app/",
+  "project_video": "",
+  "skills": [
+    "React",
+    "Vite",
+    "Three.js",
+    "React Three Fiber",
+    "GSAP",
+    "Tailwind CSS",
+    "EmailJS",
+    "TypeScript",
+    "Axios",
+    "Lucide React",
+    "Typed.js",
+    "React Globe.gl",
+    "Vercel"
+  ],
+  "design_patterns": [
+    "3D Web Graphics",
+    "Component-Based Architecture",
+    "Responsive Design",
+    "Animation Integration",
+    "Contact Form Integration",
+    "Modern UI/UX",
+    "Performance Optimization"
+  ],
+  "system_design": {
+    "architecture": "Modern Portfolio Website",
+    "framework": "React with Vite build tool",
+    "3d_graphics": "Three.js with React Three Fiber",
+    "animations": "GSAP for smooth animations",
+    "styling": "Tailwind CSS for responsive design",
+    "deployment": "Vercel for hosting",
+    "features": [
+      "Interactive 3D models and graphics",
+      "Project showcase and experience display",
+      "Responsive design for all devices",
+      "Contact form with EmailJS integration",
+      "GSAP animations and transitions",
+      "Three.js 3D visualizations",
+      "React Globe.gl for globe visualization",
+      "Typed.js for text animations",
+      "Modern UI components",
+      "Performance optimized build"
+    ]
+  }
+} 

@@ -1,0 +1,50 @@
+---
+
+import { SITE_TITLE, SITE_DESCRIPTION } from "../constants.ts"
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const { title = 'Mishra Blog`s It' } = Astro.props;
+
+interface Props {
+    title ?: string;
+}
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content={SITE_DESCRIPTION} />
+      <title>{SITE_TITLE}</title>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.js"
+        integrity="sha512-BJ/5sR2hFxQTKin/55JQCcMTObShDBAmVjL/3NR/MVcrhyOazJjAgvROem03+HYyGw16SVdSfoWCFGr9syxAKA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      ></script>
+      <style>
+        html, body {
+          height: 100%;
+          margin: 0;
+        }
+
+        body {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .container {
+          flex: 1;
+        }
+      </style>
+  </head>
+  <body>
+      <Navbar />
+      <section class="container mx-auto max-w-screen-xl mt-10 px-8">
+        <slot />
+      </section>
+      <Footer />
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "project_name": "Zomato-LLD",
+  "small_description": "A C++ implementation of a Zomato-like food delivery system using multiple design patterns",
+  "description": "Zomato-LLD is a comprehensive C++ implementation of a Zomato-like food delivery system that demonstrates several design patterns. It uses the Strategy Pattern for different payment methods (Credit Card, UPI), Factory Pattern for order creation (Now vs Scheduled), Inheritance for different order types (Delivery vs Pickup), and follows SOLID principles. The system supports restaurant management, user carts, order processing, payment handling, and notification services, providing a modular architecture for food delivery platforms.",
+  "skills": ["C++", "System Design", "Low-Level Design", "Object-Oriented Programming (OOP)", "SOLID Principles", "Strategy Pattern", "Factory Pattern", "Inheritance", "Abstract Classes", "Virtual Functions", "Polymorphism", "Smart Pointers"],
+  "project_repository": "https://github.com/MishraShardendu22/Zomato-LLD",
+  "project_live_link": "",
+  "project_video": ""
+} 

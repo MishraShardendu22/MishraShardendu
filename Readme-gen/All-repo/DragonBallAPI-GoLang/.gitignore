@@ -1,0 +1,42 @@
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Output of the go coverage tool
+*.out
+
+# Air config file and generated log files
+.air.toml
+.air.conf
+.air.env
+
+# Dependency directories
+/vendor/
+node_modules/
+
+# IDE/editor config files
+.vscode/
+.idea/
+*.swp
+
+# Environment variables
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Go cache files
+/go/pkg
+/go/bin
+
+# Go test binary
+*.test
+
+# GitHub metadata
+.github/

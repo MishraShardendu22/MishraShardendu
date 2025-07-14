@@ -1,0 +1,33 @@
+# Binaries
+*.exe
+*.out
+*.app
+*.bin
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.tmp
+tmp/
+
+# Dependency and build artifacts
+vendor/
+bin/
+pkg/
+coverage.out
+
+# Go modules
+go.sum
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.*

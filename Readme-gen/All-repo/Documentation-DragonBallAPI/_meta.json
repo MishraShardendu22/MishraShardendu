@@ -1,0 +1,13 @@
+{
+  "index": "Introduction",
+  "about": {
+    "title": "About",
+    "type": "page"
+  },
+  "contact": {
+    "title": "Contact ↗",
+    "type": "page",
+    "href": "https://github.com/MishraShardendu22_",
+    "newWindow": true
+  }
+}

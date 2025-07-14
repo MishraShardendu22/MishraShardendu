@@ -1,0 +1,9 @@
+{
+  "project_name": "Mishra-Music-Academy",
+  "small_description": "A Next.js music course platform showcasing modern web development skills",
+  "description": "Mishra-Music-Academy is a Next.js-based music course platform designed to demonstrate proficiency in modern web development practices. The website showcases a music academy with course offerings, instructor profiles, and a professional design. Built with Next.js, TypeScript, and Tailwind CSS, it features responsive design, modern UI components, and serves as a portfolio piece highlighting web development skills and best practices.",
+  "skills": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Portfolio", "Responsive Design", "Modern Web Development"],
+  "project_repository": "https://github.com/MishraShardendu22/Mishra-Music-Academy",
+  "project_live_link": "https://mishra-music-academy-delta.vercel.app/",
+  "project_video": ""
+} 

@@ -1,0 +1,271 @@
+ {/* Contact Section */}
+      {/* <section className="py-24">
+        <div className="container px-4 mx-auto max-w-7xl">
+          <div className="grid gap-16 lg:grid-cols-2">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="mb-4 text-4xl font-bold">Get in Touch</h2>
+              <p className="mb-8 text-lg opacity-80">
+                Have questions about blood donation or need assistance? Our team is here to help.
+              </p>
+              <div className="space-y-4">
+                {[
+                  { icon: Phone, text: "+1 (555) 123-4567" },
+                  { icon: MessagesSquare, text: "support@bloodsphere.com" },
+                  { icon: MapPin, text: "123 Medical Center Ave, Health City, HC 12345" }
+                ].map((contact) => (
+                  <div key={contact.text} className="flex items-center gap-4">
+                    <contact.icon className="w-6 h-6 text-primary" />
+                    <span>{contact.text}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 rounded-lg bg-base-200"
+            >
+              <form className="space-y-4">
+                <div className="form-control">
+                  <input type="text" placeholder="Your Name" className="input input-bordered" />
+                </div>
+                <div className="form-control">
+                  <input type="email" placeholder="Email Address" className="input input-bordered" />
+                </div>
+                <div className="form-control">
+                  <textarea className="h-32 textarea textarea-bordered" placeholder="Your Message"></textarea>
+                </div>
+                <button className="w-full btn btn-primary">Send Message</button>
+              </form>
+            </motion.div>
+          </div>
+        </div>
+      </section> */}
+
+
+      
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 0 84.2% 60.2%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 214.3 31.8% 91.4%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 214.3 31.8% 91.4%;
+    --muted-foreground: 222.2 20% 20%;
+    --accent: 222.2 47.4% 11.2%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 0 84.2% 60.2%;
+    --chart-1: 0 84.2% 60.2%;
+    --chart-2: 222.2 47.4% 11.2%;
+    --chart-3: 27 87% 67%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 240 40% 80%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 222.2 47.4% 11.2%;
+    --sidebar-primary: 0 84.2% 60.2%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 214.3 31.8% 91.4%;
+    --sidebar-accent-foreground: 222.2 47.4% 11.2%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 0 84.2% 60.2%;
+  }
+
+  .dark {
+    --background: 222.2 47.4% 11.2%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 47.4% 11.2%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 47.4% 11.2%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 0 84.2% 60.2%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 0 84.2% 60.2%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 0 84.2% 60.2%;
+    --sidebar-background: 222.2 47.4% 11.2%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 0 84.2% 60.2%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 0 84.2% 60.2%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Merriweather', 'Roboto Slab', serif;
+    font-weight: 700;
+  }
+
+  p,
+  span,
+  label,
+  input,
+  button,
+  textarea {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+  }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  /* background: hsl(var(--background)); */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: hsl(60, 100%, 35%);
+  border: 1px dotted hsl(298, 100%, 35%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(60, 100%, 35%);
+}
+
+::-webkit-scrollbar-corner {
+  background: hsl(60, 100%, 35%);
+}
+
+
+
+
+
+
+
+tailwind.config.js - 
+theme: {
+    extend: {
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
+      colors: {
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        chart: {
+          1: 'hsl(var(--chart-1))',
+          2: 'hsl(var(--chart-2))',
+          3: 'hsl(var(--chart-3))',
+          4: 'hsl(var(--chart-4))',
+          5: 'hsl(var(--chart-5))',
+        },
+        sidebar: {
+          DEFAULT: 'hsl(var(--sidebar-background))',
+          foreground: 'hsl(var(--sidebar-foreground))',
+          primary: 'hsl(var(--sidebar-primary))',
+          'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+          accent: 'hsl(var(--sidebar-accent))',
+          'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+          border: 'hsl(var(--sidebar-border))',
+          ring: 'hsl(var(--sidebar-ring))',
+        },
+      },
+      keyframes: {
+        'accordion-down': {
+          from: {
+            height: '0',
+          },
+          to: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+        },
+        'accordion-up': {
+          from: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+          to: {
+            height: '0',
+          },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+    },
+  },

@@ -1,0 +1,54 @@
+{
+  "project_name": "TokeNova-ShardenduMishra",
+  "description": "A comprehensive Web3 application built for BITS Hackathon featuring blockchain integration, smart contracts, and modern frontend. Includes React frontend with Web3 wallet integration, Hardhat smart contract development, and agentic AI components. Features Material-UI, Radix UI components, and comprehensive blockchain development tools.",
+  "project_repository": "https://github.com/MishraShardendu22/TokeNova-ShardenduMishra",
+  "project_live_link": "https://tokenova.vercel.app/",
+  "project_video": "",
+  "skills": [
+    "React",
+    "TypeScript",
+    "Web3",
+    "Ethers.js",
+    "Wagmi",
+    "Viem",
+    "Hardhat",
+    "Solidity",
+    "OpenZeppelin",
+    "Material-UI",
+    "Radix UI",
+    "Tailwind CSS",
+    "ConnectKit",
+    "Framer Motion",
+    "Vite",
+    "Blockchain Development"
+  ],
+  "design_patterns": [
+    "Web3 Architecture",
+    "Smart Contract Development",
+    "Wallet Integration",
+    "Component-Based Design",
+    "Blockchain State Management",
+    "Agentic AI Integration",
+    "Responsive Design"
+  ],
+  "system_design": {
+    "architecture": "Full-Stack Web3 Application",
+    "frontend": "React with TypeScript and Vite",
+    "blockchain": "Hardhat with Solidity smart contracts",
+    "wallet_integration": "Wagmi and ConnectKit for Web3 connectivity",
+    "ui_framework": "Material-UI and Radix UI components",
+    "deployment": "Vercel for frontend",
+    "features": [
+      "Web3 wallet integration",
+      "Smart contract interaction",
+      "Blockchain state management",
+      "Modern responsive UI",
+      "Agentic AI components",
+      "Image editing capabilities",
+      "QR code generation",
+      "Form validation",
+      "Real-time data visualization",
+      "Cross-platform compatibility"
+    ]
+  }
+} 

@@ -1,0 +1,115 @@
+Models, Endpoints & Error Handling
+---
+
+## Models and Data Structures
+
+### User Schema (Admin, Donor, Organisation, Patient)
+
+Each user type shares a similar schema structure:
+
+```go
+type Admin struct {
+    ID        primitive.ObjectID `json:"id" bson:"_id"`
+    Name      string             `json:"name" bson:"name"`
+    Email     string             `json:"email" bson:"email"`
+    Password  string             `json:"password" bson:"password"`
+    PhoneNo   string             `json:"phoneNo" bson:"phoneNo"`
+    CreatedAt primitive.DateTime `json:"createdAt" bson:"createdAt"`
+    UpdatedAt primitive.DateTime `json:"updatedAt" bson:"updatedAt"`
+}
+```
+
+> **Note:** The Donor, Organisation, and Patient schemas follow the same structure.
+
+---
+
+### Survey Schema
+
+The survey model captures health-related details provided by Donors or Patients:
+
+```go
+type Survey struct {
+    DonorID                 primitive.ObjectID `json:"donor_id"`
+    SymptomsIllness         string             `json:"symptoms_illness"`          
+    RecentMedicalProcedures string             `json:"recent_medical_procedures"` 
+    TravelHistory           string             `json:"travel_history"`            
+    MedicalConditions       string             `json:"medical_conditions"`        
+    HighRiskExposure        string             `json:"high_risk_exposure"`        
+    OtherIssues             []HealthIssue      `json:"other_issues"`
+}
+```
+
+The `HealthIssue` type is defined as a string with possible values (e.g., `"cancer"`, `"heart_disease"`, etc.).
+
+---
+
+## Endpoints
+
+Below are the main endpoints provided by this microservice. Each endpoint description includes the HTTP method, URL path, detailed description, and sample request/response examples.
+
+---
+
+### Chat Endpoint
+
+#### 1. Chat
+
+- **URL:** `/chat`
+- **Method:** `POST`
+- **Description:**  
+  Accepts a query string and communicates with an external chat API (Vectara) to generate a specialized response. The response is generated using predefined search and generation parameters.
+- **Sample Request:**
+
+```http
+POST /chat HTTP/1.1
+Host: your-api-domain.com
+Content-Type: application/json
+
+{
+  "query": "What are the symptoms of diabetes?"
+}
+```
+
+- **Sample Response:**
+
+```json
+{
+  "response": "{ ... chat response from Vectara API ... }"
+}
+```
+
+---
+
+## Error Handling
+
+The API returns errors in a consistent JSON format with an `error` field. Common error statuses include:
+
+- **400 Bad Request:** When required parameters are missing or invalid.
+- **401 Unauthorized:** When authentication fails or a valid JWT token is not provided.
+- **403 Forbidden:** When the user does not have permission to access the resource.
+- **404 Not Found:** When a requested resource (user/survey) cannot be found.
+- **500 Internal Server Error:** When an unexpected error occurs on the server.
+
+**Example Error Response:**
+
+```json
+{
+  "error": "Detailed error message describing the issue."
+}
+```
+
+---
+
+## Additional Notes
+
+- **Authentication:**  
+  Protected routes require a valid JWT token provided by the main server. Use the `Authorization` header with the format:  
+  `Bearer <token>`.
+
+- **External API Integration:**  
+  The chat functionality utilizes the Vectara API. Ensure that the environment variable `API_KEY` is set correctly for authenticated communication with the external service.
+
+- **Data Flow:**  
+  This microservice interacts with the `bloodbank` database and collections such as `admins`, `donors`, `organisations`, `patients`, `donorSurvey`, and `patientSurvey`.
+
+- **Middleware:**  
+  Routes are grouped under different user types using custom middleware (e.g., `AdminMiddleware`, `DonorMiddleware`, etc.) that validate JWT tokens and populate the request context with the user ID.

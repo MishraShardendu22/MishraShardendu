@@ -1,0 +1,19 @@
+1. IIITDWD Website
+   - GitHub: https://github.com/MishraShardendu22/iiitdwd.ac.in-ShardenduMishra
+   - Live Deployment: https://iiitdwd.ac.in/
+
+2. IIITDWD Content Website
+   - GitHub: https://github.com/MishraShardendu22/content.iiitdwd.ac.in-ShardenduMishra
+
+3. Vasini Singh Portfolio
+   - GitHub: https://github.com/MishraShardendu22/Vasini-Singh-Portfolio
+   - Live Deployment: https://vasini-singh-portfolio.onrender.com/
+
+4. Vidkarya
+   - Backend GitHub: https://github.com/MishraShardendu22/vidkarya-backend-ShardenduMishra
+   - Client GitHub: https://github.com/MishraShardendu22/Vidkarya-client-ShardenduMishra
+   - Live Deployment: https://vidkarya.vercel.app/
+
+5. Hackathon Website
+   - GitHub: https://github.com/MishraShardendu22/hackathon-website
+   - Live Deployment: https://hack2future.tech/

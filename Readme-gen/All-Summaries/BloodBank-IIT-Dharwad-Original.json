@@ -1,0 +1,9 @@
+{
+  "project_name": "BloodBank-IIT-Dharwad-Original",
+  "small_description": "A comprehensive blood bank management system built during a hackathon at IIT Dharwad",
+  "description": "BloodBank-IIT-Dharwad is a full-stack blood bank management platform developed during a 36-hour hackathon. It features a React and TypeScript frontend, a backend built with both TypeScript (Node.js/Express) and GoLang microservices, and MongoDB for data storage. The system supports user authentication, scheduling, notifications, and advanced workflow integration, with a focus on security and performance.",
+  "skills": ["React", "TypeScript", "Vite", "Express.js", "Node.js", "MongoDB", "Mongoose", "GoLang", "Fiber", "JWT", "bcryptjs", "Nodemailer", "Node Cron", "Zustand", "Radix UI", "Tailwind CSS", "DaisyUI", "Axios", "React Toastify"],
+  "project_repository": "https://github.com/MishraShardendu22/BloodBank-IIT-Dharwad-Original",
+  "project_live_link": "https://parshu-velocity-blood-bank.vercel.app",
+  "project_video": ""
+} 
