@@ -46,3 +46,4 @@ Refactor project detail API calls to destructure parameters; implement proxy rou
 Implement proxy routing for certifications, experiences, projects, and skills; enhance request handling and logging
 Fix proxy URL construction by removing redundant '/api' prefix
 Refactor API configuration to use a consistent proxy base URL; implement proxy handling for API requests with error management
+Update hero.tsx
