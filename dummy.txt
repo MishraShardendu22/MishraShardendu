@@ -30,3 +30,4 @@ feat: update API routes to remove unused user references and add PATCH method fo
 Implement API endpoints for comments, notifications, reports, and user management
 refactor: clean up layout component and remove unused metadata
 feat: enhance blog layout with authentication and metadata, add API routes for comments, likes, and profiles
+feat: initialize database schema and authentication setup
