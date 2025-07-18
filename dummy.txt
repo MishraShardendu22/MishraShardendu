@@ -29,3 +29,4 @@ feat: implement user session handling in blog landing page
 feat: update API routes to remove unused user references and add PATCH method for comments; implement history and like functionalities
 Implement API endpoints for comments, notifications, reports, and user management
 refactor: clean up layout component and remove unused metadata
+feat: enhance blog layout with authentication and metadata, add API routes for comments, likes, and profiles
