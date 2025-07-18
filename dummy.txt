@@ -41,3 +41,4 @@ Refactor API route handlers to use context for parameter access; remove unnecess
 Refactor API route handlers to destructure parameters for clarity; remove console logs for cleaner output
 done
 Update BASE_URL to use the full backend URL for API requests
+Implement proxy routing for certifications and experiences with error handling; remove redundant headers in responses
