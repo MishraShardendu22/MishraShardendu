@@ -31,3 +31,4 @@ Implement API endpoints for comments, notifications, reports, and user managemen
 refactor: clean up layout component and remove unused metadata
 feat: enhance blog layout with authentication and metadata, add API routes for comments, likes, and profiles
 feat: initialize database schema and authentication setup
+test
