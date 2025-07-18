@@ -38,3 +38,4 @@ Update HeroSection image dimensions for improved display quality
 done
 Update dependencies in Loader and TipTap components; enhance effect dependencies for better performance
 Refactor API route handlers to use context for parameter access; remove unnecessary console log in project metadata generation
+Refactor API route handlers to destructure parameters for clarity; remove console logs for cleaner output
