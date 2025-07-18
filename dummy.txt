@@ -34,3 +34,4 @@ feat: initialize database schema and authentication setup
 test
 Fix HTML entity for apostrophe in blog introduction paragraph
 done
+Update HeroSection image dimensions for improved display quality
