@@ -40,3 +40,4 @@ Update dependencies in Loader and TipTap components; enhance effect dependencies
 Refactor API route handlers to use context for parameter access; remove unnecessary console log in project metadata generation
 Refactor API route handlers to destructure parameters for clarity; remove console logs for cleaner output
 done
+Update BASE_URL to use the full backend URL for API requests
