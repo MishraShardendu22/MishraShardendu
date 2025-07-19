@@ -16,3 +16,4 @@ feat(blog): streamline blog navigation and enhance user session handling
 Enhance Blog Stats Page and Navigation
 feat(blog): remove BlogTestPage and implement BlogStatsPage with comprehensive statistics and analytics features
 feat: Enhance blog API with like, comment, and view counts; update blog edit and create navigation
+feat: Update blog API endpoints to accept userId in request body for like, unlike, bookmark, and unbookmark actions
