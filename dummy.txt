@@ -27,3 +27,4 @@ chore: add 'use client' directive to blog landing page component
 Refactor API route parameter handling to use Promise for params in multiple routes; remove deprecated category routes; implement unified category retrieval by ID or slug.
 feat: implement user session handling in blog landing page
 feat: update API routes to remove unused user references and add PATCH method for comments; implement history and like functionalities
+Implement API endpoints for comments, notifications, reports, and user management
