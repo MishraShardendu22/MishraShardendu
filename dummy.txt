@@ -12,3 +12,4 @@ feat(blog): improve styling and accessibility in blog creation and navigation co
 feat(blog): enhance loading states and UI components across blog pages
 refactor(blog): simplify layout and enhance UI components
 done
+feat(blog): streamline blog navigation and enhance user session handling
