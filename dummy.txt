@@ -25,3 +25,4 @@ feat: refactor authentication handling in blog layout and page components
 feat: enhance user session handling and improve layout component logic
 chore: add 'use client' directive to blog landing page component
 Refactor API route parameter handling to use Promise for params in multiple routes; remove deprecated category routes; implement unified category retrieval by ID or slug.
+feat: implement user session handling in blog landing page
