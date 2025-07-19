@@ -22,3 +22,4 @@ feat: Improve session handling and error feedback in blog creation
 feat: Add blog components and examples
 done
 feat: refactor authentication handling in blog layout and page components
+feat: enhance user session handling and improve layout component logic
