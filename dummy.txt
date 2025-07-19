@@ -13,3 +13,4 @@ feat(blog): enhance loading states and UI components across blog pages
 refactor(blog): simplify layout and enhance UI components
 done
 feat(blog): streamline blog navigation and enhance user session handling
+Enhance Blog Stats Page and Navigation
