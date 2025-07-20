@@ -7,3 +7,4 @@ chore: remove console.log statements from blog and experience pages for cleaner 
 feat(blog): add user avatar and name to comments and clean up blog page layout
 feat(blog): update author information structure and enhance blog components
 Refactor blog components and enhance functionality
+feat(docs): add comprehensive README for portfolio frontend
