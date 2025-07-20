@@ -56,6 +56,7 @@ export default function CertificationDetailPage({ params }: { params: any }) {
       try {
         const response = await certificationsAPI.getCertificationById(params.id);
         setCertification(response.data);
+        setError('');
       } catch (err) {
         setError('Failed to load certification');
       } finally {

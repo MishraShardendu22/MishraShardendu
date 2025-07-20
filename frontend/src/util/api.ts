@@ -1,12 +1,18 @@
 import axios from 'axios'
 
+const isServer = typeof window === 'undefined';
+const baseURL = isServer
+  ? process.env.NEXT_PUBLIC_BASE_URL + '/api/proxy'
+  : '/api/proxy';
+
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api',
+  baseURL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },
-})
+});
+
 
 // Request interceptor to add JWT token
 api.interceptors.request.use(
