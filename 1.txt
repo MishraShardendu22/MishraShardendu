@@ -1,0 +1,81 @@
+308126407fc5d19dabaded147f43794d165891a9|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 21:54:29 +0530|feat(blog): add 'Main Website' navigation item to BlogNavigation component
+6fb3fc04848d6ee3a8b8b74893b32832fe1bafa1|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 21:46:57 +0530|fix(skill): reduce items per page from 48 to 12 for better pagination
+ec9518523904f32b30168bc0117344f31d79d16d|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 21:34:34 +0530|feat(blog): update author information handling in BlogCard and BlogList components
+a95a0fd833ee54aea8554b4dd92fdba82131971d|Shardendu Mishra|152168607+ShardenduMishra22@users.noreply.github.com|2025-07-20 21:22:54 +0530|Add files via upload
+0cf00475c89221cc5dba034b7b0651bb82afb6fa|Shardendu Mishra|152168607+ShardenduMishra22@users.noreply.github.com|2025-07-20 21:22:05 +0530|Update README.md
+f83af0485f3f2d4735fe2f0f82753aaa33645818|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 21:14:01 +0530|chore: remove console.log statements from blog and experience pages for cleaner code
+024c2e24ccc7c42e6a4aa6f7a90ca3bd7343ca8c|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 20:52:46 +0530|feat(blog): add user avatar and name to comments and clean up blog page layout
+2be8f72980769ef3b4f9aec8e3c183b945d4ad03|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 20:41:28 +0530|feat(blog): update author information structure and enhance blog components
+7b809eb4b1efeda8a4c04d26222fa7b8378fde9d|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 20:12:54 +0530|Refactor blog components and enhance functionality
+fe5542bfb2599312fbf80923e609604c7447203c|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 23:44:25 +0530|feat(docs): add comprehensive README for portfolio frontend
+4f6aecad85fa20d0a19f89f00cacc7c150d656bc|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 17:21:53 +0530|feat(blog): improve styling and accessibility in blog creation and navigation components
+b670e78a2980b3ae3486f00d70971afd4e2f7eff|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 17:02:16 +0530|feat(blog): enhance loading states and UI components across blog pages
+1f6bae4f21cdf1f8948b2f0ead29f9e68cef6dcc|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 16:40:54 +0530|refactor(blog): simplify layout and enhance UI components
+41f45120d1eecfeef811df0808744fa86ac11a39|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 14:47:58 +0530|done
+082d44c20dc7da401428ab4b8e329c4a613808ce|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 04:02:15 +0530|feat(blog): streamline blog navigation and enhance user session handling
+ca371fff9d30828b6b29e606b7f6c9dc94c9b48b|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 03:36:58 +0530|Enhance Blog Stats Page and Navigation
+52251923c7822234acbd3a7edb12cce80c49b669|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 02:54:54 +0530|feat(blog): remove BlogTestPage and implement BlogStatsPage with comprehensive statistics and analytics features
+307470f6ee08866cc7888fb98624b0597b9a4aa9|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 02:21:51 +0530|feat: Enhance blog API with like, comment, and view counts; update blog edit and create navigation
+3a756e54a89b06ee0b494b205ce7324cc49a301b|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 02:03:19 +0530|feat: Update blog API endpoints to accept userId in request body for like, unlike, bookmark, and unbookmark actions
+0749cdc85c8e54f2df6d4f636af20deed42aed00|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 01:44:14 +0530|feat: Implement blog comments service with local API client
+e43d2f359e8cfcea60ae6a49f5e10fc6230ebacf|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 00:50:34 +0530|feat: Improve session handling and error feedback in blog creation
+d580e37fd84e8c4a3133e6142aec08c60922182c|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-20 00:36:25 +0530|feat: Add blog components and examples
+0a31f1fd5e89076aff21d69608ad5c61bca9c01f|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-19 23:11:39 +0530|done
+e64583f776c2da0787da3c8cd41b056f235beaf8|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-19 20:53:45 +0530|feat: refactor authentication handling in blog layout and page components
+14f8289b5cf834ed62eac3443018ff67af2940a2|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-19 16:56:51 +0530|feat: enhance user session handling and improve layout component logic
+f930db51bf543048ec5b61f55ee42f3aacc09098|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-19 16:38:28 +0530|chore: add 'use client' directive to blog landing page component
+89eae3b4cad16556a9f1d76d55be8383d064b9b9|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-19 16:36:36 +0530|Refactor API route parameter handling to use Promise for params in multiple routes; remove deprecated category routes; implement unified category retrieval by ID or slug.
+74a63a0640c9c78beacb596ec930656c73715509|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-19 16:21:55 +0530|feat: implement user session handling in blog landing page
+8509af1122aa4dc83cefeeb0b82656b1f49e0f7f|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-19 16:18:40 +0530|feat: update API routes to remove unused user references and add PATCH method for comments; implement history and like functionalities
+7081739f3ddc09a56f27a3d17f3777771daca562|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-19 15:26:45 +0530|Implement API endpoints for comments, notifications, reports, and user management
+809f90d46f8a74655189b844ccad8b4d33b97ba1|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-19 04:29:04 +0530|refactor: clean up layout component and remove unused metadata
+0c4498720dbc374d16d669180f35fec3fa88d778|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-19 03:44:40 +0530|feat: enhance blog layout with authentication and metadata, add API routes for comments, likes, and profiles
+2d78876cca53a52aa797452f65a7bdd836b2d123|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-19 02:56:15 +0530|feat: initialize database schema and authentication setup
+078c4b09d97ed271bef16f712b37106825e2f375|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 22:58:02 +0530|test
+fb5df6d136857d512e99cd8d8defa1bf79ea77a7|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 22:50:22 +0530|Fix HTML entity for apostrophe in blog introduction paragraph
+50245e9feee7610b159ecda428e554b1b76a0006|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 22:42:30 +0530|done
+8c529fcf4c5ad44d43efc6851453a99b3983b804|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 22:14:28 +0530|Update HeroSection image dimensions for improved display quality
+a306893155a6e4a65889734253c8c2774e333047|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 22:05:28 +0530|done
+e0872cdb733b291110ee8835561a39e4bb1cee36|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 18:09:37 +0530|Update dependencies in Loader and TipTap components; enhance effect dependencies for better performance
+47c2322035e3d1f7f9ffd227efa56c89b2ae0519|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 18:01:14 +0530|Refactor API route handlers to use context for parameter access; remove unnecessary console log in project metadata generation
+f8caf8ed95b3ec743972fd5e7f587f4a59dbd443|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 17:49:06 +0530|Refactor API route handlers to destructure parameters for clarity; remove console logs for cleaner output
+6dbec34fbe498c48206175b117630167b6960661|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 17:40:05 +0530|done
+951d33692d0ef65aa286ed89205ec53ceb77913d|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 17:36:07 +0530|Update BASE_URL to use the full backend URL for API requests
+f2f6683097a0c84e0ff3b258b42bcb01a57ca287|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 17:27:28 +0530|Implement proxy routing for certifications and experiences with error handling; remove redundant headers in responses
+5cf98711f2ed7467851aaffd264dc96e097b669d|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 17:18:55 +0530|Refactor project detail API calls to destructure parameters; implement proxy routing for project requests with error handling
+d7a0618d51e755cb0d03dcae54cd6bd274834ec1|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 16:07:21 +0530|Implement proxy routing for certifications, experiences, projects, and skills; enhance request handling and logging
+0b34009691f0b7360bbc993008ee1c685bafef8f|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 14:37:52 +0530|Fix proxy URL construction by removing redundant '/api' prefix
+150ba4980144639400fe7d45e7f1302d814ad403|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-18 14:27:12 +0530|Refactor API configuration to use a consistent proxy base URL; implement proxy handling for API requests with error management
+77db0b1a1bcc4623cd9f0868be03bb0c2d108b46|Shardendu Mishra|152168607+ShardenduMishra22@users.noreply.github.com|2025-07-17 21:26:18 +0530|Update hero.tsx
+fa840b725c2f80beeb0236fe69d7a3bed15ac03e|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-14 23:24:04 +0530|Update certification expiry date to be optional; enhance certification detail and list pages with improved media handling and markdown support
+85f4c7dd602d1eaf24db20b73084e1ec90610fab|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-14 03:56:35 +0530|Refactor experience detail page to remove LinkedIn post rendering; streamline image display logic
+bf960f3e664d628e86b80030f4d24c5811faa084|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-14 03:46:05 +0530|Add media and related projects sections to experience detail page; improve error messages and loading states
+656f06cac8ff9719b6148810fba3e6d31f0c0881|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-14 02:02:30 +0530|Enhance admin experiences page with toast notifications for success and error messages; refactor form handling and improve technology/project selection
+bec534031a3f8f713acf69c9d68a277df8ac4075|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-13 14:31:13 +0530|Add toast notification for successful project link copy
+011ae75f7168021d7e23b48a02828748f3eec825|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 20:23:16 +0530|Update URLs in metadata for admin and project pages to new domain
+8328268368358ed03110048fb06ee3c2a09fdd8e|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 20:04:59 +0530|Update usage text color in language pie chart for better visibility
+a8a5124be411c9af0c0200e45d84d7b9ddfdf26b|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 20:01:32 +0530|done
+38d7753c19b7d1aa46883fe037955b6932118bf2|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 19:56:07 +0530|Refactor language pie chart to display top 5 languages with usage details; update chart styling and labels
+3488ce4765d3bf6955c99c78929a270224e175e6|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 14:11:13 +0530|Add Vercel Analytics and Speed Insights to layout; update package dependencies
+1403a26553e107241673bf4905c1cafe0a6f72c8|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 03:59:29 +0530|Update Admin link in Quick Links section to point to login page
+b6d4320ab374e7ff0e7e4de67825596a3de7323e|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 03:58:12 +0530|done
+66972a02697b3915bad38cf39236e34df474eab4|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 02:52:23 +0530|Add Education section and enhance footer with social links; update protected route logic and improve hero section
+9abb86804c45839252a269621561bdf425b1addc|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 01:25:02 +0530|done
+572c8f32f744227eacc888a1f2e0765faf20a3c0|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 01:13:11 +0530|Implement code changes to enhance functionality and improve performance
+9670078eeb5e77a3b6cc4207f080a5925d3c8e02|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 00:56:21 +0530|first commit
+bde6150637565c3f253560bc177344cd46a532f8|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-15 00:11:49 +0530|Refactor GetCertifications function to include reverseCerts for improved data presentation
+4a7f58f9c8acf92dd0685199d83fe901b1c1c244|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-14 21:16:50 +0530|Refactor RemoveCertification function for improved clarity and error handling
+26c574c9cc16c3bcacb6fb8547d0d273bc8c1d04|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-14 03:59:31 +0530|done
+abc0cede300c51db197167730c0cf05a505fec38|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-14 02:48:32 +0530|Refactor GetExperiences and reverseExperiences functions for improved clarity and functionality
+4d4cb89406e5be56deb8b3cd7eb8d9ce2d5f46be|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-14 01:23:56 +0530|Enhance RemoveExperiences function to include error handling for invalid ID and deletion process
+f3e61b5aa22a02e94cda31af559c9c9467f22244|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-13 21:29:45 +0530|Refactor RemoveProjects function to enhance clarity and error handling
+0db1be50a78a416af4329f021a651d293bb9ee87|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-13 15:42:49 +0530|testing new changes
+bfc025aeab13f6c7a8ab311c2bcd313586ac401c|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-13 15:09:44 +0530|Refactor GetSkills function to improve readability and maintainability
+137579ed400cbc97dc079862ca9d6f33cb3740c0|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-13 15:02:06 +0530|testing new changes
+cf77bf89e804623c547b30701e1e7ce8a63fedfe|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 19:55:48 +0530|Update environment variable in init function for graceful shutdown
+f5e9d5e988b35730cdc163b25de5aa0db2cde617|Shardendu Mishra|152168607+ShardenduMishra22@users.noreply.github.com|2025-07-12 16:04:38 +0530|Update main.yml
+028b94e314d54a6c9ad6689e97bc916b715475ab|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 03:58:01 +0530|done
+fd1eb0e36218767acd04e7b7937e704c9ffd1100|Shardendu Mishra|152168607+ShardenduMishra22@users.noreply.github.com|2025-07-12 00:43:14 +0530|Update main.go
+1e2d46d74cc7b14030ce3017ef5ffb56a515f4e8|Shardendu Mishra|152168607+ShardenduMishra22@users.noreply.github.com|2025-07-12 00:38:06 +0530|Create main.yml
+de2b976a7fa2a781f5b96f7c54a6c24e9bda8fea|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 00:36:52 +0530|Add test endpoint to verify API functionality
+c26f11651e6be0f6f19abd218a95aeea2bf2d99b|MishraShardendu22|shardendumishrabrave@gmail.com|2025-07-12 00:19:51 +0530|first commit
