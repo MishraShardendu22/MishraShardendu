@@ -4,21 +4,23 @@
 > Advanced content management • Dual-database architecture • AI-powered features
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ShardenduMishra22/MishraShardendu22/refs/heads/main/GopherMishra.png" alt="Shardendu Avatar" width="200" />
+  <img src="https://raw.githubusercontent.com/MishraShardendu22/MishraShardendu/refs/heads/main/GopherMishra.png" alt="Shardendu Avatar" width="200" />
   
   <h3>A modern, full-stack portfolio website built with Next.js 15</h3>
   <p><em>Featuring a blog system, admin panel, and dual backend architecture with load balancing</em></p>
 
   [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Site-blue?style=for-the-badge)](https://mishrashardendu22.is-a.dev)
-  [![Frontend Repo](https://img.shields.io/badge/📱_Frontend-View_Repo-green?style=for-the-badge)](https://github.com/ShardenduMishra22/MishraShardendu22)
-  [![Backend Repo](https://img.shields.io/badge/⚙️_Backend-View_Repo-orange?style=for-the-badge)](https://github.com/ShardenduMishra22/MishraShardendu22-Updation)
+  [![⭐ Main Repository](https://img.shields.io/badge/⭐_STAR_THIS_REPO-Support_Project-gold?style=for-the-badge&logo=github)](https://github.com/MishraShardendu22/MishraShardendu)
+  [![Frontend Development](https://img.shields.io/badge/📱_Frontend_Dev-View_Code-green?style=for-the-badge)](https://github.com/ShardenduMishra22/MishraShardendu22)
+  [![Backend Development](https://img.shields.io/badge/⚙️_Backend_Dev-View_Code-orange?style=for-the-badge)](https://github.com/ShardenduMishra22/MishraShardendu22-Updation)
 </div>
 
 <div align="center">
 
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Site-4285f4?style=for-the-badge&logo=google-chrome)](https://mishrashardendu22.is-a.dev)
-[![Frontend Repo](https://img.shields.io/badge/📱_Frontend-Next.js_15-black?style=for-the-badge&logo=next.js)](https://github.com/ShardenduMishra22/MishraShardendu22)
-[![Backend Repo](https://img.shields.io/badge/⚡_Backend-Go_Fiber-00ADD8?style=for-the-badge&logo=go)](https://github.com/ShardenduMishra22/MishraShardendu22-Updation)
+[![⭐ Main Repository](https://img.shields.io/badge/⭐_MAIN_REPO-Star_for_Support-FFD700?style=for-the-badge&logo=github)](https://github.com/MishraShardendu22/MishraShardendu)
+[![Frontend Development](https://img.shields.io/badge/📱_Frontend-Next.js_15-black?style=for-the-badge&logo=next.js)](https://github.com/ShardenduMishra22/MishraShardendu22)
+[![Backend Development](https://img.shields.io/badge/⚡_Backend-Go_Fiber-00ADD8?style=for-the-badge&logo=go)](https://github.com/ShardenduMishra22/MishraShardendu22-Updation)
 
 ![Version](https://img.shields.io/badge/version-2.0-brightgreen?style=flat-square)
 ![Status](https://img.shields.io/badge/status-production-success?style=flat-square)
@@ -593,7 +595,7 @@ go test -bench ./...     # Benchmark tests
 ## 🤝 Contributing Guidelines
 
 ### 🔄 Contribution Workflow
-1. 🍴 **Fork** both repositories
+1. 🍴 **Fork** the development repositories
 2. 🌿 **Create Feature Branch** with descriptive name
 3. ✅ **Implement** with comprehensive testing
 4. 📝 **Document** changes and add comments
@@ -664,8 +666,9 @@ go test -bench ./...     # Benchmark tests
 
 **Available for technical consultation, collaboration opportunities, and development inquiries**
 
-[![Create Issue](https://img.shields.io/badge/🐛_Report_Issue-GitHub_Issues-red?style=for-the-badge&logo=github)](https://github.com/ShardenduMishra22/MishraShardendu22/issues)
-[![Discussions](https://img.shields.io/badge/💬_Discussions-GitHub_Discussions-purple?style=for-the-badge&logo=github)](https://github.com/ShardenduMishra22/MishraShardendu22/discussions)
+[![Main Repository](https://img.shields.io/badge/⭐_STAR_MAIN_REPO-Support_Project-FFD700?style=for-the-badge&logo=github)](https://github.com/MishraShardendu22/MishraShardendu)
+[![Frontend Issues](https://img.shields.io/badge/🐛_Frontend_Issues-Report_Here-red?style=for-the-badge&logo=github)](https://github.com/ShardenduMishra22/MishraShardendu22/issues)
+[![Backend Issues](https://img.shields.io/badge/🔧_Backend_Issues-Report_Here-orange?style=for-the-badge&logo=github)](https://github.com/ShardenduMishra22/MishraShardendu22-Updation/issues)
 [![Email Support](https://img.shields.io/badge/📧_Email_Support-Professional_Inquiry-blue?style=for-the-badge&logo=gmail)](mailto:mishrashardendu22@gmail.com?subject=Professional%20Platform%20Inquiry)
 
 </div>
@@ -693,10 +696,12 @@ copies of the Software...
 ### ⭐ Support This Project
 
 *If this comprehensive full-stack architecture helps your development journey,  
-please consider starring all the repositories*
+please consider starring the main repository to show your support!*
 
-[![GitHub stars](https://img.shields.io/github/stars/ShardenduMishra22/MishraShardendu22?style=social)](https://github.com/ShardenduMishra22/MishraShardendu22)
-[![GitHub forks](https://img.shields.io/github/forks/ShardenduMishra22/MishraShardendu22?style=social)](https://github.com/ShardenduMishra22/MishraShardendu22/network/members)
+[![⭐ Star Main Repository](https://img.shields.io/badge/⭐_STAR_THIS_PROJECT-Main_Repository-FFD700?style=for-the-badge&logo=github)](https://github.com/MishraShardendu22/MishraShardendu)
+
+[![GitHub stars](https://img.shields.io/github/stars/MishraShardendu22/MishraShardendu?style=social&label=Star%20Main%20Repo)](https://github.com/MishraShardendu22/MishraShardendu)
+[![GitHub forks](https://img.shields.io/github/forks/MishraShardendu22/MishraShardendu?style=social&label=Fork%20Main%20Repo)](https://github.com/MishraShardendu22/MishraShardendu/network/members)
 
 **🚀 Built by [Shardendu Mishra](https://mishrashardendu22.is-a.dev)**  
 *Committed to excellence in software architecture, performance optimization, and developer experience*
