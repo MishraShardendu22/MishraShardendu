@@ -10,3 +10,4 @@ Refactor blog components and enhance functionality
 feat(docs): add comprehensive README for portfolio frontend
 feat(blog): improve styling and accessibility in blog creation and navigation components
 feat(blog): enhance loading states and UI components across blog pages
+refactor(blog): simplify layout and enhance UI components
