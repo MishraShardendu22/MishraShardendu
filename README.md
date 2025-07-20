@@ -1,10 +1,18 @@
 # Shardendu Mishra - Personal Website
-
-## Note for the viewers - 
-- *Frontend Updation* - [The Frontend of this website is being updated at this repository currently.](https://github.com/ShardenduMishra22/MishraShardendu22)
-- *Backend Updation* - [The Backend of this website is being updated at this repository currently.](https://github.com/ShardenduMishra22/MishraShardendu22-Updation)
-
 A modern, full-stack portfolio website built with Next.js 15, featuring a blog system, admin panel, and dual backend architecture with load balancing.
+
+<table>
+  <tr>
+    <td align="left" valign="top">
+      <strong>Note for the viewers</strong><br><br>
+      - <em>Frontend Updation</em>: <a href="https://github.com/ShardenduMishra22/MishraShardendu22">View Repository</a><br>
+      - <em>Backend Updation</em>: <a href="https://github.com/ShardenduMishra22/MishraShardendu22-Updation">View Repository</a>
+    </td>
+    <td align="right" valign="top">
+      <img src="https://raw.githubusercontent.com/ShardenduMishra22/MishraShardendu22/refs/heads/main/GopherMishra.png" alt="Shardendu Avatar" width="160" />
+    </td>
+  </tr>
+</table>
 
 ![Portfolio Preview](https://img.shields.io/badge/Next.js-15.3.5-black?style=for-the-badge&logo=next.js)
 ![React](https://img.shields.io/badge/React-19.1.0-blue?style=for-the-badge&logo=react)
