@@ -574,8 +574,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ### ⭐ Found this helpful? Give it a star!
 
-[![GitHub stars](https://img.shields.io/github/stars/ShardenduMishra22/portfolio-frontend?style=social)](https://github.com/ShardenduMishra22/portfolio-frontend/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/ShardenduMishra22/portfolio-frontend?style=social)](https://github.com/ShardenduMishra22/portfolio-frontend/network/members)
+[![GitHub stars](https://img.shields.io/github/stars/MishraShardendu22/MishraShardendu?style=social)](https://github.com/MishraShardendu22/MishraShardendu/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/MishraShardendu22/MishraShardendu?style=social)](https://github.com/MishraShardendu22/MishraShardendu/network/members)
 
 **Made with ❤️ by [Shardendu Mishra](https://mishrashardendu22.is-a.dev)**
 
