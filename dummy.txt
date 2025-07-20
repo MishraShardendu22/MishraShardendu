@@ -3,3 +3,4 @@ fix(skill): reduce items per page from 48 to 12 for better pagination
 feat(blog): update author information handling in BlogCard and BlogList components
 Add files via upload
 Update README.md
+chore: remove console.log statements from blog and experience pages for cleaner code
