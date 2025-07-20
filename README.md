@@ -1,7 +1,9 @@
 # Shardendu Mishra - Personal Website
 
 ## Note for the viewers - 
+
 *Frontend Updation* - [The Frontend of this website is being updated at this repository currently.](https://github.com/ShardenduMishra22/MishraShardendu22)
+
 *Backend Updation* - [The Backend of this website is being updated at this repository currently.](https://github.com/ShardenduMishra22/MishraShardendu22-Updation)
 
 A modern, full-stack portfolio website built with Next.js 15, featuring a blog system, admin panel, and dual backend architecture with load balancing.
