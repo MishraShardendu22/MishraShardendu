@@ -1,1 +1,2 @@
 feat(blog): add 'Main Website' navigation item to BlogNavigation component
+fix(skill): reduce items per page from 48 to 12 for better pagination
