@@ -4,6 +4,17 @@
 > Advanced content management • Dual-database architecture • AI-powered features
 
 <div align="center">
+  <img src="https://raw.githubusercontent.com/ShardenduMishra22/MishraShardendu22/refs/heads/main/GopherMishra.png" alt="Shardendu Avatar" width="200" />
+  
+  <h3>A modern, full-stack portfolio website built with Next.js 15</h3>
+  <p><em>Featuring a blog system, admin panel, and dual backend architecture with load balancing</em></p>
+
+  [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Site-blue?style=for-the-badge)](https://mishrashardendu22.is-a.dev)
+  [![Frontend Repo](https://img.shields.io/badge/📱_Frontend-View_Repo-green?style=for-the-badge)](https://github.com/ShardenduMishra22/MishraShardendu22)
+  [![Backend Repo](https://img.shields.io/badge/⚙️_Backend-View_Repo-orange?style=for-the-badge)](https://github.com/ShardenduMishra22/MishraShardendu22-Updation)
+</div>
+
+<div align="center">
 
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Site-4285f4?style=for-the-badge&logo=google-chrome)](https://mishrashardendu22.is-a.dev)
 [![Frontend Repo](https://img.shields.io/badge/📱_Frontend-Next.js_15-black?style=for-the-badge&logo=next.js)](https://github.com/ShardenduMishra22/MishraShardendu22)
