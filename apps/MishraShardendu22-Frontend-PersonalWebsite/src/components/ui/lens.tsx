@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 interface LensProps {
@@ -34,13 +34,30 @@ export const Lens: React.FC<LensProps> = ({
   const setIsHovering = setHovering || setLocalIsHovering
 
   const [mousePosition, setMousePosition] = useState({ x: 100, y: 100 })
+  const rafRef = useRef<number | null>(null)
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    setMousePosition({ x, y })
+    // Cancel any pending RAF
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current)
+    }
+
+    // Use RAF to batch layout reads and avoid thrashing
+    rafRef.current = requestAnimationFrame(() => {
+      const rect = e.currentTarget.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      setMousePosition({ x, y })
+    })
   }
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
+    }
+  }, [])
 
   return (
     <div

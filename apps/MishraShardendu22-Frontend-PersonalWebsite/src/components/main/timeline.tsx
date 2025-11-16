@@ -209,9 +209,14 @@ const CombinedTimeline = memo(function CombinedTimeline({
 
   useEffect(() => {
     if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current
-      const scrollTo = Math.max(0, container.scrollWidth - container.clientWidth - 200)
-      container.scrollLeft = scrollTo
+      // Use RAF to avoid forced reflow
+      requestAnimationFrame(() => {
+        const container = scrollContainerRef.current
+        if (container) {
+          const scrollTo = Math.max(0, container.scrollWidth - container.clientWidth - 200)
+          container.scrollLeft = scrollTo
+        }
+      })
     }
   }, [])
 

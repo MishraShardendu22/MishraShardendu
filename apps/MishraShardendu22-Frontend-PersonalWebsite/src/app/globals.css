@@ -22,6 +22,20 @@ body {
   overscroll-behavior-y: none;
 }
 
+/* Brave GPU compositor optimization: Reduce backdrop-filter usage */
+/* backdrop-filter forces expensive GPU operations - use sparingly */
+.backdrop-blur,
+.backdrop-blur-sm,
+.backdrop-blur-md {
+  /* Use semi-transparent backgrounds instead where possible */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  /* Hint to GPU to create a separate layer */
+  will-change: backdrop-filter;
+  /* Force GPU compositing */
+  transform: translateZ(0);
+}
+
 /* Use content-visibility for better rendering performance */
 section {
   content-visibility: auto;
@@ -751,6 +765,24 @@ h6 {
   .group-hover-canvas-card:hover *,
   [data-state] {
     transition-duration: 0.3s !important;
+  }
+}
+
+/* Brave GPU Compositor Optimization: Add will-change hints for animated elements */
+/* Only use will-change on elements that will actually animate */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  /* Framer Motion animated elements */
+  [class*="motion"],
+  .group:hover > *,
+  .hover-scale,
+  [data-state="open"],
+  [data-state="closed"] {
+    will-change: opacity, transform;
+  }
+  
+  /* Remove will-change after animation completes to free GPU memory */
+  [class*="motion"]:not(:hover):not([data-animating]) {
+    will-change: auto;
   }
 }
 

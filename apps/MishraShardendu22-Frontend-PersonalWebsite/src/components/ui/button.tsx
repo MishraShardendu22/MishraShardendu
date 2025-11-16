@@ -48,18 +48,23 @@ function Button({
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (props.onClick) props.onClick(e)
     const button = e.currentTarget
-    const ripple = document.createElement('span')
-    const diameter = Math.max(button.clientWidth, button.clientHeight)
-    const radius = diameter / 2
-    ripple.style.width = ripple.style.height = `${diameter}px`
-    ripple.style.left = `${e.clientX - button.getBoundingClientRect().left - radius}px`
-    ripple.style.top = `${e.clientY - button.getBoundingClientRect().top - radius}px`
-    ripple.className =
-      'absolute pointer-events-none rounded-full bg-primary/30 dark:bg-primary/40 animate-ripple z-10'
-    button.appendChild(ripple)
-    setTimeout(() => {
-      ripple.remove()
-    }, 500)
+
+    // Use requestAnimationFrame to avoid layout thrashing
+    requestAnimationFrame(() => {
+      const rect = button.getBoundingClientRect()
+      const ripple = document.createElement('span')
+      const diameter = Math.max(rect.width, rect.height)
+      const radius = diameter / 2
+      ripple.style.width = ripple.style.height = `${diameter}px`
+      ripple.style.left = `${e.clientX - rect.left - radius}px`
+      ripple.style.top = `${e.clientY - rect.top - radius}px`
+      ripple.className =
+        'absolute pointer-events-none rounded-full bg-primary/30 dark:bg-primary/40 animate-ripple z-10'
+      button.appendChild(ripple)
+      setTimeout(() => {
+        ripple.remove()
+      }, 500)
+    })
   }
 
   return (

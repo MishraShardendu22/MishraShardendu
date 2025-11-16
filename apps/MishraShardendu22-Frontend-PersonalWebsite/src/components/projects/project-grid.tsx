@@ -34,7 +34,7 @@ export default function ProjectGrid({ items, className }: ProjectGridProps) {
             {hoveredIndex === idx && (
               <motion.span
                 className="absolute inset-0 h-full w-full bg-gradient-to-br from-primary/8 via-secondary/8 to-accent/8 dark:from-slate-800/60 dark:via-slate-700/60 dark:to-slate-800/60 block rounded-3xl border border-primary/20 shadow-xl shadow-primary/10"
-                layoutId="hoverBackground"
+                // REMOVED layoutId to prevent repaint storms
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{
                   opacity: 1,
@@ -46,6 +46,7 @@ export default function ProjectGrid({ items, className }: ProjectGridProps) {
                   scale: 0.98,
                   transition: { duration: 0.2, delay: 0.1 },
                 }}
+                style={{ willChange: 'opacity, transform' }}
               />
             )}
           </AnimatePresence>

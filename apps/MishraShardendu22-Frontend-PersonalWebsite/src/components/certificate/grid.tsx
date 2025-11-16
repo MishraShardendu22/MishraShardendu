@@ -34,7 +34,7 @@ export default function CertificationGrid({ items, className }: CertificationGri
             {hoveredIndex === idx && (
               <motion.span
                 className="absolute inset-0 h-full w-full bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 dark:from-slate-800/60 dark:via-slate-700/60 dark:to-slate-800/60 block rounded-3xl border border-primary/20"
-                layoutId="hoverBackground"
+                // REMOVED layoutId to prevent repaint storms across multiple grids
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: 1,
@@ -44,6 +44,7 @@ export default function CertificationGrid({ items, className }: CertificationGri
                   opacity: 0,
                   transition: { duration: 0.15, delay: 0.2 },
                 }}
+                style={{ willChange: 'opacity' }}
               />
             )}
           </AnimatePresence>
