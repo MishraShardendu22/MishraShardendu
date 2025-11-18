@@ -34,7 +34,10 @@ export function ExperienceSidebar({
   copyClicked,
 }: ExperienceSidebarProps) {
   const formatDate = (date: string) =>
-    new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })
+    new Date(date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+    })
 
   return (
     <div className="lg:col-span-1 space-y-6">

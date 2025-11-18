@@ -228,7 +228,10 @@ const ShaderMaterial = ({
 
         switch (uniform.type) {
           case 'uniform1f':
-            preparedUniforms[uniformName] = { value: uniform.value, type: '1f' }
+            preparedUniforms[uniformName] = {
+              value: uniform.value,
+              type: '1f',
+            }
             break
           case 'uniform3f':
             preparedUniforms[uniformName] = {
@@ -237,7 +240,10 @@ const ShaderMaterial = ({
             }
             break
           case 'uniform1fv':
-            preparedUniforms[uniformName] = { value: uniform.value, type: '1fv' }
+            preparedUniforms[uniformName] = {
+              value: uniform.value,
+              type: '1fv',
+            }
             break
           case 'uniform3fv':
             preparedUniforms[uniformName] = {

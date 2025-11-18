@@ -2,7 +2,12 @@ import { ChartTheme } from '@/data/types.data'
 
 export const getThemeColors = (): ChartTheme => {
   if (typeof window === 'undefined') {
-    return { text: '#000000', grid: '#e5e7eb', background: '#ffffff', primary: '#3b82f6' }
+    return {
+      text: '#000000',
+      grid: '#e5e7eb',
+      background: '#ffffff',
+      primary: '#3b82f6',
+    }
   }
 
   const isDark = document.documentElement.classList.contains('dark')

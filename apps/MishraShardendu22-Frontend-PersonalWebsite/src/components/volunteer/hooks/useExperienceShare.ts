@@ -6,7 +6,10 @@ export function useExperienceShare(experience: VolunteerExperience | null) {
   const [copyClicked, setCopyClicked] = useState(false)
 
   const formatDate = (date: string) =>
-    new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })
+    new Date(date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+    })
 
   const handleCopyMarkdown = async () => {
     if (!experience) return

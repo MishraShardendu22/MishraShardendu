@@ -239,7 +239,8 @@ export const VolunteerTimeline = ({ experience }: VolunteerTimelineProps) => {
                         {experience.volunteer_time_line.length}
                       </div>
                       <div className="text-sm text-purple-600/70 dark:text-purple-400/70 font-medium">
-                        Position{experience.volunteer_time_line.length !== 1 ? 's' : ''}
+                        Position
+                        {experience.volunteer_time_line.length !== 1 ? 's' : ''}
                       </div>
                     </div>
                   </div>

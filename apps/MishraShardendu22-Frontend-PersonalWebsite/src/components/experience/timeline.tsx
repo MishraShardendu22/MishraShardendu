@@ -239,7 +239,8 @@ export const ExperienceTimeline = ({ experience }: ExperienceTimelineProps) => {
                         {experience.experience_time_line.length}
                       </div>
                       <div className="text-sm text-purple-600/70 dark:text-purple-400/70 font-medium">
-                        Position{experience.experience_time_line.length !== 1 ? 's' : ''}
+                        Position
+                        {experience.experience_time_line.length !== 1 ? 's' : ''}
                       </div>
                     </div>
                   </div>
@@ -281,7 +282,8 @@ export const ExperienceTimeline = ({ experience }: ExperienceTimelineProps) => {
                 {experience.experience_time_line.length}
               </div>
               <div className="text-sm text-muted-foreground">
-                Position{experience.experience_time_line.length !== 1 ? 's' : ''}
+                Position
+                {experience.experience_time_line.length !== 1 ? 's' : ''}
               </div>
             </div>
             <div className="w-px h-8 bg-border" />

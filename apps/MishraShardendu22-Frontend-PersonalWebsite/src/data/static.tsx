@@ -452,7 +452,11 @@ export const footerData = {
         { label: 'GitHub', href: socialLinks.github.personal, external: true },
         { label: 'LinkedIn', href: socialLinks.linkedin.url, external: true },
         { label: 'Twitter', href: socialLinks.twitter.url, external: true },
-        { label: 'Email', href: `mailto:${personalInfo.email}`, external: true },
+        {
+          label: 'Email',
+          href: `mailto:${personalInfo.email}`,
+          external: true,
+        },
       ],
     },
   ],

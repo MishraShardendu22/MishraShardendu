@@ -9,7 +9,9 @@ import React from 'react'
 // Defer heavy components until after initial render
 export const lazyLoadOptions = {
   loading: () =>
-    React.createElement('div', { className: 'min-h-[200px] animate-pulse bg-muted/20' }),
+    React.createElement('div', {
+      className: 'min-h-[200px] animate-pulse bg-muted/20',
+    }),
   ssr: false,
 }
 
@@ -43,7 +45,9 @@ export const deferredComponents = {
 export const createLazySection = (importFn: () => Promise<any>, threshold = 0.1) => {
   return dynamic(importFn, {
     loading: () =>
-      React.createElement('div', { className: 'min-h-[200px] animate-pulse bg-muted/10' }),
+      React.createElement('div', {
+        className: 'min-h-[200px] animate-pulse bg-muted/10',
+      }),
     ssr: false,
   })
 }
@@ -92,7 +96,10 @@ const loadNonCriticalScripts = () => {
   }
 
   events.forEach((event) => {
-    document.addEventListener(event, loadAnalytics, { once: true, passive: true })
+    document.addEventListener(event, loadAnalytics, {
+      once: true,
+      passive: true,
+    })
   })
 
   // Fallback: load after 5 seconds

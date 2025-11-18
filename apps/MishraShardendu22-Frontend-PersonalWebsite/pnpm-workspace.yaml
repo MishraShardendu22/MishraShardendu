@@ -1,7 +1,0 @@
-ignoredBuiltDependencies:
-  - '@tailwindcss/oxide'
-  - '@tsparticles/engine'
-  - '@vercel/speed-insights'
-  - esbuild
-  - sharp
-  - unrs-resolver

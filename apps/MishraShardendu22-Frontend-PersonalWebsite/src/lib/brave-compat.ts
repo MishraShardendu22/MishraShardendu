@@ -212,12 +212,20 @@ export function useBraveEventNormalization(): void {
         }
       }
 
-      document.addEventListener('pointerenter', normalizePointerEvent, { capture: true })
-      document.addEventListener('pointerover', normalizePointerEvent, { capture: true })
+      document.addEventListener('pointerenter', normalizePointerEvent, {
+        capture: true,
+      })
+      document.addEventListener('pointerover', normalizePointerEvent, {
+        capture: true,
+      })
 
       return () => {
-        document.removeEventListener('pointerenter', normalizePointerEvent, { capture: true })
-        document.removeEventListener('pointerover', normalizePointerEvent, { capture: true })
+        document.removeEventListener('pointerenter', normalizePointerEvent, {
+          capture: true,
+        })
+        document.removeEventListener('pointerover', normalizePointerEvent, {
+          capture: true,
+        })
       }
     })
   }, [])

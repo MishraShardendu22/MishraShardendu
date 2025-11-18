@@ -151,7 +151,11 @@ export const additionalProfiles: LinkItem[] = [
 export const techStack = ['Go', 'Next.js', 'React', 'TypeScript', 'Tailwind']
 
 export const quickConnectLinks = [
-  { href: GitHubProject, label: 'GitHub', icon: <Github className="h-4 w-4" /> },
+  {
+    href: GitHubProject,
+    label: 'GitHub',
+    icon: <Github className="h-4 w-4" />,
+  },
   {
     href: LinkedInProfile,
     label: 'LinkedIn',

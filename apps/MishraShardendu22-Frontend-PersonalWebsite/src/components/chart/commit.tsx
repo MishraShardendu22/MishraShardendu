@@ -184,7 +184,10 @@ export const EnhancedCommitsChart = ({ commits }: EnhancedCommitsChartProps) => 
             data={[
               {
                 id: 'commits',
-                data: processedData.chartData.map((d) => ({ x: d.date, y: d.commits })),
+                data: processedData.chartData.map((d) => ({
+                  x: d.date,
+                  y: d.commits,
+                })),
               },
             ]}
             xScale={{ type: 'point' }}
@@ -224,7 +227,10 @@ export const EnhancedCommitsChart = ({ commits }: EnhancedCommitsChartProps) => 
             data={[
               {
                 id: 'commits',
-                data: processedData.chartData.map((d) => ({ x: d.date, y: d.commits })),
+                data: processedData.chartData.map((d) => ({
+                  x: d.date,
+                  y: d.commits,
+                })),
               },
             ]}
             xScale={{ type: 'point' }}

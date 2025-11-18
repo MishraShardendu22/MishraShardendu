@@ -29,8 +29,14 @@ export const ExperienceFocusCard = React.memo(
       if (!earliestPosition?.start_date || !latestPosition?.end_date) return '—'
       const startDate = new Date(earliestPosition.start_date)
       const endDate = new Date(latestPosition.end_date)
-      const startStr = startDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'short' })
-      const endStr = endDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'short' })
+      const startStr = startDate.toLocaleDateString('en-GB', {
+        year: 'numeric',
+        month: 'short',
+      })
+      const endStr = endDate.toLocaleDateString('en-GB', {
+        year: 'numeric',
+        month: 'short',
+      })
       return `${startStr} - ${endStr}`
     }, [earliestPosition?.start_date, latestPosition?.end_date])
 

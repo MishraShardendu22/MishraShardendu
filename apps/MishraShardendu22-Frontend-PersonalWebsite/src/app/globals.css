@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -99,7 +99,7 @@ section {
       transform: none !important;
     }
   }
-  
+
   /* Optimize font rendering on mobile */
   body {
     text-rendering: optimizeSpeed;
@@ -110,11 +110,12 @@ section {
 /* Mobile-first responsive font scaling */
 :root {
   /* Enhanced font system with better mobile readability */
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Fredoka', system-ui, sans-serif;
-  --font-subheading: 'Poppins', system-ui, sans-serif;
-  --font-geist-sans: 'Geist Sans', system-ui, sans-serif;
-  --font-geist-mono: 'Geist Mono', 'SF Mono', Monaco, Consolas, monospace;
+  --font-body:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Fredoka", system-ui, sans-serif;
+  --font-subheading: "Poppins", system-ui, sans-serif;
+  --font-geist-sans: "Geist Sans", system-ui, sans-serif;
+  --font-geist-mono: "Geist Mono", "SF Mono", Monaco, Consolas, monospace;
 
   /* Mobile-optimized sizing */
   --radius: 0.875rem; /* Increased for better touch targets */
@@ -378,7 +379,7 @@ h6 {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    font-feature-settings: 'kern' 1;
+    font-feature-settings: "kern" 1;
     font-variant-ligatures: common-ligatures;
     padding-top: var(--safe-area-inset-top);
     padding-bottom: var(--safe-area-inset-bottom);
@@ -399,10 +400,10 @@ h6 {
 
   /* Enhanced button touch targets */
   button,
-  [role='button'],
-  input[type='button'],
-  input[type='submit'],
-  input[type='reset'] {
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
     min-height: var(--touch-target);
     min-width: var(--touch-target);
     touch-action: manipulation;
@@ -462,12 +463,12 @@ h6 {
       animation-iteration-count: 1 !important;
       scroll-behavior: auto !important;
     }
-    
+
     /* Preserve transitions for all elements - Brave browser fix */
     * {
       transition-duration: 0.2s !important;
     }
-    
+
     /* Keep interactive transitions smooth */
     button,
     a,
@@ -744,12 +745,12 @@ h6 {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
   }
-  
+
   /* Preserve all transitions by resetting them */
   * {
     transition-duration: 0.2s !important;
   }
-  
+
   /* Specific elements that need smooth transitions */
   *:hover,
   *:focus,
@@ -779,7 +780,7 @@ h6 {
   [data-state="closed"] {
     will-change: opacity, transform;
   }
-  
+
   /* Remove will-change after animation completes to free GPU memory */
   [class*="motion"]:not(:hover):not([data-animating]) {
     will-change: auto;

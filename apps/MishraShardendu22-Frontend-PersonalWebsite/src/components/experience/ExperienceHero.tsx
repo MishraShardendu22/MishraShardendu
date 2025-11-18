@@ -8,7 +8,10 @@ interface ExperienceHeroProps {
 
 export function ExperienceHero({ experience }: ExperienceHeroProps) {
   const formatDate = (date: string) =>
-    new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })
+    new Date(date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+    })
 
   const latestTimeline =
     experience.experience_time_line?.[experience.experience_time_line.length - 1]

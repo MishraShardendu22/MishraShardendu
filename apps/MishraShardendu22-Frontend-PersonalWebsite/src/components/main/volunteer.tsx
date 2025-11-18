@@ -200,7 +200,8 @@ export default function VolunteerExperienceSection({
           {experiences.length > 0 && (
             <div className="text-sm sm:text-base text-foreground/70 font-medium">
               Showing {startIndex + 1}-{Math.min(endIndex, experiences.length)} of{' '}
-              {experiences.length} volunteer experience{experiences.length !== 1 ? 's' : ''}
+              {experiences.length} volunteer experience
+              {experiences.length !== 1 ? 's' : ''}
             </div>
           )}
         </div>
@@ -352,8 +353,9 @@ export default function VolunteerExperienceSection({
                 </h3>
                 <p className="text-sm sm:text-base text-foreground/70">
                   Discover detailed stories and impact from all {experiences.length} volunteer
-                  experience{experiences.length !== 1 ? 's' : ''} across{' '}
-                  {volunteerStats.organizations} organization
+                  experience
+                  {experiences.length !== 1 ? 's' : ''} across {volunteerStats.organizations}{' '}
+                  organization
                   {volunteerStats.organizations !== 1 ? 's' : ''}
                 </p>
               </div>
