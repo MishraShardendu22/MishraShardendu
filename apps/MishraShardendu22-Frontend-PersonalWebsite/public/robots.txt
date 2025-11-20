@@ -1,49 +1,212 @@
-# Temporarily blocking all crawlers to reduce API requests
-# Uncomment the rules below when ready to re-enable crawlers
+# Shardendu Mishra Portfolio - SEO Optimized Robots.txt
+# Last Updated: 2025-11-20
 
+# ===================================
+# Global Rules - Allow All Crawlers
+# ===================================
 User-agent: *
+Allow: /
+
+# Disallow private/sensitive areas only
+Disallow: /admin/
+Disallow: /api/auth/
+Disallow: /api/admin/
+Disallow: /_next/webpack-hmr
+
+# Explicitly allow all public pages and assets
+Allow: /projects
+Allow: /projects/*
+Allow: /experience
+Allow: /experience/*
+Allow: /volunteer
+Allow: /volunteer/*
+Allow: /certifications
+Allow: /certifications/*
+Allow: /blog
+Allow: /blog/*
+Allow: /_next/static/
+Allow: /_next/image
+Allow: /icons/
+Allow: /favicon.ico
+Allow: /manifest.json
+Allow: /sitemap.xml
+Allow: /robots.txt
+
+# ===================================
+# Sitemaps
+# ===================================
+Sitemap: https://mishrashardendu22.is-a.dev/sitemap.xml
+
+# ===================================
+# Major Search Engines - Optimized
+# ===================================
+
+# Google - Highest Priority
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: BingPreview
+Allow: /
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 0
+
+# Yahoo/Slurp
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# ===================================
+# AI Crawlers & LLMs
+# ===================================
+
+# OpenAI GPT
+User-agent: GPTBot
+Allow: /
+
+# Anthropic Claude
+User-agent: anthropic-ai
+Allow: /
+
+# Google Bard/Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Common Crawl (used by many AI models)
+User-agent: CCBot
+Allow: /
+
+# ===================================
+# Social Media Crawlers
+# ===================================
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+
+# Twitter/X
+User-agent: Twitterbot
+Allow: /
+
+# Facebook
+User-agent: facebookexternalhit
+Allow: /
+
+# Pinterest
+User-agent: Pinterest
+Allow: /
+
+# Telegram
+User-agent: TelegramBot
+Allow: /
+
+# WhatsApp
+User-agent: WhatsApp
+Allow: /
+
+# ===================================
+# SEO & Analytics Tools (Beneficial)
+# ===================================
+
+# Screaming Frog SEO Spider
+User-agent: Screaming Frog SEO Spider
+Allow: /
+
+# SEMrush
+User-agent: SemrushBot
+Allow: /
+Crawl-delay: 2
+
+# Moz
+User-agent: rogerbot
+Allow: /
+Crawl-delay: 2
+
+# ===================================
+# Block Aggressive/Harmful Bots
+# ===================================
+
+# AhrefsBot (heavy crawler)
+User-agent: AhrefsBot
 Disallow: /
 
-# User-agent: *
-# Allow: /
+# MJ12bot (Majestic)
+User-agent: MJ12bot
+Disallow: /
 
-# # Sitemaps
-# Sitemap: https://mishrashardendu22.is-a.dev/sitemap.xml
+# DotBot (aggressive)
+User-agent: DotBot
+Disallow: /
 
-# # Disallow admin pages (private areas)
-# Disallow: /admin/
-# Disallow: /api/auth/
-# Disallow: /api/admin/
+# SemrushBot (can be heavy)
+User-agent: SemrushBot
+Crawl-delay: 5
 
-# # Disallow dynamic query parameters that don't add value
-# Disallow: /*?*
-# Disallow: /*&*
+# Generic bad bots
+User-agent: SiteBot
+Disallow: /
 
-# # Allow important pages explicitly
-# Allow: /projects/*
-# Allow: /experience/*
-# Allow: /volunteer/*
-# Allow: /certifications/*
-# Allow: /blog/*
+User-agent: EmailCollector
+Disallow: /
 
-# # Crawl-delay for respectful crawling
-# Crawl-delay: 1
+User-agent: EmailSiphon
+Disallow: /
 
-# # Specific rules for search engines
-# User-agent: Googlebot
-# Allow: /
-# Crawl-delay: 0
+User-agent: WebBandit
+Disallow: /
 
-# User-agent: Bingbot
-# Allow: /
-# Crawl-delay: 1
+User-agent: WebCopier
+Disallow: /
 
-# # Block unwanted bots
-# User-agent: AhrefsBot
-# Disallow: /
+User-agent: HTTrack
+Disallow: /
 
-# User-agent: MJ12bot
-# Disallow: /
+User-agent: ia_archiver
+Disallow: /
 
-# User-agent: DotBot
-# Disallow: /
+User-agent: WebStripper
+Disallow: /
+
+User-agent: WebReaper
+Disallow: /
+
+User-agent: WebSauger
+Disallow: /
+
+User-agent: WebZIP
+Disallow: /
+
+# ===================================
+# Performance Settings
+# ===================================
+
+# Default crawl delay (balance between speed and server load)
+Crawl-delay: 1
