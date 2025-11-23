@@ -37,8 +37,6 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 5173",
-    "dev:mfe": "vite --port $(microfrontends port 2>/dev/null || echo 5173)",
-    "proxy": "microfrontends proxy --local-apps mishrashardendu22-admin",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
@@ -74,8 +72,6 @@
     "@tiptap/extension-underline": "^3.11.0",
     "@tiptap/react": "^3.11.0",
     "@tiptap/starter-kit": "^3.11.0",
-    "@vercel/microfrontends": "^2.2.0",
-    "@vercel/toolbar": "^0.1.41",
     "axios": "^1.13.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

@@ -279,7 +279,7 @@ All frontend applications are deployed to Vercel with automatic deployments on p
   - Output Directory: `.next`
 
 - **Blog Website**: Deployed from `apps/MishraShardendu22-Frontend-BlogWebsite`
-  - Production: https://mishrashardendu22.is-a.dev/blog (via microfrontend)
+  - Production: https://mishrashardendu22.is-a.dev/blog
   - Framework Preset: Vite
   - Build Command: `cd ../.. && pnpm turbo run build --filter=ms22-blog`
   - Output Directory: `dist`

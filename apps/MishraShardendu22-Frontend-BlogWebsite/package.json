@@ -43,7 +43,6 @@
   },
   "scripts": {
     "dev": "vite --port 5174",
-    "dev:mfe": "vite --port $(microfrontends port 2>/dev/null || echo 5174)",
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
@@ -76,7 +75,6 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
-    "@vercel/microfrontends": "^2.2.0",
     "dompurify": "3.3.0",
     "lucide-react": "^0.554.0",
     "marked": "17.0.1"

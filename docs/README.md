@@ -21,7 +21,6 @@ This directory contains comprehensive documentation for the Shardendu Mishra Por
 
 ### Architecture & Setup
 
-- [Microfrontends Setup](./MICROFRONTENDS_SETUP.md)
 - [Migration Examples](./MIGRATION_EXAMPLES.md)
 - [Session Summary](./SESSION_SUMMARY.md)
 - [Docs Cleanup Summary](./DOCS_CLEANUP_SUMMARY.md)

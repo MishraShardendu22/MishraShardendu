@@ -49,23 +49,6 @@ pnpm dev
 
 Open [http://localhost:5174](http://localhost:5174)
 
-#### Microfrontend Mode (Recommended)
-
-This blog is configured as a microfrontend child of the main Personal Website. To run it in microfrontend mode:
-
-```bash
-# Terminal 1: Start the main website (parent)
-cd ../MishraShardendu22-Frontend-PersonalWebsite
-pnpm dev
-
-# Terminal 2: Start the blog (child)
-pnpm dev:mfe
-```
-
-Access the blog at: [http://localhost:3000/blog](http://localhost:3000/blog)
-
-**Note:** The blog runs at the `/blog` path when integrated with the main website. See [Blog Microfrontend Setup](../../docs/BLOG_MICROFRONTEND_SETUP.md) for detailed configuration
-
 ### Build
 
 ```bash
