@@ -1,10 +1,10 @@
 /**
  * Get the base path for navigation
- * Always use /blog prefix for microfrontend deployment
+ * Standalone deployment at root
  */
 export function getBasePath(): string {
   if (typeof window === 'undefined') return ''
-  return '/blog'
+  return ''
 }
 
 /**

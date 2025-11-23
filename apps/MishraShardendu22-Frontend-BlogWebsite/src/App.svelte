@@ -18,20 +18,7 @@
   let isOwner = $state(false);
   let isLoading = $state(true);
 
-  // Check if we're on a blog path
-  const isBlogPath = $derived(() => {
-    const path = window.location.pathname;
-    return path.startsWith('/blog');
-  });
-
-  // Initialize theme and auth on mount - but only if on blog path
   onMount(async () => {
-    // Early return if not on blog path
-    if (!isBlogPath()) {
-      isLoading = false;
-      return;
-    }
-
     try {
       themeStore.init();
       await authStore.init();
@@ -41,36 +28,26 @@
     }
   });
 
-  // Subscribe to auth changes
   authStore.subscribe((state) => {
     isAuthenticated = state.isAuthenticated;
     isOwner = state.user?.isOwner || false;
     isLoading = state.isLoading;
   });
 
-  // Listen for navigation changes
   $effect(() => {
     const handleLocationChange = () => {
-      // Only process if on blog path
-      if (!isBlogPath()) {
-        isLoading = false;
-        return;
-      }
-
       currentPath = window.location.pathname;
       
-      // Redirect /blog to /blog/read
-      if (currentPath === '/blog' || currentPath === '/blog/') {
-        window.history.replaceState(null, '', '/blog/read');
-        currentPath = '/blog/read';
+      if (currentPath === '/' || currentPath === '') {
+        window.history.replaceState(null, '', '/read');
+        currentPath = '/read';
       }
     };
 
-    // Check on initial load - Fix for production deployment
     const checkPath = window.location.pathname;
-    if (checkPath === '/blog' || checkPath === '/blog/' || checkPath === '' || checkPath === '/') {
-      window.history.replaceState(null, '', '/blog/read');
-      currentPath = '/blog/read';
+    if (checkPath === '/' || checkPath === '') {
+      window.history.replaceState(null, '', '/read');
+      currentPath = '/read';
     } else {
       currentPath = checkPath;
     }
@@ -79,20 +56,14 @@
     return () => window.removeEventListener("popstate", handleLocationChange);
   });
 
-  // Normalize path - remove /blog prefix if it exists
   const normalizedPath = $derived(() => {
     let path = currentPath;
-    if (path.startsWith('/blog')) {
-      path = path.substring(5) || '/read';
-    }
-    // If path is empty or just /, default to /read
     if (!path || path === '/') {
       path = '/read';
     }
     return path;
   });
 
-  // Check if route requires authentication
   const requiresAuth = $derived(() => {
     const path = normalizedPath();
     return path === "/create" || 
@@ -100,19 +71,15 @@
            path.endsWith("/edit");
   });
 
-  // Redirect if trying to access protected route without auth
   $effect(() => {
-    const basePath = '/blog';
     if (!isLoading && requiresAuth() && !isAuthenticated) {
-      window.location.href = `${basePath}/login`;
+      window.location.href = '/login';
     } else if (!isLoading && requiresAuth() && isAuthenticated && !isOwner && 
                (normalizedPath() === "/create" || normalizedPath() === "/dashboard" || normalizedPath().endsWith("/edit"))) {
-      // Only owner can create/edit/dashboard
-      window.location.href = `${basePath}/read`;
+      window.location.href = '/read';
     }
   });
 
-  // Determine which page to show
   const pageComponent = $derived(() => {
     const path = normalizedPath();
     if (path === "/login" || path === "/register") {
@@ -133,15 +100,11 @@
 
   const blogId = $derived(() => {
     const path = normalizedPath();
-    // Match /read/123 or /read/123/edit format
     const match = path.match(/^\/read\/(\d+)(?:\/edit)?$/);
     return match ? match[1] : null;
   });
 
-  // Update SEO based on current page
   function updatePageSEO() {
-    if (!isBlogPath()) return;
-    
     const baseUrl = 'https://mishrashardendu22.is-a.dev';
     
     switch (pageComponent()) {
@@ -149,7 +112,7 @@
         updateSEO({
           title: 'Login | Shardendu Mishra Blog | Access Your Dashboard',
           description: 'Sign in to your blog dashboard to create, edit, and publish technical articles. Manage your content and engage with your readers.',
-          url: `${baseUrl}/blog/login`,
+          url: `${baseUrl}/login`,
           keywords: 'blog login, content management, writer dashboard',
         });
         break;
@@ -157,7 +120,7 @@
         updateSEO({
           title: 'Blogs By Shardendu Mishra | Tech Articles & Programming Insights',
           description: 'Explore in-depth technical articles covering web development, software engineering, programming best practices, system design, and modern tech stack insights. Written by Shardendu Mishra, a passionate software engineer and IIIT Dharwad student.',
-          url: `${baseUrl}/blog/read`,
+          url: `${baseUrl}/read`,
           keywords: 'technical articles, programming blog, web development, software engineering, coding tutorials, tech insights',
         });
         break;
@@ -165,7 +128,7 @@
         updateSEO({
           title: 'Create New Post | Shardendu Mishra Blog',
           description: 'Create and publish a new technical blog post. Share your knowledge, insights, and experiences with the developer community.',
-          url: `${baseUrl}/blog/create`,
+          url: `${baseUrl}/create`,
           keywords: 'create blog post, write article, publish content',
         });
         break;
@@ -173,7 +136,7 @@
         updateSEO({
           title: 'Dashboard | Shardendu Mishra Blog | Manage Your Content',
           description: 'Manage your blog posts, view analytics, monitor engagement, and track your content performance. Your central hub for blog management.',
-          url: `${baseUrl}/blog/dashboard`,
+          url: `${baseUrl}/dashboard`,
           keywords: 'blog dashboard, content management, analytics, post management',
         });
         break;
@@ -186,7 +149,6 @@
         });
         break;
       case 'detail':
-        // SEO will be updated by BlogDetailPage component with specific post data
         updateSEO({
           title: 'Blog Post | Shardendu Mishra',
           description: 'Read this insightful technical article by Shardendu Mishra covering programming concepts, best practices, and real-world development experiences.',
@@ -200,7 +162,6 @@
     }
   }
 
-  // Update SEO when route changes
   $effect(() => {
     if (!isLoading) {
       updatePageSEO();
@@ -209,18 +170,9 @@
 </script>
 
 <div class="min-h-screen bg-background" style="min-height: 100vh;">
-  <!-- Only render if on blog path -->
-  {#if !isBlogPath()}
-    <!-- Empty render when not on blog path to prevent unnecessary API calls -->
-    <div style="display: none;"></div>
-  {:else}
-  <!-- Toast Notifications -->
   <Toast />
-  <!-- Confirm dialog mounted at app root -->
-  <ConfirmDialog />
-  
-  <!-- Theme Toggle -->
   <ThemeToggle />
+  <ConfirmDialog />
   
   {#if isLoading}
     <div class="flex items-center justify-center min-h-screen bg-gradient-to-br from-background via-background to-background-secondary" style="min-height: 100vh;">
@@ -274,6 +226,5 @@
         {/if}
       </div>
     </main>
-  {/if}
   {/if}
 </div>
