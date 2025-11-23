@@ -63,8 +63,8 @@
           renderedContent = result;
         }
         
-        const baseUrl = 'https://mishrashardendu22.is-a.dev';
-        const blogUrl = `${baseUrl}/blog/read/${blogId}`;
+        const baseUrl = 'https://blogs.mishrashardendu22.is-a.dev';
+        const blogUrl = `${baseUrl}/read/${blogId}`;
         const description = truncateDescription(blog.content, 160);
         const authorName = blog.author?.name || 'Shardendu Mishra';
         const tags = Array.isArray(blog.tags) ? blog.tags : [];

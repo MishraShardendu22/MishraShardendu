@@ -2,12 +2,12 @@
   "name": "Admin Dashboard - Shardendu Mishra",
   "short_name": "Admin",
   "description": "Secure administrative dashboard for managing portfolio content, projects, experiences, and blog posts.",
-  "start_url": "/admin",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#10b981",
   "orientation": "portrait-primary",
-  "scope": "/admin",
+  "scope": "/",
   "lang": "en",
   "categories": ["admin", "dashboard", "management"],
   "icons": [
@@ -34,21 +34,21 @@
       "name": "Dashboard",
       "short_name": "Dashboard",
       "description": "View dashboard overview",
-      "url": "/admin/dashboard",
+      "url": "/dashboard",
       "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Projects",
       "short_name": "Projects",
       "description": "Manage projects",
-      "url": "/admin/projects",
+      "url": "/projects",
       "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Blog Posts",
       "short_name": "Blogs",
       "description": "Manage blog posts",
-      "url": "/admin/blogs",
+      "url": "/blogs",
       "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
     }
   ]

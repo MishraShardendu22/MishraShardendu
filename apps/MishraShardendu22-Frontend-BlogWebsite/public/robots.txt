@@ -1,14 +1,10 @@
-# Temporarily blocking all crawlers to reduce API requests
-# Uncomment the rules below when ready to re-enable crawlers
+# Robots.txt for Shardendu Mishra's Blog
 
 User-agent: *
-Disallow: /
+Allow: /
 
-# User-agent: *
-# Allow: /
-
-# # Sitemaps
-# Sitemap: https://mishrashardendu22.is-a.dev/sitemap.xml
+# Sitemaps
+Sitemap: https://blogs.mishrashardendu22.is-a.dev/sitemap.xml
 
 # # Disallow admin pages (private areas)
 # Disallow: /admin/

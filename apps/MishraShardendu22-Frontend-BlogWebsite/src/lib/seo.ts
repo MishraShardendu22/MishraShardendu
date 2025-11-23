@@ -22,8 +22,8 @@ const DEFAULT_SEO: SEOConfig = {
     'Explore in-depth technical articles about web development, software engineering, programming best practices, and modern tech stack insights by Shardendu Mishra, a passionate software engineer and IIIT Dharwad student.',
   keywords:
     'Shardendu Mishra blog, technical blog, web development articles, programming tutorials, software engineering, Go programming, React tutorials, TypeScript guides, tech insights, developer blog, coding tips, IIIT Dharwad, full stack development, system design',
-  image: 'https://mishrashardendu22.is-a.dev/blog/blogog-image.png',
-  url: 'https://mishrashardendu22.is-a.dev/blog',
+  image: 'https://blogs.mishrashardendu22.is-a.dev/blogog-image.png',
+  url: 'https://blogs.mishrashardendu22.is-a.dev',
   type: 'website',
   author: 'Shardendu Mishra',
 }
@@ -231,14 +231,14 @@ export function generateBlogPostStructuredData(data: {
     },
     datePublished: data.datePublished,
     dateModified: data.dateModified || data.datePublished,
-    image: data.image || 'https://mishrashardendu22.is-a.dev/blog/blogog-image.png',
+    image: data.image || 'https://blogs.mishrashardendu22.is-a.dev/blogog-image.png',
     url: data.url,
     publisher: {
       '@type': 'Person',
       name: 'Shardendu Mishra',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://mishrashardendu22.is-a.dev/blog/icons/icon-512.png',
+        url: 'https://blogs.mishrashardendu22.is-a.dev/icons/icon-512.png',
       },
     },
     mainEntityOfPage: {

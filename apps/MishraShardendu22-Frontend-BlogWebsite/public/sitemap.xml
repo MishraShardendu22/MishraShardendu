@@ -6,7 +6,7 @@
   
   <!-- Blog Home -->
   <url>
-    <loc>https://mishrashardendu22.is-a.dev/blog</loc>
+    <loc>https://blogs.mishrashardendu22.is-a.dev</loc>
     <lastmod>2025-10-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
   
   <!-- Sample Blog Post 1 -->
   <url>
-    <loc>https://mishrashardendu22.is-a.dev/blog/building-scalable-web-applications</loc>
+    <loc>https://blogs.mishrashardendu22.is-a.dev/building-scalable-web-applications</loc>
     <lastmod>2025-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -22,7 +22,7 @@
   
   <!-- Sample Blog Post 2 -->
   <url>
-    <loc>https://mishrashardendu22.is-a.dev/blog/introduction-to-typescript</loc>
+    <loc>https://blogs.mishrashardendu22.is-a.dev/introduction-to-typescript</loc>
     <lastmod>2025-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -30,7 +30,7 @@
   
   <!-- Sample Blog Post 3 -->
   <url>
-    <loc>https://mishrashardendu22.is-a.dev/blog/golang-best-practices</loc>
+    <loc>https://blogs.mishrashardendu22.is-a.dev/golang-best-practices</loc>
     <lastmod>2025-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -38,7 +38,7 @@
   
   <!-- Blog Categories -->
   <url>
-    <loc>https://mishrashardendu22.is-a.dev/blog/categories</loc>
+    <loc>https://blogs.mishrashardendu22.is-a.dev/categories</loc>
     <lastmod>2025-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -46,7 +46,7 @@
   
   <!-- Blog Tags -->
   <url>
-    <loc>https://mishrashardendu22.is-a.dev/blog/tags</loc>
+    <loc>https://blogs.mishrashardendu22.is-a.dev/tags</loc>
     <lastmod>2025-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

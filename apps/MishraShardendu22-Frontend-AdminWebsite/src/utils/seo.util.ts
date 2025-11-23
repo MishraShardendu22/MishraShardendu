@@ -133,7 +133,7 @@ export function updateSEO(config: SEOConfig = {}): void {
   updateMetaTag(
     'property',
     'og:url',
-    `https://mishrashardendu22.is-a.dev${window.location.pathname}`
+    `https://admin.mishrashardendu22.is-a.dev${window.location.pathname}`
   )
   updateMetaTag('property', 'og:type', 'website')
   updateMetaTag('property', 'og:site_name', 'Shardendu Mishra Admin Dashboard')

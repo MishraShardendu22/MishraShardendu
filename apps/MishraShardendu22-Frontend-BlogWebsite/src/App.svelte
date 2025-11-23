@@ -105,7 +105,7 @@
   });
 
   function updatePageSEO() {
-    const baseUrl = 'https://mishrashardendu22.is-a.dev';
+    const baseUrl = 'https://blogs.mishrashardendu22.is-a.dev';
     
     switch (pageComponent()) {
       case 'login':
