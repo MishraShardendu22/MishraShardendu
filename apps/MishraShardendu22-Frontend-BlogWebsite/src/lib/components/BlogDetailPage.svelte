@@ -369,7 +369,7 @@
         alt={blog.title}
         class="w-full h-full object-cover transition-all duration-300 group-hover:blur-sm group-hover:scale-110"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+      <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent"></div>
       <header class="absolute inset-0 flex items-center justify-center p-6">
         <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white text-center leading-tight drop-shadow-2xl">
           {blog.title}
@@ -425,20 +425,20 @@
             <Avatar
               src={resolveImageUrl(currentUser.profileImage || currentUser.image || currentUser.profile?.avatar || undefined)}
               fallback={currentUser?.name?.charAt(0) || "U"}
-              class="w-9 h-9 border-2 border-primary/20 flex-shrink-0"
+              class="w-9 h-9 border-2 border-primary/20 shrink-0"
             />
             <textarea
               bind:this={textareaRef}
               bind:value={newComment}
               oninput={autoResize}
               placeholder="Share your thoughts..."
-              class="flex-1 text-sm bg-background border border-input rounded-md px-3 py-2 resize-none overflow-hidden min-h-[36px] focus:outline-none focus:ring-2 focus:ring-ring"
+              class="flex-1 text-sm bg-background border border-input rounded-md px-3 py-2 resize-none overflow-hidden min-h-9 focus:outline-none focus:ring-2 focus:ring-ring"
             ></textarea>
             <Button 
               onclick={handleSubmitComment}
               disabled={isSubmittingComment || !newComment.trim()}
               size="sm"
-              className="flex-shrink-0 h-9"
+              className="shrink-0 h-9"
             >
               <Send class="w-3.5 h-3.5 mr-1.5" />
               Post
@@ -468,7 +468,7 @@
                   <Avatar
                     src={resolveImageUrl(comment.user?.profileImage || comment.user?.image || comment.user?.profile?.avatar || undefined)}
                     fallback={comment.user?.name?.charAt(0) || "U"}
-                    class="w-8 h-8 flex-shrink-0"
+                    class="w-8 h-8 shrink-0"
                   />
                   <div class="min-w-0 flex-1">
                     <p class="font-semibold text-xs truncate">{comment.user?.name || "Unknown"}</p>
@@ -480,7 +480,7 @@
                     variant="ghost"
                     size="sm"
                     onclick={() => handleDeleteComment(comment.id)}
-                    className="hover:bg-destructive/10 hover:text-destructive h-7 w-7 p-0 flex-shrink-0"
+                    className="hover:bg-destructive/10 hover:text-destructive h-7 w-7 p-0 shrink-0"
                   >
                     <Trash class="w-3 h-3" />
                   </Button>
