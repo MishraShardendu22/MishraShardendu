@@ -175,10 +175,10 @@
   <ConfirmDialog />
   
   {#if isLoading}
-    <div class="flex items-center justify-center min-h-screen bg-gradient-to-br from-background via-background to-background-secondary" style="min-height: 100vh;">
+    <div class="flex items-center justify-center min-h-screen bg-linear-to-br from-background via-background to-background-secondary" style="min-height: 100vh;">
       <div class="text-center animate-slide-up">
         <div class="relative w-20 h-20 mx-auto mb-6">
-          <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full blur-xl animate-pulse"></div>
+          <div class="absolute inset-0 bg-linear-to-br from-primary/20 to-primary/10 rounded-full blur-xl animate-pulse"></div>
           <div class="relative w-20 h-20 border-4 border-primary/30 border-t-primary rounded-full animate-spin shadow-lg"></div>
         </div>
         <p class="text-muted-foreground font-semibold text-lg">Loading...</p>
@@ -197,7 +197,7 @@
         <div class="space-y-6 sm:space-y-8 animate-slide-up">
           <div class="relative space-y-3 pb-6 border-b-2 border-border/50">
             <div class="absolute -top-4 -left-4 w-24 h-24 bg-emerald-500/5 rounded-full blur-3xl"></div>
-            <h1 class="relative text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight bg-gradient-to-r from-emerald-600 dark:from-emerald-400 to-primary bg-clip-text text-transparent">
+            <h1 class="relative text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight bg-linear-to-r from-emerald-600 dark:from-emerald-400 to-primary bg-clip-text text-transparent">
               Create New Post
             </h1>
             <p class="relative text-base sm:text-lg text-muted-foreground font-medium leading-relaxed">
@@ -214,7 +214,7 @@
         <div class="space-y-6 sm:space-y-8 animate-slide-up">
           <div class="relative space-y-3 pb-6 border-b-2 border-border/50">
             <div class="absolute -top-4 -left-4 w-24 h-24 bg-amber-500/5 rounded-full blur-3xl"></div>
-            <h1 class="relative text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight bg-gradient-to-r from-amber-600 dark:from-amber-400 to-primary bg-clip-text text-transparent">
+            <h1 class="relative text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight bg-linear-to-r from-amber-600 dark:from-amber-400 to-primary bg-clip-text text-transparent">
               Edit Post
             </h1>
             <p class="relative text-base sm:text-lg text-muted-foreground font-medium leading-relaxed">

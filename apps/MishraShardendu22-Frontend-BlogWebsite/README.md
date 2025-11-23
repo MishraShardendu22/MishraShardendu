@@ -68,23 +68,23 @@ pnpm preview
 
 ## 🎯 Project Structure
 
-```
+```md
 src/
 ├── lib/
-│   ├── api.ts              # API client with types
-│   ├── auth.ts             # Authentication store
-│   ├── validation.ts       # Input validation utilities
-│   ├── toast.ts            # Toast notification system
-│   └── components/
-│       ├── Toast.svelte            # Toast UI component
-│       ├── OTPVerification.svelte  # OTP verification flow
-│       ├── LoginPage.svelte        # Login/Register page
-│       ├── BlogListPage.svelte     # Blog listing
-│       ├── BlogDetailPage.svelte   # Blog detail view
-│       ├── BlogCreatePage.svelte   # Create/Edit blog
-│       └── ui/                     # Reusable UI components
-├── App.svelte              # Main app component
-└── main.ts                 # Entry point
+│ ├── api.ts # API client with types
+│ ├── auth.ts # Authentication store
+│ ├── validation.ts # Input validation utilities
+│ ├── toast.ts # Toast notification system
+│ └── components/
+│ ├── Toast.svelte # Toast UI component
+│ ├── OTPVerification.svelte # OTP verification flow
+│ ├── LoginPage.svelte # Login/Register page
+│ ├── BlogListPage.svelte # Blog listing
+│ ├── BlogDetailPage.svelte # Blog detail view
+│ ├── BlogCreatePage.svelte # Create/Edit blog
+│ └── ui/ # Reusable UI components
+├── App.svelte # Main app component
+└── main.ts # Entry point
 ```
 
 ## 🔧 Configuration
@@ -272,7 +272,7 @@ While `allowJs: false` would indeed prevent the use of `.js` files in the projec
 
 **Why is HMR not preserving my local component state?**
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
+HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details.
 
 If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
 
