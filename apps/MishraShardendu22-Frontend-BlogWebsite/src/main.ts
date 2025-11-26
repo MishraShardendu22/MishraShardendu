@@ -1,6 +1,12 @@
 import { mount } from 'svelte'
 import './app.css'
 import App from './App.svelte'
+import { inject } from '@vercel/analytics'
+import { injectSpeedInsights } from '@vercel/speed-insights'
+
+// Initialize Vercel Analytics and Speed Insights
+inject()
+injectSpeedInsights()
 
 function initTheme() {
   try {
