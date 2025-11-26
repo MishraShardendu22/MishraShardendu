@@ -10,7 +10,12 @@ import { LazyCertificationsSection } from '@/components/lazy/cert'
 import { HomeBreadcrumb } from '@/components/seo/BreadcrumbJsonLd'
 import { LazyVExperienceSection } from '@/components/lazy/volunteer'
 import { ActiveSectionTracker } from '@/components/extra/ActiveSectionTracker'
-import { PersonJsonLd, WebsiteJsonLd, OrganizationJsonLd } from '@/components/seo/StructuredData'
+import {
+  PersonJsonLd,
+  WebsiteJsonLd,
+  OrganizationJsonLd,
+  RelatedWebsitesJsonLd,
+} from '@/components/seo/StructuredData'
 
 export default function HomePage() {
   return (
@@ -19,6 +24,7 @@ export default function HomePage() {
       <PersonJsonLd />
       <WebsiteJsonLd />
       <OrganizationJsonLd />
+      <RelatedWebsitesJsonLd />
       <HomeBreadcrumb />
 
       <ActiveSectionTracker />

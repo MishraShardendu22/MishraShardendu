@@ -1,5 +1,5 @@
 import './globals.css'
-import { BASE_URL } from '@/constants/url'
+import { BASE_URL, BLOG_URL, ADMIN_URL } from '@/constants/url'
 import { ThemeProvider } from 'next-themes'
 import type { Metadata, Viewport } from 'next'
 import { Fredoka, Poppins, Inter } from 'next/font/google'

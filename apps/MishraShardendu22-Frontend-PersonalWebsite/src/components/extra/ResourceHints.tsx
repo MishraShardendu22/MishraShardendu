@@ -35,6 +35,10 @@ export default function ResourceHints() {
       {/* Preconnect to external domains for faster third-party loading */}
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+      {/* DNS prefetch for subdomain sites */}
+      <link rel="dns-prefetch" href="https://blogs.mishrashardendu22.is-a.dev" />
+      <link rel="dns-prefetch" href="https://admin.mishrashardendu22.is-a.dev" />
     </>
   )
 }

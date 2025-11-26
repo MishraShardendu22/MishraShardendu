@@ -5,4 +5,5 @@ export type LinkItem = {
   label: string
   shortLabel: string
   icon: ReactNode
+  external?: boolean
 }

@@ -1,5 +1,12 @@
 # Shardendu Mishra Portfolio - SEO Optimized Robots.txt
-# Last Updated: 2025-11-20
+# Last Updated: 2025-11-26
+
+# ===================================
+# Related Websites
+# ===================================
+# Main Portfolio: https://mishrashardendu22.is-a.dev
+# Tech Blog: https://blogs.mishrashardendu22.is-a.dev
+# Admin Dashboard: https://admin.mishrashardendu22.is-a.dev
 
 # ===================================
 # Global Rules - Allow All Crawlers

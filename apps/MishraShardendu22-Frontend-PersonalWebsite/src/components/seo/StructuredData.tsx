@@ -7,7 +7,7 @@ import {
   CodeChefProfile,
   CodeforcesProfile,
 } from '@/data/static_link'
-import { BASE_URL } from '@/constants/url'
+import { BASE_URL, BLOG_URL, ADMIN_URL } from '@/constants/url'
 
 export function PersonJsonLd() {
   const personData = {
@@ -35,6 +35,7 @@ export function PersonJsonLd() {
       LeetCodeProfile,
       CodeChefProfile,
       CodeforcesProfile,
+      BLOG_URL,
     ],
     jobTitle: 'Software Developer',
     worksFor: {
@@ -160,6 +161,7 @@ export const StructuredData = () => {
       LeetCodeProfile,
       CodeChefProfile,
       CodeforcesProfile,
+      BLOG_URL,
     ],
     jobTitle: 'Software Developer',
     worksFor: {
@@ -273,7 +275,7 @@ export function OrganizationJsonLd() {
       '@type': 'ImageObject',
       url: `${BASE_URL}/Professional.avif`,
     },
-    sameAs: [LinkedInProfile, GitHubProject, XProfile, YouTubeChannel],
+    sameAs: [LinkedInProfile, GitHubProject, XProfile, YouTubeChannel, BLOG_URL],
     founder: {
       '@id': `${BASE_URL}/#person`,
     },
@@ -320,6 +322,40 @@ export function OrganizationJsonLd() {
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  )
+}
+
+export function RelatedWebsitesJsonLd() {
+  const blogWebsiteData = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': `${BLOG_URL}/#blog`,
+    name: 'Blogs by Shardendu Mishra',
+    alternateName: 'Shardendu Mishra Tech Blog',
+    description:
+      'Technical articles about web development, software engineering, programming best practices, and modern tech stack insights by Shardendu Mishra.',
+    url: BLOG_URL,
+    inLanguage: 'en-US',
+    author: {
+      '@id': `${BASE_URL}/#person`,
+    },
+    publisher: {
+      '@id': `${BASE_URL}/#person`,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': BLOG_URL,
+    },
+    isPartOf: {
+      '@id': `${BASE_URL}/#website`,
+    },
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(blogWebsiteData) }}
     />
   )
 }

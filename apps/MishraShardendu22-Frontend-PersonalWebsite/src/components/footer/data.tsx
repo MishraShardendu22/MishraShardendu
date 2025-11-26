@@ -8,6 +8,8 @@ import {
   Linkedin,
   Briefcase,
   GraduationCap,
+  Settings,
+  Globe,
 } from 'lucide-react'
 import {
   XProfile,
@@ -20,6 +22,7 @@ import {
   CodeforcesProfile,
   GitHubOrganistaion,
 } from '@/data/static_link'
+import { BLOG_URL, ADMIN_URL } from '@/constants/url'
 import { LinkItem } from './types'
 
 export const quickLinks: LinkItem[] = [
@@ -42,10 +45,28 @@ export const quickLinks: LinkItem[] = [
     icon: <Award className="h-3 lg:h-4 w-3 lg:w-4" />,
   },
   {
-    href: '/blog',
+    href: BLOG_URL,
     label: 'Blogs',
     shortLabel: 'Blogs',
     icon: <Book className="h-3 lg:h-4 w-3 lg:w-4" />,
+    external: true,
+  },
+]
+
+export const websiteLinks: LinkItem[] = [
+  {
+    href: BLOG_URL,
+    label: 'Tech Blogs',
+    shortLabel: 'Blogs',
+    icon: <Book className="h-3 lg:h-4 w-3 lg:w-4" />,
+    external: true,
+  },
+  {
+    href: ADMIN_URL,
+    label: 'Admin Portal',
+    shortLabel: 'Admin',
+    icon: <Settings className="h-3 lg:h-4 w-3 lg:w-4" />,
+    external: true,
   },
 ]
 
