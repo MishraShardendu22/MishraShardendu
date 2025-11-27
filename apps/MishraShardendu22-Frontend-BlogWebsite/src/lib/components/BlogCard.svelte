@@ -65,87 +65,96 @@
 </script>
 
 <article
-  class="group relative rounded-xl border border-border overflow-hidden max-h-[520px] transition-all duration-300 hover:border-border/80"
+  class="group relative flex flex-col rounded-xl border border-border bg-card text-card-foreground shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:border-primary/50 h-full"
 >
-  {#if blog.image}
-    <div class="absolute inset-0">
+  <!-- Image Section -->
+  <div class="relative aspect-video w-full overflow-hidden bg-muted">
+    {#if blog.image}
       <OptimizedImage
         src={resolveImageUrl(blog.image)}
         alt={blog.title}
-        class="w-full h-full"
-        objectFit="cover"
+        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         loading={isFirstCard ? "eager" : "lazy"}
         isLCP={isFirstCard}
         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
       />
-      <div class="absolute inset-0 backdrop-blur-xl bg-black/60"></div>
-    </div>
-  {:else}
-    <div class="absolute inset-0 bg-linear-to-br from-primary/10 to-background"></div>
-  {/if}
+    {:else}
+      <div class="w-full h-full bg-linear-to-br from-primary/10 to-muted flex items-center justify-center">
+        <span class="text-4xl opacity-20">📝</span>
+      </div>
+    {/if}
+    
+    <!-- Overlay Badge for Reading Time -->
+    {#if readingTime > 0}
+      <div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md text-white text-xs px-2 py-1 rounded-md flex items-center gap-1">
+        <Clock class="w-3 h-3" />
+        <span>{readingTime} min</span>
+      </div>
+    {/if}
+  </div>
 
-  <div class="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-  
-  <div class="relative z-10 p-4 lg:p-4 h-full flex flex-col">
-    <div class="flex items-center gap-3 text-xs mb-4">
+  <!-- Content Section -->
+  <div class="flex flex-1 flex-col p-5">
+    <!-- Tags -->
+    {#if blog.tags && blog.tags.length > 0}
+      <div class="flex flex-wrap gap-2 mb-3">
+        {#each blog.tags.slice(0, 3) as tag}
+          <Badge variant="secondary" class="text-xs font-medium px-2 py-0.5 bg-secondary/10 text-secondary-foreground hover:bg-secondary/20 border-transparent">
+            {tag}
+          </Badge>
+        {/each}
+        {#if blog.tags.length > 3}
+          <span class="text-xs text-muted-foreground self-center">+{blog.tags.length - 3}</span>
+        {/if}
+      </div>
+    {/if}
+
+    <!-- Title -->
+    <h3 class="text-xl font-bold mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+      {blog.title}
+    </h3>
+
+    <!-- Excerpt -->
+    {#if excerpt}
+      <p class="text-muted-foreground text-sm line-clamp-3 mb-4 flex-1 leading-relaxed">
+        {excerpt}
+      </p>
+    {/if}
+
+    <!-- Footer -->
+    <div class="mt-auto pt-4 border-t border-border flex items-center justify-between gap-4">
       <div class="flex items-center gap-2 min-w-0">
         <Avatar
-          class="w-7 h-7 shrink-0 ring-2 ring-primary/10"
+          class="w-8 h-8 shrink-0 ring-2 ring-background"
           src={resolveImageUrl(blog.author?.profileImage || blog.author?.image || blog.author?.avatar || blog.author?.profile?.avatar || undefined)}
           fallback={blog.author?.name ? getInitials(blog.author.name, blog.author.name) : blog.author?.email?.charAt(0).toUpperCase() || "U"}
         />
-        <div class="min-w-0">
-          <div class="text-sm font-semibold text-white truncate">{blog.author?.name || blog.author?.email || "Unknown"}</div>
-          <div class="flex items-center gap-2 text-xs text-white/80 truncate">
-            <span>{formatDate(blog.createdAt)}</span>
-            {#if readingTime > 0}
-              <span>• {readingTime} min</span>
-            {/if}
-          </div>
+        <div class="flex flex-col min-w-0">
+          <span class="text-sm font-medium truncate">{blog.author?.name || "Unknown"}</span>
+          <span class="text-xs text-muted-foreground">{formatDate(blog.createdAt)}</span>
         </div>
       </div>
 
-      {#if blog.tags && blog.tags.length > 0}
-        <div class="flex items-center gap-2 ml-2">
-          {#each blog.tags.slice(0,2) as tag}
-            <Badge variant="secondary" class="text-xs px-2 py-0.5 bg-white/20 text-white border-white/30">{tag}</Badge>
-          {/each}
-          {#if blog.tags.length > 2}
-            <Badge variant="outline" class="text-xs px-2 py-0.5 bg-white/10 text-white border-white/30">+{blog.tags.length - 2}</Badge>
-          {/if}
-        </div>
-      {/if}
-
-      <div class="ml-auto flex items-center gap-3">
-        <div class="flex items-center gap-1 text-sm text-white/90">
-          <MessageCircle class="w-4 h-4" />
-          <span class="font-medium">{blog.comments ?? 0}</span>
+      <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1 text-xs text-muted-foreground mr-2" title="Comments">
+          <MessageCircle class="w-3.5 h-3.5" />
+          <span>{blog.comments ?? 0}</span>
         </div>
 
         {#if customActions}
           {@render customActions?.()}
         {/if}
-
+        
         <Button
-          variant="outline"
+          variant="ghost"
           size="sm"
           onclick={() => onReadMore?.(blog.id.toString())}
-          className="h-9 px-3 bg-white/10 hover:bg-white/20 text-white border-white/30"
+          className="shrink-0 hover:bg-primary/10 hover:text-primary group/btn"
         >
           Read
-          <ArrowRight class="w-4 h-4 ml-2" />
+          <ArrowRight class="w-4 h-4 ml-1 transition-transform group-hover/btn:translate-x-1" />
         </Button>
       </div>
     </div>
-
-    <h3 class="text-base lg:text-lg font-bold text-white mb-2 line-clamp-2 group-hover:text-primary-200 transition-colors leading-tight">
-      {blog.title}
-    </h3>
-
-    {#if excerpt}
-      <p class="hidden md:block text-sm text-white/80 mt-3 line-clamp-3 leading-relaxed">
-        {excerpt}
-      </p>
-    {/if}
   </div>
 </article>

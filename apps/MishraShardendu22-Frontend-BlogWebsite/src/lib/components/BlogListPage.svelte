@@ -153,13 +153,11 @@
   {:else}
     <div class="blog-grid">
       {#each filteredBlogs.slice((currentPage-1)*pageSize, currentPage*pageSize) as blog, index (blog.id)}
-        <div class="blog-card-improved">
-          <BlogCard 
-            {blog} 
-            onReadMore={(blogId) => (window.location.href = `${basePath}/read/${blogId}`)}
-            isFirstCard={currentPage === 1 && index === 0}
-          />
-        </div>
+        <BlogCard 
+          {blog} 
+          onReadMore={(blogId) => (window.location.href = `${basePath}/read/${blogId}`)}
+          isFirstCard={currentPage === 1 && index === 0}
+        />
       {/each}
     </div>
 

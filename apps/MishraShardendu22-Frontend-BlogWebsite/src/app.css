@@ -579,24 +579,8 @@ h6 {
   .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* Improved card look used by blog cards */
-.blog-card-improved {
-  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
-  border-radius: 0.75rem;
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.45);
-  padding: 0.75rem;
-}
+/* Improved card look used by blog cards - REMOVED as we use BlogCard component styles directly */
 
-.blog-card-improved:hover {
-  /* Keep the same appearance on hover; no translate or heavier shadow */
-  transform: none;
-  transition: none;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.45);
-}
-
-.blog-card-improved .line-clamp-2 { margin-bottom: 0.25rem; }
-.blog-card-improved .line-clamp-3 { margin-top: 0.5rem; }
 
 /* Tighter spacing for dashboard stat numbers */
 .stat-card p:first-child { margin-bottom: .25rem; }
