@@ -71,7 +71,7 @@
   <!-- Page header with inline controls -->
   <div class="flex items-start justify-between gap-4">
     <div class="space-y-2">
-      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight bg-linear-to- from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent drop-shadow-sm">Blog Posts</h1>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent drop-shadow-sm">Blog Posts</h1>
       <p class="text-base text-muted-foreground font-medium">Explore articles about web development, programming, and tech insights</p>
     </div>
 
@@ -88,7 +88,7 @@
       {#if isOwner}
         <Button
           onclick={() => (window.location.href = `${basePath}/create`)}
-          className="h-12 px-5 bg-linear-to- from-primary to-primary/90 text-primary-foreground font-bold shadow-lg rounded-xl text-sm shrink-0 hidden lg:inline-flex"
+          className="h-12 px-5 bg-linear-to-r from-primary to-primary/90 text-primary-foreground font-bold shadow-lg rounded-xl text-sm shrink-0 hidden lg:inline-flex"
         >
           <Plus class="w-4 h-4" />
           <span class="ml-2">Create</span>
@@ -111,11 +111,11 @@
           class="bg-card/80 backdrop-blur-sm border border-border/60 rounded-xl overflow-hidden shadow-lg p-5 space-y-4 animate-pulse"
         >
           <div class="w-10 h-10 bg-linear-to-br from-muted/70 to-muted/50 rounded-full"></div>
-          <div class="h-5 w-5/6 bg-linear-to- from-muted/70 to-muted/50 rounded-lg"></div>
-          <div class="h-4 w-full bg-linear-to- from-muted/70 to-muted/50 rounded-lg"></div>
+          <div class="h-5 w-5/6 bg-linear-to-r from-muted/70 to-muted/50 rounded-lg"></div>
+          <div class="h-4 w-full bg-linear-to-r from-muted/70 to-muted/50 rounded-lg"></div>
           <div class="flex gap-2">
-            <div class="h-6 w-16 bg-linear-to- from-muted/70 to-muted/50 rounded-full"></div>
-            <div class="h-6 w-20 bg-linear-to- from-muted/70 to-muted/50 rounded-full"></div>
+            <div class="h-6 w-16 bg-linear-to-r from-muted/70 to-muted/50 rounded-full"></div>
+            <div class="h-6 w-20 bg-linear-to-r from-muted/70 to-muted/50 rounded-full"></div>
           </div>
         </div>
       {/each}
@@ -132,7 +132,7 @@
           <BookOpen class="w-10 h-10 sm:w-14 sm:h-14 text-primary drop-shadow-md" />
         </div>
       </div>
-      <h3 class="text-2xl sm:text-3xl font-bold bg-linear-to- from-foreground to-foreground/70 bg-clip-text text-transparent mb-3 sm:mb-4">
+      <h3 class="text-2xl sm:text-3xl font-bold bg-linear-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-3 sm:mb-4">
         {searchTerm ? "No blogs found" : "No blogs yet"}
       </h3>
       <p class="text-muted-foreground text-sm sm:text-base mb-8 sm:mb-10 max-w-md mx-auto leading-relaxed px-4 font-medium">
@@ -143,7 +143,7 @@
       {#if !searchTerm && isOwner}
         <Button
           onclick={() => (window.location.href = `${basePath}/create`)}
-          className="h-12 sm:h-13 px-7 sm:px-9 bg-linear-to- from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-primary-foreground font-bold shadow-xl hover:shadow-2xl shadow-primary/30 transition-all duration-300 gap-2 sm:gap-2.5 rounded-xl text-sm sm:text-base hover:scale-105 hidden lg:inline-flex"
+          className="h-12 sm:h-13 px-7 sm:px-9 bg-linear-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-primary-foreground font-bold shadow-xl hover:shadow-2xl shadow-primary/30 transition-all duration-300 gap-2 sm:gap-2.5 rounded-xl text-sm sm:text-base hover:scale-105 hidden lg:inline-flex"
         >
           <Plus class="w-5 h-5 sm:w-6 sm:h-6" />
           Create First Post
