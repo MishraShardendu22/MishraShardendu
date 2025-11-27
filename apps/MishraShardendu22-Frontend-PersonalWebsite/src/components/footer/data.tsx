@@ -39,22 +39,6 @@ export const quickLinks: LinkItem[] = [
     icon: <Briefcase className="h-3 lg:h-4 w-3 lg:w-4" />,
   },
   {
-    href: '#certifications',
-    label: 'Certifications',
-    shortLabel: 'Certs',
-    icon: <Award className="h-3 lg:h-4 w-3 lg:w-4" />,
-  },
-  {
-    href: BLOG_URL,
-    label: 'Blogs',
-    shortLabel: 'Blogs',
-    icon: <Book className="h-3 lg:h-4 w-3 lg:w-4" />,
-    external: true,
-  },
-]
-
-export const websiteLinks: LinkItem[] = [
-  {
     href: BLOG_URL,
     label: 'Tech Blogs',
     shortLabel: 'Blogs',
