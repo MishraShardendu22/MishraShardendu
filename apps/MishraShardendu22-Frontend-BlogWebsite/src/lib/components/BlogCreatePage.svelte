@@ -221,7 +221,7 @@
           <div class="flex flex-wrap gap-2 mt-3">
             {#each tags as tag}
               <div class="inline-flex items-center gap-2 bg-muted/30 text-muted-foreground px-3 py-1.5 rounded-full text-sm font-medium shadow-sm border border-border">
-                <span class="truncate max-w-[12rem]">{tag}</span>
+                <span class="truncate max-w-48">{tag}</span>
                 <button
                   type="button"
                   onclick={() => handleRemoveTag(tag)}
