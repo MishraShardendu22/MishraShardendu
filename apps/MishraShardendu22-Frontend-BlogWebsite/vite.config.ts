@@ -69,11 +69,6 @@ export default defineConfig(() => {
             }
           },
         },
-        // Tree shake unused exports
-        treeshake: {
-          moduleSideEffects: false,
-          propertyReadSideEffects: false,
-        },
       },
     },
     // Optimize dependencies
@@ -85,7 +80,7 @@ export default defineConfig(() => {
     esbuild: {
       legalComments: 'none',
       treeShaking: true,
-      drop: ['console', 'debugger'],
+      drop: ['debugger'],
     },
   }
 })
