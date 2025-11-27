@@ -2,6 +2,7 @@
   import Button from "./ui/button.svelte";
   import Badge from "./ui/badge.svelte";
   import Avatar from "./ui/avatar.svelte";
+  import OptimizedImage from "./OptimizedImage.svelte";
   import { Calendar, MessageCircle, Send, Trash, Share2, Check, Edit, Info, ChevronDown, ChevronUp } from "lucide-svelte";
   import { marked } from "marked";
   import { blogApi, commentApi, type Blog, type Comment } from "../api";
@@ -364,10 +365,15 @@
 <article>
   {#if blog.image}
     <div class="group relative rounded-lg overflow-hidden border border-border mb-8 h-[250px]">
-      <img
+      <OptimizedImage
         src={resolveImageUrl(blog.image)}
         alt={blog.title}
-        class="w-full h-full object-cover transition-all duration-300 group-hover:blur-sm group-hover:scale-110"
+        class="w-full h-full transition-all duration-300 group-hover:blur-sm group-hover:scale-110"
+        objectFit="cover"
+        isLCP={true}
+        loading="eager"
+        fetchpriority="high"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
       />
       <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent"></div>
       <header class="absolute inset-0 flex items-center justify-center p-6">

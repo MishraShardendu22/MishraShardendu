@@ -2,6 +2,7 @@
   import Badge from "./ui/badge.svelte";
   import Avatar from "./ui/avatar.svelte";
   import Button from "./ui/button.svelte";
+  import OptimizedImage from "./OptimizedImage.svelte";
   import { MessageCircle, Calendar, ArrowRight, Clock } from "lucide-svelte";
   import { marked } from "marked";
   import DOMPurify from "dompurify";
@@ -15,11 +16,13 @@
     onReadMore,
     customActions,
     maxExcerptLength = 150,
+    isFirstCard = false,
   }: {
     blog: Blog;
     onReadMore?: (blogId: string) => void;
     customActions?: any;
     maxExcerptLength?: number;
+    isFirstCard?: boolean; // Mark first card for LCP optimization
   } = $props();
 
   const formatDate = (dateString: string) => {
@@ -66,24 +69,28 @@
 >
   {#if blog.image}
     <div class="absolute inset-0">
-      <img
+      <OptimizedImage
         src={resolveImageUrl(blog.image)}
         alt={blog.title}
-        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        class="w-full h-full"
+        objectFit="cover"
+        loading={isFirstCard ? "eager" : "lazy"}
+        isLCP={isFirstCard}
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
       />
       <div class="absolute inset-0 backdrop-blur-xl bg-black/60"></div>
     </div>
   {:else}
-    <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-background"></div>
+    <div class="absolute inset-0 bg-linear-to-br from-primary/10 to-background"></div>
   {/if}
 
-  <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  <div class="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
   
   <div class="relative z-10 p-4 lg:p-4 h-full flex flex-col">
     <div class="flex items-center gap-3 text-xs mb-4">
       <div class="flex items-center gap-2 min-w-0">
         <Avatar
-          class="w-7 h-7 flex-shrink-0 ring-2 ring-primary/10"
+          class="w-7 h-7 shrink-0 ring-2 ring-primary/10"
           src={resolveImageUrl(blog.author?.profileImage || blog.author?.image || blog.author?.avatar || blog.author?.profile?.avatar || undefined)}
           fallback={blog.author?.name ? getInitials(blog.author.name, blog.author.name) : blog.author?.email?.charAt(0).toUpperCase() || "U"}
         />

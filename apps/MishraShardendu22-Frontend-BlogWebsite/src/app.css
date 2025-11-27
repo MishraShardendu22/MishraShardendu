@@ -877,3 +877,80 @@ h6 {
     min-height: 40px;
   }
 }
+
+/* ========================================
+   Performance Optimizations
+   ======================================== */
+
+/* Use content-visibility for off-screen content to improve rendering */
+.blog-grid > * {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
+}
+
+/* Optimize images for rendering */
+img {
+  content-visibility: auto;
+}
+
+/* Reduce layout shifts by setting explicit dimensions */
+.blog-card-improved {
+  min-height: 380px;
+  contain: layout style;
+}
+
+/* Optimize prose content rendering */
+.prose {
+  contain: content;
+}
+
+/* Use will-change sparingly for known animations */
+.animate-slide-up {
+  will-change: transform, opacity;
+}
+
+/* Reduce paint areas for hover effects */
+.group:hover .group-hover\:scale-105,
+.group:hover .group-hover\:blur-sm {
+  will-change: transform, filter;
+}
+
+/* Optimize loading spinner */
+.animate-spin {
+  will-change: transform;
+}
+
+/* Reduce repaints on fixed elements */
+.fixed {
+  contain: layout style;
+}
+
+/* Font loading optimization */
+@font-face {
+  font-display: swap;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-pulse,
+  .animate-spin,
+  .animate-slide-up {
+    animation: none !important;
+  }
+}
+
+/* Optimize scrolling performance */
+.overflow-y-auto,
+.overflow-y-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}

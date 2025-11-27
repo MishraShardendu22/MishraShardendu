@@ -59,9 +59,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     
-    <!-- Preconnect for Performance -->
+    <!-- DNS Prefetch and Preconnect for Performance -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Preconnect to API server for faster data loading -->
+    <link rel="dns-prefetch" href="https://blog-backend.mishrashardendu22.is-a.dev" />
+    <link rel="preconnect" href="https://blog-backend.mishrashardendu22.is-a.dev" crossorigin />
+    
+    <!-- Preload critical resources -->
+    <link rel="modulepreload" href="/src/main.ts" />
+    
+    <!-- Resource hints for images -->
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
     
     <!-- Theme initialization script - prevents FOUC (Flash of Unstyled Content) -->
     <script>

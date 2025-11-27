@@ -1,12 +1,29 @@
 import { mount } from 'svelte'
 import './app.css'
 import App from './App.svelte'
-import { inject } from '@vercel/analytics'
-import { injectSpeedInsights } from '@vercel/speed-insights'
 
-// Initialize Vercel Analytics and Speed Insights
-inject()
-injectSpeedInsights()
+// Lazy load analytics to not block initial render
+const loadAnalytics = async () => {
+  try {
+    const [{ inject }, { injectSpeedInsights }] = await Promise.all([
+      import('@vercel/analytics'),
+      import('@vercel/speed-insights'),
+    ])
+    inject()
+    injectSpeedInsights()
+  } catch (e) {
+    console.warn('[Blog Main] Failed to load analytics:', e)
+  }
+}
+
+// Initialize analytics after page load
+if (typeof window !== 'undefined') {
+  if (document.readyState === 'complete') {
+    loadAnalytics()
+  } else {
+    window.addEventListener('load', loadAnalytics, { once: true })
+  }
+}
 
 function initTheme() {
   try {
