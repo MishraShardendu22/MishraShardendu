@@ -22,8 +22,32 @@ import {
   CodeforcesProfile,
   GitHubOrganistaion,
 } from '@/data/static_link'
-import { BLOG_URL, ADMIN_URL } from '@/constants/url'
+import { BLOG_URL, ADMIN_URL, BASE_URL } from '@/constants/url'
 import { LinkItem } from './types'
+
+export const websiteLinks: LinkItem[] = [
+  {
+    href: BASE_URL,
+    label: 'Portfolio',
+    shortLabel: 'Portfolio',
+    icon: <Globe className="h-3 lg:h-4 w-3 lg:w-4" />,
+    external: true,
+  },
+  {
+    href: BLOG_URL,
+    label: 'Tech Blog',
+    shortLabel: 'Blog',
+    icon: <Book className="h-3 lg:h-4 w-3 lg:w-4" />,
+    external: true,
+  },
+  {
+    href: ADMIN_URL,
+    label: 'Admin Portal',
+    shortLabel: 'Admin',
+    icon: <Settings className="h-3 lg:h-4 w-3 lg:w-4" />,
+    external: true,
+  },
+]
 
 export const quickLinks: LinkItem[] = [
   {
