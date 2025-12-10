@@ -190,8 +190,8 @@
   class="hidden lg:flex group fixed left-0 top-0 bottom-0 w-20 hover:w-72 border-r border-border bg-card/95 backdrop-blur-sm flex-col z-30 shadow-lg transition-all duration-300 ease-in-out"
   aria-label="Blog navigation"
 >
-  <div class="h-20 flex items-center justify-end px-4 border-b border-border bg-gradient-to-b from-background/50 to-transparent flex-shrink-0">
-    <div class="nav-label mr-3 text-right">
+  <div class="h-20 flex items-center justify-between px-4 border-b border-border bg-gradient-to-b from-background/50 to-transparent flex-shrink-0">
+    <div class="nav-label">
       <h1 class="font-bold text-lg whitespace-nowrap">Blog</h1>
       <p class="text-xs text-muted-foreground whitespace-nowrap">Shardendu Mishra</p>
     </div>
