@@ -3,7 +3,7 @@
   import Badge from "./ui/badge.svelte";
   import Avatar from "./ui/avatar.svelte";
   import OptimizedImage from "./OptimizedImage.svelte";
-  import { Calendar, MessageCircle, Send, Trash, Share2, Check, Edit, Info, ChevronDown, ChevronUp } from "lucide-svelte";
+  import { Calendar, MessageCircle, Send, Trash, Share2, Check, Edit, ChevronDown, ChevronUp } from "lucide-svelte";
   import { marked } from "marked";
   import { blogApi, commentApi, type Blog, type Comment } from "../api";
   import { authStore } from "../auth";
@@ -212,29 +212,6 @@
 {#if blog}
   <!-- Floating Info Button: bottom-left on mobile/tablet, top-right on lg+ -->
   <div class="fixed z-50">
-    <!-- Mobile / Tablet (bottom-left) -->
-    <div class="lg:hidden fixed left-4 bottom-4">
-      <Button 
-        variant="default" 
-        size="icon"
-        onclick={() => showInfoPanel = !showInfoPanel}
-        className="w-12 h-12 rounded-full shadow-lg"
-      >
-        <Info class="w-5 h-5" />
-      </Button>
-    </div>
-
-    <!-- Desktop / Large screens (top-right) -->
-    <div class="hidden lg:block fixed top-6 right-6">
-      <Button 
-        variant="default" 
-        size="icon"
-        onclick={() => showInfoPanel = !showInfoPanel}
-        className="w-12 h-12 rounded-full shadow-lg"
-      >
-        <Info class="w-5 h-5" />
-      </Button>
-    </div>
 
     {#if showInfoPanel}
       <!-- Info Panel Popover: adapt position based on screen size -->
