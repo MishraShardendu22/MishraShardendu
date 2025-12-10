@@ -117,11 +117,8 @@
 
 {#if isMobileMenuOpen}
   <div class="lg:hidden fixed inset-0 z-50 bg-background/60 backdrop-blur-sm" role="dialog" aria-modal="true">
-    <div class="absolute inset-y-0 right-0 w-72 bg-card/95 border-l border-border p-4 overflow-y-auto">
+    <div class="absolute inset-y-0 left-0 w-72 bg-card/95 border-r border-border p-4 overflow-y-auto">
       <div class="flex items-center justify-between mb-4">
-        <Button variant="ghost" size="sm" onclick={() => (isMobileMenuOpen = false)}>
-          <X class="h-4 w-4" />
-        </Button>
         <div class="flex items-center gap-3">
           <div class="p-2 rounded-md bg-primary/10">
             <BookOpen class="h-5 w-5 text-primary" />
@@ -131,6 +128,9 @@
             <div class="text-xs text-muted-foreground">Shardendu Mishra</div>
           </div>
         </div>
+        <Button variant="ghost" size="sm" onclick={() => (isMobileMenuOpen = false)}>
+          <X class="h-4 w-4" />
+        </Button>
       </div>
 
       <!-- Mobile Create button CTA -->
@@ -187,17 +187,17 @@
 {/if}
 
 <aside
-  class="hidden lg:flex group fixed right-0 top-0 bottom-0 w-20 hover:w-72 border-l border-border bg-card/95 backdrop-blur-sm flex-col z-30 shadow-lg transition-all duration-300 ease-in-out"
+  class="hidden lg:flex group fixed left-0 top-0 bottom-0 w-20 hover:w-72 border-r border-border bg-card/95 backdrop-blur-sm flex-col z-30 shadow-lg transition-all duration-300 ease-in-out"
   aria-label="Blog navigation"
 >
-  <div class="h-20 flex items-center px-4 border-b border-border bg-gradient-to-b from-background/50 to-transparent flex-shrink-0">
+  <div class="h-20 flex items-center justify-end px-4 border-b border-border bg-gradient-to-b from-background/50 to-transparent flex-shrink-0">
+    <div class="nav-label mr-3 text-right">
+      <h1 class="font-bold text-lg whitespace-nowrap">Blog</h1>
+      <p class="text-xs text-muted-foreground whitespace-nowrap">Shardendu Mishra</p>
+    </div>
     <div class="w-12 h-12 p-2.5 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 shadow-sm flex items-center justify-center flex-shrink-0">
       <BookOpen class="h-6 w-6 text-primary" />
     </div>
-      <div class="ml-3 nav-label">
-        <h1 class="font-bold text-lg whitespace-nowrap">Blog</h1>
-        <p class="text-xs text-muted-foreground whitespace-nowrap">Shardendu Mishra</p>
-      </div>
   </div>
 
   <nav class="flex-1 py-4 px-2 space-y-1 overflow-y-auto">
