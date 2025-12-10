@@ -65,7 +65,7 @@
 </script>
 
 <article
-  class="group relative rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer h-[280px]"
+  class="group relative rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer h-[280px] border-2 border-border/40 hover:border-primary/50"
   onclick={() => onReadMore?.(blog.id.toString())}
   role="button"
   tabindex="0"

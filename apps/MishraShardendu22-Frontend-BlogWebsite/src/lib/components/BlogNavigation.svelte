@@ -100,17 +100,17 @@
   };
 </script>
 
-<div class="lg:hidden fixed top-4 right-4 z-50 pointer-events-auto">
+<div class="lg:hidden fixed top-6 right-6 z-50 pointer-events-auto">
   <Button
     variant="outline"
     size="sm"
     onclick={() => (isMobileMenuOpen = !isMobileMenuOpen)}
-    className="bg-card/95 backdrop-blur-sm border-border shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 p-0.5"
+    className="bg-card/95 backdrop-blur-sm border-border shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 p-2"
   >
       {#if isMobileMenuOpen}
-        <X class="h-4 w-4" />
+        <X class="h-5 w-5" />
       {:else}
-        <Menu class="h-4 w-4" />
+        <Menu class="h-5 w-5" />
       {/if}
   </Button>
 </div>
