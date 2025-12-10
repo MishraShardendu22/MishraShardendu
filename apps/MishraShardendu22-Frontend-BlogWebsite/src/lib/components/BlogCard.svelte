@@ -65,95 +65,85 @@
 </script>
 
 <article
-  class="group relative flex flex-col rounded-xl border border-border bg-card text-card-foreground shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md hover:border-primary/50 h-full"
+  class="group relative rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer h-[280px]"
+  onclick={() => onReadMore?.(blog.id.toString())}
+  role="button"
+  tabindex="0"
+  onkeydown={(e) => e.key === 'Enter' && onReadMore?.(blog.id.toString())}
 >
-  <!-- Image Section -->
-  <div class="relative aspect-video w-full overflow-hidden bg-muted">
+  <!-- Background Image with Blur -->
+  <div class="absolute inset-0">
     {#if blog.image}
       <OptimizedImage
         src={resolveImageUrl(blog.image)}
         alt={blog.title}
-        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        class="w-full h-full object-cover scale-110 blur-sm"
         loading={isFirstCard ? "eager" : "lazy"}
         isLCP={isFirstCard}
-        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
       />
     {:else}
-      <div class="w-full h-full bg-linear-to-br from-primary/10 to-muted flex items-center justify-center">
-        <span class="text-4xl opacity-20">📝</span>
-      </div>
+      <div class="w-full h-full bg-gradient-to-br from-primary/40 via-primary/30 to-accent/20"></div>
     {/if}
-    
-    <!-- Overlay Badge for Reading Time -->
-    {#if readingTime > 0}
-      <div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md text-white text-xs px-2 py-1 rounded-md flex items-center gap-1">
-        <Clock class="w-3 h-3" />
-        <span>{readingTime} min</span>
-      </div>
-    {/if}
+    <!-- Dark overlay for better text contrast -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
   </div>
 
-  <!-- Content Section -->
-  <div class="flex flex-1 flex-col p-5">
+  <!-- Content Overlay -->
+  <div class="relative h-full flex flex-col justify-end p-4 z-10">
     <!-- Tags -->
     {#if blog.tags && blog.tags.length > 0}
-      <div class="flex flex-wrap gap-2 mb-3">
-        {#each blog.tags.slice(0, 3) as tag}
-          <Badge variant="secondary" class="text-xs font-medium px-2 py-0.5 bg-secondary/10 text-secondary-foreground hover:bg-secondary/20 border-transparent">
+      <div class="flex flex-wrap gap-1.5 mb-3">
+        {#each blog.tags.slice(0, 2) as tag}
+          <Badge variant="secondary" class="text-[10px] font-medium px-2 py-0.5 bg-white/20 backdrop-blur-md text-white border-white/30 hover:bg-white/30">
             {tag}
           </Badge>
         {/each}
-        {#if blog.tags.length > 3}
-          <span class="text-xs text-muted-foreground self-center">+{blog.tags.length - 3}</span>
+        {#if blog.tags.length > 2}
+          <Badge variant="secondary" class="text-[10px] font-medium px-2 py-0.5 bg-white/20 backdrop-blur-md text-white border-white/30">
+            +{blog.tags.length - 2}
+          </Badge>
         {/if}
       </div>
     {/if}
 
     <!-- Title -->
-    <h3 class="text-xl font-bold mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+    <h3 class="text-lg font-bold mb-2 line-clamp-2 text-white drop-shadow-lg group-hover:text-primary-foreground transition-colors">
       {blog.title}
     </h3>
 
     <!-- Excerpt -->
     {#if excerpt}
-      <p class="text-muted-foreground text-sm line-clamp-3 mb-4 flex-1 leading-relaxed">
+      <p class="text-white/90 text-xs line-clamp-2 mb-3 leading-relaxed drop-shadow-md">
         {excerpt}
       </p>
     {/if}
 
     <!-- Footer -->
-    <div class="mt-auto pt-4 border-t border-border flex items-center justify-between gap-4">
+    <div class="flex items-center justify-between gap-2 text-white/90">
       <div class="flex items-center gap-2 min-w-0">
         <Avatar
-          class="w-8 h-8 shrink-0 ring-2 ring-background"
+          class="w-6 h-6 shrink-0 ring-2 ring-white/30"
           src={resolveImageUrl(blog.author?.profileImage || blog.author?.image || blog.author?.avatar || blog.author?.profile?.avatar || undefined)}
           fallback={blog.author?.name ? getInitials(blog.author.name, blog.author.name) : blog.author?.email?.charAt(0).toUpperCase() || "U"}
         />
         <div class="flex flex-col min-w-0">
-          <span class="text-sm font-medium truncate">{blog.author?.name || "Unknown"}</span>
-          <span class="text-xs text-muted-foreground">{formatDate(blog.createdAt)}</span>
+          <span class="text-xs font-medium truncate drop-shadow-md">{blog.author?.name || "Unknown"}</span>
+          <span class="text-[10px] text-white/70 drop-shadow-md">{formatDate(blog.createdAt)}</span>
         </div>
       </div>
 
-      <div class="flex items-center gap-2">
-        <div class="flex items-center gap-1 text-xs text-muted-foreground mr-2" title="Comments">
-          <MessageCircle class="w-3.5 h-3.5" />
+      <div class="flex items-center gap-3 shrink-0">
+        {#if readingTime > 0}
+          <div class="flex items-center gap-1 text-[10px] bg-white/20 backdrop-blur-md px-2 py-1 rounded-full">
+            <Clock class="w-3 h-3" />
+            <span>{readingTime}m</span>
+          </div>
+        {/if}
+        <div class="flex items-center gap-1 text-[10px] bg-white/20 backdrop-blur-md px-2 py-1 rounded-full">
+          <MessageCircle class="w-3 h-3" />
           <span>{blog.comments ?? 0}</span>
         </div>
-
-        {#if customActions}
-          {@render customActions?.()}
-        {/if}
-        
-        <Button
-          variant="ghost"
-          size="sm"
-          onclick={() => onReadMore?.(blog.id.toString())}
-          className="shrink-0 hover:bg-primary/10 hover:text-primary group/btn"
-        >
-          Read
-          <ArrowRight class="w-4 h-4 ml-1 transition-transform group-hover/btn:translate-x-1" />
-        </Button>
       </div>
     </div>
   </div>

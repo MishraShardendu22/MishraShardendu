@@ -13,7 +13,7 @@
   let isOwner = $state(false);
   let blogs = $state<Blog[]>([]);
   let currentPage = $state(1);
-  const pageSize = 4;
+  const pageSize = 6;
   let isVisible = $state(false);
 
   const basePath = typeof window !== 'undefined' && window.location.pathname.startsWith('/blog') ? '/blog' : '';
