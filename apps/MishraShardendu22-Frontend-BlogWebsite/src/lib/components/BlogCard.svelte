@@ -65,7 +65,7 @@
 </script>
 
 <article
-  class="group relative rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer h-[280px] border-2 border-border/40 hover:border-primary/50"
+  class="group relative rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer h-[280px] border-2 border-primary/50"
   onclick={() => onReadMore?.(blog.id.toString())}
   role="button"
   tabindex="0"
@@ -108,7 +108,7 @@
     {/if}
 
     <!-- Title -->
-    <h3 class="text-lg font-bold mb-2 line-clamp-2 text-white drop-shadow-lg group-hover:text-primary-foreground transition-colors">
+    <h3 class="text-lg font-bold mb-2 line-clamp-2 text-white drop-shadow-lg transition-colors">
       {blog.title}
     </h3>
 
