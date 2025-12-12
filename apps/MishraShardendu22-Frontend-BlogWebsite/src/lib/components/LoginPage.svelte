@@ -8,6 +8,7 @@
   import { authStore } from "../auth";
   import { toast } from "../toast";
   import { validateEmail, validatePassword, validateName } from "../validation";
+  import { navigateTo } from "../navigation";
 
   let email = $state("");
   let password = $state("");
@@ -73,7 +74,7 @@
         if (result.success) {
           toast.success("Login successful!");
           setTimeout(() => {
-            window.location.href = "/blog/read";
+            navigateTo("/blog/read");
           }, 500);
         } else {
           toast.error(result.error || "Login failed");
@@ -97,7 +98,7 @@
   const handleOTPSuccess = () => {
     toast.success("Email verified successfully!");
     setTimeout(() => {
-      window.location.href = "/blog/read";
+      navigateTo("/blog/read");
     }, 500);
   };
 

@@ -7,6 +7,7 @@
   import Textarea from "./ui/textarea.svelte";
   import { Save, X, Plus } from "lucide-svelte";
   import { validateBlogTitle, validateBlogContent, validateTag } from "../validation";
+  import { navigateTo } from "../navigation";
 
   let { blogId }: { blogId?: string | null } = $props();
 
@@ -131,14 +132,14 @@
         const response = await blogApi.updateBlog(parseInt(blogId), payload);
         if (response.success) {
           toast.success("Blog post updated successfully!");
-          setTimeout(() => (window.location.href = `/blog/read/${blogId}`), 800);
+          setTimeout(() => navigateTo(`/blog/read/${blogId}`), 800);
         }
       } else {
         const response = await blogApi.createBlog(payload);
         if (response.success) {
           toast.success("Blog post created successfully!");
           setTimeout(() => {
-            window.location.href = "/blog/read";
+            navigateTo("/blog/read");
           }, 1000);
         }
       }
@@ -283,7 +284,7 @@
     </div>
 
     <div class="flex gap-3 justify-end">
-      <Button className="" type="button" variant="outline" onclick={() => (window.location.href = blogId ? `/blog/read/${blogId}` : "/blog/read")}>
+      <Button className="" type="button" variant="outline" onclick={() => navigateTo(blogId ? `/blog/read/${blogId}` : "/blog/read")}>
         Cancel
       </Button>
       <Button className="" type="submit" disabled={isSubmitting} onclick={() => {}}>

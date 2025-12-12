@@ -1,6 +1,6 @@
 <script lang="ts">
   import { cn } from "../utils";
-  import { getBasePath } from "../navigation";
+  import { getBasePath, navigateTo } from "../navigation";
   import Button from "./ui/button.svelte";
   import Avatar from "./ui/avatar.svelte";
   import { resolveImageUrl } from "../utils/image";
@@ -136,7 +136,7 @@
       <!-- Mobile Create button CTA -->
       {#if isOwner}
         <div class="mb-4">
-          <Button size="sm" className="w-full bg-gradient-to-r from-primary to-primary/90 text-primary-foreground" onclick={() => { isMobileMenuOpen = false; window.location.href = `${basePath}/create`; }}>
+          <Button size="sm" className="w-full bg-gradient-to-r from-primary to-primary/90 text-primary-foreground" onclick={() => { isMobileMenuOpen = false; navigateTo(`${basePath}/create`); }}>
             <Plus class="w-4 h-4 mr-2" />
             Create Post
           </Button>
@@ -158,7 +158,7 @@
       <div class="flex flex-col space-y-2">
         {#each visibleNavItems as item}
           {@const isActive = isRouteActive(item.href)}
-          <a href={item.href} onclick={() => (isMobileMenuOpen = false)} class={cn("flex items-center gap-3 p-3 rounded-md", isActive ? "bg-primary/10 text-primary" : "hover:bg-muted/40")}> 
+          <a href={item.href} onclick={(e) => { e.preventDefault(); isMobileMenuOpen = false; navigateTo(item.href); }} class={cn("flex items-center gap-3 p-3 rounded-md", isActive ? "bg-primary/10 text-primary" : "hover:bg-muted/40")}> 
             {#if item.icon}
               {@const Icon = item.icon}
               <Icon class={cn("h-5 w-5", isActive ? "text-primary" : "text-muted-foreground")} />
@@ -177,7 +177,7 @@
             Sign Out
           </Button>
         {:else}
-          <Button size="sm" className="w-full" onclick={() => window.location.href = `${basePath}/login`}>
+          <Button size="sm" className="w-full" onclick={() => navigateTo(`${basePath}/login`)}>
             Sign In
           </Button>
         {/if}
@@ -206,6 +206,7 @@
       <a 
         href={item.href} 
         title={item.name}
+        onclick={(e) => { e.preventDefault(); navigateTo(item.href); }}
         class={cn(
           "flex items-center h-14 rounded-xl transition-all duration-300 relative",
           isActive 
@@ -300,7 +301,7 @@
         <div class="flex items-center h-12">
           <div class="w-14 h-12 flex items-center justify-center flex-shrink-0">
             <button
-              onclick={() => window.location.href = `${basePath}/login`}
+              onclick={() => navigateTo(`${basePath}/login`)}
               class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 transition-colors"
               title="Sign In"
             >
@@ -311,7 +312,7 @@
             <Button 
               size="default" 
               className="w-full bg-gradient-to-r from-primary to-primary/90" 
-              onclick={() => window.location.href = `${basePath}/login`}
+              onclick={() => navigateTo(`${basePath}/login`)}
             >
               Sign In
             </Button>

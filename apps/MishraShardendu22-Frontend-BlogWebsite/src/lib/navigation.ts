@@ -9,9 +9,16 @@ export function getBasePath(): string {
 
 /**
  * Navigate to a path with proper base path handling
+ * Uses pushState to update URL without full page reload
  */
 export function navigateTo(path: string): void {
   const basePath = getBasePath()
   const targetPath = path.startsWith('/') ? path : `/${path}`
-  window.location.href = `${basePath}${targetPath}`
+  const fullPath = `${basePath}${targetPath}`
+
+  // Update URL without reload
+  window.history.pushState(null, '', fullPath)
+
+  // Dispatch popstate event to trigger route change in App.svelte
+  window.dispatchEvent(new PopStateEvent('popstate'))
 }

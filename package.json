@@ -45,8 +45,8 @@
   },
   "devDependencies": {
     "husky": "^9.1.7",
-    "prettier": "^3.6.2",
-    "turbo": "^2.6.1"
+    "prettier": "^3.7.4",
+    "turbo": "^2.6.3"
   },
   "engines": {
     "node": ">=24.0.0",

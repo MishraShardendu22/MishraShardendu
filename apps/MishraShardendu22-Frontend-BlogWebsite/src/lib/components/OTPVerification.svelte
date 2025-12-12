@@ -8,6 +8,7 @@
   import { toast } from "../toast";
   import { validateOTP } from "../validation";
   import { authApi } from "../api";
+  import { navigateTo } from "../navigation";
 
   interface Props {
     email: string;
@@ -70,7 +71,7 @@
           onSuccess();
         } else {
           setTimeout(() => {
-            window.location.href = "/blog/read";
+            navigateTo("/blog/read");
           }, 1000);
         }
       } else {
