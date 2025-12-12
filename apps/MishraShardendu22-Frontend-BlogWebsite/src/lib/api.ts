@@ -44,11 +44,10 @@ export interface ApiResponse<T = any> {
   error?: string
 }
 
-export interface AuthResponse
-  extends ApiResponse<{
-    token: string
-    user: User
-  }> {
+export interface AuthResponse extends ApiResponse<{
+  token: string
+  user: User
+}> {
   requiresVerification?: boolean
 }
 
