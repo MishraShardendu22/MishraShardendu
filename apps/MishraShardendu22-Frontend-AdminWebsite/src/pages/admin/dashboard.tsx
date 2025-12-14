@@ -32,12 +32,11 @@ export default function DashboardPage() {
           certificationsAPI.getAllCertifications(),
         ])
 
-        // Backend returns { data: { projects: [...], page: 1, ... } }
-        const projectsData = projectsRes.data?.projects || projectsRes.data || []
-        const experiencesData = experiencesRes.data?.experiences || experiencesRes.data || []
-        const skillsData = skillsRes.data?.skills || skillsRes.data || []
-        const certificationsData =
-          certificationsRes.data?.certifications || certificationsRes.data || []
+        // Backend returns data as arrays directly
+        const projectsData = projectsRes.data || []
+        const experiencesData = experiencesRes.data || []
+        const skillsData = skillsRes.data || []
+        const certificationsData = certificationsRes.data || []
 
         const projectsArray = Array.isArray(projectsData) ? projectsData : []
         const experiencesArray = Array.isArray(experiencesData) ? experiencesData : []
