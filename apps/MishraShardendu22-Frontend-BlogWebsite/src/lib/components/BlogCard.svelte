@@ -64,12 +64,10 @@
   );
 </script>
 
-<article
-  class="group relative rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer h-[280px] border-2 border-primary/50"
+<button
+  type="button"
+  class="group relative rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer h-[280px] border-2 border-primary/50 w-full text-left"
   onclick={() => onReadMore?.(blog.id.toString())}
-  role="button"
-  tabindex="0"
-  onkeydown={(e) => e.key === 'Enter' && onReadMore?.(blog.id.toString())}
 >
   <!-- Background Image with Blur -->
   <div class="absolute inset-0">
@@ -147,4 +145,4 @@
       </div>
     </div>
   </div>
-</article>
+</button>

@@ -32,24 +32,6 @@ export default defineConfig(({ mode }) => {
               '@radix-ui/react-tooltip',
               'lucide-react',
             ],
-            // TipTap editor chunk - Rich text editor
-            'vendor-editor': [
-              '@tiptap/react',
-              '@tiptap/starter-kit',
-              '@tiptap/extension-character-count',
-              '@tiptap/extension-code',
-              '@tiptap/extension-code-block-lowlight',
-              '@tiptap/extension-hard-break',
-              '@tiptap/extension-horizontal-rule',
-              '@tiptap/extension-image',
-              '@tiptap/extension-link',
-              '@tiptap/extension-placeholder',
-              '@tiptap/extension-strike',
-              '@tiptap/extension-text-style',
-              '@tiptap/extension-underline',
-              'tiptap-markdown',
-              'lowlight',
-            ],
             // Form and validation chunk
             'vendor-forms': ['react-hook-form', '@hookform/resolvers', 'zod'],
             // DnD and utilities chunk
