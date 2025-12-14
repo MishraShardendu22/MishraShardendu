@@ -28,7 +28,8 @@
         "useKeyWithClickEvents": "off",
         "useButtonType": "off",
         "useSemanticElements": "off",
-        "noSvgWithoutTitle": "off"
+        "noSvgWithoutTitle": "off",
+        "noLabelWithoutControl": "off"
       },
       "complexity": {
         "noForEach": "off",
@@ -42,7 +43,8 @@
       "suspicious": {
         "noExplicitAny": "warn",
         "noArrayIndexKey": "off",
-        "useIterableCallbackReturn": "off"
+        "useIterableCallbackReturn": "off",
+        "noImplicitAnyLet": "off"
       }
     }
   },
