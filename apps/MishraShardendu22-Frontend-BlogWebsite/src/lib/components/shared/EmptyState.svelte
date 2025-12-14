@@ -61,18 +61,24 @@
 </script>
 
 <div
-  class="flex flex-col items-center justify-center text-center border rounded-lg bg-muted/20 {config.container} {className}"
+  class="flex flex-col items-center justify-center text-center border border-dashed border-border/60 rounded-xl bg-linear-to-b from-muted/30 via-muted/10 to-transparent backdrop-blur-sm {config.container} {className}"
 >
-  <div class="rounded-lg bg-muted flex items-center justify-center mb-4 {config.icon}">
-    <Icon class="text-muted-foreground {config.iconInner}" />
+  <!-- Icon with subtle gradient background -->
+  <div
+    class="rounded-xl bg-linear-to-br from-muted/80 to-muted/40 flex items-center justify-center mb-5 shadow-sm ring-1 ring-border/50 {config.icon}"
+  >
+    <Icon class="text-muted-foreground/70 {config.iconInner}" />
   </div>
-  <h3 class="font-medium text-foreground mb-1 {config.title}">{title}</h3>
+
+  <h3 class="font-semibold text-foreground mb-2 tracking-tight {config.title}">{title}</h3>
   {#if description}
-    <p class="text-muted-foreground max-w-sm {config.description}">{description}</p>
+    <p class="text-muted-foreground max-w-sm leading-relaxed {config.description}">
+      {description}
+    </p>
   {/if}
   {#if actionLabel && onAction}
-    <Button onclick={onAction} className="mt-4">
-      <Plus class="w-4 h-4 mr-2" />
+    <Button onclick={onAction} className="mt-5 gap-2 shadow-md hover:shadow-lg transition-shadow">
+      <Plus class="w-4 h-4" />
       {actionLabel}
     </Button>
   {/if}

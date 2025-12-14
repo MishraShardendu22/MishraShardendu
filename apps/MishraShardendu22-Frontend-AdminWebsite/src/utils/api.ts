@@ -1,5 +1,5 @@
-import axios from 'axios'
 import type { AxiosError, AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios'
+import axios from 'axios'
 
 declare module 'axios' {
   interface InternalAxiosRequestConfig {
@@ -10,7 +10,7 @@ declare module 'axios' {
 }
 
 // Use proxy in development (empty string) or fallback to production URL
-const baseURL = import.meta.env.VITE_BACKEND_1 ? import.meta.env.VITE_BACKEND_1 + '/api' : '/api'
+const baseURL = import.meta.env.VITE_BACKEND_1 ? `${import.meta.env.VITE_BACKEND_1}/api` : '/api'
 
 const api = axios.create({
   baseURL,
@@ -39,8 +39,7 @@ const retryRequest = async (config: AxiosRequestConfig, retryCount = 0): Promise
         (axiosError.response?.status && axiosError.response.status >= 500))
 
     if (shouldRetry) {
-      const delay = RETRY_DELAY * Math.pow(2, retryCount)
-      console.warn(`Request failed, retrying in ${delay}ms... (${retryCount + 1}/${MAX_RETRIES})`)
+      const delay = RETRY_DELAY * 2 ** retryCount
 
       await new Promise((resolve) => setTimeout(resolve, delay))
       return retryRequest(config, retryCount + 1)
@@ -68,10 +67,6 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
   (response) => {
-    const requestTime = Date.now() - (response.config.metadata?.startTime || 0)
-    if (requestTime > 10000) {
-      console.warn(`Slow request detected: ${response.config.url} took ${requestTime}ms`)
-    }
     return response
   },
   async (error: AxiosError) => {
@@ -86,23 +81,6 @@ api.interceptors.response.use(
         }
       }
     }
-
-    const requestTime = Date.now() - (error.config?.metadata?.startTime || 0)
-    console.error('API Error:', {
-      url: error.config?.url,
-      method: error.config?.method,
-      status: error.response?.status,
-      statusText: error.response?.statusText,
-      code: error.code,
-      message: error.message,
-      requestTime: `${requestTime}ms`,
-      retryable:
-        error.code === 'ECONNABORTED' ||
-        error.code === 'ECONNRESET' ||
-        error.code === 'ENOTFOUND' ||
-        error.code === 'ERR_NETWORK' ||
-        (error.response?.status && error.response.status >= 500),
-    })
 
     return Promise.reject(error)
   }

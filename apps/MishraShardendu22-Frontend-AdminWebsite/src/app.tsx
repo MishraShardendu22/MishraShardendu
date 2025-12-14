@@ -1,20 +1,24 @@
 import { useEffect } from 'preact/hooks'
+import { Route, Router } from 'preact-router'
+import AdminLayout from './components/layout/AdminLayout'
 import { useAuth } from './hooks/use-auth'
-import { Router, Route } from 'preact-router'
-import { updateSEO, pageSEO } from './utils/seo.util'
-
+import BlogReorderPage from './pages/admin/blogReorder'
+import CertificationsPage from './pages/admin/certifications'
+import DashboardPage from './pages/admin/dashboard'
+import EditCertificationPage from './pages/admin/edit-certification'
+import EditExperiencePage from './pages/admin/edit-experience'
+// Edit pages
+import EditProjectPage from './pages/admin/edit-project'
+import EditVolunteerPage from './pages/admin/edit-volunteer'
+import ExperiencesPage from './pages/admin/experiences'
+import KanbanPage from './pages/admin/kanban'
 // Import pages (these will be created)
 import LoginPage from './pages/admin/login'
-import SkillsPage from './pages/admin/skills'
-import KanbanPage from './pages/admin/kanban'
 import ProfilePage from './pages/admin/profile'
 import ProjectsPage from './pages/admin/projects'
-import DashboardPage from './pages/admin/dashboard'
-import ExperiencesPage from './pages/admin/experiences'
-import BlogReorderPage from './pages/admin/blogReorder'
+import SkillsPage from './pages/admin/skills'
 import VolunteerPage from './pages/admin/volunteer'
-import AdminLayout from './components/layout/AdminLayout'
-import CertificationsPage from './pages/admin/certifications'
+import { pageSEO, updateSEO } from './utils/seo.util'
 
 function App() {
   const { isAuthenticated, isLoading, initializeAuth } = useAuth()
@@ -135,6 +139,71 @@ function App() {
         component={() => (
           <AdminLayout>
             <BlogReorderPage />
+          </AdminLayout>
+        )}
+      />
+      {/* Edit Pages */}
+      <Route
+        path="/admin/projects/new"
+        component={() => (
+          <AdminLayout>
+            <EditProjectPage />
+          </AdminLayout>
+        )}
+      />
+      <Route
+        path="/admin/projects/edit/:id"
+        component={({ id }: { id?: string }) => (
+          <AdminLayout>
+            <EditProjectPage id={id} />
+          </AdminLayout>
+        )}
+      />
+      <Route
+        path="/admin/certifications/new"
+        component={() => (
+          <AdminLayout>
+            <EditCertificationPage />
+          </AdminLayout>
+        )}
+      />
+      <Route
+        path="/admin/certifications/edit/:id"
+        component={({ id }: { id?: string }) => (
+          <AdminLayout>
+            <EditCertificationPage id={id} />
+          </AdminLayout>
+        )}
+      />
+      <Route
+        path="/admin/experiences/new"
+        component={() => (
+          <AdminLayout>
+            <EditExperiencePage />
+          </AdminLayout>
+        )}
+      />
+      <Route
+        path="/admin/experiences/edit/:id"
+        component={({ id }: { id?: string }) => (
+          <AdminLayout>
+            <EditExperiencePage id={id} />
+          </AdminLayout>
+        )}
+      />
+      <Route
+        path="/admin/volunteer/new"
+        component={() => (
+          <AdminLayout>
+            <EditVolunteerPage />
+          </AdminLayout>
+        )}
+      />
+      <Route
+        path="/admin/volunteer/edit/:id"
+        component={({ id }: { id?: string }) => (
+          <AdminLayout>
+            <EditVolunteerPage id={id} />
           </AdminLayout>
         )}
       />

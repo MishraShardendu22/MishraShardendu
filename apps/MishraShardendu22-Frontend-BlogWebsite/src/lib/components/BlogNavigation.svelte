@@ -136,7 +136,7 @@
       <!-- Mobile Create button CTA -->
       {#if isOwner}
         <div class="mb-4">
-          <Button size="sm" className="w-full bg-gradient-to-r from-primary to-primary/90 text-primary-foreground" onclick={() => { isMobileMenuOpen = false; navigateTo(`${basePath}/create`); }}>
+          <Button size="sm" className="w-full bg-linear-to-r from-primary to-primary/90 text-primary-foreground" onclick={() => { isMobileMenuOpen = false; navigateTo(`${basePath}/create`); }}>
             <Plus class="w-4 h-4 mr-2" />
             Create Post
           </Button>
@@ -195,7 +195,7 @@
       <h1 class="font-bold text-lg whitespace-nowrap">Blog</h1>
       <p class="text-xs text-muted-foreground whitespace-nowrap">Shardendu Mishra</p>
     </div>
-    <div class="w-12 h-12 p-2.5 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 shadow-sm flex items-center justify-center flex-shrink-0">
+    <div class="w-12 h-12 p-2.5 rounded-xl bg-linear-to-br from-primary/20 to-primary/10 shadow-sm flex items-center justify-center flex-shrink-0">
       <BookOpen class="h-6 w-6 text-primary" />
     </div>
   </div>
@@ -210,8 +210,8 @@
         class={cn(
           "flex items-center h-14 rounded-xl transition-all duration-300 relative",
           isActive 
-            ? "bg-gradient-to-r from-primary to-primary/90 text-primary-foreground shadow-lg shadow-primary/25" 
-            : "hover:bg-gradient-to-r hover:from-accent/10 hover:to-accent/5 hover:shadow-md"
+            ? "bg-linear-to-r from-primary to-primary/90 text-primary-foreground shadow-lg shadow-primary/25" 
+            : "hover:bg-linear-to-r hover:from-accent/10 hover:to-accent/5 hover:shadow-md"
         )}
       >
         <div class="w-16 h-14 flex items-center justify-center flex-shrink-0">
@@ -311,7 +311,7 @@
           <div class="nav-label flex-1 ml-2">
             <Button 
               size="default" 
-              className="w-full bg-gradient-to-r from-primary to-primary/90" 
+              className="w-full bg-linear-to-r from-primary to-primary/90" 
               onclick={() => navigateTo(`${basePath}/login`)}
             >
               Sign In

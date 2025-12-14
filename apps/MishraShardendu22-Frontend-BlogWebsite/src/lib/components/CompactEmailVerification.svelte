@@ -138,7 +138,7 @@
           size="sm"
           onclick={handleVerifyOTP}
           disabled={isSubmitting || otp.length !== 6}
-          className="h-10 px-3 flex-shrink-0 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold shadow-md disabled:opacity-50"
+          className="h-10 px-3 flex-shrink-0 bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold shadow-md disabled:opacity-50"
           title="Verify"
           type="button"
         >

@@ -83,7 +83,7 @@
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
       />
     {:else}
-      <div class="w-full h-full bg-gradient-to-br from-primary/40 via-primary/30 to-accent/20"></div>
+      <div class="w-full h-full bg-linear-to-br from-primary/40 via-primary/30 to-accent/20"></div>
     {/if}
     <!-- Dark overlay for better text contrast -->
     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>

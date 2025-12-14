@@ -1,10 +1,9 @@
-import { forwardRef } from 'preact/compat'
-import { createContext } from 'preact'
-import { useContext } from 'preact/hooks'
 import { X } from 'lucide-react'
-import { cn } from '../../lib/utils'
 import type { JSX } from 'preact'
-import { useEffect } from 'preact/hooks'
+import { createContext } from 'preact'
+import { forwardRef } from 'preact/compat'
+import { useContext, useEffect } from 'preact/hooks'
+import { cn } from '../../lib/utils'
 
 interface DialogProps {
   open?: boolean
@@ -76,7 +75,7 @@ interface DialogContentProps extends JSX.HTMLAttributes<HTMLDivElement> {
 const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
   ({ className, children, onClose, ...props }, ref) => {
     const ctx = useContext(DialogContext)
-    const handleClose = onClose ?? (() => ctx?.onOpenChange && ctx.onOpenChange(false))
+    const handleClose = onClose ?? (() => ctx?.onOpenChange?.(false))
 
     return (
       <>
@@ -84,7 +83,7 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
         <div
           ref={ref}
           className={cn(
-            'fixed left-[50%] top-[50%] z-50 grid w-full max-w-full sm:max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-4 sm:p-6 shadow-lg duration-200 sm:rounded-lg',
+            'fixed left-[50%] top-[50%] z-50 grid w-full max-w-[95vw] sm:max-w-md translate-x-[-50%] translate-y-[-50%] gap-3 border bg-background p-4 shadow-lg duration-200 rounded-lg max-h-[85vh] overflow-y-auto',
             className
           )}
           {...props}
@@ -92,7 +91,7 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
           {children}
           <button
             onClick={handleClose}
-            className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+            className="absolute right-3 top-3 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
           >
             <X className="h-4 w-4" />
             <span className="sr-only">Close</span>

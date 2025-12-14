@@ -1,41 +1,41 @@
-import { useEffect, useState } from 'preact/hooks'
 import {
+  closestCenter,
+  DndContext,
+  type DragEndEvent,
+  DragOverlay,
+  type DragStartEvent,
+  KeyboardSensor,
+  PointerSensor,
   useSensor,
   useSensors,
-  DndContext,
-  DragOverlay,
-  PointerSensor,
-  closestCenter,
-  KeyboardSensor,
-  type DragEndEvent,
-  type DragStartEvent,
 } from '@dnd-kit/core'
 import {
   arrayMove,
-  useSortable,
-  SortableContext,
   rectSortingStrategy,
+  SortableContext,
   sortableKeyboardCoordinates,
+  useSortable,
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
+import {
+  CheckCircle2,
+  FolderKanban,
+  GripVertical,
+  Loader2,
+  Package,
+  Save,
+  TrendingDown,
+  TrendingUp,
+} from 'lucide-react'
+import { useEffect, useState } from 'preact/hooks'
+import toast from 'react-hot-toast'
+import { ErrorState, Loading } from '../../components/shared'
 import { Badge } from '../../components/ui/badge'
 import { Button } from '../../components/ui/button'
-import { Loading, ErrorState } from '../../components/shared'
-import type { ProjectDetail, ProjectDetailKanban } from '../../types/types.data'
-import { projectsAPI } from '../../utils/apiResponse.util'
 import { Card, CardHeader, CardTitle } from '../../components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs'
-import {
-  Save,
-  Package,
-  Loader2,
-  TrendingUp,
-  GripVertical,
-  CheckCircle2,
-  TrendingDown,
-  FolderKanban,
-} from 'lucide-react'
-import toast from 'react-hot-toast'
+import type { ProjectDetail, ProjectDetailKanban } from '../../types/types.data'
+import { projectsAPI } from '../../utils/apiResponse.util'
 
 interface SortableCardProps {
   project: ProjectDetail
@@ -157,8 +157,7 @@ export default function KanbanPage() {
       setOriginalOrder(newOrderMap)
       setChangedItems([])
       toast.success('Order saved successfully!')
-    } catch (err) {
-      console.error('Error updating order:', err)
+    } catch {
       toast.error('Failed to save changes. Please try again.')
     } finally {
       setSaving(false)

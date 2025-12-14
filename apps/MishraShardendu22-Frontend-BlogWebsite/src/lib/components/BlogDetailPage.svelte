@@ -1,19 +1,19 @@
 <script lang="ts">
-  import Button from "./ui/button.svelte";
-  import Badge from "./ui/badge.svelte";
-  import Avatar from "./ui/avatar.svelte";
-  import OptimizedImage from "./OptimizedImage.svelte";
-  import { Loading, ErrorState, Skeleton } from "./shared";
-  import { Calendar, MessageCircle, Send, Trash, Share2, Check, Edit, ChevronDown, ChevronUp } from "lucide-svelte";
   import { marked } from "marked";
-  import { blogApi, commentApi, type Blog, type Comment } from "../api";
-  import { authStore } from "../auth";
   import { toast } from "../toast";
-  import { confirm } from "../confirm";
-  import { validateCommentContent } from "../validation";
-  import { updateSEO, generateBlogPostStructuredData, insertStructuredData, truncateDescription } from "../seo";
-  import { getBasePath } from "../navigation";
   import { onMount } from "svelte";
+  import { authStore } from "../auth";
+  import { confirm } from "../confirm";
+  import Badge from "./ui/badge.svelte";
+  import Button from "./ui/button.svelte";
+  import Avatar from "./ui/avatar.svelte";
+  import { getBasePath } from "../navigation";
+  import { Loading, ErrorState } from "./shared";
+  import OptimizedImage from "./OptimizedImage.svelte";
+  import { validateCommentContent } from "../validation";
+  import { blogApi, commentApi, type Blog, type Comment } from "../api";
+  import { updateSEO, generateBlogPostStructuredData, insertStructuredData, truncateDescription } from "../seo";
+  import { Calendar, MessageCircle, Send, Trash, Share2, Check, Edit, ChevronDown, ChevronUp } from "lucide-svelte";
 
   const basePath = getBasePath();
   import { resolveImageUrl } from "../utils/image";
@@ -340,7 +340,7 @@
 
 <article>
   {#if blog.image}
-    <div class="group relative rounded-lg overflow-hidden border border-border mb-8 h-[250px]">
+    <div class="group relative rounded-lg overflow-hidden border border-border mb-8 h-62.5">
       <OptimizedImage
         src={resolveImageUrl(blog.image)}
         alt={blog.title}

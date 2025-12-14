@@ -1,33 +1,33 @@
-import { useEffect, useState } from 'preact/hooks'
 import {
+  closestCenter,
+  DndContext,
+  type DragEndEvent,
+  DragOverlay,
+  type DragStartEvent,
+  KeyboardSensor,
+  PointerSensor,
   useSensor,
   useSensors,
-  DndContext,
-  DragOverlay,
-  PointerSensor,
-  closestCenter,
-  KeyboardSensor,
-  type DragEndEvent,
-  type DragStartEvent,
 } from '@dnd-kit/core'
 import {
   arrayMove,
-  useSortable,
-  SortableContext,
   rectSortingStrategy,
+  SortableContext,
   sortableKeyboardCoordinates,
+  useSortable,
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
+import { CheckCircle2, GripVertical, Loader2, Save, TrendingDown, TrendingUp } from 'lucide-react'
+import { useEffect, useState } from 'preact/hooks'
+import toast from 'react-hot-toast'
+import { ErrorState, Loading } from '../../components/shared'
 import { Badge } from '../../components/ui/badge'
 import { Button } from '../../components/ui/button'
 import { Card, CardHeader, CardTitle } from '../../components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs'
-import { Save, Loader2, GripVertical, CheckCircle2, TrendingDown, TrendingUp } from 'lucide-react'
-import toast from 'react-hot-toast'
 import { useAuth } from '../../hooks/use-auth'
-import { blogsAPI } from '../../utils/apiResponse.util'
-import { Loading, ErrorState } from '../../components/shared'
 import type { BlogReorderUpdate } from '../../types/types.data'
+import { blogsAPI } from '../../utils/apiResponse.util'
 
 interface BlogItem {
   uid: string
@@ -143,8 +143,7 @@ export default function BlogReorderPage() {
         blogItems.forEach((item) => orderMap.set(item.uid, item.order))
         setOriginalOrder(orderMap)
         setError('')
-      } catch (err) {
-        console.error('Failed to load blogs:', err)
+      } catch {
         setError('Failed to load blogs. Please try again later.')
       } finally {
         setLoading(false)
@@ -171,8 +170,7 @@ export default function BlogReorderPage() {
       setOriginalOrder(newOrderMap)
       setChangedItems([])
       toast.success('Blogs reordered successfully')
-    } catch (err) {
-      console.error('Error saving blog order:', err)
+    } catch {
       toast.error('Failed to save changes. Please try again.')
     } finally {
       setSaving(false)

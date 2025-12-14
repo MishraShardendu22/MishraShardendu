@@ -1,8 +1,9 @@
+import { ChevronLeft, ChevronRight, Loader2, Plus } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
-import { Button } from '../../components/ui/button'
+import toast from 'react-hot-toast'
+import { ErrorState, Loading } from '../../components/shared'
 import { Alert, AlertDescription } from '../../components/ui/alert'
-import { Input } from '../../components/ui/input'
-import { Label } from '../../components/ui/label'
+import { Button } from '../../components/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -11,28 +12,44 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '../../components/ui/dialog'
+import { Input } from '../../components/ui/input'
+import { Label } from '../../components/ui/label'
 import { skillsAPI } from '../../utils/apiResponse.util'
-import { Loading, ErrorState } from '../../components/shared'
-import { Plus, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
-import toast from 'react-hot-toast'
 
 export default function SkillsPage() {
   const [skills, setSkills] = useState<string[]>([])
+  const [totalSkills, setTotalSkills] = useState(0)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
   const [newSkills, setNewSkills] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [currentPage, setCurrentPage] = useState(0)
-  const itemsPerPage = 21
+  const itemsPerPage = 50 // 6 rows x 7 columns
   const totalPages = Math.ceil(skills.length / itemsPerPage)
 
-  const fetchSkills = async () => {
+  const fetchAllSkills = async () => {
     try {
-      const response = await skillsAPI.getSkills()
-      // Backend returns { data: [...], message: "...", status: 200 }
-      const skillsData = response.data || []
-      setSkills(Array.isArray(skillsData) ? skillsData : [])
+      let allSkills: string[] = []
+      let page = 1
+      let hasMore = true
+      const limit = 100 // Fetch 100 at a time
+
+      while (hasMore) {
+        const response = await skillsAPI.getSkills(page, limit)
+
+        const skillsData = response.data?.skills || []
+        allSkills = [...allSkills, ...skillsData]
+
+        hasMore = response.data?.has_next || false
+        page++
+
+        // Safety limit
+        if (page > 50) break
+      }
+
+      setSkills(allSkills)
+      setTotalSkills(allSkills.length)
       setError('')
     } catch {
       setError('Failed to fetch skills')
@@ -43,7 +60,7 @@ export default function SkillsPage() {
   }
 
   useEffect(() => {
-    fetchSkills()
+    fetchAllSkills()
   }, [])
 
   const handleAddSkills = async (e: Event) => {
@@ -60,13 +77,12 @@ export default function SkillsPage() {
         .map((s) => s.trim())
         .filter((s) => s.length > 0)
 
-      const response = await skillsAPI.addSkills({ skills: skillsArray })
+      await skillsAPI.addSkills({ skills: skillsArray })
       toast.success('Skills added successfully')
       setIsAddDialogOpen(false)
       setNewSkills('')
-      // Update skills from response - backend returns { data: [...] }
-      const updatedSkills = response.data || []
-      setSkills(Array.isArray(updatedSkills) ? updatedSkills : [])
+      // Refetch all skills
+      await fetchAllSkills()
     } catch {
       toast.error('Failed to add skills')
     } finally {
@@ -84,15 +100,16 @@ export default function SkillsPage() {
   }
 
   if (error && !skills.length) {
-    return <ErrorState title="Failed to Load Skills" message={error} onRetry={fetchSkills} />
+    return <ErrorState title="Failed to Load Skills" message={error} onRetry={fetchAllSkills} />
   }
 
   return (
     <div class="space-y-8 p-6">
       <header class="text-center space-y-6">
-        <h1 class="text-2xl md:text-3xl font-heading font-extrabold bg-gradient-to-r from-blue-500 via-teal-500 to-green-500 bg-clip-text text-transparent leading-tight">
+        <h1 class="text-2xl md:text-3xl font-heading font-extrabold bg-linear-to-r from-blue-500 via-teal-500 to-green-500 bg-clip-text text-transparent leading-tight">
           Skills - Manage your technical skills and competencies
         </h1>
+        <p class="text-sm text-muted-foreground">Total Skills: {skills.length}</p>
         <Alert>
           <AlertDescription class="text-sm text-muted-foreground text-center">
             💡 Skills are automatically extracted from your projects. Add skills here to include
@@ -158,7 +175,7 @@ export default function SkillsPage() {
           </p>
           <Button
             onClick={() => setIsAddDialogOpen(true)}
-            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-teal-500 to-green-500 text-white shadow-lg hover:from-teal-600 hover:to-green-600 font-semibold"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-linear-to-r from-teal-500 to-green-500 text-white shadow-lg hover:from-teal-600 hover:to-green-600 font-semibold"
           >
             <Plus class="w-5 h-5" />
             Add Skill
@@ -166,60 +183,42 @@ export default function SkillsPage() {
         </div>
       ) : (
         <>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4">
+          <div class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 2xl:grid-cols-10 gap-2 min-h-80">
             {paginatedSkills.map((skill) => (
               <div
                 key={skill}
-                class="group relative bg-gradient-to-br from-teal-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 p-4 rounded-xl border border-teal-200 dark:border-teal-800 hover:shadow-xl hover:scale-105 transition-all duration-300"
+                class="group relative bg-secondary/10 hover:bg-secondary/20 p-2 rounded border border-border hover:border-secondary/50 transition-all duration-150 h-12.5 flex items-center justify-center"
               >
-                <p class="text-center font-semibold text-gray-800 dark:text-gray-200">{skill}</p>
+                <p class="text-center font-medium text-xs text-foreground line-clamp-2">{skill}</p>
               </div>
             ))}
           </div>
 
           {totalPages > 1 && (
-            <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
-              <div class="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-center">
-                <Button
-                  onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
-                  variant="outline"
-                  disabled={currentPage === 0}
-                  class="flex items-center gap-1 flex-1 sm:flex-initial"
-                >
-                  <ChevronLeft class="w-5 h-5" />
-                  Prev
-                </Button>
+            <div class="flex justify-center items-center gap-4 mt-4 py-3 bg-background/90 backdrop-blur-sm rounded-lg border">
+              <Button
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
+                variant="outline"
+                disabled={currentPage === 0}
+                class="flex items-center gap-1 h-8 text-sm"
+              >
+                <ChevronLeft class="w-4 h-4" />
+                Prev
+              </Button>
 
-                <span class="text-sm font-medium sm:hidden">
-                  Page {currentPage + 1} of {totalPages}
-                </span>
+              <span class="text-sm font-medium min-w-35 text-center">
+                Page {currentPage + 1} of {totalPages} ({totalSkills})
+              </span>
 
-                <Button
-                  onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))}
-                  variant="outline"
-                  disabled={currentPage === totalPages - 1}
-                  class="flex items-center gap-1 flex-1 sm:flex-initial"
-                >
-                  Next
-                  <ChevronRight class="w-5 h-5" />
-                </Button>
-              </div>
-
-              <div class="hidden sm:flex items-center gap-2 flex-wrap justify-center">
-                {Array.from({ length: totalPages }, (_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrentPage(i)}
-                    class={`w-10 h-10 rounded-full font-semibold transition-all duration-300 ${
-                      currentPage === i
-                        ? 'bg-gradient-to-r from-teal-500 to-green-500 text-white shadow-lg'
-                        : 'bg-white dark:bg-gray-800 hover:bg-teal-50 dark:hover:bg-teal-900/20 border border-teal-200 dark:border-teal-800'
-                    }`}
-                  >
-                    {i + 1}
-                  </button>
-                ))}
-              </div>
+              <Button
+                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))}
+                variant="outline"
+                disabled={currentPage === totalPages - 1}
+                class="flex items-center gap-1 h-8 text-sm"
+              >
+                Next
+                <ChevronRight class="w-4 h-4" />
+              </Button>
             </div>
           )}
         </>

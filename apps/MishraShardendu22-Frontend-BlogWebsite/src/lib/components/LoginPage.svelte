@@ -118,7 +118,7 @@
   };
 </script>
 
-<div class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-background via-background to-primary/5">
+<div class="min-h-screen flex items-center justify-center p-4 bg-linear-to-br from-background via-background to-primary/5">
   {#if showOTPInput}
     <OTPVerification {email} onSuccess={handleOTPSuccess} onBack={handleOTPBack} />
   {:else}

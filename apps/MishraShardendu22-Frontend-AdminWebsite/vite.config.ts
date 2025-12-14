@@ -1,7 +1,7 @@
-import path from 'path'
-import { defineConfig, loadEnv } from 'vite'
+import path from 'node:path'
 import preact from '@preact/preset-vite'
 import tailwindcss from '@tailwindcss/vite'
+import { defineConfig, loadEnv } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => {
         output: {
           manualChunks: {
             // Core vendor chunk - Framework and routing
-            'vendor-core': ['preact', 'preact/hooks', 'preact-router', 'preact-compat'],
+            'vendor-core': ['preact', 'preact/hooks', 'preact-router'],
             // UI components chunk - Radix UI components
             'vendor-ui': [
               '@radix-ui/react-alert-dialog',

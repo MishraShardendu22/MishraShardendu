@@ -3,9 +3,16 @@
  * All static values used across the application
  */
 
+// Get backend URL from environment
+const getBackendUrl = () => {
+  const backendUrl = import.meta.env.VITE_BACKEND_1 || ''
+  return backendUrl ? `${backendUrl}/api` : '/api'
+}
+
 // API Configuration
 export const API_CONFIG = {
-  BLOG_BASE_URL: 'https://mishrashardendu22-backend-blogwebsite.onrender.com/api',
+  BASE_URL: getBackendUrl(),
+  BLOG_BASE_URL: getBackendUrl(),
   TIMEOUT: 60000,
   MAX_RETRIES: 3,
   RETRY_DELAY: 1000,

@@ -1,37 +1,37 @@
-import api from './api'
 import axios from 'axios'
 import { API_CONFIG } from '../constants'
 import type {
-  Project,
-  Experience,
   ApiResponse,
-  Certification,
-  UpdateProjectRequest,
-  CreateProjectRequest,
-  UpdateExperienceRequest,
-  CreateExperienceRequest,
-  UpdateCertificationRequest,
-  CreateCertificationRequest,
-  UpdateVolunteerExperienceRequest,
-  CreateVolunteerExperienceRequest,
-  SkillsRequest,
-  ProjectDetail,
-  ProjectDetailKanban,
-  VolunteerExperience,
   AuthRequest,
-  ProfileData,
-  BlogReorderItem,
-  BlogReorderUpdate,
   Blog,
   BlogComment,
-  BlogsResponse,
+  BlogReorderItem,
+  BlogReorderUpdate,
   BlogResponse,
+  BlogStatsResponse,
+  BlogsResponse,
+  Certification,
   CommentsResponse,
   CreateBlogRequest,
-  UpdateBlogRequest,
+  CreateCertificationRequest,
   CreateCommentRequest,
-  BlogStatsResponse,
+  CreateExperienceRequest,
+  CreateProjectRequest,
+  CreateVolunteerExperienceRequest,
+  Experience,
+  ProfileData,
+  Project,
+  ProjectDetail,
+  ProjectDetailKanban,
+  SkillsRequest,
+  UpdateBlogRequest,
+  UpdateCertificationRequest,
+  UpdateExperienceRequest,
+  UpdateProjectRequest,
+  UpdateVolunteerExperienceRequest,
+  VolunteerExperience,
 } from '../types/types.data'
+import api from './api'
 
 // =============================================================================
 // AUTH API
@@ -39,25 +39,8 @@ import type {
 
 export const authAPI = {
   login: async (credentials: AuthRequest): Promise<unknown> => {
-    const baseURL = import.meta.env.VITE_BACKEND_1 || ''
-    const response = await fetch(baseURL + '/api/admin/auth', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(credentials),
-    })
-
-    const contentType = response.headers.get('content-type')
-    let data: unknown = {}
-    if (contentType?.includes('application/json')) {
-      data = await response.json()
-    }
-
-    if (!response.ok) {
-      throw new Error(
-        (data as { message?: string }).message || `HTTP error! status: ${response.status}`
-      )
-    }
-    return data
+    const response = await api.post('/admin/auth', credentials)
+    return response.data
   },
 
   getCurrentUser: async (): Promise<ApiResponse<ProfileData>> => {
@@ -70,13 +53,24 @@ export const authAPI = {
 // SKILLS API
 // =============================================================================
 
+// Skills response from backend
+interface SkillsResponseData {
+  skills: string[]
+  page: number
+  limit: number
+  total: number
+  total_pages: number
+  has_next: boolean
+  has_previous: boolean
+}
+
 export const skillsAPI = {
-  getSkills: async (): Promise<ApiResponse<string[]>> => {
-    const response = await api.get('/skills')
+  getSkills: async (page = 1, limit = 100): Promise<ApiResponse<SkillsResponseData>> => {
+    const response = await api.get(`/skills?page=${page}&limit=${limit}`)
     return response.data
   },
 
-  addSkills: async (skills: SkillsRequest): Promise<ApiResponse<string[]>> => {
+  addSkills: async (skills: SkillsRequest): Promise<ApiResponse<SkillsResponseData>> => {
     const response = await api.post('/skills', skills)
     return response.data
   },
@@ -85,6 +79,17 @@ export const skillsAPI = {
 // =============================================================================
 // PROJECTS API
 // =============================================================================
+
+// Paginated response from backend
+interface PaginatedProjectsResponse {
+  projects: Project[]
+  page: number
+  limit: number
+  total: number
+  total_pages: number
+  has_next: boolean
+  has_previous: boolean
+}
 
 export const projectsAPI = {
   getAllProjectsKanban: async (): Promise<ApiResponse<ProjectDetail[]>> => {
@@ -99,8 +104,11 @@ export const projectsAPI = {
     return response.data
   },
 
-  getAllProjects: async (): Promise<ApiResponse<Project[]>> => {
-    const response = await api.get('/projects')
+  getAllProjects: async (
+    page = 1,
+    limit = 100
+  ): Promise<ApiResponse<PaginatedProjectsResponse>> => {
+    const response = await api.get(`/projects?page=${page}&limit=${limit}`)
     return response.data
   },
 
@@ -132,9 +140,22 @@ export const projectsAPI = {
 // EXPERIENCES API
 // =============================================================================
 
+interface PaginatedExperiencesResponse {
+  experiences: Experience[]
+  page: number
+  limit: number
+  total: number
+  total_pages: number
+  has_next: boolean
+  has_previous: boolean
+}
+
 export const experiencesAPI = {
-  getAllExperiences: async (): Promise<ApiResponse<Experience[]>> => {
-    const response = await api.get('/experiences')
+  getAllExperiences: async (
+    page = 1,
+    limit = 100
+  ): Promise<ApiResponse<PaginatedExperiencesResponse>> => {
+    const response = await api.get(`/experiences?page=${page}&limit=${limit}`)
     return response.data
   },
 
@@ -168,9 +189,22 @@ export const experiencesAPI = {
 // CERTIFICATIONS API
 // =============================================================================
 
+interface PaginatedCertificationsResponse {
+  certifications: Certification[]
+  page: number
+  limit: number
+  total: number
+  total_pages: number
+  has_next: boolean
+  has_previous: boolean
+}
+
 export const certificationsAPI = {
-  getAllCertifications: async (): Promise<ApiResponse<Certification[]>> => {
-    const response = await api.get('/certifications')
+  getAllCertifications: async (
+    page = 1,
+    limit = 100
+  ): Promise<ApiResponse<PaginatedCertificationsResponse>> => {
+    const response = await api.get(`/certifications?page=${page}&limit=${limit}`)
     return response.data
   },
 
@@ -204,9 +238,23 @@ export const certificationsAPI = {
 // VOLUNTEER EXPERIENCES API
 // =============================================================================
 
+interface PaginatedVolunteerResponse {
+  experiences?: VolunteerExperience[]
+  volunteer_experiences?: VolunteerExperience[]
+  page: number
+  limit: number
+  total: number
+  total_pages: number
+  has_next: boolean
+  has_previous: boolean
+}
+
 export const volunteerExperiencesAPI = {
-  getAllVolunteerExperiences: async (): Promise<ApiResponse<VolunteerExperience[]>> => {
-    const response = await api.get('/volunteer/experiences')
+  getAllVolunteerExperiences: async (
+    page = 1,
+    limit = 100
+  ): Promise<ApiResponse<PaginatedVolunteerResponse>> => {
+    const response = await api.get(`/volunteer/experiences?page=${page}&limit=${limit}`)
     return response.data
   },
 
@@ -243,10 +291,10 @@ export const achievementsAPI = certificationsAPI
 // =============================================================================
 
 const getAuthHeaders = () => {
-  const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null
+  const token = typeof window !== 'undefined' ? localStorage.getItem('jwt_token') : null
   return {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
+    ...(token && { Authorization: `Bearer ${token}` }),
   }
 }
 

@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from 'preact/hooks'
-import { authAPI } from '../utils/apiResponse.util'
+import { useCallback, useEffect, useState } from 'preact/hooks'
 import type { AuthRequest } from '../types/types.data'
+import { authAPI } from '../utils/apiResponse.util'
 
 export function useAuth() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -28,7 +28,6 @@ export function useAuth() {
 
       return { success: false, error: response.message || 'Login failed' }
     } catch (error) {
-      console.error('Login error:', error)
       return {
         success: false,
         error: error instanceof Error ? error.message : 'An error occurred during login',

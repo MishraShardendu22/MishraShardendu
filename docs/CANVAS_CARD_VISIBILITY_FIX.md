@@ -32,7 +32,7 @@ Added gradient overlay to both CanvasCard components:
 
 ```tsx
 // Dark gradient overlay - provides contrast in light mode
-<div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20 dark:to-black/40 group-hover/canvas-card:opacity-0 transition-opacity duration-500 pointer-events-none z-10" />
+<div className="absolute inset-0 bg-linear-to-br from-transparent via-transparent to-black/20 dark:to-black/40 group-hover/canvas-card:opacity-0 transition-opacity duration-500 pointer-events-none z-10" />
 ```
 
 **Features:**

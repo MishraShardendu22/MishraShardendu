@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'preact/hooks'
-import {
-  projectsAPI,
-  experiencesAPI,
-  skillsAPI,
-  certificationsAPI,
-} from '../../utils/apiResponse.util'
-import { Card, CardContent } from '../../components/ui/card'
-import { Button } from '../../components/ui/button'
-import { Badge } from '../../components/ui/badge'
+import { Briefcase, ExternalLink, Globe, GraduationCap, Medal, Plus, Settings } from 'lucide-react'
+import { useEffect, useState } from 'preact/hooks'
 import { Loading } from '../../components/shared'
-import { Briefcase, GraduationCap, Settings, Medal, Plus, ExternalLink, Globe } from 'lucide-react'
-import type { Project, Experience } from '../../types/types.data'
+import { Badge } from '../../components/ui/badge'
+import { Button } from '../../components/ui/button'
+import { Card, CardContent } from '../../components/ui/card'
+import type { Experience, Project } from '../../types/types.data'
+import {
+  certificationsAPI,
+  experiencesAPI,
+  projectsAPI,
+  skillsAPI,
+} from '../../utils/apiResponse.util'
 
 export default function DashboardPage() {
   const [stats, setStats] = useState({
@@ -27,31 +27,35 @@ export default function DashboardPage() {
     const fetchData = async () => {
       try {
         const [projectsRes, experiencesRes, skillsRes, certificationsRes] = await Promise.all([
-          projectsAPI.getAllProjects(),
-          experiencesAPI.getAllExperiences(),
-          skillsAPI.getSkills(),
-          certificationsAPI.getAllCertifications(),
+          projectsAPI.getAllProjects(1, 100),
+          experiencesAPI.getAllExperiences(1, 100),
+          skillsAPI.getSkills(1, 100),
+          certificationsAPI.getAllCertifications(1, 100),
         ])
 
-        // Backend returns { data: [...], message: "...", status: 200 }
-        const projectsArray = Array.isArray(projectsRes.data) ? projectsRes.data : []
-        const experiencesArray = Array.isArray(experiencesRes.data) ? experiencesRes.data : []
-        const skillsArray = Array.isArray(skillsRes.data) ? skillsRes.data : []
-        const certificationsArray = Array.isArray(certificationsRes.data)
-          ? certificationsRes.data
-          : []
+        // Backend returns paginated data: { data: { items: [...], total: N, ... } }
+        const projectsArray = projectsRes.data?.projects || []
+        const experiencesArray = experiencesRes.data?.experiences || []
+        const skillsArray = skillsRes.data?.skills || []
+        const certificationsArray = certificationsRes.data?.certifications || []
+
+        // Get total counts from response
+        const projectsTotal = projectsRes.data?.total || projectsArray.length
+        const experiencesTotal = experiencesRes.data?.total || experiencesArray.length
+        const skillsTotal = skillsRes.data?.total || skillsArray.length
+        const certificationsTotal = certificationsRes.data?.total || certificationsArray.length
 
         setProjects(projectsArray.slice(0, 3))
         setExperiences(experiencesArray.slice(0, 3))
 
         setStats({
-          projects: projectsArray.length,
-          experiences: experiencesArray.length,
-          skills: skillsArray.length,
-          certifications: certificationsArray.length,
+          projects: projectsTotal,
+          experiences: experiencesTotal,
+          skills: skillsTotal,
+          certifications: certificationsTotal,
         })
-      } catch (err) {
-        console.error('Failed to load dashboard data', err)
+      } catch {
+        // Failed to load dashboard data
       } finally {
         setLoading(false)
       }
@@ -67,7 +71,7 @@ export default function DashboardPage() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
       <div className="text-center space-y-6 pb-8">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-linear-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
           Welcome, Admin
         </h1>
         <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto">

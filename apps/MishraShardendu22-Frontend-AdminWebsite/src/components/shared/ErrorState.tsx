@@ -1,6 +1,6 @@
 import { AlertCircle, RefreshCw } from 'lucide-react'
-import { Button } from '../ui/button'
 import { cn } from '../../lib/utils'
+import { Button } from '../ui/button'
 
 export interface ErrorStateProps {
   /** Error title */
@@ -61,21 +61,31 @@ export function ErrorState({
 
   return (
     <div className={cn('flex flex-col items-center justify-center', config.container, className)}>
-      <div
-        className={cn(
-          'rounded-full bg-destructive/10 flex items-center justify-center',
-          config.icon
-        )}
-      >
-        <AlertCircle className={cn('text-destructive', config.iconInner)} />
+      {/* Error icon with visual emphasis */}
+      <div className="relative">
+        <div
+          className={cn(
+            'rounded-full bg-linear-to-br from-destructive/20 via-destructive/10 to-transparent',
+            'flex items-center justify-center shadow-lg shadow-destructive/10',
+            'ring-2 ring-destructive/20 ring-offset-2 ring-offset-background',
+            config.icon
+          )}
+        >
+          <AlertCircle className={cn('text-destructive', config.iconInner)} />
+        </div>
       </div>
-      <div className="text-center space-y-2 max-w-md">
-        <h2 className={cn('font-semibold text-foreground', config.title)}>{title}</h2>
-        <p className={cn('text-muted-foreground', config.message)}>{message}</p>
+
+      <div className="text-center space-y-3 max-w-md">
+        <h2 className={cn('font-bold text-foreground tracking-tight', config.title)}>{title}</h2>
+        <p className={cn('text-muted-foreground leading-relaxed', config.message)}>{message}</p>
         {showRetry && (
-          <Button onClick={handleRetry} variant="outline" className="mt-4">
-            <RefreshCw className="w-4 h-4 mr-2" />
-            Retry
+          <Button
+            onClick={handleRetry}
+            variant="outline"
+            className="mt-4 gap-2 hover:bg-destructive/10 hover:text-destructive hover:border-destructive/50 transition-colors"
+          >
+            <RefreshCw className="w-4 h-4" />
+            Try Again
           </Button>
         )}
       </div>
@@ -86,9 +96,14 @@ export function ErrorState({
 /** Simple inline error message */
 export function InlineError({ message, className }: { message: string; className?: string }) {
   return (
-    <div className={cn('flex items-center gap-2 text-destructive', className)}>
-      <AlertCircle className="w-4 h-4" />
-      <span className="text-sm">{message}</span>
+    <div
+      className={cn(
+        'flex items-center gap-2 text-destructive bg-destructive/10 px-3 py-2 rounded-md border border-destructive/20',
+        className
+      )}
+    >
+      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+      <span className="text-sm font-medium">{message}</span>
     </div>
   )
 }

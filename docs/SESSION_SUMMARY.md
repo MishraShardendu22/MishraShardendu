@@ -37,7 +37,7 @@
 
 ```tsx
 // Before
-className = 'bg-white dark:bg-gradient-to-br dark:from-card/80 dark:to-muted/50'
+className = 'bg-white dark:bg-linear-to-br dark:from-card/80 dark:to-muted/50'
 
 // After
 className = 'bg-white dark:bg-black'

@@ -1,14 +1,14 @@
+import { Eye, EyeOff, Shield } from 'lucide-react'
 import { useState } from 'preact/hooks'
 import { route } from 'preact-router'
-import { useAuth } from '../../hooks/use-auth'
+import toast from 'react-hot-toast'
+import ThemeToggle from '../../components/extra/ThemeToggle'
+import { Alert, AlertDescription } from '../../components/ui/alert'
 import { Button } from '../../components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { Input } from '../../components/ui/input'
 import { Label } from '../../components/ui/label'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
-import { Alert, AlertDescription } from '../../components/ui/alert'
-import { Eye, EyeOff, Shield } from 'lucide-react'
-import ThemeToggle from '../../components/extra/ThemeToggle'
-import toast from 'react-hot-toast'
+import { useAuth } from '../../hooks/use-auth'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -44,7 +44,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-background via-background/95 to-background p-4">
+    <div className="min-h-screen w-full flex items-center justify-center bg-linear-to-br from-background via-background/95 to-background p-4">
       {/* Fixed Theme Toggle - Bottom right position */}
       <div className="fixed bottom-4 right-4 z-50">
         <ThemeToggle />
@@ -53,11 +53,11 @@ export default function LoginPage() {
       <div className="space-y-8 max-w-md w-full">
         <div className="text-center space-y-4">
           <div className="flex justify-center mb-4">
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-secondary/20 to-primary/20 border-2 border-secondary/30">
+            <div className="p-4 rounded-2xl bg-linear-to-br from-secondary/20 to-primary/20 border-2 border-secondary/30">
               <Shield className="h-12 w-12 text-secondary" />
             </div>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-secondary via-primary to-accent bg-clip-text text-transparent">
+          <h1 className="text-3xl md:text-4xl font-bold bg-linear-to-r from-secondary via-primary to-accent bg-clip-text text-transparent">
             Admin Access Portal
           </h1>
           <p className="text-base text-foreground/70">Secure authentication required</p>

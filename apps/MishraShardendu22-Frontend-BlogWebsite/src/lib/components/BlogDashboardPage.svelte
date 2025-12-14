@@ -1,37 +1,36 @@
 <script lang="ts">
-  import Button from "./ui/button.svelte";
-  import Input from "./ui/input.svelte";
-  import Badge from "./ui/badge.svelte";
   import { Loading, ErrorState, EmptyState, Skeleton } from "./shared";
   import {
-    BookOpen,
-    Plus,
     Search,
+    BookOpen,
     MessageCircle,
+    Edit,
     Trash2,
     BarChart3,
-    Edit,
   } from "lucide-svelte";
-  import { blogApi, statsApi, type Blog, type BlogStats } from "../api";
-  import { getBasePath } from "../navigation";
+  import { toast } from "../toast";
   import { onMount } from "svelte";
   import { confirm } from "../confirm";
-  import { toast } from "../toast";
+  import Badge from "./ui/badge.svelte";
+  import Input from "./ui/input.svelte";
+  import Button from "./ui/button.svelte";
+  import { getBasePath } from "../navigation";
+  import { blogApi, statsApi, type Blog, type BlogStats } from "../api";
 
   const basePath = getBasePath();
-
-  let blogs = $state<Blog[]>([]);
+  
   let stats = $state<BlogStats>({ 
     totalBlogs: 0, 
-    totalComments: 0,
+    popularTags: [],
     recentPosts: [],
-    popularTags: []
+    totalComments: 0,
   });
-  let searchTerm = $state("");
-  let deletingBlogId = $state<number | null>(null);
-  let loading = $state(true);
   let error = $state("");
+  let loading = $state(true);
+  let searchTerm = $state("");
   let isVisible = $state(false);
+  let blogs = $state<Blog[]>([]);
+  let deletingBlogId = $state<number | null>(null);
 
   onMount(async () => {
     isVisible = true;
@@ -105,7 +104,7 @@
     <!-- Header with actions -->
     <div class="flex items-start justify-between gap-4">
       <div>
-    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">Dashboard</h1>
+    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">Dashboard</h1>
         <p class="text-sm text-muted-foreground">Manage your blog posts and view analytics</p>
       </div>
 
@@ -116,7 +115,7 @@
           <Input placeholder="Search your posts..." bind:value={searchTerm} class="pl-10 h-11" />
         </div>
           <!-- Desktop Create button; on small screens show smaller icon handled by mobile menu -->
-        <Button onclick={() => (window.location.href = `${basePath}/create`)} className="h-11 px-6 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground rounded-lg hidden lg:inline-flex">Create Post</Button>
+        <Button onclick={() => (window.location.href = `${basePath}/create`)} className="h-11 px-6 bg-linear-to-r from-primary to-primary/90 text-primary-foreground rounded-lg hidden lg:inline-flex">Create Post</Button>
       </div>
     </div>
     

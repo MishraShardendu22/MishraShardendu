@@ -1,11 +1,11 @@
+import { Award, Briefcase, Calendar, Clock, FolderKanban, Mail, Shield, User } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
+import { ErrorState, Loading } from '../../components/shared'
 import { Button } from '../../components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { Input } from '../../components/ui/input'
 import { Label } from '../../components/ui/label'
-import { Loading, ErrorState } from '../../components/shared'
 import { useAuth } from '../../hooks/use-auth'
-import { User, Mail, Shield, Calendar, Award, Briefcase, FolderKanban, Clock } from 'lucide-react'
 import type { ProfileData } from '../../types/types.data'
 import { authAPI } from '../../utils/apiResponse.util'
 
@@ -42,11 +42,11 @@ export default function ProfilePage() {
       {/* Header Section */}
       <div className="text-center space-y-4 mb-12">
         <div className="flex justify-center mb-4">
-          <div className="p-4 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 border-2 border-primary/30">
+          <div className="p-4 rounded-full bg-linear-to-br from-primary/20 to-secondary/20 border-2 border-primary/30">
             <Shield className="h-12 w-12 text-primary" />
           </div>
         </div>
-        <h1 className="text-4xl sm:text-5xl font-heading font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-tight">
+        <h1 className="text-4xl sm:text-5xl font-heading font-bold bg-linear-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-tight">
           Admin Profile
         </h1>
         <p className="text-foreground/70 text-lg max-w-2xl mx-auto">
@@ -57,7 +57,7 @@ export default function ProfilePage() {
       {/* Main Content Grid */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {/* Profile Information Card */}
-        <Card className="bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-md border-2 border-border/50 hover:border-primary/50 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 md:col-span-2">
+        <Card className="bg-linear-to-br from-card/90 to-card/70 backdrop-blur-md border-2 border-border/50 hover:border-primary/50 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 md:col-span-2">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl font-bold text-primary">
               <User className="w-6 h-6" />
@@ -137,7 +137,7 @@ export default function ProfilePage() {
             </div>
 
             <div className="pt-4 border-t border-border/50">
-              <div className="flex items-center justify-between p-4 rounded-lg bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20">
+              <div className="flex items-center justify-between p-4 rounded-lg bg-linear-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-full bg-green-500/20">
                     <Shield className="w-5 h-5 text-green-500" />
@@ -158,14 +158,14 @@ export default function ProfilePage() {
         </Card>
 
         {/* Statistics Card */}
-        <Card className="bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-md border-2 border-border/50 hover:border-secondary/50 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-secondary/10 transition-all duration-300">
+        <Card className="bg-linear-to-br from-card/90 to-card/70 backdrop-blur-md border-2 border-border/50 hover:border-secondary/50 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-secondary/10 transition-all duration-300">
           <CardHeader>
             <CardTitle className="text-xl font-bold text-secondary">Portfolio Stats</CardTitle>
             <CardDescription className="text-foreground/60">Your content overview</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 hover:border-primary/40 transition-colors">
+              <div className="flex items-center justify-between p-4 rounded-xl bg-linear-to-r from-primary/10 to-primary/5 border border-primary/20 hover:border-primary/40 transition-colors">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-primary/20">
                     <FolderKanban className="w-5 h-5 text-primary" />
@@ -177,7 +177,7 @@ export default function ProfilePage() {
                 </span>
               </div>
 
-              <div className="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-secondary/10 to-secondary/5 border border-secondary/20 hover:border-secondary/40 transition-colors">
+              <div className="flex items-center justify-between p-4 rounded-xl bg-linear-to-r from-secondary/10 to-secondary/5 border border-secondary/20 hover:border-secondary/40 transition-colors">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-secondary/20">
                     <Briefcase className="w-5 h-5 text-secondary" />
@@ -189,7 +189,7 @@ export default function ProfilePage() {
                 </span>
               </div>
 
-              <div className="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-accent/10 to-accent/5 border border-accent/20 hover:border-accent/40 transition-colors">
+              <div className="flex items-center justify-between p-4 rounded-xl bg-linear-to-r from-accent/10 to-accent/5 border border-accent/20 hover:border-accent/40 transition-colors">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-accent/20">
                     <Award className="w-5 h-5 text-accent" />
@@ -205,7 +205,7 @@ export default function ProfilePage() {
         </Card>
 
         {/* Security Card - Full Width */}
-        <Card className="bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-md border-2 border-border/50 hover:border-primary/30 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 lg:col-span-3">
+        <Card className="bg-linear-to-br from-card/90 to-card/70 backdrop-blur-md border-2 border-border/50 hover:border-primary/30 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 lg:col-span-3">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-xl font-bold text-foreground">
               <Shield className="w-6 h-6 text-primary" />
@@ -216,7 +216,7 @@ export default function ProfilePage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 p-6 rounded-xl bg-gradient-to-r from-muted/50 to-muted/30 border border-border/50">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 p-6 rounded-xl bg-linear-to-r from-muted/50 to-muted/30 border border-border/50">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-full bg-green-500/10 border border-green-500/20">
                   <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>

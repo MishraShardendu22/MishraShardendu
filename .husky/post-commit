@@ -1,12 +1,12 @@
-# After commit, run prettier across the repo and if there are changes create a follow-up commit and push.
-echo "husky: running post-commit prettier sweep..."
-pnpm prettier --write "**/*.{ts,tsx,js,jsx,json,md}" || true
+# After commit, run biome across the repo and if there are changes create a follow-up commit and push.
+echo "husky: running post-commit biome sweep..."
+pnpm biome check --write --unsafe --files-ignore-unknown=true --no-errors-on-unmatched --diagnostic-level=error . || true
 
-# If prettier made changes, commit and push them
+# If biome made changes, commit and push them
 if [ -n "$(git status --porcelain)" ]; then
   git add -A
   # create a formatting commit; --no-verify avoids re-triggering pre-commit which would reformat staged files
-  git commit -m "chore(format): apply prettier post-commit" --no-verify || true
+  git commit -m "chore(format): apply biome post-commit" --no-verify || true
   # push commit to current branch
   git push || true
 fi

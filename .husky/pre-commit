@@ -1,17 +1,12 @@
-# Format staged files with Prettier and restage them so the commit includes formatting
+# Format and lint staged files with Biome and restage them so the commit includes formatting
 STAGED_FILES="$(git diff --name-only --cached --relative --diff-filter=ACMR)"
 if [ -n "$STAGED_FILES" ]; then
-  FILES_TO_FORMAT=$(echo "$STAGED_FILES" | grep -E '\.(ts|tsx|js|jsx|json|md)$' || true)
+  FILES_TO_FORMAT=$(echo "$STAGED_FILES" | grep -E '\.(ts|tsx|js|jsx|json|jsonc)$' || true)
   if [ -n "$FILES_TO_FORMAT" ]; then
-    echo "husky: running prettier on staged files..."
-    pnpm prettier --write $FILES_TO_FORMAT
+    echo "husky: running biome on staged files..."
+    pnpm biome check --write --unsafe --files-ignore-unknown=true --no-errors-on-unmatched --diagnostic-level=error $FILES_TO_FORMAT
     git add $FILES_TO_FORMAT
   fi
 fi
 
 exit 0
-# Run pnpm install to ensure dependencies are up to date
-pnpm install --frozen-lockfile
-
-# Run prettier formatting across all files
-pnpm format
