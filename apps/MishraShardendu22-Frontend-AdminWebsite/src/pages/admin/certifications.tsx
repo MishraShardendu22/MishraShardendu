@@ -25,6 +25,13 @@ export default function CertificationsPage() {
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [editingCertification, setEditingCertification] = useState<Certification | null>(null)
+  const [currentPage, setCurrentPage] = useState(0)
+  const itemsPerPage = 6
+  const totalPages = Math.ceil(certifications.length / itemsPerPage)
+  const paginatedCertifications = certifications.slice(
+    currentPage * itemsPerPage,
+    (currentPage + 1) * itemsPerPage
+  )
 
   // Form state
   const [formData, setFormData] = useState({
@@ -40,7 +47,14 @@ export default function CertificationsPage() {
   const fetchCertifications = async () => {
     try {
       const response = await certificationsAPI.getAllCertifications()
-      setCertifications(Array.isArray(response.data) ? response.data : [])
+      // Backend returns { data: { certifications: [...], page: 1, ... } }
+      const data = response.data as unknown as
+        | { certifications?: Certification[] }
+        | Certification[]
+      const certificationsData = Array.isArray(data)
+        ? data
+        : (data as { certifications?: Certification[] })?.certifications || []
+      setCertifications(Array.isArray(certificationsData) ? certificationsData : [])
     } catch {
       toast.error('Failed to fetch certifications')
     } finally {
@@ -186,13 +200,6 @@ export default function CertificationsPage() {
 
       {/* Action Bar */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 border-b border-border pb-4">
-        <div>
-          <h2 className="text-2xl font-bold text-accent">
-            Your Certifications ({certifications.length})
-          </h2>
-          <p className="text-foreground/60 text-sm">Add and manage your certifications</p>
-        </div>
-
         <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
           <DialogTrigger>
             <Button onClick={() => resetForm()}>
@@ -328,72 +335,97 @@ export default function CertificationsPage() {
           </Button>
         </div>
       ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {certifications.map((cert) => (
-            <Card key={cert.inline.id} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Award className="w-5 h-5 text-primary" />
-                      <CardTitle className="text-lg">{cert.title}</CardTitle>
-                    </div>
-                    <CardDescription>
-                      <div className="space-y-1">
-                        <p className="font-medium">{cert.issuer}</p>
-                        <p className="text-sm">
-                          {new Date(cert.issue_date).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                          })}
-                        </p>
+        <>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {paginatedCertifications.map((cert) => (
+              <Card key={cert.inline.id} className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Award className="w-5 h-5 text-primary" />
+                        <CardTitle className="text-lg">{cert.title}</CardTitle>
                       </div>
-                    </CardDescription>
-                  </div>
-                  <div className="flex gap-2">
-                    <Button size="sm" variant="ghost" onClick={() => openEditDialog(cert)}>
-                      <Pencil className="w-4 h-4" />
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      onClick={() => handleDeleteCertification(cert.inline.id)}
-                    >
-                      <Trash2 className="w-4 h-4 text-destructive" />
-                    </Button>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {cert.description && (
-                    <p className="text-sm text-foreground/80">{cert.description}</p>
-                  )}
-                  {cert.skills && cert.skills.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                      {cert.skills.map((skill) => (
-                        <Badge key={skill} variant="outline">
-                          {skill}
-                        </Badge>
-                      ))}
+                      <CardDescription>
+                        <div className="space-y-1">
+                          <p className="font-medium">{cert.issuer}</p>
+                          <p className="text-sm">
+                            {new Date(cert.issue_date).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'long',
+                            })}
+                          </p>
+                        </div>
+                      </CardDescription>
                     </div>
-                  )}
-                  {cert.certificate_url && (
-                    <a
-                      href={cert.certificate_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm text-primary hover:underline w-full"
-                    >
-                      <ExternalLink className="w-3 h-3" />
-                      View Certificate
-                    </a>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                    <div className="flex gap-2">
+                      <Button size="sm" variant="ghost" onClick={() => openEditDialog(cert)}>
+                        <Pencil className="w-4 h-4" />
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        onClick={() => handleDeleteCertification(cert.inline.id)}
+                      >
+                        <Trash2 className="w-4 h-4 text-destructive" />
+                      </Button>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {cert.description && (
+                      <p className="text-sm text-foreground/80">{cert.description}</p>
+                    )}
+                    {cert.skills && cert.skills.length > 0 && (
+                      <div className="flex flex-wrap gap-2">
+                        {cert.skills.map((skill) => (
+                          <Badge key={skill} variant="outline">
+                            {skill}
+                          </Badge>
+                        ))}
+                      </div>
+                    )}
+                    {cert.certificate_url && (
+                      <a
+                        href={cert.certificate_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm text-primary hover:underline w-full"
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                        View Certificate
+                      </a>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center gap-4 mt-8">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
+                disabled={currentPage === 0}
+              >
+                Previous
+              </Button>
+              <span className="text-sm font-medium">
+                Page {currentPage + 1} of {totalPages}
+              </span>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))}
+                disabled={currentPage === totalPages - 1}
+              >
+                Next
+              </Button>
+            </div>
+          )}
+        </>
       )}
 
       {/* Edit Dialog */}

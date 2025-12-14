@@ -57,7 +57,14 @@ export default function VolunteerPage() {
   const fetch = async () => {
     try {
       const res = await volunteerExperiencesAPI.getAllVolunteerExperiences()
-      setItems(Array.isArray(res.data) ? res.data : [])
+      // Backend returns { data: { volunteer_experiences: [...], page: 1, ... } }
+      const data = res.data as unknown as
+        | { volunteer_experiences?: VolunteerExperience[] }
+        | VolunteerExperience[]
+      const volunteerData = Array.isArray(data)
+        ? data
+        : (data as { volunteer_experiences?: VolunteerExperience[] })?.volunteer_experiences || []
+      setItems(Array.isArray(volunteerData) ? volunteerData : [])
     } catch {
       setError('Failed to fetch volunteer experiences')
     } finally {
@@ -68,9 +75,16 @@ export default function VolunteerPage() {
   useEffect(() => {
     fetch()
     projectsAPI.getAllProjects().then((res) => {
+      const data = res.data as unknown as
+        | { projects?: { inline: { id: string }; project_name: string }[] }
+        | { inline: { id: string }; project_name: string }[]
+      const projectsData = Array.isArray(data)
+        ? data
+        : (data as { projects?: { inline: { id: string }; project_name: string }[] })?.projects ||
+          []
       setAllProjects(
-        Array.isArray(res.data)
-          ? res.data.map((p: { inline: { id: string }; project_name: string }) => ({
+        Array.isArray(projectsData)
+          ? projectsData.map((p: { inline: { id: string }; project_name: string }) => ({
               id: p.inline.id,
               name: p.project_name,
             }))
@@ -207,10 +221,6 @@ export default function VolunteerPage() {
       </div>
 
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 pb-2 border-b border-border">
-        <div>
-          <h2 className="text-3xl font-bold text-secondary mb-1">Volunteer Experiences</h2>
-        </div>
-
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger>
             <Button onClick={() => resetForm()} className="flex items-center">

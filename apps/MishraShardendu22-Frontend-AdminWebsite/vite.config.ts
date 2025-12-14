@@ -70,7 +70,7 @@ export default defineConfig(({ mode }) => {
     server: {
       proxy: {
         '/api': {
-          target: env.VITE_BACKEND_1 || 'https://portfolio-backend-1p9d.onrender.com',
+          target: env.VITE_BACKEND_1 || 'https://portfolio-backend-2iw4.onrender.com',
           changeOrigin: true,
           configure: (proxy: any, _options: any) => {
             proxy.on('error', (err: any, _req: any, _res: any) => {

@@ -70,7 +70,12 @@ export default function ExperiencesPage() {
   const fetchExperiences = async () => {
     try {
       const response = await experiencesAPI.getAllExperiences()
-      setExperiences(Array.isArray(response.data) ? response.data : [])
+      // Backend returns { data: { experiences: [...], page: 1, ... } }
+      const data = response.data as unknown as { experiences?: Experience[] } | Experience[]
+      const experiencesData = Array.isArray(data)
+        ? data
+        : (data as { experiences?: Experience[] })?.experiences || []
+      setExperiences(Array.isArray(experiencesData) ? experiencesData : [])
     } catch {
       setError('Failed to fetch experiences')
       setExperiences([])
@@ -82,9 +87,16 @@ export default function ExperiencesPage() {
   useEffect(() => {
     fetchExperiences()
     projectsAPI.getAllProjects().then((res) => {
+      const data = res.data as unknown as
+        | { projects?: { inline: { id: string }; project_name: string }[] }
+        | { inline: { id: string }; project_name: string }[]
+      const projectsData = Array.isArray(data)
+        ? data
+        : (data as { projects?: { inline: { id: string }; project_name: string }[] })?.projects ||
+          []
       setAllProjects(
-        Array.isArray(res.data)
-          ? res.data.map((p: { inline: { id: string }; project_name: string }) => ({
+        Array.isArray(projectsData)
+          ? projectsData.map((p: { inline: { id: string }; project_name: string }) => ({
               id: p.inline.id,
               name: p.project_name,
             }))
@@ -241,9 +253,6 @@ export default function ExperiencesPage() {
       </div>
 
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 pb-2 border-b border-border">
-        <div>
-          <h2 className="text-3xl font-bold text-secondary mb-1">Your Experiences</h2>
-        </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger>
             <Button

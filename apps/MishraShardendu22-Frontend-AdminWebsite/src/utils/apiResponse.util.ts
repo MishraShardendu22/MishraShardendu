@@ -26,7 +26,9 @@ import type {
 export const authAPI = {
   login: async (credentials: AuthRequest): Promise<unknown> => {
     try {
-      const response = await fetch(import.meta.env.VITE_BACKEND_1 + '/api/admin/auth', {
+      // Use proxy in development (empty string) or fallback to production URL
+      const baseURL = import.meta.env.VITE_BACKEND_1 || ''
+      const response = await fetch(baseURL + '/api/admin/auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,7 +36,20 @@ export const authAPI = {
         body: JSON.stringify(credentials),
       })
 
-      const data = await response.json()
+      let data: any = {}
+      const contentType = response.headers.get('content-type')
+      if (contentType && contentType.includes('application/json')) {
+        try {
+          data = await response.json()
+        } catch (e) {
+          console.error('Failed to parse JSON response:', e)
+          throw new Error('Invalid JSON response from server')
+        }
+      }
+
+      if (!response.ok) {
+        throw new Error(data.message || `HTTP error! status: ${response.status}`)
+      }
 
       return data
     } catch (error: unknown) {
@@ -62,11 +77,8 @@ export const skillsAPI = {
     const response = await api.post('/skills', skills)
     return response.data
   },
-
-  deleteSkill: async (skill: string): Promise<ApiResponse<SkillsResponse>> => {
-    const response = await api.delete(`/skills/${encodeURIComponent(skill)}`)
-    return response.data
-  },
+  // Note: Backend doesn't support delete skill operation
+  // Skills are automatically derived from projects
 }
 
 export const projectsAPI = {

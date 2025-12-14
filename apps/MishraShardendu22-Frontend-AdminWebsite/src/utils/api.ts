@@ -9,7 +9,8 @@ declare module 'axios' {
   }
 }
 
-const baseURL = import.meta.env.VITE_BACKEND_1 + '/api'
+// Use proxy in development (empty string) or fallback to production URL
+const baseURL = import.meta.env.VITE_BACKEND_1 ? import.meta.env.VITE_BACKEND_1 + '/api' : '/api'
 
 const api = axios.create({
   baseURL,

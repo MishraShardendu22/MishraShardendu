@@ -12,7 +12,7 @@ import {
   DialogTrigger,
 } from '../../components/ui/dialog'
 import { skillsAPI } from '../../utils/apiResponse.util'
-import { Plus, X, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
+import { Plus, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 
 export default function SkillsPage() {
@@ -29,7 +29,9 @@ export default function SkillsPage() {
   const fetchSkills = async () => {
     try {
       const response = await skillsAPI.getSkills()
-      setSkills(Array.isArray(response.data) ? response.data : [])
+      // Backend returns { data: { skills: [...], page: 1, ... } }
+      const skillsData = response.data?.skills || response.data || []
+      setSkills(Array.isArray(skillsData) ? skillsData : [])
       setError('')
     } catch {
       setError('Failed to fetch skills')
@@ -57,11 +59,13 @@ export default function SkillsPage() {
         .map((s) => s.trim())
         .filter((s) => s.length > 0)
 
-      await skillsAPI.addSkills({ skills: skillsArray })
+      const response = await skillsAPI.addSkills({ skills: skillsArray })
       toast.success('Skills added successfully')
       setIsAddDialogOpen(false)
       setNewSkills('')
-      fetchSkills()
+      // Update skills from response
+      const updatedSkills = response.data?.skills || response.data || []
+      setSkills(Array.isArray(updatedSkills) ? updatedSkills : [])
     } catch {
       toast.error('Failed to add skills')
     } finally {
@@ -69,15 +73,8 @@ export default function SkillsPage() {
     }
   }
 
-  const handleDeleteSkill = async (skill: string) => {
-    try {
-      await skillsAPI.deleteSkill(skill)
-      toast.success('Skill deleted successfully')
-      fetchSkills()
-    } catch {
-      toast.error('Failed to delete skill')
-    }
-  }
+  // Note: Backend doesn't support delete skill operation
+  // Skills are derived from projects, so manage them through projects
 
   const paginatedSkills = skills.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
 
@@ -110,14 +107,15 @@ export default function SkillsPage() {
         <h1 class="text-2xl md:text-3xl font-heading font-extrabold bg-gradient-to-r from-blue-500 via-teal-500 to-green-500 bg-clip-text text-transparent leading-tight">
           Skills - Manage your technical skills and competencies
         </h1>
+        <Alert>
+          <AlertDescription class="text-sm text-muted-foreground text-center">
+            💡 Skills are automatically extracted from your projects. Add skills here to include
+            them in your profile.
+          </AlertDescription>
+        </Alert>
       </header>
 
       <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 border-b pb-4">
-        <div>
-          <h2 class="text-3xl font-bold text-blue-500 mb-1">Your Skills</h2>
-          <p class="text-lg max-w-md">Add your skills below.</p>
-        </div>
-
         <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
           <DialogTrigger>
             <Button class="bg-teal-600 hover:bg-teal-700 text-white font-semibold">
@@ -188,16 +186,7 @@ export default function SkillsPage() {
                 key={skill}
                 class="group relative bg-gradient-to-br from-teal-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 p-4 rounded-xl border border-teal-200 dark:border-teal-800 hover:shadow-xl hover:scale-105 transition-all duration-300"
               >
-                <p class="text-center font-semibold text-gray-800 dark:text-gray-200 pr-6">
-                  {skill}
-                </p>
-                <button
-                  onClick={() => handleDeleteSkill(skill)}
-                  class="absolute top-2 right-2 w-6 h-6 rounded-full bg-red-500/10 hover:bg-red-500 text-red-600 hover:text-white flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100"
-                  aria-label={`Delete ${skill}`}
-                >
-                  <X class="w-4 h-4" />
-                </button>
+                <p class="text-center font-semibold text-gray-800 dark:text-gray-200">{skill}</p>
               </div>
             ))}
           </div>

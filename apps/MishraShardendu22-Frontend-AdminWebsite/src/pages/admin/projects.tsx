@@ -25,6 +25,13 @@ export default function ProjectsPage() {
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [editingProject, setEditingProject] = useState<Project | null>(null)
+  const [currentPage, setCurrentPage] = useState(0)
+  const itemsPerPage = 6
+  const totalPages = Math.ceil(projects.length / itemsPerPage)
+  const paginatedProjects = projects.slice(
+    currentPage * itemsPerPage,
+    (currentPage + 1) * itemsPerPage
+  )
 
   // Form state for adding/editing
   const [formData, setFormData] = useState({
@@ -40,7 +47,12 @@ export default function ProjectsPage() {
   const fetchProjects = async () => {
     try {
       const response = await projectsAPI.getAllProjects()
-      setProjects(Array.isArray(response.data) ? response.data : [])
+      // Backend returns { data: { projects: [...], page: 1, ... } }
+      const data = response.data as unknown as { projects?: Project[] } | Project[]
+      const projectsData = Array.isArray(data)
+        ? data
+        : (data as { projects?: Project[] })?.projects || []
+      setProjects(Array.isArray(projectsData) ? projectsData : [])
     } catch {
       toast.error('Failed to fetch projects')
     } finally {
@@ -182,11 +194,6 @@ export default function ProjectsPage() {
 
       {/* Action Bar */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 border-b border-border pb-4">
-        <div>
-          <h2 className="text-2xl font-bold text-accent">Your Projects ({projects.length})</h2>
-          <p className="text-foreground/60 text-sm">Add and manage your projects</p>
-        </div>
-
         <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
           <DialogTrigger>
             <Button onClick={() => resetForm()}>
@@ -328,75 +335,100 @@ export default function ProjectsPage() {
           </Button>
         </div>
       ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <Card key={project.inline.id} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <CardTitle className="text-xl">{project.project_name}</CardTitle>
-                  </div>
-                  <div className="flex gap-2">
-                    <Button size="sm" variant="ghost" onClick={() => openEditDialog(project)}>
-                      <Pencil className="w-4 h-4" />
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      onClick={() => handleDeleteProject(project.inline.id)}
-                    >
-                      <Trash2 className="w-4 h-4 text-destructive" />
-                    </Button>
-                  </div>
-                </div>
-                <CardDescription className="line-clamp-2">
-                  {project.small_description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {project.skills && project.skills.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                      {project.skills.map((skill) => (
-                        <Badge key={skill} variant="outline">
-                          {skill}
-                        </Badge>
-                      ))}
+        <>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {paginatedProjects.map((project) => (
+              <Card key={project.inline.id} className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <CardTitle className="text-xl">{project.project_name}</CardTitle>
                     </div>
-                  )}
-                  <div className="flex gap-2">
-                    {project.project_live_link && (
-                      <Button size="sm" variant="outline">
-                        <a
-                          href={project.project_live_link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center"
-                        >
-                          <ExternalLink className="w-3 h-3 mr-1" />
-                          Live
-                        </a>
+                    <div className="flex gap-2">
+                      <Button size="sm" variant="ghost" onClick={() => openEditDialog(project)}>
+                        <Pencil className="w-4 h-4" />
                       </Button>
-                    )}
-                    {project.project_repository && (
-                      <Button size="sm" variant="outline">
-                        <a
-                          href={project.project_repository}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center"
-                        >
-                          <Github className="w-3 h-3 mr-1" />
-                          Code
-                        </a>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        onClick={() => handleDeleteProject(project.inline.id)}
+                      >
+                        <Trash2 className="w-4 h-4 text-destructive" />
                       </Button>
-                    )}
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                  <CardDescription className="line-clamp-2">
+                    {project.small_description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {project.skills && project.skills.length > 0 && (
+                      <div className="flex flex-wrap gap-2">
+                        {project.skills.map((skill) => (
+                          <Badge key={skill} variant="outline">
+                            {skill}
+                          </Badge>
+                        ))}
+                      </div>
+                    )}
+                    <div className="flex gap-2">
+                      {project.project_live_link && (
+                        <Button size="sm" variant="outline">
+                          <a
+                            href={project.project_live_link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center"
+                          >
+                            <ExternalLink className="w-3 h-3 mr-1" />
+                            Live
+                          </a>
+                        </Button>
+                      )}
+                      {project.project_repository && (
+                        <Button size="sm" variant="outline">
+                          <a
+                            href={project.project_repository}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center"
+                          >
+                            <Github className="w-3 h-3 mr-1" />
+                            Code
+                          </a>
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>{' '}
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center gap-4 mt-8">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
+                disabled={currentPage === 0}
+              >
+                Previous
+              </Button>
+              <span className="text-sm font-medium">
+                Page {currentPage + 1} of {totalPages}
+              </span>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))}
+                disabled={currentPage === totalPages - 1}
+              >
+                Next
+              </Button>
+            </div>
+          )}
+        </>
       )}
 
       {/* Edit Dialog */}

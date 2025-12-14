@@ -32,17 +32,26 @@ export default function DashboardPage() {
           certificationsAPI.getAllCertifications(),
         ])
 
-        const projectsData = Array.isArray(projectsRes.data) ? projectsRes.data : []
-        const experiencesData = Array.isArray(experiencesRes.data) ? experiencesRes.data : []
+        // Backend returns { data: { projects: [...], page: 1, ... } }
+        const projectsData = projectsRes.data?.projects || projectsRes.data || []
+        const experiencesData = experiencesRes.data?.experiences || experiencesRes.data || []
+        const skillsData = skillsRes.data?.skills || skillsRes.data || []
+        const certificationsData =
+          certificationsRes.data?.certifications || certificationsRes.data || []
 
-        setProjects(projectsData.slice(0, 3))
-        setExperiences(experiencesData.slice(0, 3))
+        const projectsArray = Array.isArray(projectsData) ? projectsData : []
+        const experiencesArray = Array.isArray(experiencesData) ? experiencesData : []
+        const skillsArray = Array.isArray(skillsData) ? skillsData : []
+        const certificationsArray = Array.isArray(certificationsData) ? certificationsData : []
+
+        setProjects(projectsArray.slice(0, 3))
+        setExperiences(experiencesArray.slice(0, 3))
 
         setStats({
-          projects: projectsData.length,
-          experiences: experiencesData.length,
-          skills: Array.isArray(skillsRes.data) ? skillsRes.data.length : 0,
-          certifications: Array.isArray(certificationsRes.data) ? certificationsRes.data.length : 0,
+          projects: projectsArray.length,
+          experiences: experiencesArray.length,
+          skills: skillsArray.length,
+          certifications: certificationsArray.length,
         })
       } catch (err) {
         console.error('Failed to load dashboard data', err)
