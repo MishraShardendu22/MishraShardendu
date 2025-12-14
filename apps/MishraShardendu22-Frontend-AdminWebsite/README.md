@@ -611,13 +611,83 @@ export const projectsApi = {
 }
 
 // Blog API
-export const blogApi = {
-  list: (params) => api.get('/blogs', { params }),
-  get: (id) => api.get(`/blogs/${id}`),
-  create: (data) => api.post('/blogs', data),
-  update: (id, data) => api.put(`/blogs/${id}`, data),
-  delete: (id) => api.delete(`/blogs/${id}`),
-  publish: (id) => api.patch(`/blogs/${id}/publish`),
+export const blogsAPI = {
+  // Get all blogs with pagination and filters
+  getAllBlogs: (page = 1, limit = 10, options = {}) =>
+    api.get('/blogs', { params: { page, limit, ...options } }),
+
+  // Get single blog by ID
+  getBlogById: (id) => api.get(`/blogs/${id}`),
+
+  // Create new blog (owner only)
+  createBlog: (data) => api.post('/blogs', data),
+
+  // Update blog (owner only)
+  updateBlog: (id, data) => api.put(`/blogs/${id}`, data),
+
+  // Partially update blog (owner only)
+  patchBlog: (id, data) => api.patch(`/blogs/${id}`, data),
+
+  // Delete blog (owner only)
+  deleteBlog: (id) => api.delete(`/blogs/${id}`),
+
+  // Get blog statistics
+  getBlogStats: () => api.get('/blogs/stats'),
+
+  // Get reorder list (owner only)
+  getReorderList: () => api.get('/blogs/reorder'),
+
+  // Update blog order (owner only)
+  updateReorder: (payload) => api.post('/blogs/reorder', payload),
+}
+
+// Comments API
+export const commentsAPI = {
+  // Get all comments for a blog with pagination
+  getCommentsByBlogId: (blogId, page = 1, limit = 10) =>
+    api.get(`/blogs/${blogId}/comments`, { params: { page, limit } }),
+
+  // Create new comment (authenticated users only)
+  createComment: (blogId, data) => api.post(`/blogs/${blogId}/comments`, data),
+
+  // Delete comment (comment author or blog owner only)
+  deleteComment: (blogId, commentId) => api.delete(`/blogs/${blogId}/comments/${commentId}`),
+}
+```
+
+**Pagination Response Format**:
+
+```typescript
+interface PaginatedResponse<T> {
+  success: boolean
+  data: T[]
+  pagination: {
+    page: number
+    limit: number
+    total: number
+    totalPages: number
+  }
+}
+```
+
+**Example Usage**:
+
+```typescript
+// Fetch blogs with pagination
+const fetchBlogs = async () => {
+  const response = await blogsAPI.getAllBlogs(1, 10, {
+    search: 'react',
+    tag: 'javascript',
+  })
+  const { data, pagination } = response.data
+  console.log(`Showing ${data.length} of ${pagination.total} blogs`)
+}
+
+// Fetch comments with pagination
+const fetchComments = async (blogId) => {
+  const response = await commentsAPI.getCommentsByBlogId(blogId, 1, 10)
+  const { data, pagination } = response.data
+  console.log(`Page ${pagination.page} of ${pagination.totalPages}`)
 }
 ```
 

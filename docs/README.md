@@ -7,6 +7,8 @@ This directory contains comprehensive documentation for the Shardendu Mishra Por
 ### Project Documentation
 
 - [API Documentation](./API_DOCS.md) - API endpoints and usage
+- [Blog API Integration Guide](./BLOG_API_INTEGRATION.md) - Comprehensive blog backend API integration with pagination
+- [Backend Blog Documentation](./BACKEND_BLOG_README.md) - Blog backend setup and endpoints
 - [Development Guide](./DEVELOPMENT_GUIDE.md) - Setup and development instructions
 - [Postman Collection](./POSTMAN.md) - API testing with Postman
 

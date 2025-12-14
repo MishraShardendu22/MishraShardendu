@@ -35,11 +35,30 @@ GET /api/health
 ### Blog Posts
 
 ```
-GET /api/posts
-GET /api/posts/:slug
-POST /api/posts (authenticated)
-PUT /api/posts/:slug (authenticated)
-DELETE /api/posts/:slug (authenticated)
+GET /api/blogs?page=1&limit=10&search=keyword&tag=tagName&author=authorId
+GET /api/blogs/:id
+POST /api/blogs (authenticated, owner only)
+PUT /api/blogs/:id (authenticated, owner only)
+PATCH /api/blogs/:id (authenticated, owner only)
+DELETE /api/blogs/:id (authenticated, owner only)
+GET /api/blogs/stats
+GET /api/blogs/reorder (authenticated, owner only)
+POST /api/blogs/reorder (authenticated, owner only)
+```
+
+**Pagination Response Format:**
+
+```json
+{
+  "success": true,
+  "data": [...],
+  "pagination": {
+    "page": 1,
+    "limit": 10,
+    "total": 25,
+    "totalPages": 3
+  }
+}
 ```
 
 ### Categories and Tags
@@ -47,16 +66,32 @@ DELETE /api/posts/:slug (authenticated)
 ```
 GET /api/categories
 GET /api/tags
-GET /api/posts?category=:categorySlug
-GET /api/posts?tag=:tagSlug
+GET /api/blogs?tag=:tagName
+GET /api/blogs?author=:authorId
+GET /api/blogs?search=:searchQuery
 ```
 
 ### Comments
 
 ```
-GET /api/posts/:slug/comments
-POST /api/posts/:slug/comments (authenticated)
-DELETE /api/comments/:id (authenticated)
+GET /api/blogs/:id/comments?page=1&limit=10
+POST /api/blogs/:id/comments (authenticated, verified users only)
+DELETE /api/blogs/:id/comments/:commentId (authenticated, comment author or blog owner)
+```
+
+**Comment Pagination Response Format:**
+
+```json
+{
+  "success": true,
+  "data": [...],
+  "pagination": {
+    "page": 1,
+    "limit": 10,
+    "total": 15,
+    "totalPages": 2
+  }
+}
 ```
 
 ### Sitemap Generation

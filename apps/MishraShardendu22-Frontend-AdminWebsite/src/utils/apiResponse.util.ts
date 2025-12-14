@@ -235,7 +235,175 @@ const getAuthHeaders = () => {
   }
 }
 
+export interface Blog {
+  id: number
+  title: string
+  image: string | null
+  content: string
+  tags: string[]
+  authorId: number
+  createdAt: string
+  updatedAt: string
+  author: {
+    id: number
+    email: string
+    name: string
+    image: string | null
+  }
+  authorProfile: {
+    firstName: string | null
+    lastName: string | null
+    avatar: string | null
+  } | null
+  comments: number
+}
+
+export interface Comment {
+  id: number
+  content: string
+  userId: number
+  blogId: number
+  createdAt: string
+  user: {
+    id: number
+    email: string
+    name: string
+    isVerified: boolean
+    profileImage: string | null
+  }
+  userProfile: {
+    firstName: string | null
+    lastName: string | null
+    avatar: string | null
+  } | null
+}
+
+export interface PaginationResponse {
+  page: number
+  limit: number
+  total: number
+  totalPages: number
+}
+
+export interface BlogsResponse {
+  success: boolean
+  data: Blog[]
+  pagination: PaginationResponse
+}
+
+export interface BlogResponse {
+  success: boolean
+  data: Blog
+}
+
+export interface CommentsResponse {
+  success: boolean
+  data: Comment[]
+  pagination: PaginationResponse
+}
+
+export interface CreateBlogRequest {
+  title: string
+  content: string
+  tags?: string[]
+  image?: string
+}
+
+export interface UpdateBlogRequest {
+  title?: string
+  content?: string
+  tags?: string[]
+  image?: string
+}
+
+export interface CreateCommentRequest {
+  content: string
+}
+
+export interface BlogStatsResponse {
+  success: boolean
+  data: {
+    totalBlogs: number
+    totalComments: number
+    totalTags: number
+    recentBlogs: number
+  }
+}
+
 export const blogsAPI = {
+  // Get all blogs with pagination and filters
+  getAllBlogs: async (
+    page = 1,
+    limit = 10,
+    options?: {
+      tag?: string
+      author?: string
+      search?: string
+    }
+  ): Promise<BlogsResponse> => {
+    const params = new URLSearchParams({
+      page: page.toString(),
+      limit: limit.toString(),
+    })
+    if (options?.tag) params.append('tag', options.tag)
+    if (options?.author) params.append('author', options.author)
+    if (options?.search) params.append('search', options.search)
+
+    const response = await axios.get(`${BASE_URL}/blogs?${params.toString()}`, {
+      headers: getAuthHeaders(),
+    })
+    return response.data
+  },
+
+  // Get single blog by ID
+  getBlogById: async (id: number): Promise<BlogResponse> => {
+    const response = await axios.get(`${BASE_URL}/blogs/${id}`, {
+      headers: getAuthHeaders(),
+    })
+    return response.data
+  },
+
+  // Create new blog (owner only)
+  createBlog: async (blog: CreateBlogRequest): Promise<BlogResponse> => {
+    const response = await axios.post(`${BASE_URL}/blogs`, blog, {
+      headers: getAuthHeaders(),
+    })
+    return response.data
+  },
+
+  // Update blog (owner only)
+  updateBlog: async (id: number, blog: UpdateBlogRequest): Promise<BlogResponse> => {
+    const response = await axios.put(`${BASE_URL}/blogs/${id}`, blog, {
+      headers: getAuthHeaders(),
+    })
+    return response.data
+  },
+
+  // Partially update blog (owner only)
+  patchBlog: async (id: number, blog: Partial<UpdateBlogRequest>): Promise<BlogResponse> => {
+    const response = await axios.patch(`${BASE_URL}/blogs/${id}`, blog, {
+      headers: getAuthHeaders(),
+    })
+    return response.data
+  },
+
+  // Delete blog (owner only)
+  deleteBlog: async (id: number): Promise<ApiResponse<{ message: string }>> => {
+    const response = await axios.delete(`${BASE_URL}/blogs/${id}`, {
+      headers: getAuthHeaders(),
+    })
+    return response.data
+  },
+
+  // Get blog stats
+  getBlogStats: async (): Promise<BlogStatsResponse> => {
+    const response = await axios.get(`${BASE_URL}/blogs/stats`, {
+      headers: getAuthHeaders(),
+    })
+    return response.data
+  },
+
+  // Get reorder list
   getReorderList: async (): Promise<ApiResponse<BlogReorderItem[]>> => {
     const response = await axios.get(`${BASE_URL}/blogs/reorder`, {
       headers: getAuthHeaders(),
@@ -243,8 +411,45 @@ export const blogsAPI = {
     return response.data
   },
 
+  // Update reorder
   updateReorder: async (payload: BlogReorderUpdate[]): Promise<ApiResponse<unknown>> => {
     const response = await axios.post(`${BASE_URL}/blogs/reorder`, payload, {
+      headers: getAuthHeaders(),
+    })
+    return response.data
+  },
+}
+
+export const commentsAPI = {
+  // Get all comments for a blog with pagination
+  getCommentsByBlogId: async (blogId: number, page = 1, limit = 10): Promise<CommentsResponse> => {
+    const params = new URLSearchParams({
+      page: page.toString(),
+      limit: limit.toString(),
+    })
+    const response = await axios.get(`${BASE_URL}/blogs/${blogId}/comments?${params.toString()}`, {
+      headers: getAuthHeaders(),
+    })
+    return response.data
+  },
+
+  // Create new comment (authenticated users only)
+  createComment: async (
+    blogId: number,
+    comment: CreateCommentRequest
+  ): Promise<ApiResponse<Comment>> => {
+    const response = await axios.post(`${BASE_URL}/blogs/${blogId}/comments`, comment, {
+      headers: getAuthHeaders(),
+    })
+    return response.data
+  },
+
+  // Delete comment (comment author or blog owner only)
+  deleteComment: async (
+    blogId: number,
+    commentId: number
+  ): Promise<ApiResponse<{ message: string }>> => {
+    const response = await axios.delete(`${BASE_URL}/blogs/${blogId}/comments/${commentId}`, {
       headers: getAuthHeaders(),
     })
     return response.data
