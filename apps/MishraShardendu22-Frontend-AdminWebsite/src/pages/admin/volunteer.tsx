@@ -13,6 +13,7 @@ import { Badge } from '../../components/ui/badge'
 import { Input } from '../../components/ui/input'
 import { Label } from '../../components/ui/label'
 import { Button } from '../../components/ui/button'
+import { Loading } from '../../components/shared'
 import toast from 'react-hot-toast'
 import type { VolunteerExperience, CreateVolunteerExperienceRequest } from '../../types/types.data'
 import { volunteerExperiencesAPI, projectsAPI } from '../../utils/apiResponse.util'
@@ -57,13 +58,8 @@ export default function VolunteerPage() {
   const fetch = async () => {
     try {
       const res = await volunteerExperiencesAPI.getAllVolunteerExperiences()
-      // Backend returns { data: { volunteer_experiences: [...], page: 1, ... } }
-      const data = res.data as unknown as
-        | { volunteer_experiences?: VolunteerExperience[] }
-        | VolunteerExperience[]
-      const volunteerData = Array.isArray(data)
-        ? data
-        : (data as { volunteer_experiences?: VolunteerExperience[] })?.volunteer_experiences || []
+      // Backend returns { data: [...], message: "...", status: 200 }
+      const volunteerData = res.data || []
       setItems(Array.isArray(volunteerData) ? volunteerData : [])
     } catch {
       setError('Failed to fetch volunteer experiences')
@@ -75,13 +71,8 @@ export default function VolunteerPage() {
   useEffect(() => {
     fetch()
     projectsAPI.getAllProjects().then((res) => {
-      const data = res.data as unknown as
-        | { projects?: { inline: { id: string }; project_name: string }[] }
-        | { inline: { id: string }; project_name: string }[]
-      const projectsData = Array.isArray(data)
-        ? data
-        : (data as { projects?: { inline: { id: string }; project_name: string }[] })?.projects ||
-          []
+      // Backend returns { data: [...], message: "...", status: 200 }
+      const projectsData = res.data || []
       setAllProjects(
         Array.isArray(projectsData)
           ? projectsData.map((p: { inline: { id: string }; project_name: string }) => ({
@@ -111,9 +102,10 @@ export default function VolunteerPage() {
 
   if (loading)
     return (
-      <div className="min-h-[40vh] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-primary border-solid"></div>
-      </div>
+      <Loading
+        title="Loading Volunteer Experiences"
+        description="Fetching your volunteer data..."
+      />
     )
 
   const resetForm = () => {

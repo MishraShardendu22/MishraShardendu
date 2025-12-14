@@ -1,4 +1,6 @@
 import api from './api'
+import axios from 'axios'
+import { API_CONFIG } from '../constants'
 import type {
   Project,
   Experience,
@@ -13,7 +15,6 @@ import type {
   UpdateVolunteerExperienceRequest,
   CreateVolunteerExperienceRequest,
   SkillsRequest,
-  SkillsResponse,
   ProjectDetail,
   ProjectDetailKanban,
   VolunteerExperience,
@@ -21,44 +22,42 @@ import type {
   ProfileData,
   BlogReorderItem,
   BlogReorderUpdate,
+  Blog,
+  BlogComment,
+  BlogsResponse,
+  BlogResponse,
+  CommentsResponse,
+  CreateBlogRequest,
+  UpdateBlogRequest,
+  CreateCommentRequest,
+  BlogStatsResponse,
 } from '../types/types.data'
+
+// =============================================================================
+// AUTH API
+// =============================================================================
 
 export const authAPI = {
   login: async (credentials: AuthRequest): Promise<unknown> => {
-    try {
-      // Use proxy in development (empty string) or fallback to production URL
-      const baseURL = import.meta.env.VITE_BACKEND_1 || ''
-      const response = await fetch(baseURL + '/api/admin/auth', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
-      })
+    const baseURL = import.meta.env.VITE_BACKEND_1 || ''
+    const response = await fetch(baseURL + '/api/admin/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(credentials),
+    })
 
-      let data: any = {}
-      const contentType = response.headers.get('content-type')
-      if (contentType && contentType.includes('application/json')) {
-        try {
-          data = await response.json()
-        } catch (e) {
-          console.error('Failed to parse JSON response:', e)
-          throw new Error('Invalid JSON response from server')
-        }
-      }
-
-      if (!response.ok) {
-        throw new Error(data.message || `HTTP error! status: ${response.status}`)
-      }
-
-      return data
-    } catch (error: unknown) {
-      console.error('authAPI.login error:', error)
-      if (error instanceof Error) {
-        console.error('Error message:', error.message)
-      }
-      throw error
+    const contentType = response.headers.get('content-type')
+    let data: unknown = {}
+    if (contentType?.includes('application/json')) {
+      data = await response.json()
     }
+
+    if (!response.ok) {
+      throw new Error(
+        (data as { message?: string }).message || `HTTP error! status: ${response.status}`
+      )
+    }
+    return data
   },
 
   getCurrentUser: async (): Promise<ApiResponse<ProfileData>> => {
@@ -67,19 +66,25 @@ export const authAPI = {
   },
 }
 
+// =============================================================================
+// SKILLS API
+// =============================================================================
+
 export const skillsAPI = {
-  getSkills: async (): Promise<ApiResponse<SkillsResponse>> => {
+  getSkills: async (): Promise<ApiResponse<string[]>> => {
     const response = await api.get('/skills')
     return response.data
   },
 
-  addSkills: async (skills: SkillsRequest): Promise<ApiResponse<SkillsResponse>> => {
+  addSkills: async (skills: SkillsRequest): Promise<ApiResponse<string[]>> => {
     const response = await api.post('/skills', skills)
     return response.data
   },
-  // Note: Backend doesn't support delete skill operation
-  // Skills are automatically derived from projects
 }
+
+// =============================================================================
+// PROJECTS API
+// =============================================================================
 
 export const projectsAPI = {
   getAllProjectsKanban: async (): Promise<ApiResponse<ProjectDetail[]>> => {
@@ -123,6 +128,10 @@ export const projectsAPI = {
   },
 }
 
+// =============================================================================
+// EXPERIENCES API
+// =============================================================================
+
 export const experiencesAPI = {
   getAllExperiences: async (): Promise<ApiResponse<Experience[]>> => {
     const response = await api.get('/experiences')
@@ -155,6 +164,10 @@ export const experiencesAPI = {
   },
 }
 
+// =============================================================================
+// CERTIFICATIONS API
+// =============================================================================
+
 export const certificationsAPI = {
   getAllCertifications: async (): Promise<ApiResponse<Certification[]>> => {
     const response = await api.get('/certifications')
@@ -186,6 +199,10 @@ export const certificationsAPI = {
     return response.data
   },
 }
+
+// =============================================================================
+// VOLUNTEER EXPERIENCES API
+// =============================================================================
 
 export const volunteerExperiencesAPI = {
   getAllVolunteerExperiences: async (): Promise<ApiResponse<VolunteerExperience[]>> => {
@@ -221,23 +238,9 @@ export const volunteerExperiencesAPI = {
 
 export const achievementsAPI = certificationsAPI
 
-export const testAPI = {
-  testEndpoint: async (): Promise<ApiResponse<{ message: string }>> => {
-    const response = await api.get('/test')
-    return response.data
-  },
-}
-
-export const TimelineAPI = {
-  getAllEndpoints: async (): Promise<ApiResponse<string[]>> => {
-    const response = await api.get('/timeline')
-    return response.data
-  },
-}
-
-import axios from 'axios'
-
-const BASE_URL = 'https://mishrashardendu22-backend-blogwebsite.onrender.com/api'
+// =============================================================================
+// BLOG API (External Blog Backend)
+// =============================================================================
 
 const getAuthHeaders = () => {
   const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null
@@ -247,223 +250,117 @@ const getAuthHeaders = () => {
   }
 }
 
-export interface Blog {
-  id: number
-  title: string
-  image: string | null
-  content: string
-  tags: string[]
-  authorId: number
-  createdAt: string
-  updatedAt: string
-  author: {
-    id: number
-    email: string
-    name: string
-    image: string | null
-  }
-  authorProfile: {
-    firstName: string | null
-    lastName: string | null
-    avatar: string | null
-  } | null
-  comments: number
-}
-
-export interface Comment {
-  id: number
-  content: string
-  userId: number
-  blogId: number
-  createdAt: string
-  user: {
-    id: number
-    email: string
-    name: string
-    isVerified: boolean
-    profileImage: string | null
-  }
-  userProfile: {
-    firstName: string | null
-    lastName: string | null
-    avatar: string | null
-  } | null
-}
-
-export interface PaginationResponse {
-  page: number
-  limit: number
-  total: number
-  totalPages: number
-}
-
-export interface BlogsResponse {
-  success: boolean
-  data: Blog[]
-  pagination: PaginationResponse
-}
-
-export interface BlogResponse {
-  success: boolean
-  data: Blog
-}
-
-export interface CommentsResponse {
-  success: boolean
-  data: Comment[]
-  pagination: PaginationResponse
-}
-
-export interface CreateBlogRequest {
-  title: string
-  content: string
-  tags?: string[]
-  image?: string
-}
-
-export interface UpdateBlogRequest {
-  title?: string
-  content?: string
-  tags?: string[]
-  image?: string
-}
-
-export interface CreateCommentRequest {
-  content: string
-}
-
-export interface BlogStatsResponse {
-  success: boolean
-  data: {
-    totalBlogs: number
-    totalComments: number
-    totalTags: number
-    recentBlogs: number
-  }
-}
-
 export const blogsAPI = {
-  // Get all blogs with pagination and filters
   getAllBlogs: async (
     page = 1,
     limit = 10,
-    options?: {
-      tag?: string
-      author?: string
-      search?: string
-    }
+    options?: { tag?: string; author?: string; search?: string }
   ): Promise<BlogsResponse> => {
-    const params = new URLSearchParams({
-      page: page.toString(),
-      limit: limit.toString(),
-    })
+    const params = new URLSearchParams({ page: page.toString(), limit: limit.toString() })
     if (options?.tag) params.append('tag', options.tag)
     if (options?.author) params.append('author', options.author)
     if (options?.search) params.append('search', options.search)
 
-    const response = await axios.get(`${BASE_URL}/blogs?${params.toString()}`, {
+    const response = await axios.get(`${API_CONFIG.BLOG_BASE_URL}/blogs?${params.toString()}`, {
       headers: getAuthHeaders(),
     })
     return response.data
   },
 
-  // Get single blog by ID
   getBlogById: async (id: number): Promise<BlogResponse> => {
-    const response = await axios.get(`${BASE_URL}/blogs/${id}`, {
+    const response = await axios.get(`${API_CONFIG.BLOG_BASE_URL}/blogs/${id}`, {
       headers: getAuthHeaders(),
     })
     return response.data
   },
 
-  // Create new blog (owner only)
   createBlog: async (blog: CreateBlogRequest): Promise<BlogResponse> => {
-    const response = await axios.post(`${BASE_URL}/blogs`, blog, {
+    const response = await axios.post(`${API_CONFIG.BLOG_BASE_URL}/blogs`, blog, {
       headers: getAuthHeaders(),
     })
     return response.data
   },
 
-  // Update blog (owner only)
   updateBlog: async (id: number, blog: UpdateBlogRequest): Promise<BlogResponse> => {
-    const response = await axios.put(`${BASE_URL}/blogs/${id}`, blog, {
+    const response = await axios.put(`${API_CONFIG.BLOG_BASE_URL}/blogs/${id}`, blog, {
       headers: getAuthHeaders(),
     })
     return response.data
   },
 
-  // Partially update blog (owner only)
   patchBlog: async (id: number, blog: Partial<UpdateBlogRequest>): Promise<BlogResponse> => {
-    const response = await axios.patch(`${BASE_URL}/blogs/${id}`, blog, {
+    const response = await axios.patch(`${API_CONFIG.BLOG_BASE_URL}/blogs/${id}`, blog, {
       headers: getAuthHeaders(),
     })
     return response.data
   },
 
-  // Delete blog (owner only)
   deleteBlog: async (id: number): Promise<ApiResponse<{ message: string }>> => {
-    const response = await axios.delete(`${BASE_URL}/blogs/${id}`, {
+    const response = await axios.delete(`${API_CONFIG.BLOG_BASE_URL}/blogs/${id}`, {
       headers: getAuthHeaders(),
     })
     return response.data
   },
 
-  // Get blog stats
   getBlogStats: async (): Promise<BlogStatsResponse> => {
-    const response = await axios.get(`${BASE_URL}/blogs/stats`, {
+    const response = await axios.get(`${API_CONFIG.BLOG_BASE_URL}/blogs/stats`, {
       headers: getAuthHeaders(),
     })
     return response.data
   },
 
-  // Get reorder list
   getReorderList: async (): Promise<ApiResponse<BlogReorderItem[]>> => {
-    const response = await axios.get(`${BASE_URL}/blogs/reorder`, {
+    const response = await axios.get(`${API_CONFIG.BLOG_BASE_URL}/blogs/reorder`, {
       headers: getAuthHeaders(),
     })
     return response.data
   },
 
-  // Update reorder
   updateReorder: async (payload: BlogReorderUpdate[]): Promise<ApiResponse<unknown>> => {
-    const response = await axios.post(`${BASE_URL}/blogs/reorder`, payload, {
+    const response = await axios.post(`${API_CONFIG.BLOG_BASE_URL}/blogs/reorder`, payload, {
       headers: getAuthHeaders(),
     })
     return response.data
   },
 }
 
+// =============================================================================
+// COMMENTS API
+// =============================================================================
+
 export const commentsAPI = {
-  // Get all comments for a blog with pagination
   getCommentsByBlogId: async (blogId: number, page = 1, limit = 10): Promise<CommentsResponse> => {
-    const params = new URLSearchParams({
-      page: page.toString(),
-      limit: limit.toString(),
-    })
-    const response = await axios.get(`${BASE_URL}/blogs/${blogId}/comments?${params.toString()}`, {
-      headers: getAuthHeaders(),
-    })
+    const params = new URLSearchParams({ page: page.toString(), limit: limit.toString() })
+    const response = await axios.get(
+      `${API_CONFIG.BLOG_BASE_URL}/blogs/${blogId}/comments?${params.toString()}`,
+      { headers: getAuthHeaders() }
+    )
     return response.data
   },
 
-  // Create new comment (authenticated users only)
   createComment: async (
     blogId: number,
     comment: CreateCommentRequest
-  ): Promise<ApiResponse<Comment>> => {
-    const response = await axios.post(`${BASE_URL}/blogs/${blogId}/comments`, comment, {
-      headers: getAuthHeaders(),
-    })
+  ): Promise<ApiResponse<BlogComment>> => {
+    const response = await axios.post(
+      `${API_CONFIG.BLOG_BASE_URL}/blogs/${blogId}/comments`,
+      comment,
+      { headers: getAuthHeaders() }
+    )
     return response.data
   },
 
-  // Delete comment (comment author or blog owner only)
   deleteComment: async (
     blogId: number,
     commentId: number
   ): Promise<ApiResponse<{ message: string }>> => {
-    const response = await axios.delete(`${BASE_URL}/blogs/${blogId}/comments/${commentId}`, {
-      headers: getAuthHeaders(),
-    })
+    const response = await axios.delete(
+      `${API_CONFIG.BLOG_BASE_URL}/blogs/${blogId}/comments/${commentId}`,
+      { headers: getAuthHeaders() }
+    )
     return response.data
   },
 }
+
+// Re-export types for convenience
+export type { Blog, BlogComment, BlogsResponse, BlogResponse, CommentsResponse }

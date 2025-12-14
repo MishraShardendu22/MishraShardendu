@@ -1,54 +1,39 @@
-export interface CommitData {
-  date: string
-  count: number
-}
+// =============================================================================
+// CORE API TYPES
+// =============================================================================
 
-export interface GitHubData {
-  name?: string
-  location?: string
-  bio?: string
-  followers: number
-  public_repos: number
-}
-
-export interface LeetCodeData {
-  profile: {
-    realName?: string
-    ranking: number
-  }
-  submitStats: {
-    acSubmissionNum: Array<{ count: number }>
-  }
-}
-
-export interface Repository {
-  name: string
-  url: string
-  stars: number
-}
-
-export interface DashboardData {
-  github?: GitHubData
-  leetcode?: LeetCodeData
-  commits?: CommitData[]
-  languages?: Record<string, number>
-  stars?: number
-  topRepos?: Repository[]
-}
-
-export interface ChartTheme {
-  text: string
-  grid: string
-  background: string
-  primary: string
-}
-
+/**
+ * Standard API response wrapper
+ */
 export interface ApiResponse<T> {
   message: string
   data: T
   error?: string
   status?: number
 }
+
+/**
+ * Pagination metadata
+ */
+export interface PaginationMeta {
+  page: number
+  limit: number
+  total: number
+  totalPages: number
+}
+
+/**
+ * Paginated API response
+ */
+export interface PaginatedResponse<T> {
+  success: boolean
+  data: T[]
+  pagination: PaginationMeta
+}
+
+// =============================================================================
+// AUTHENTICATION TYPES
+// =============================================================================
 
 export interface AuthRequest {
   email: string
@@ -75,20 +60,8 @@ export interface User {
   certifications: string[]
 }
 
-export interface SkillsRequest {
-  skills: string[]
-}
-
-export interface SkillsResponse {
-  skills: string[]
-}
-
 export interface ProfileData {
-  inline: {
-    id: string
-    created_at: string
-    updated_at: string
-  }
+  inline: InlineMetadata
   email: string
   password: string
   admin_pass: string
@@ -96,6 +69,38 @@ export interface ProfileData {
   projects: string[]
   experiences: string[]
   certifications?: string[] | null
+}
+
+// =============================================================================
+// SHARED TYPES
+// =============================================================================
+
+/**
+ * Common inline metadata for entities
+ */
+export interface InlineMetadata {
+  id: string
+  created_at: string
+  updated_at: string
+}
+
+/**
+ * Skills request/response
+ */
+export interface SkillsRequest {
+  skills: string[]
+}
+
+export type SkillsResponse = string[]
+
+// =============================================================================
+// EXPERIENCE TYPES
+// =============================================================================
+
+export interface ExperienceTimeLine {
+  position: string
+  start_date: string
+  end_date: string
 }
 
 export interface ExperienceFormData {
@@ -111,12 +116,12 @@ export interface ExperienceFormData {
   images: string
 }
 
+// =============================================================================
+// PROJECT TYPES
+// =============================================================================
+
 export interface Project {
-  inline: {
-    id: string
-    created_at: string
-    updated_at: string
-  }
+  inline: InlineMetadata
   order: number
   images: string[]
   stats?: Record<string, unknown>
@@ -140,18 +145,8 @@ export interface CreateProjectRequest {
   project_video: string
 }
 
-export interface ExperienceTimeLine {
-  position: string
-  start_date: string
-  end_date: string
-}
-
 export interface Experience {
-  inline: {
-    id: string
-    created_at: string
-    updated_at: string
-  }
+  inline: InlineMetadata
   images: string[]
   projects: string[]
   created_by: string
@@ -187,12 +182,12 @@ export interface ExperienceResponse {
   status: number
 }
 
+// =============================================================================
+// CERTIFICATION TYPES
+// =============================================================================
+
 export interface Certification {
-  inline: {
-    id: string
-    created_at: string
-    updated_at: string
-  }
+  inline: InlineMetadata
   title: string
   description: string
   projects: string[]
@@ -216,6 +211,10 @@ export interface CreateCertificationRequest {
   expiry_date: string
 }
 
+// =============================================================================
+// VOLUNTEER TYPES
+// =============================================================================
+
 export interface VolunteerExperienceTimeLine {
   position: string
   start_date: string
@@ -223,11 +222,7 @@ export interface VolunteerExperienceTimeLine {
 }
 
 export interface VolunteerExperience {
-  inline: {
-    id: string
-    created_at: string
-    updated_at: string
-  }
+  inline: InlineMetadata
   images: string[]
   projects: string[]
   created_by: string
@@ -249,6 +244,10 @@ export interface CreateVolunteerExperienceRequest {
   volunteer_time_line: VolunteerExperienceTimeLine[]
 }
 
+// =============================================================================
+// PROJECT KANBAN TYPES
+// =============================================================================
+
 export interface ProjectDetail {
   order: number
   project_id: string
@@ -260,13 +259,97 @@ export interface ProjectDetailKanban {
   project_id: string
 }
 
-export type Achievement = Certification
-export type UpdateProjectRequest = CreateProjectRequest
-export type UpdateExperienceRequest = CreateExperienceRequest
-export type CreateAchievementRequest = CreateCertificationRequest
-export type UpdateAchievementRequest = UpdateCertificationRequest
-export type UpdateCertificationRequest = CreateCertificationRequest
-export type UpdateVolunteerExperienceRequest = CreateVolunteerExperienceRequest
+// =============================================================================
+// BLOG TYPES (from Blog API)
+// =============================================================================
+
+export interface BlogAuthor {
+  id: number
+  email: string
+  name: string
+  image: string | null
+}
+
+export interface BlogAuthorProfile {
+  firstName: string | null
+  lastName: string | null
+  avatar: string | null
+}
+
+export interface Blog {
+  id: number
+  title: string
+  image: string | null
+  content: string
+  tags: string[]
+  authorId: number
+  createdAt: string
+  updatedAt: string
+  author: BlogAuthor
+  authorProfile: BlogAuthorProfile | null
+  comments: number
+}
+
+export interface BlogComment {
+  id: number
+  content: string
+  userId: number
+  blogId: number
+  createdAt: string
+  user: {
+    id: number
+    email: string
+    name: string
+    isVerified: boolean
+    profileImage: string | null
+  }
+  userProfile: BlogAuthorProfile | null
+}
+
+export interface BlogsResponse {
+  success: boolean
+  data: Blog[]
+  pagination: PaginationMeta
+}
+
+export interface BlogResponse {
+  success: boolean
+  data: Blog
+}
+
+export interface CommentsResponse {
+  success: boolean
+  data: BlogComment[]
+  pagination: PaginationMeta
+}
+
+export interface CreateBlogRequest {
+  title: string
+  content: string
+  tags?: string[]
+  image?: string
+}
+
+export interface UpdateBlogRequest {
+  title?: string
+  content?: string
+  tags?: string[]
+  image?: string
+}
+
+export interface CreateCommentRequest {
+  content: string
+}
+
+export interface BlogStatsResponse {
+  success: boolean
+  data: {
+    totalBlogs: number
+    totalComments: number
+    totalTags: number
+    recentBlogs: number
+  }
+}
 
 export interface BlogReorderUpdate {
   id: number
@@ -278,3 +361,15 @@ export interface BlogReorderItem {
   orderId: number
   title: string
 }
+
+// =============================================================================
+// TYPE ALIASES
+// =============================================================================
+
+export type Achievement = Certification
+export type UpdateProjectRequest = CreateProjectRequest
+export type UpdateExperienceRequest = CreateExperienceRequest
+export type CreateAchievementRequest = CreateCertificationRequest
+export type UpdateAchievementRequest = CreateCertificationRequest
+export type UpdateCertificationRequest = CreateCertificationRequest
+export type UpdateVolunteerExperienceRequest = CreateVolunteerExperienceRequest

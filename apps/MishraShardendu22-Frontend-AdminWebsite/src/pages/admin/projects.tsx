@@ -12,6 +12,7 @@ import {
   DialogTrigger,
 } from '../../components/ui/dialog'
 import { Badge } from '../../components/ui/badge'
+import { Loading } from '../../components/shared'
 import { projectsAPI } from '../../utils/apiResponse.util'
 import { Plus, ExternalLink, Loader2, Pencil, Trash2, Github } from 'lucide-react'
 import toast from 'react-hot-toast'
@@ -47,11 +48,8 @@ export default function ProjectsPage() {
   const fetchProjects = async () => {
     try {
       const response = await projectsAPI.getAllProjects()
-      // Backend returns { data: { projects: [...], page: 1, ... } }
-      const data = response.data as unknown as { projects?: Project[] } | Project[]
-      const projectsData = Array.isArray(data)
-        ? data
-        : (data as { projects?: Project[] })?.projects || []
+      // Backend returns { data: [...], message: "...", status: 200 }
+      const projectsData = response.data || []
       setProjects(Array.isArray(projectsData) ? projectsData : [])
     } catch {
       toast.error('Failed to fetch projects')
@@ -173,12 +171,9 @@ export default function ProjectsPage() {
     setIsEditDialogOpen(true)
   }
 
-  if (loading)
-    return (
-      <div className="min-h-[40vh] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-primary border-solid" />
-      </div>
-    )
+  if (loading) {
+    return <Loading title="Loading Projects" description="Fetching your projects..." />
+  }
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -20,6 +20,7 @@ import {
 import { CSS } from '@dnd-kit/utilities'
 import { Badge } from '../../components/ui/badge'
 import { Button } from '../../components/ui/button'
+import { Loading, ErrorState } from '../../components/shared'
 import type { ProjectDetail, ProjectDetailKanban } from '../../types/types.data'
 import { projectsAPI } from '../../utils/apiResponse.util'
 import { Card, CardHeader, CardTitle } from '../../components/ui/card'
@@ -29,7 +30,6 @@ import {
   Package,
   Loader2,
   TrendingUp,
-  AlertCircle,
   GripVertical,
   CheckCircle2,
   TrendingDown,
@@ -207,31 +207,16 @@ export default function KanbanPage() {
   const activeProject = allprojects.find((p) => p.project_id === activeId)
 
   if (loading) {
-    return (
-      <div className="min-h-[70vh] flex flex-col items-center justify-center space-y-4">
-        <Loader2 className="h-10 w-10 text-primary animate-spin" />
-        <div className="space-y-1 text-center">
-          <p className="text-base font-medium text-foreground">Loading Projects</p>
-          <p className="text-sm text-muted-foreground">Please wait...</p>
-        </div>
-      </div>
-    )
+    return <Loading title="Loading Projects" description="Please wait..." />
   }
 
   if (error) {
     return (
-      <div className="min-h-[70vh] flex flex-col items-center justify-center gap-6 px-4">
-        <div className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center">
-          <AlertCircle className="h-8 w-8 text-destructive" />
-        </div>
-        <div className="text-center space-y-2 max-w-md">
-          <h2 className="text-xl font-semibold text-foreground">Error Loading Projects</h2>
-          <p className="text-sm text-muted-foreground">{error}</p>
-          <Button onClick={() => window.location.reload()} variant="outline" className="mt-4">
-            Retry
-          </Button>
-        </div>
-      </div>
+      <ErrorState
+        title="Error Loading Projects"
+        message={error}
+        onRetry={() => window.location.reload()}
+      />
     )
   }
 

@@ -12,6 +12,7 @@ import {
   DialogTrigger,
 } from '../../components/ui/dialog'
 import { skillsAPI } from '../../utils/apiResponse.util'
+import { Loading, ErrorState } from '../../components/shared'
 import { Plus, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 
@@ -29,8 +30,8 @@ export default function SkillsPage() {
   const fetchSkills = async () => {
     try {
       const response = await skillsAPI.getSkills()
-      // Backend returns { data: { skills: [...], page: 1, ... } }
-      const skillsData = response.data?.skills || response.data || []
+      // Backend returns { data: [...], message: "...", status: 200 }
+      const skillsData = response.data || []
       setSkills(Array.isArray(skillsData) ? skillsData : [])
       setError('')
     } catch {
@@ -63,8 +64,8 @@ export default function SkillsPage() {
       toast.success('Skills added successfully')
       setIsAddDialogOpen(false)
       setNewSkills('')
-      // Update skills from response
-      const updatedSkills = response.data?.skills || response.data || []
+      // Update skills from response - backend returns { data: [...] }
+      const updatedSkills = response.data || []
       setSkills(Array.isArray(updatedSkills) ? updatedSkills : [])
     } catch {
       toast.error('Failed to add skills')
@@ -79,26 +80,11 @@ export default function SkillsPage() {
   const paginatedSkills = skills.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
 
   if (loading) {
-    return (
-      <div class="min-h-[40vh] flex items-center justify-center">
-        <Loader2 class="w-12 h-12 animate-spin text-primary" />
-      </div>
-    )
+    return <Loading title="Loading Skills" description="Fetching your skills..." />
   }
 
   if (error && !skills.length) {
-    return (
-      <div class="min-h-[40vh] flex flex-col items-center justify-center gap-4 px-4 text-center max-w-lg mx-auto">
-        <div class="w-24 h-24 rounded-full bg-red-500/20 flex items-center justify-center">
-          <span class="text-5xl">😢</span>
-        </div>
-        <h2 class="text-3xl font-bold">Oops! Something went wrong</h2>
-        <p class="text-lg text-gray-600 dark:text-gray-400">{error}</p>
-        <Button onClick={fetchSkills} class="mt-4">
-          Retry
-        </Button>
-      </div>
-    )
+    return <ErrorState title="Failed to Load Skills" message={error} onRetry={fetchSkills} />
   }
 
   return (

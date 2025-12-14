@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import { Button } from '../../components/ui/button'
 import { Input } from '../../components/ui/input'
 import { Label } from '../../components/ui/label'
+import { Loading, ErrorState } from '../../components/shared'
 import { useAuth } from '../../hooks/use-auth'
 import { User, Mail, Shield, Calendar, Award, Briefcase, FolderKanban, Clock } from 'lucide-react'
 import type { ProfileData } from '../../types/types.data'
@@ -28,25 +29,13 @@ export default function ProfilePage() {
     fetchProfile()
   }, [])
 
-  if (loading)
-    return (
-      <div className="min-h-[40vh] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-primary border-solid"></div>
-      </div>
-    )
+  if (loading) {
+    return <Loading title="Loading Profile" description="Fetching your profile data..." />
+  }
 
-  if (error)
-    return (
-      <div className="min-h-[40vh] flex flex-col items-center justify-center gap-4">
-        <div className="w-20 h-20 rounded-full bg-destructive/10 flex items-center justify-center">
-          <span className="text-4xl">😢</span>
-        </div>
-        <div className="text-center space-y-2">
-          <h2 className="text-2xl font-heading text-foreground">Oops! Something went wrong</h2>
-          <p className="text-foreground text-lg">{error}</p>
-        </div>
-      </div>
-    )
+  if (error) {
+    return <ErrorState title="Failed to Load Profile" message={error} />
+  }
 
   return (
     <div className="space-y-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

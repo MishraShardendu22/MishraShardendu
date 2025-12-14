@@ -4,9 +4,11 @@
   import Input from "./ui/input.svelte";
   import Button from "./ui/button.svelte";
   import BlogCard from "./BlogCard.svelte";
+  import { Skeleton, EmptyState } from "./shared";
   import { blogApi, type Blog } from "../api";
   import { BookOpen, Plus, Search } from "lucide-svelte";
   import { navigateTo } from "../navigation";
+  import { PAGINATION } from "../constants";
 
   let error = $state("");
   let loading = $state(true);
@@ -14,7 +16,7 @@
   let isOwner = $state(false);
   let blogs = $state<Blog[]>([]);
   let currentPage = $state(1);
-  const pageSize = 6;
+  const pageSize = PAGINATION.BLOG_PAGE_SIZE;
   let isVisible = $state(false);
 
   const basePath = typeof window !== 'undefined' && window.location.pathname.startsWith('/blog') ? '/blog' : '';
@@ -107,19 +109,7 @@
 
   {#if loading}
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
-      {#each Array(6) as _, i}
-        <div
-          class="bg-card/80 backdrop-blur-sm border border-border/60 rounded-xl overflow-hidden shadow-lg p-5 space-y-4 animate-pulse"
-        >
-          <div class="w-10 h-10 bg-linear-to-br from-muted/70 to-muted/50 rounded-full"></div>
-          <div class="h-5 w-5/6 bg-linear-to-r from-muted/70 to-muted/50 rounded-lg"></div>
-          <div class="h-4 w-full bg-linear-to-r from-muted/70 to-muted/50 rounded-lg"></div>
-          <div class="flex gap-2">
-            <div class="h-6 w-16 bg-linear-to-r from-muted/70 to-muted/50 rounded-full"></div>
-            <div class="h-6 w-20 bg-linear-to-r from-muted/70 to-muted/50 rounded-full"></div>
-          </div>
-        </div>
-      {/each}
+      <Skeleton variant="card" count={6} />
     </div>
   {:else if filteredBlogs.length === 0}
     <div class="text-center py-12 sm:py-16 md:py-24 px-4 animate-slide-up">

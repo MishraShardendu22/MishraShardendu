@@ -22,18 +22,11 @@ import { Badge } from '../../components/ui/badge'
 import { Button } from '../../components/ui/button'
 import { Card, CardHeader, CardTitle } from '../../components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs'
-import {
-  Save,
-  Loader2,
-  AlertCircle,
-  GripVertical,
-  CheckCircle2,
-  TrendingDown,
-  TrendingUp,
-} from 'lucide-react'
+import { Save, Loader2, GripVertical, CheckCircle2, TrendingDown, TrendingUp } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { useAuth } from '../../hooks/use-auth'
 import { blogsAPI } from '../../utils/apiResponse.util'
+import { Loading, ErrorState } from '../../components/shared'
 import type { BlogReorderUpdate } from '../../types/types.data'
 
 interface BlogItem {
@@ -225,32 +218,11 @@ export default function BlogReorderPage() {
   const activeItem = items.find((item) => item.uid === activeId)
 
   if (loading) {
-    return (
-      <div className="min-h-[70vh] flex flex-col items-center justify-center space-y-4">
-        <Loader2 className="h-10 w-10 text-primary animate-spin" />
-        <div className="space-y-1 text-center">
-          <p className="text-base font-medium text-foreground">Loading Blogs</p>
-          <p className="text-sm text-muted-foreground">Please wait...</p>
-        </div>
-      </div>
-    )
+    return <Loading title="Loading Blogs" description="Please wait..." size="lg" />
   }
 
   if (error) {
-    return (
-      <div className="min-h-[70vh] flex flex-col items-center justify-center gap-6 px-4">
-        <div className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center">
-          <AlertCircle className="h-8 w-8 text-destructive" />
-        </div>
-        <div className="text-center space-y-2 max-w-md">
-          <h2 className="text-xl font-semibold text-foreground">Error Loading Blogs</h2>
-          <p className="text-sm text-muted-foreground">{error}</p>
-          <Button onClick={() => window.location.reload()} variant="outline" className="mt-4">
-            Retry
-          </Button>
-        </div>
-      </div>
-    )
+    return <ErrorState title="Error Loading Blogs" message={error} size="lg" />
   }
 
   if (!isAuthenticated) {

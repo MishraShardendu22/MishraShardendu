@@ -8,6 +8,7 @@ import {
 import { Card, CardContent } from '../../components/ui/card'
 import { Button } from '../../components/ui/button'
 import { Badge } from '../../components/ui/badge'
+import { Loading } from '../../components/shared'
 import { Briefcase, GraduationCap, Settings, Medal, Plus, ExternalLink, Globe } from 'lucide-react'
 import type { Project, Experience } from '../../types/types.data'
 
@@ -32,16 +33,13 @@ export default function DashboardPage() {
           certificationsAPI.getAllCertifications(),
         ])
 
-        // Backend returns data as arrays directly
-        const projectsData = projectsRes.data || []
-        const experiencesData = experiencesRes.data || []
-        const skillsData = skillsRes.data || []
-        const certificationsData = certificationsRes.data || []
-
-        const projectsArray = Array.isArray(projectsData) ? projectsData : []
-        const experiencesArray = Array.isArray(experiencesData) ? experiencesData : []
-        const skillsArray = Array.isArray(skillsData) ? skillsData : []
-        const certificationsArray = Array.isArray(certificationsData) ? certificationsData : []
+        // Backend returns { data: [...], message: "...", status: 200 }
+        const projectsArray = Array.isArray(projectsRes.data) ? projectsRes.data : []
+        const experiencesArray = Array.isArray(experiencesRes.data) ? experiencesRes.data : []
+        const skillsArray = Array.isArray(skillsRes.data) ? skillsRes.data : []
+        const certificationsArray = Array.isArray(certificationsRes.data)
+          ? certificationsRes.data
+          : []
 
         setProjects(projectsArray.slice(0, 3))
         setExperiences(experiencesArray.slice(0, 3))
@@ -63,11 +61,7 @@ export default function DashboardPage() {
   }, [])
 
   if (loading) {
-    return (
-      <div className="min-h-[40vh] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-primary"></div>
-      </div>
-    )
+    return <Loading title="Loading Dashboard" description="Fetching your data..." />
   }
 
   return (

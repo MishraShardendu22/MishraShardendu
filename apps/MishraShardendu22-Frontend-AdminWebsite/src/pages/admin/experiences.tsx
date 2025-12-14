@@ -22,6 +22,7 @@ import { Badge } from '../../components/ui/badge'
 import { Input } from '../../components/ui/input'
 import { Label } from '../../components/ui/label'
 import { Button } from '../../components/ui/button'
+import { Loading } from '../../components/shared'
 import toast from 'react-hot-toast'
 import type { Experience, CreateExperienceRequest } from '../../types/types.data'
 import { experiencesAPI, projectsAPI } from '../../utils/apiResponse.util'
@@ -70,11 +71,8 @@ export default function ExperiencesPage() {
   const fetchExperiences = async () => {
     try {
       const response = await experiencesAPI.getAllExperiences()
-      // Backend returns { data: { experiences: [...], page: 1, ... } }
-      const data = response.data as unknown as { experiences?: Experience[] } | Experience[]
-      const experiencesData = Array.isArray(data)
-        ? data
-        : (data as { experiences?: Experience[] })?.experiences || []
+      // Backend returns { data: [...], message: "...", status: 200 }
+      const experiencesData = response.data || []
       setExperiences(Array.isArray(experiencesData) ? experiencesData : [])
     } catch {
       setError('Failed to fetch experiences')
@@ -87,13 +85,8 @@ export default function ExperiencesPage() {
   useEffect(() => {
     fetchExperiences()
     projectsAPI.getAllProjects().then((res) => {
-      const data = res.data as unknown as
-        | { projects?: { inline: { id: string }; project_name: string }[] }
-        | { inline: { id: string }; project_name: string }[]
-      const projectsData = Array.isArray(data)
-        ? data
-        : (data as { projects?: { inline: { id: string }; project_name: string }[] })?.projects ||
-          []
+      // Backend returns { data: [...], message: "...", status: 200 }
+      const projectsData = res.data || []
       setAllProjects(
         Array.isArray(projectsData)
           ? projectsData.map((p: { inline: { id: string }; project_name: string }) => ({
@@ -121,12 +114,9 @@ export default function ExperiencesPage() {
     }
   }, [error])
 
-  if (loading)
-    return (
-      <div className="min-h-[40vh] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-primary border-solid"></div>
-      </div>
-    )
+  if (loading) {
+    return <Loading title="Loading Experiences" description="Fetching your experiences..." />
+  }
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault()

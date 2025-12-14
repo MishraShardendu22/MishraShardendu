@@ -12,6 +12,7 @@ import {
   DialogTrigger,
 } from '../../components/ui/dialog'
 import { Badge } from '../../components/ui/badge'
+import { Loading } from '../../components/shared'
 import { certificationsAPI } from '../../utils/apiResponse.util'
 import { Plus, ExternalLink, Loader2, Pencil, Trash2, Award } from 'lucide-react'
 import toast from 'react-hot-toast'
@@ -47,13 +48,8 @@ export default function CertificationsPage() {
   const fetchCertifications = async () => {
     try {
       const response = await certificationsAPI.getAllCertifications()
-      // Backend returns { data: { certifications: [...], page: 1, ... } }
-      const data = response.data as unknown as
-        | { certifications?: Certification[] }
-        | Certification[]
-      const certificationsData = Array.isArray(data)
-        ? data
-        : (data as { certifications?: Certification[] })?.certifications || []
+      // Backend returns { data: [...], message: "...", status: 200 }
+      const certificationsData = response.data || []
       setCertifications(Array.isArray(certificationsData) ? certificationsData : [])
     } catch {
       toast.error('Failed to fetch certifications')
@@ -180,11 +176,7 @@ export default function CertificationsPage() {
   }
 
   if (loading)
-    return (
-      <div className="min-h-[40vh] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-primary border-solid" />
-      </div>
-    )
+    return <Loading title="Loading Certifications" description="Fetching your certifications..." />
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

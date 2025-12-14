@@ -3,6 +3,7 @@
   import Badge from "./ui/badge.svelte";
   import Avatar from "./ui/avatar.svelte";
   import OptimizedImage from "./OptimizedImage.svelte";
+  import { Loading, ErrorState, Skeleton } from "./shared";
   import { Calendar, MessageCircle, Send, Trash, Share2, Check, Edit, ChevronDown, ChevronUp } from "lucide-svelte";
   import { marked } from "marked";
   import { blogApi, commentApi, type Blog, type Comment } from "../api";
@@ -332,11 +333,9 @@
 
 <div class="w-full max-w-7xl mx-auto px-2 py-8 lg:px-3 overflow-x-hidden">
   {#if loading}
-    <div class="space-y-4">
-      <div class="h-10 bg-muted/50 rounded animate-pulse"></div>
-      <div class="h-6 w-3/4 bg-muted/50 rounded animate-pulse"></div>
-      <div class="h-96 bg-muted/50 rounded animate-pulse"></div>
-    </div>
+    <Loading title="Loading blog post..." size="lg" />
+  {:else if error && !blog}
+    <ErrorState message={error} onRetry={loadBlog} />
   {:else if blog}
 
 <article>
