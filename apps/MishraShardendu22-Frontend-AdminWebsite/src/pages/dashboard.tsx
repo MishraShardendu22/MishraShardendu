@@ -1,16 +1,16 @@
 import { Briefcase, ExternalLink, Globe, GraduationCap, Medal, Plus, Settings } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
-import { Loading } from '../../components/shared'
-import { Badge } from '../../components/ui/badge'
-import { Button } from '../../components/ui/button'
-import { Card, CardContent } from '../../components/ui/card'
-import type { Experience, Project } from '../../types/types.data'
+import { Loading } from '../components/shared'
+import { Badge } from '../components/ui/badge'
+import { Button } from '../components/ui/button'
+import { Card, CardContent } from '../components/ui/card'
+import type { Experience, Project } from '../types/types.data'
 import {
   certificationsAPI,
   experiencesAPI,
   projectsAPI,
   skillsAPI,
-} from '../../utils/apiResponse.util'
+} from '../utils/apiResponse.util'
 
 export default function DashboardPage() {
   const [stats, setStats] = useState({

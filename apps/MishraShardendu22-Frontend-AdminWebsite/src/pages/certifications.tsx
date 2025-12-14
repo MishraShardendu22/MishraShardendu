@@ -2,12 +2,12 @@ import { ExternalLink, Pencil, Plus, Trash2 } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
 import { route } from 'preact-router'
 import toast from 'react-hot-toast'
-import { Loading } from '../../components/shared'
-import { Badge } from '../../components/ui/badge'
-import { Button } from '../../components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
-import type { Certification } from '../../types/types.data'
-import { certificationsAPI } from '../../utils/apiResponse.util'
+import { Loading } from '../components/shared'
+import { Badge } from '../components/ui/badge'
+import { Button } from '../components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
+import type { Certification } from '../types/types.data'
+import { certificationsAPI } from '../utils/apiResponse.util'
 
 export default function CertificationsPage() {
   const [certifications, setCertifications] = useState<Certification[]>([])

@@ -2,44 +2,44 @@ import { ArrowLeft, Loader2, Plus, Save, X } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
 import { route } from 'preact-router'
 import toast from 'react-hot-toast'
-import { Loading } from '../../components/shared'
-import { Badge } from '../../components/ui/badge'
-import { Button } from '../../components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
-import { Input } from '../../components/ui/input'
-import { Label } from '../../components/ui/label'
-import { Textarea } from '../../components/ui/textarea'
-import type { Project, VolunteerExperience } from '../../types/types.data'
-import { projectsAPI, volunteerExperiencesAPI } from '../../utils/apiResponse.util'
+import { Loading } from '../components/shared'
+import { Badge } from '../components/ui/badge'
+import { Button } from '../components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
+import { Input } from '../components/ui/input'
+import { Label } from '../components/ui/label'
+import { Textarea } from '../components/ui/textarea'
+import type { Experience, Project } from '../types/types.data'
+import { experiencesAPI, projectsAPI } from '../utils/apiResponse.util'
 
-interface EditVolunteerPageProps {
+interface EditExperiencePageProps {
   id?: string
 }
 
-export default function EditVolunteerPage({ id }: EditVolunteerPageProps) {
+export default function EditExperiencePage({ id }: EditExperiencePageProps) {
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
-  const [volunteer, setVolunteer] = useState<VolunteerExperience | null>(null)
+  const [experience, setExperience] = useState<Experience | null>(null)
   const [allProjects, setAllProjects] = useState<{ id: string; name: string }[]>([])
   const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([])
   const [selectedProjects, setSelectedProjects] = useState<string[]>([])
   const [newTechnology, setNewTechnology] = useState('')
 
   const [formData, setFormData] = useState({
-    organisation: '',
+    company_name: '',
     position: '',
     start_date: '',
     end_date: '',
     description: '',
-    organisation_logo: '',
+    company_logo: '',
+    certificate_url: '',
     images: '',
-    created_by: '',
   })
 
   useEffect(() => {
     fetchProjects()
     if (id) {
-      fetchVolunteer()
+      fetchExperience()
     } else {
       setLoading(false)
     }
@@ -70,28 +70,28 @@ export default function EditVolunteerPage({ id }: EditVolunteerPageProps) {
     }
   }
 
-  const fetchVolunteer = async () => {
+  const fetchExperience = async () => {
     try {
-      const response = await volunteerExperiencesAPI.getVolunteerExperienceById(id!)
-      const volData = response.data
-      if (volData) {
-        setVolunteer(volData)
-        setSelectedTechnologies(volData.technologies || [])
-        setSelectedProjects(volData.projects || [])
+      const response = await experiencesAPI.getExperienceById(id!)
+      const expData = response.data
+      if (expData) {
+        setExperience(expData)
+        setSelectedTechnologies(expData.technologies || [])
+        setSelectedProjects(expData.projects || [])
         setFormData({
-          organisation: volData.organisation || '',
-          position: volData.volunteer_time_line?.[0]?.position || '',
-          start_date: volData.volunteer_time_line?.[0]?.start_date || '',
-          end_date: volData.volunteer_time_line?.[0]?.end_date || '',
-          description: volData.description || '',
-          organisation_logo: volData.organisation_logo || '',
-          images: volData.images?.join(', ') || '',
-          created_by: volData.created_by || '',
+          company_name: expData.company_name || '',
+          position: expData.experience_time_line?.[0]?.position || '',
+          start_date: expData.experience_time_line?.[0]?.start_date || '',
+          end_date: expData.experience_time_line?.[0]?.end_date || '',
+          description: expData.description || '',
+          company_logo: expData.company_logo || '',
+          certificate_url: expData.certificate_url || '',
+          images: expData.images?.join(', ') || '',
         })
       }
     } catch {
-      toast.error('Failed to fetch volunteer experience')
-      route('/admin/volunteer')
+      toast.error('Failed to fetch experience')
+      route('/admin/experiences')
     } finally {
       setLoading(false)
     }
@@ -99,25 +99,26 @@ export default function EditVolunteerPage({ id }: EditVolunteerPageProps) {
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault()
-    if (!formData.organisation || !formData.position) {
-      toast.error('Organisation and position are required')
+    if (!formData.company_name || !formData.position) {
+      toast.error('Company name and position are required')
       return
     }
 
     setSubmitting(true)
     try {
       const payload = {
-        organisation: formData.organisation,
+        company_name: formData.company_name,
         description: formData.description,
         technologies: selectedTechnologies,
-        organisation_logo: formData.organisation_logo,
+        company_logo: formData.company_logo,
+        certificate_url: formData.certificate_url,
         projects: selectedProjects,
         images: formData.images
           .split(',')
           .map((s) => s.trim())
           .filter((s) => s.length > 0),
-        created_by: formData.created_by,
-        volunteer_time_line: [
+        created_by: 'admin',
+        experience_time_line: [
           {
             position: formData.position,
             start_date: formData.start_date,
@@ -126,18 +127,16 @@ export default function EditVolunteerPage({ id }: EditVolunteerPageProps) {
         ],
       }
 
-      if (id && volunteer) {
-        await volunteerExperiencesAPI.updateVolunteerExperience(id, payload)
-        toast.success('Volunteer experience updated successfully!')
+      if (id && experience) {
+        await experiencesAPI.updateExperience(id, payload)
+        toast.success('Experience updated successfully!')
       } else {
-        await volunteerExperiencesAPI.createVolunteerExperience(payload)
-        toast.success('Volunteer experience created successfully!')
+        await experiencesAPI.createExperience(payload)
+        toast.success('Experience created successfully!')
       }
-      route('/admin/volunteer')
+      route('/admin/experiences')
     } catch {
-      toast.error(
-        id ? 'Failed to update volunteer experience' : 'Failed to create volunteer experience'
-      )
+      toast.error(id ? 'Failed to update experience' : 'Failed to create experience')
     } finally {
       setSubmitting(false)
     }
@@ -161,7 +160,7 @@ export default function EditVolunteerPage({ id }: EditVolunteerPageProps) {
   }
 
   if (loading) {
-    return <Loading title="Loading Volunteer Experience" description="Fetching details..." />
+    return <Loading title="Loading Experience" description="Fetching experience details..." />
   }
 
   return (
@@ -169,43 +168,41 @@ export default function EditVolunteerPage({ id }: EditVolunteerPageProps) {
       <div className="w-[95%] mx-auto py-8">
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
-          <Button variant="outline" size="sm" onClick={() => route('/admin/volunteer')}>
+          <Button variant="outline" size="sm" onClick={() => route('/admin/experiences')}>
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Volunteer
+            Back to Experiences
           </Button>
           <h1 className="text-3xl font-bold bg-linear-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-            {id ? 'Edit Volunteer Experience' : 'Add New Volunteer Experience'}
+            {id ? 'Edit Experience' : 'Add New Experience'}
           </h1>
         </div>
 
         {/* Form Card */}
         <Card className="w-full">
           <CardHeader>
-            <CardTitle>
-              {id ? 'Update Volunteer Details' : 'Create New Volunteer Experience'}
-            </CardTitle>
+            <CardTitle>{id ? 'Update Experience Details' : 'Create New Experience'}</CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Basic Info Section */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="organisation" className="text-base font-medium">
-                    Organisation *
+                  <Label htmlFor="company_name" className="text-base font-medium">
+                    Company Name *
                   </Label>
                   <Input
-                    id="organisation"
-                    value={formData.organisation}
+                    id="company_name"
+                    value={formData.company_name}
                     onInput={(e) =>
                       setFormData({
                         ...formData,
-                        organisation: (e.target as HTMLInputElement).value,
+                        company_name: (e.target as HTMLInputElement).value,
                       })
                     }
                     disabled={submitting}
                     required
                     className="h-12 text-base"
-                    placeholder="Enter organisation name"
+                    placeholder="Enter company name"
                   />
                 </div>
 
@@ -222,7 +219,7 @@ export default function EditVolunteerPage({ id }: EditVolunteerPageProps) {
                     disabled={submitting}
                     required
                     className="h-12 text-base"
-                    placeholder="e.g., Tech Lead, Core Member"
+                    placeholder="e.g., Software Engineer"
                   />
                 </div>
               </div>
@@ -276,7 +273,7 @@ export default function EditVolunteerPage({ id }: EditVolunteerPageProps) {
                       description: (e.target as HTMLTextAreaElement).value,
                     })
                   }
-                  placeholder="Describe your contributions and responsibilities..."
+                  placeholder="Describe your responsibilities and achievements..."
                   rows={6}
                   disabled={submitting}
                   className="text-base"
@@ -286,38 +283,42 @@ export default function EditVolunteerPage({ id }: EditVolunteerPageProps) {
               {/* URLs Section */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="organisation_logo" className="text-base font-medium">
-                    Organisation Logo URL
+                  <Label htmlFor="company_logo" className="text-base font-medium">
+                    Company Logo URL
                   </Label>
                   <Input
-                    id="organisation_logo"
+                    id="company_logo"
                     type="url"
-                    value={formData.organisation_logo}
+                    value={formData.company_logo}
                     onInput={(e) =>
                       setFormData({
                         ...formData,
-                        organisation_logo: (e.target as HTMLInputElement).value,
+                        company_logo: (e.target as HTMLInputElement).value,
                       })
                     }
                     disabled={submitting}
                     className="h-12 text-base"
-                    placeholder="https://org.com/logo.png"
+                    placeholder="https://company.com/logo.png"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="created_by" className="text-base font-medium">
-                    Created By
+                  <Label htmlFor="certificate_url" className="text-base font-medium">
+                    Certificate URL
                   </Label>
                   <Input
-                    id="created_by"
-                    value={formData.created_by}
+                    id="certificate_url"
+                    type="url"
+                    value={formData.certificate_url}
                     onInput={(e) =>
-                      setFormData({ ...formData, created_by: (e.target as HTMLInputElement).value })
+                      setFormData({
+                        ...formData,
+                        certificate_url: (e.target as HTMLInputElement).value,
+                      })
                     }
                     disabled={submitting}
                     className="h-12 text-base"
-                    placeholder="Your name"
+                    placeholder="https://certificate-url.com"
                   />
                 </div>
               </div>
@@ -402,7 +403,7 @@ export default function EditVolunteerPage({ id }: EditVolunteerPageProps) {
                 <Button
                   type="button"
                   variant="outline"
-                  onClick={() => route('/admin/volunteer')}
+                  onClick={() => route('/admin/experiences')}
                   disabled={submitting}
                   size="lg"
                 >
@@ -411,7 +412,7 @@ export default function EditVolunteerPage({ id }: EditVolunteerPageProps) {
                 <Button type="submit" disabled={submitting} size="lg">
                   {submitting && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
                   <Save className="w-4 h-4 mr-2" />
-                  {id ? 'Update Volunteer' : 'Create Volunteer'}
+                  {id ? 'Update Experience' : 'Create Experience'}
                 </Button>
               </div>
             </form>

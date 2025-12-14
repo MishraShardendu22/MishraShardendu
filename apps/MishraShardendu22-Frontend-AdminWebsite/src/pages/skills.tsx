@@ -1,9 +1,9 @@
 import { ChevronLeft, ChevronRight, Loader2, Plus } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
 import toast from 'react-hot-toast'
-import { ErrorState, Loading } from '../../components/shared'
-import { Alert, AlertDescription } from '../../components/ui/alert'
-import { Button } from '../../components/ui/button'
+import { ErrorState, Loading } from '../components/shared'
+import { Alert, AlertDescription } from '../components/ui/alert'
+import { Button } from '../components/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -11,10 +11,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '../../components/ui/dialog'
-import { Input } from '../../components/ui/input'
-import { Label } from '../../components/ui/label'
-import { skillsAPI } from '../../utils/apiResponse.util'
+} from '../components/ui/dialog'
+import { Input } from '../components/ui/input'
+import { Label } from '../components/ui/label'
+import { skillsAPI } from '../utils/apiResponse.util'
 
 export default function SkillsPage() {
   const [skills, setSkills] = useState<string[]>([])

@@ -1,13 +1,13 @@
 import { Award, Briefcase, Calendar, Clock, FolderKanban, Mail, Shield, User } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
-import { ErrorState, Loading } from '../../components/shared'
-import { Button } from '../../components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
-import { Input } from '../../components/ui/input'
-import { Label } from '../../components/ui/label'
-import { useAuth } from '../../hooks/use-auth'
-import type { ProfileData } from '../../types/types.data'
-import { authAPI } from '../../utils/apiResponse.util'
+import { ErrorState, Loading } from '../components/shared'
+import { Button } from '../components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
+import { Input } from '../components/ui/input'
+import { Label } from '../components/ui/label'
+import { useAuth } from '../hooks/use-auth'
+import type { ProfileData } from '../types/types.data'
+import { authAPI } from '../utils/apiResponse.util'
 
 export default function ProfilePage() {
   const [profile, setProfile] = useState<ProfileData | null>(null)
