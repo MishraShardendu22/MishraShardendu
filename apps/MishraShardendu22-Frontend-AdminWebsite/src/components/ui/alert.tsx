@@ -1,6 +1,6 @@
+import type { JSX } from 'preact'
 import { forwardRef } from 'preact/compat'
 import { cn } from '../../lib/utils'
-import type { JSX } from 'preact'
 
 interface AlertProps extends JSX.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'destructive'

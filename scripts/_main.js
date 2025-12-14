@@ -211,14 +211,14 @@ import axios from 'axios'
 
 const Bear = {
   headers: {
-    Authorization: `Bearer header.payload.secret`,
+    Authorization: 'Bearer header.payload.secret',
   },
 }
 
 async function uploadCerts() {
   for (const cert of json) {
     try {
-      const res = await axios.post(
+      const _res = await axios.post(
         'https://portfolio-backend-2iw4.onrender.com/api/certifications',
         cert,
         Bear

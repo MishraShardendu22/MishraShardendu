@@ -1,7 +1,7 @@
 import './index.css'
-import App from './app'
 import { render } from 'preact'
 import { Toaster } from 'react-hot-toast'
+import App from './app'
 import { ThemeProvider } from './hooks/use-theme'
 
 render(

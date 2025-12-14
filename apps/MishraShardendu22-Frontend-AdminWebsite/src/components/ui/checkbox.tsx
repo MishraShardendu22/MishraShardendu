@@ -1,7 +1,7 @@
-import { forwardRef } from 'preact/compat'
 import { Check } from 'lucide-react'
-import { cn } from '../../lib/utils'
 import type { JSX } from 'preact'
+import { forwardRef } from 'preact/compat'
+import { cn } from '../../lib/utils'
 
 export interface CheckboxProps extends Omit<JSX.HTMLAttributes<HTMLInputElement>, 'type'> {
   checked?: boolean

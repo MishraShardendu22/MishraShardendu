@@ -1,6 +1,6 @@
+import type { JSX } from 'preact'
 import { forwardRef } from 'preact/compat'
 import { cn } from '../../lib/utils'
-import type { JSX } from 'preact'
 
 export interface BadgeProps extends JSX.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'secondary' | 'destructive' | 'outline'

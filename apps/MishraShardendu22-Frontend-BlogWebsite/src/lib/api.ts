@@ -44,10 +44,11 @@ export interface ApiResponse<T = any> {
   error?: string
 }
 
-export interface AuthResponse extends ApiResponse<{
-  token: string
-  user: User
-}> {
+export interface AuthResponse
+  extends ApiResponse<{
+    token: string
+    user: User
+  }> {
   requiresVerification?: boolean
 }
 
@@ -134,7 +135,7 @@ const apiRequest = async <T>(endpoint: string, options: RequestInit = {}): Promi
   }
 
   if (token) {
-    headers['Authorization'] = `Bearer ${token}`
+    headers.Authorization = `Bearer ${token}`
   }
 
   try {
@@ -147,7 +148,7 @@ const apiRequest = async <T>(endpoint: string, options: RequestInit = {}): Promi
     let data: any
     try {
       data = await response.json()
-    } catch (e) {
+    } catch (_e) {
       // If JSON parsing fails, throw generic error
       throw new ApiError('Invalid response from server', response.status, null)
     }
@@ -248,7 +249,7 @@ export const blogApi = {
   },
 
   getBlogById: async (id: number): Promise<ApiResponse<Blog>> => {
-    if (!id || isNaN(id)) {
+    if (!id || Number.isNaN(id)) {
       throw new ApiError('Invalid blog ID', 400)
     }
     return apiRequest<ApiResponse<Blog>>(`/api/blogs/${id}`, {
@@ -283,7 +284,7 @@ export const blogApi = {
       published?: boolean
     }
   ): Promise<ApiResponse<Blog>> => {
-    if (!id || isNaN(id)) {
+    if (!id || Number.isNaN(id)) {
       throw new ApiError('Invalid blog ID', 400)
     }
     if (!blog.title?.trim() || !blog.content?.trim()) {
@@ -305,7 +306,7 @@ export const blogApi = {
       published: boolean
     }>
   ): Promise<ApiResponse<Blog>> => {
-    if (!id || isNaN(id)) {
+    if (!id || Number.isNaN(id)) {
       throw new ApiError('Invalid blog ID', 400)
     }
     return apiRequest<ApiResponse<Blog>>(`/api/blogs/${id}`, {
@@ -315,7 +316,7 @@ export const blogApi = {
   },
 
   deleteBlog: async (id: number): Promise<ApiResponse<void>> => {
-    if (!id || isNaN(id)) {
+    if (!id || Number.isNaN(id)) {
       throw new ApiError('Invalid blog ID', 400)
     }
     return apiRequest<ApiResponse<void>>(`/api/blogs/${id}`, {
@@ -330,7 +331,7 @@ export const commentApi = {
     blogId: number,
     params?: { page?: number; limit?: number }
   ): Promise<PaginatedResponse<Comment[]>> => {
-    if (!blogId || isNaN(blogId)) {
+    if (!blogId || Number.isNaN(blogId)) {
       throw new ApiError('Invalid blog ID', 400)
     }
     const queryParams = new URLSearchParams()
@@ -346,7 +347,7 @@ export const commentApi = {
   },
 
   createComment: async (blogId: number, content: string): Promise<ApiResponse<Comment>> => {
-    if (!blogId || isNaN(blogId)) {
+    if (!blogId || Number.isNaN(blogId)) {
       throw new ApiError('Invalid blog ID', 400)
     }
     if (!content?.trim()) {
@@ -359,7 +360,7 @@ export const commentApi = {
   },
 
   deleteComment: async (blogId: number, commentId: number): Promise<ApiResponse<void>> => {
-    if (!blogId || isNaN(blogId) || !commentId || isNaN(commentId)) {
+    if (!blogId || Number.isNaN(blogId) || !commentId || Number.isNaN(commentId)) {
       throw new ApiError('Invalid blog ID or comment ID', 400)
     }
     return apiRequest<ApiResponse<void>>(`/api/blogs/${blogId}/comments/${commentId}`, {

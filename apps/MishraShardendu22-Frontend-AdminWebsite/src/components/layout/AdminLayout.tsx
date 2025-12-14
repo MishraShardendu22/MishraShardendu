@@ -1,22 +1,22 @@
+import {
+  Award,
+  Book,
+  Briefcase,
+  FolderKanban,
+  GraduationCap,
+  LayoutDashboard,
+  LogOut,
+  Menu,
+  Settings,
+  User,
+  User2Icon,
+} from 'lucide-react'
+import type { JSX } from 'preact'
 import { useEffect, useState } from 'preact/hooks'
 import { route } from 'preact-router'
 import { useAuth } from '../../hooks/use-auth'
-import {
-  Menu,
-  User,
-  Settings,
-  Briefcase,
-  LogOut,
-  Award,
-  LayoutDashboard,
-  FolderKanban,
-  GraduationCap,
-  Book,
-  User2Icon,
-} from 'lucide-react'
-import { Button } from '../ui/button'
 import ThemeToggle from '../extra/ThemeToggle'
-import type { JSX } from 'preact'
+import { Button } from '../ui/button'
 
 const navigation = [
   { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },

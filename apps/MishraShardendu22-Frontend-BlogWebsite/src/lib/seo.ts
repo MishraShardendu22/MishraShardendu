@@ -204,7 +204,7 @@ export function generateSlug(title: string): string {
  */
 export function truncateDescription(text: string, maxLength: number = 160): string {
   if (text.length <= maxLength) return text
-  return text.substring(0, maxLength - 3).trim() + '...'
+  return `${text.substring(0, maxLength - 3).trim()}...`
 }
 
 /**

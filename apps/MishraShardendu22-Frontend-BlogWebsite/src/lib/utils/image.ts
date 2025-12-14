@@ -65,7 +65,6 @@ export const getResponsiveSizes = (
       return '(max-width: 640px) 100px, 150px'
     case 'card':
       return '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
-    case 'full':
     default:
       return '(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1200px'
   }

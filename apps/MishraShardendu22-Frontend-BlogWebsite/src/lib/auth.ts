@@ -1,6 +1,6 @@
-import { authApi } from './api'
-import type { User } from './api'
 import { writable } from 'svelte/store'
+import type { User } from './api'
+import { authApi } from './api'
 
 interface AuthState {
   user: User | null

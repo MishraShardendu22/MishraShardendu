@@ -1,6 +1,6 @@
+import type { JSX } from 'preact'
 import { forwardRef } from 'preact/compat'
 import { cn } from '../../lib/utils'
-import type { JSX } from 'preact'
 
 export interface InputProps extends JSX.HTMLAttributes<HTMLInputElement> {
   type?: string

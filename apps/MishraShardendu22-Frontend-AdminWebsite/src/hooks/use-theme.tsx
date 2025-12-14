@@ -1,6 +1,6 @@
+import type { JSX } from 'preact'
 import { createContext } from 'preact'
 import { useContext, useEffect, useState } from 'preact/hooks'
-import type { JSX } from 'preact'
 
 type Theme = 'light' | 'dark' | 'system'
 
