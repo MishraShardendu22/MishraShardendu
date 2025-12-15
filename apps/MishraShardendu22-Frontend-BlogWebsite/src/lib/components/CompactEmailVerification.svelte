@@ -1,19 +1,18 @@
 <script lang="ts">
-  import { onDestroy } from "svelte";
-  import Button from "./ui/button.svelte";
-  import Input from "./ui/input.svelte";
-  import { Mail, Check, X } from "lucide-svelte";
-  import { authStore } from "../auth";
   import { toast } from "../toast";
   import { authApi } from "../api";
+  import { onDestroy } from "svelte";
+  import { authStore } from "../auth";
+  import Button from "./ui/button.svelte";
+  import { Mail, Check, X } from "lucide-svelte";
 
-  let { email }: { email: string } = $props();
-
-  let showOTPInput = $state(false);
+  
   let otp = $state("");
-  let isSubmitting = $state(false);
   let resendCooldown = $state(0);
+  let showOTPInput = $state(false);
+  let isSubmitting = $state(false);
   let cooldownInterval: number | null = null;
+  let { email }: { email: string } = $props();
 
   // Cleanup on component destroy
   onDestroy(() => {
@@ -138,7 +137,7 @@
           size="sm"
           onclick={handleVerifyOTP}
           disabled={isSubmitting || otp.length !== 6}
-          className="h-10 px-3 flex-shrink-0 bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold shadow-md disabled:opacity-50"
+          className="h-10 px-3 shrink-0 bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold shadow-md disabled:opacity-50"
           title="Verify"
           type="button"
         >

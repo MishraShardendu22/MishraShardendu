@@ -26,19 +26,19 @@ The CanvasCard component design:
 
 ### 1. Enhanced CanvasCard Components
 
-Added gradient overlay to both CanvasCard components:
+Added linear overlay to both CanvasCard components:
 
 **`/src/components/certificate/canva.tsx`** and **`/src/components/projects/canva.tsx`**:
 
 ```tsx
-// Dark gradient overlay - provides contrast in light mode
+// Dark linear overlay - provides contrast in light mode
 <div className="absolute inset-0 bg-linear-to-br from-transparent via-transparent to-black/20 dark:to-black/40 group-hover/canvas-card:opacity-0 transition-opacity duration-500 pointer-events-none z-10" />
 ```
 
 **Features:**
 
-- `from-transparent to-black/20` in light mode: subtle dark gradient for text contrast
-- `dark:to-black/40` in dark mode: slightly stronger gradient
+- `from-transparent to-black/20` in light mode: subtle dark linear for text contrast
+- `dark:to-black/40` in dark mode: slightly stronger linear
 - `group-hover/canvas-card:opacity-0`: fades away on hover to reveal canvas animation
 - `pointer-events-none`: doesn't interfere with interactions
 - `z-10`: above canvas, below content
@@ -95,19 +95,19 @@ Removed hardcoded `text-white` classes and replaced with opacity-based styling:
 
 ### Light Mode (Before Hover)
 
-1. Gradient overlay provides `to-black/20` darkening at bottom
+1. linear overlay provides `to-black/20` darkening at bottom
 2. Text uses `text-card-foreground` (dark color)
-3. Result: Dark text on light background with subtle gradient = **Visible**
+3. Result: Dark text on light background with subtle linear = **Visible**
 
 ### Dark Mode (Before Hover)
 
-1. Gradient overlay provides `dark:to-black/40` darkening
+1. linear overlay provides `dark:to-black/40` darkening
 2. Text uses `dark:text-foreground` (white color)
-3. Result: White text on dark background with gradient = **Visible**
+3. Result: White text on dark background with linear = **Visible**
 
 ### On Hover (Both Modes)
 
-1. Gradient overlay fades to `opacity-0`
+1. linear overlay fades to `opacity-0`
 2. Canvas animation reveals (colored moving dots on dark background)
 3. Text transitions to `text-white` via `group-hover/canvas-card:text-white`
 4. Result: White text on dark canvas animation = **Visible**
@@ -116,8 +116,8 @@ Removed hardcoded `text-white` classes and replaced with opacity-based styling:
 
 ### Component Files
 
-- `/src/components/certificate/canva.tsx` - Added gradient overlay, updated text colors
-- `/src/components/projects/canva.tsx` - Added gradient overlay, updated text colors
+- `/src/components/certificate/canva.tsx` - Added linear overlay, updated text colors
+- `/src/components/projects/canva.tsx` - Added linear overlay, updated text colors
 
 ### Page Files
 
@@ -131,7 +131,7 @@ Removed hardcoded `text-white` classes and replaced with opacity-based styling:
 - [x] Light mode: Text visible on hover (white on dark canvas)
 - [x] Dark mode: Text visible before hover
 - [x] Dark mode: Text visible on hover
-- [x] Gradient overlay fades smoothly on hover
+- [x] linear overlay fades smoothly on hover
 - [x] Transition animations work properly
 - [x] All CanvasCard instances updated (projects, certifications, volunteer)
 

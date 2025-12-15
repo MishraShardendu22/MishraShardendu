@@ -6,7 +6,7 @@ This project uses a customized implementation of `react-hot-toast` that matches 
 
 - 🎨 **Theme-aware**: Automatically adapts to light/dark mode using CSS variables
 - 🎯 **Pre-styled variants**: Success, Error, Info, Warning, and Loading
-- 🌈 **Gradient backgrounds**: Beautiful gradient overlays matching your brand colors
+- 🌈 **linear backgrounds**: Beautiful linear overlays matching your brand colors
 - 💫 **Backdrop blur**: Modern glassmorphism effect
 - 🔔 **Promise support**: Handle async operations with loading → success/error states
 - 📱 **Mobile-optimized**: Responsive design that works great on all devices
@@ -116,7 +116,7 @@ showToast.custom('Custom message', {
   icon: '🎉',
   duration: 6000,
   style: {
-    background: 'linear-gradient(to right, #f093fb, #f5576c)',
+    background: 'linear-linear(to right, #f093fb, #f5576c)',
     color: 'white',
   },
 })
@@ -153,10 +153,10 @@ The toasts automatically use your CSS variables:
 
 ### Light Mode Colors
 
-- Success: Green gradient (`--primary`)
-- Error: Red gradient (`--destructive`)
-- Info: Blue gradient (`--accent`)
-- Warning: Yellow-green gradient (`--secondary`)
+- Success: Green linear (`--primary`)
+- Error: Red linear (`--destructive`)
+- Info: Blue linear (`--accent`)
+- Warning: Yellow-green linear (`--secondary`)
 
 ### Dark Mode Colors
 
@@ -265,7 +265,7 @@ export const showToast = {
     return toast(message, {
       icon: '⭐',
       style: {
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: 'linear-linear(135deg, #667eea 0%, #764ba2 100%)',
         color: 'white',
         // ... more styles
       },

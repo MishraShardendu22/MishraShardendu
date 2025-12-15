@@ -47,7 +47,7 @@
 </script>
 
 <div class="flex flex-col items-center justify-center space-y-6 {config.container} {className}">
-  <!-- Animated spinner with gradient ring -->
+  <!-- Animated spinner with linear ring -->
   <div class="relative">
     <div
       class="rounded-full bg-linear-to-br from-primary/20 via-primary/10 to-transparent flex items-center justify-center shadow-lg shadow-primary/10 ring-2 ring-primary/20 ring-offset-2 ring-offset-background {config.iconWrapper}"

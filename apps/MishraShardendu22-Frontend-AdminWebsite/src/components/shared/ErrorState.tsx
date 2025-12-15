@@ -102,7 +102,7 @@ export function InlineError({ message, className }: { message: string; className
         className
       )}
     >
-      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+      <AlertCircle className="w-4 h-4 shrink-0" />
       <span className="text-sm font-medium">{message}</span>
     </div>
   )

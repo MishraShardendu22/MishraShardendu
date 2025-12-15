@@ -31,7 +31,7 @@
 
 #### 2. ✅ CanvasCard Dark Mode Fix
 
-**Problem:** CanvasCards had semi-transparent gradient backgrounds in dark mode, showing "dumb white thing".
+**Problem:** CanvasCards had semi-transparent linear backgrounds in dark mode, showing "dumb white thing".
 
 **Solution:** Changed to complete black background:
 
@@ -51,7 +51,7 @@ className = 'bg-white dark:bg-black'
 
 - **Light Mode:** Pure white (`bg-white`)
 - **Dark Mode:** Complete black (`dark:bg-black`)
-- **On Hover:** Canvas animation with colored gradients
+- **On Hover:** Canvas animation with colored linears
 
 **Additional Changes:**
 

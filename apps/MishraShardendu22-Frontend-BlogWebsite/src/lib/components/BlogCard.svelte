@@ -66,7 +66,7 @@
 
 <button
   type="button"
-  class="group relative rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer h-[280px] border-2 border-primary/50 w-full text-left"
+  class="group relative rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer h-70 border-2 border-primary/50 w-full text-left"
   onclick={() => onReadMore?.(blog.id.toString())}
 >
   <!-- Background Image with Blur -->
@@ -84,7 +84,7 @@
       <div class="w-full h-full bg-linear-to-br from-primary/40 via-primary/30 to-accent/20"></div>
     {/if}
     <!-- Dark overlay for better text contrast -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
+    <div class="absolute inset-0 bg-linear-to-t from-black/90 via-black/60 to-black/40"></div>
   </div>
 
   <!-- Content Overlay -->

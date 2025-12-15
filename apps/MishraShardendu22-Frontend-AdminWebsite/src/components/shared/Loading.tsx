@@ -55,7 +55,7 @@ export function Loading({
         className
       )}
     >
-      {/* Animated spinner with gradient ring */}
+      {/* Animated spinner with linear ring */}
       <div className="relative">
         <div
           className={cn(

@@ -64,13 +64,13 @@ export function EmptyState({
       className={cn(
         'flex flex-col items-center justify-center text-center',
         'border border-dashed border-border/60 rounded-xl',
-        'bg-gradient-to-b from-muted/30 via-muted/10 to-transparent',
+        'bg-linear-to-b from-muted/30 via-muted/10 to-transparent',
         'backdrop-blur-sm',
         config.container,
         className
       )}
     >
-      {/* Icon with subtle gradient background */}
+      {/* Icon with subtle linear background */}
       <div
         className={cn(
           'rounded-xl bg-linear-to-br from-muted/80 to-muted/40',

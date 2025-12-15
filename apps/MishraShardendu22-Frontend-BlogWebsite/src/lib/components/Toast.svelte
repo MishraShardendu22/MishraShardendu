@@ -88,18 +88,18 @@
       role="alert"
     >
       {#if toast.type === "success"}
-        <CheckCircle class="w-5 h-5 flex-shrink-0 mt-0.5 {getIconColor(toast.type)}" />
+        <CheckCircle class="w-5 h-5 shrink-0 mt-0.5 {getIconColor(toast.type)}" />
       {:else if toast.type === "error"}
-        <AlertCircle class="w-5 h-5 flex-shrink-0 mt-0.5 {getIconColor(toast.type)}" />
+        <AlertCircle class="w-5 h-5 shrink-0 mt-0.5 {getIconColor(toast.type)}" />
       {:else if toast.type === "warning"}
-        <AlertTriangle class="w-5 h-5 flex-shrink-0 mt-0.5 {getIconColor(toast.type)}" />
+        <AlertTriangle class="w-5 h-5 shrink-0 mt-0.5 {getIconColor(toast.type)}" />
       {:else}
-        <Info class="w-5 h-5 flex-shrink-0 mt-0.5 {getIconColor(toast.type)}" />
+        <Info class="w-5 h-5 shrink-0 mt-0.5 {getIconColor(toast.type)}" />
       {/if}
       <p class="flex-1 text-sm font-medium leading-relaxed">{toast.message}</p>
       <button
         onclick={() => toastStore.remove(toast.id)}
-        class="flex-shrink-0 p-1 rounded-md hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+        class="shrink-0 p-1 rounded-md hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
         aria-label="Close notification"
       >
         <X class="w-4 h-4" />

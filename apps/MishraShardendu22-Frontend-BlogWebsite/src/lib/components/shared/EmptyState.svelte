@@ -63,7 +63,7 @@
 <div
   class="flex flex-col items-center justify-center text-center border border-dashed border-border/60 rounded-xl bg-linear-to-b from-muted/30 via-muted/10 to-transparent backdrop-blur-sm {config.container} {className}"
 >
-  <!-- Icon with subtle gradient background -->
+  <!-- Icon with subtle linear background -->
   <div
     class="rounded-xl bg-linear-to-br from-muted/80 to-muted/40 flex items-center justify-center mb-5 shadow-sm ring-1 ring-border/50 {config.icon}"
   >

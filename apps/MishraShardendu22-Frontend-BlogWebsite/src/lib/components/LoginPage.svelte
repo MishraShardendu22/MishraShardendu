@@ -1,27 +1,26 @@
 <script lang="ts">
-  import Button from "./ui/button.svelte";
+  import { toast } from "../toast";
+  import { authStore } from "../auth";
+  import Card from "./ui/card.svelte";
   import Input from "./ui/input.svelte";
   import Label from "./ui/label.svelte";
-  import Card from "./ui/card.svelte";
+  import Button from "./ui/button.svelte";
+  import { navigateTo } from "../navigation";
   import OTPVerification from "./OTPVerification.svelte";
   import { LogIn, Mail, Lock, User } from "lucide-svelte";
-  import { authStore } from "../auth";
-  import { toast } from "../toast";
   import { validateEmail, validatePassword, validateName } from "../validation";
-  import { navigateTo } from "../navigation";
 
+  let name = $state("");
   let email = $state("");
   let password = $state("");
-  let name = $state("");
-  let profileImage = $state("");
   let isLogin = $state(true);
+  let nameError = $state("");
+  let emailError = $state("");
+  let profileImage = $state("");
+  let passwordError = $state("");
   let isSubmitting = $state(false);
   let showOTPInput = $state(false);
   
-  // Field-specific errors for better UX
-  let emailError = $state("");
-  let passwordError = $state("");
-  let nameError = $state("");
 
   const validateForm = (): boolean => {
     let isValid = true;

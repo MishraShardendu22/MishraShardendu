@@ -1,13 +1,13 @@
 <script lang="ts">
   import { cn } from "../utils";
-  import { getBasePath, navigateTo } from "../navigation";
+  import type { User } from "../api";
+  import { authStore } from "../auth";
   import Button from "./ui/button.svelte";
   import Avatar from "./ui/avatar.svelte";
   import { resolveImageUrl } from "../utils/image";
+  import { getBasePath, navigateTo } from "../navigation";
   import CompactEmailVerification from "./CompactEmailVerification.svelte";
   import { BookOpen, Plus, LogOut, Menu, X, Glasses, LayoutDashboard, User2, LogIn } from "lucide-svelte";
-  import { authStore } from "../auth";
-  import type { User } from "../api";
 
   let isMobileMenuOpen = $state(false);
   let currentPath = $state(window.location.pathname);
@@ -120,9 +120,6 @@
     <div class="absolute inset-y-0 left-0 w-72 bg-card/95 border-r border-border p-4 overflow-y-auto">
       <div class="flex items-center justify-between mb-4">
         <div class="flex items-center gap-3">
-          <div class="p-2 rounded-md bg-primary/10">
-            <BookOpen class="h-5 w-5 text-primary" />
-          </div>
           <div>
             <div class="font-bold">Blog</div>
             <div class="text-xs text-muted-foreground">Shardendu Mishra</div>
@@ -190,12 +187,12 @@
   class="hidden lg:flex group fixed left-0 top-0 bottom-0 w-20 hover:w-72 border-r border-border bg-card/95 backdrop-blur-sm flex-col z-30 shadow-lg transition-all duration-300 ease-in-out"
   aria-label="Blog navigation"
 >
-  <div class="h-20 flex items-center justify-between px-4 border-b border-border bg-gradient-to-b from-background/50 to-transparent flex-shrink-0">
+  <div class="h-20 flex items-center justify-between px-4 border-b border-border bg-linear-to-b from-background/50 to-transparent shrink-0">
     <div class="nav-label">
       <h1 class="font-bold text-lg whitespace-nowrap">Blog</h1>
       <p class="text-xs text-muted-foreground whitespace-nowrap">Shardendu Mishra</p>
     </div>
-    <div class="w-12 h-12 p-2.5 rounded-xl bg-linear-to-br from-primary/20 to-primary/10 shadow-sm flex items-center justify-center flex-shrink-0">
+    <div class="w-12 h-12 p-2.5 rounded-xl bg-linear-to-br from-primary/20 to-primary/10 shadow-sm flex items-center justify-center shrink-0">
       <BookOpen class="h-6 w-6 text-primary" />
     </div>
   </div>
@@ -214,7 +211,7 @@
             : "hover:bg-linear-to-r hover:from-accent/10 hover:to-accent/5 hover:shadow-md"
         )}
       >
-        <div class="w-16 h-14 flex items-center justify-center flex-shrink-0">
+        <div class="w-16 h-14 flex items-center justify-center shrink-0">
           {#if item.icon}
             {@const Icon = item.icon}
             <Icon class={cn(
@@ -231,12 +228,12 @@
     {/each}
   </nav>
 
-  <div class="border-t border-border bg-gradient-to-t from-background/50 to-transparent flex-shrink-0">
+  <div class="border-t border-border bg-linear-to-t from-background/50 to-transparent shrink-0">
     {#if isAuthenticated && user}
       <!-- User Avatar Section -->
       <div class="p-3 border-b border-border/50">
         <div class="flex items-center">
-          <div class="w-14 h-14 flex items-center justify-center flex-shrink-0">
+          <div class="w-14 h-14 flex items-center justify-center shrink-0">
             <div class="relative">
               <Avatar
                 src={resolveImageUrl(user.profileImage || user.image || user.avatar || user.profile?.avatar || undefined)}
@@ -254,7 +251,7 @@
           </div>
           <div class="nav-label flex-1 min-w-0 ml-2">
             <p class="text-sm font-bold truncate">{user.name}</p>
-            <p class="text-xs text-muted-foreground truncate">{user.email}</p>
+            <p class="nav-label text-xs text-muted-foreground truncate">{user.email}</p>
             {#if !user.isVerified}
               <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-amber-700 dark:text-amber-300 bg-amber-100 dark:bg-amber-950/50 px-1.5 py-0.5 rounded-md mt-1">
                 <span class="w-1 h-1 rounded-full bg-amber-500 animate-pulse"></span>
@@ -274,7 +271,7 @@
       <!-- Logout Section -->
       <div class="p-3">
         <div class="flex items-center h-12">
-          <div class="w-14 h-12 flex items-center justify-center flex-shrink-0">
+          <div class="w-14 h-12 flex items-center justify-center shrink-0">
             <button
               onclick={() => authStore.logout()}
               class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors"
@@ -299,7 +296,7 @@
       <!-- Sign In Section -->
       <div class="p-3">
         <div class="flex items-center h-12">
-          <div class="w-14 h-12 flex items-center justify-center flex-shrink-0">
+          <div class="w-14 h-12 flex items-center justify-center shrink-0">
             <button
               onclick={() => navigateTo(`${basePath}/login`)}
               class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 transition-colors"
