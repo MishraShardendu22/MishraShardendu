@@ -7,7 +7,7 @@
   import { resolveImageUrl } from "../utils/image";
   import { getBasePath, navigateTo } from "../navigation";
   import CompactEmailVerification from "./CompactEmailVerification.svelte";
-  import { BookOpen, Plus, LogOut, Menu, X, Glasses, LayoutDashboard, User2, LogIn } from "lucide-svelte";
+  import { BookOpen, Plus, LogOut, Menu, X, Glasses, LayoutDashboard, User2, LogIn, BookAIcon } from "lucide-svelte";
 
   let isMobileMenuOpen = $state(false);
   let currentPath = $state(window.location.pathname);
@@ -192,8 +192,8 @@
       <h1 class="font-bold text-lg whitespace-nowrap">Blog</h1>
       <p class="text-xs text-muted-foreground whitespace-nowrap">Shardendu Mishra</p>
     </div>
-    <div class="w-12 h-12 p-2.5 rounded-xl bg-linear-to-br from-primary/20 to-primary/10 shadow-sm flex items-center justify-center shrink-0">
-      <BookOpen class="h-6 w-6 text-primary" />
+    <div class="w-12 h-12 p-2.5  flex items-center justify-center shrink-0">
+      <BookAIcon />
     </div>
   </div>
 
@@ -251,7 +251,7 @@
           </div>
           <div class="nav-label flex-1 min-w-0 ml-2">
             <p class="text-sm font-bold truncate">{user.name}</p>
-            <p class="nav-label text-xs text-muted-foreground truncate">{user.email}</p>
+
             {#if !user.isVerified}
               <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-amber-700 dark:text-amber-300 bg-amber-100 dark:bg-amber-950/50 px-1.5 py-0.5 rounded-md mt-1">
                 <span class="w-1 h-1 rounded-full bg-amber-500 animate-pulse"></span>

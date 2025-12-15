@@ -1,35 +1,32 @@
 <script lang="ts">
-  import Badge from "./ui/badge.svelte";
-  import Avatar from "./ui/avatar.svelte";
-  import Button from "./ui/button.svelte";
-  import OptimizedImage from "./OptimizedImage.svelte";
-  import { MessageCircle, Calendar, ArrowRight, Clock } from "lucide-svelte";
   import { marked } from "marked";
+  import Avatar from "./ui/avatar.svelte";
   import DOMPurify from "isomorphic-dompurify";
   import type { Blog as ApiBlog } from "../api";
   import { resolveImageUrl } from "../utils/image";
+  import OptimizedImage from "./OptimizedImage.svelte";
+  import { MessageCircle, Clock } from "lucide-svelte";
 
   type Blog = ApiBlog;
 
   let {
     blog,
     onReadMore,
-    customActions,
-    maxExcerptLength = 150,
     isFirstCard = false,
+    maxExcerptLength = 150,
   }: {
     blog: Blog;
-    onReadMore?: (blogId: string) => void;
     customActions?: any;
+    isFirstCard?: boolean;
     maxExcerptLength?: number;
-    isFirstCard?: boolean; // Mark first card for LCP optimization
+    onReadMore?: (blogId: string) => void;
   } = $props();
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
       day: "numeric",
+      month: "short",
+      year: "numeric",
     });
   };
 
@@ -66,7 +63,7 @@
 
 <button
   type="button"
-  class="group relative rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer h-70 border-2 border-primary/50 w-full text-left"
+  class="group relative rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer h-60 border-2 border-primary/50 w-full text-left"
   onclick={() => onReadMore?.(blog.id.toString())}
 >
   <!-- Background Image with Blur -->
@@ -87,30 +84,11 @@
     <div class="absolute inset-0 bg-linear-to-t from-black/90 via-black/60 to-black/40"></div>
   </div>
 
-  <!-- Content Overlay -->
   <div class="relative h-full flex flex-col justify-end p-4 z-10">
-    <!-- Tags -->
-    {#if blog.tags && blog.tags.length > 0}
-      <div class="flex flex-wrap gap-1.5 mb-3">
-        {#each blog.tags.slice(0, 2) as tag}
-          <Badge variant="secondary" class="text-[10px] font-medium px-2 py-0.5 bg-white/20 backdrop-blur-md text-white border-white/30 hover:bg-white/30">
-            {tag}
-          </Badge>
-        {/each}
-        {#if blog.tags.length > 2}
-          <Badge variant="secondary" class="text-[10px] font-medium px-2 py-0.5 bg-white/20 backdrop-blur-md text-white border-white/30">
-            +{blog.tags.length - 2}
-          </Badge>
-        {/if}
-      </div>
-    {/if}
-
-    <!-- Title -->
     <h3 class="text-lg font-bold mb-2 line-clamp-2 text-white drop-shadow-lg transition-colors">
       {blog.title}
     </h3>
 
-    <!-- Excerpt -->
     {#if excerpt}
       <p class="text-white/90 text-xs line-clamp-2 mb-3 leading-relaxed drop-shadow-md">
         {excerpt}
@@ -118,7 +96,7 @@
     {/if}
 
     <!-- Footer -->
-    <div class="flex items-center justify-between gap-2 text-white/90">
+    <div class="flex items-center justify-between text-white/90">
       <div class="flex items-center gap-2 min-w-0">
         <Avatar
           class="w-6 h-6 shrink-0 ring-2 ring-white/30"
