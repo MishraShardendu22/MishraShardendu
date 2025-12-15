@@ -63,7 +63,7 @@
 
 <button
   type="button"
-  class="group relative rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer h-60 border-2 border-primary/50 w-full text-left"
+  class="group relative rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer h-52 border-2 border-primary/50 w-full text-left"
   onclick={() => onReadMore?.(blog.id.toString())}
 >
   <!-- Background Image with Blur -->
@@ -84,8 +84,8 @@
     <div class="absolute inset-0 bg-linear-to-t from-black/90 via-black/60 to-black/40"></div>
   </div>
 
-  <div class="relative h-full flex flex-col justify-end p-4 z-10">
-    <h3 class="text-lg font-bold mb-2 line-clamp-2 text-white drop-shadow-lg transition-colors">
+  <div class="relative h-full flex flex-col justify-end px-4 pb-4 z-10">
+    <h3 class="text-3xl font-bold mb-2 line-clamp-2 text-white drop-shadow-lg transition-colors">
       {blog.title}
     </h3>
 
