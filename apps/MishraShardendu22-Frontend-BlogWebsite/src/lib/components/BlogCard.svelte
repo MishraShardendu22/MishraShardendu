@@ -5,7 +5,7 @@
   import OptimizedImage from "./OptimizedImage.svelte";
   import { MessageCircle, Calendar, ArrowRight, Clock } from "lucide-svelte";
   import { marked } from "marked";
-  import DOMPurify from "dompurify";
+  import DOMPurify from "isomorphic-dompurify";
   import type { Blog as ApiBlog } from "../api";
   import { resolveImageUrl } from "../utils/image";
 

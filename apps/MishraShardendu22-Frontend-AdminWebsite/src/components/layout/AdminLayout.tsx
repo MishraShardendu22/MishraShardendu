@@ -79,7 +79,7 @@ export default function AdminLayout({ children, path }: AdminLayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
-      <div className="fixed bottom-4 right-4 z-[60]">
+      <div className="fixed bottom-4 right-4 z-60">
         <ThemeToggle />
       </div>
 

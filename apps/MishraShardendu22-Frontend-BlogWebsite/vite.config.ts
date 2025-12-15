@@ -80,7 +80,7 @@ export default defineConfig(() => {
     esbuild: {
       legalComments: 'none',
       treeShaking: true,
-      drop: ['debugger'],
+      drop: ['console', 'debugger'],
     },
   }
 })

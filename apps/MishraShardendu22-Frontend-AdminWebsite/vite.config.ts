@@ -48,6 +48,16 @@ export default defineConfig(({ mode }) => {
       },
       // Increase the chunk size warning limit to 600 KB
       chunkSizeWarningLimit: 600,
+      // Minify with esbuild for production
+      minify: 'esbuild',
+      target: 'es2020',
+      sourcemap: false,
+      // Esbuild options for better minification
+      esbuild: {
+        legalComments: 'none',
+        treeShaking: true,
+        drop: ['console', 'debugger'],
+      },
     },
     server: {
       proxy: {
