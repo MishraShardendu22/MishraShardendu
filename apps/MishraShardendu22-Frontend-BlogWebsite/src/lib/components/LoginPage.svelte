@@ -124,7 +124,7 @@
     <Card class="w-full max-w-md p-8 space-y-6 shadow-2xl">
       <div class="text-center space-y-2">
         <div class="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-          <LogIn class="w-8 h-8 text-primary" />
+          <LogIn class="w-8 h-8 text-primary" aria-hidden="true" />
         </div>
         <h1 class="text-3xl font-bold">
           {isLogin ? "Welcome Back" : "Create Account"}
@@ -139,7 +139,7 @@
           <div class="space-y-2">
             <Label for="name">Name</Label>
             <div class="relative">
-              <User class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <User class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" aria-hidden="true" />
               <Input
                 id="name"
                 type="text"
@@ -172,7 +172,7 @@
         <div class="space-y-2">
           <Label for="email">Email</Label>
           <div class="relative">
-            <Mail class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+            <Mail class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" aria-hidden="true" />
             <Input
               id="email"
               type="email"
@@ -190,7 +190,7 @@
         <div class="space-y-2">
           <Label for="password">Password</Label>
           <div class="relative">
-            <Lock class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+            <Lock class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" aria-hidden="true" />
             <Input
               id="password"
               type="password"

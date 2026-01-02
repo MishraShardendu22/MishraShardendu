@@ -106,27 +106,30 @@
     size="sm"
     onclick={() => (isMobileMenuOpen = !isMobileMenuOpen)}
     className="bg-card/95 backdrop-blur-sm border-border shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 p-2"
+    aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+    aria-expanded={isMobileMenuOpen}
+    aria-controls="mobile-navigation"
   >
       {#if isMobileMenuOpen}
-        <X class="h-5 w-5" />
+        <X class="h-5 w-5" aria-hidden="true" />
       {:else}
-        <Menu class="h-5 w-5" />
+        <Menu class="h-5 w-5" aria-hidden="true" />
       {/if}
   </Button>
 </div>
 
 {#if isMobileMenuOpen}
-  <div class="lg:hidden fixed inset-0 z-50 bg-background/60 backdrop-blur-sm" role="dialog" aria-modal="true">
+  <div class="lg:hidden fixed inset-0 z-50 bg-background/60 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="mobile-nav-title" id="mobile-navigation">
     <div class="absolute inset-y-0 left-0 w-72 bg-card/95 border-r border-border p-4 overflow-y-auto">
       <div class="flex items-center justify-between mb-4">
         <div class="flex items-center gap-3">
           <div>
-            <div class="font-bold">Blog</div>
+            <div class="font-bold" id="mobile-nav-title">Blog</div>
             <div class="text-xs text-muted-foreground">Shardendu Mishra</div>
           </div>
         </div>
-        <Button variant="ghost" size="sm" onclick={() => (isMobileMenuOpen = false)}>
-          <X class="h-4 w-4" />
+        <Button variant="ghost" size="sm" onclick={() => (isMobileMenuOpen = false)} aria-label="Close navigation menu">
+          <X class="h-4 w-4" aria-hidden="true" />
         </Button>
       </div>
 
@@ -241,8 +244,8 @@
                 class="w-12 h-12 border-2 border-primary/20 shadow-md"
               />
               {#if user.isVerified}
-                <div class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-emerald-500 rounded-full border-2 border-background flex items-center justify-center">
-                  <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <div class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-emerald-500 rounded-full border-2 border-background flex items-center justify-center" role="img" aria-label="Verified account">
+                  <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                   </svg>
                 </div>
@@ -276,8 +279,9 @@
               onclick={() => authStore.logout()}
               class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors"
               title="Sign Out"
+              aria-label="Sign out of your account"
             >
-              <LogOut class="w-5 h-5 text-muted-foreground hover:text-red-600 dark:hover:text-red-400 transition-colors" />
+              <LogOut class="w-5 h-5 text-muted-foreground hover:text-red-600 dark:hover:text-red-400 transition-colors" aria-hidden="true" />
             </button>
           </div>
           <div class="nav-label flex-1 ml-2">
@@ -301,8 +305,9 @@
               onclick={() => navigateTo(`${basePath}/login`)}
               class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 transition-colors"
               title="Sign In"
+              aria-label="Sign in to your account"
             >
-              <LogIn class="w-5 h-5 text-primary-foreground" />
+              <LogIn class="w-5 h-5 text-primary-foreground" aria-hidden="true" />
             </button>
           </div>
           <div class="nav-label flex-1 ml-2">

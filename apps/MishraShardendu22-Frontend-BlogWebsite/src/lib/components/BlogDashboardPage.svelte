@@ -206,8 +206,8 @@
               <div class="actions w-full sm:w-3/4 flex justify-end">
                 <div class="card-actions w-full max-w-none flex gap-2 flex-wrap justify-end">
                   <button type="button" class="view-btn px-3 py-2 rounded-md bg-primary/10 text-primary" onclick={() => (window.location.href = `${basePath}/read/${blog.id}`)}>View</button>
-                  <button type="button" class="edit-btn p-2 rounded-md border" onclick={() => (window.location.href = `${basePath}/read/${blog.id}/edit`)}><Edit class="w-4 h-4" /></button>
-                  <button type="button" class="delete-btn p-2 rounded-md border text-destructive" onclick={() => handleDelete(blog.id)} disabled={deletingBlogId === blog.id}><Trash2 class="w-4 h-4" /></button>
+                  <button type="button" class="edit-btn p-2 rounded-md border" onclick={() => (window.location.href = `${basePath}/read/${blog.id}/edit`)} aria-label="Edit blog post"><Edit class="w-4 h-4" aria-hidden="true" /></button>
+                  <button type="button" class="delete-btn p-2 rounded-md border text-destructive" onclick={() => handleDelete(blog.id)} disabled={deletingBlogId === blog.id} aria-label="Delete blog post"><Trash2 class="w-4 h-4" aria-hidden="true" /></button>
                 </div>
               </div>
             </div>

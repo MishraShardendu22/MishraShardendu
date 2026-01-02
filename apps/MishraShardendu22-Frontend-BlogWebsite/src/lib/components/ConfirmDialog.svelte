@@ -33,7 +33,7 @@
           {/if}
           <p class="text-sm text-muted-foreground">{state.message}</p>
         </div>
-        <button class="p-1 rounded-md hover:bg-muted/20" aria-label="Close" on:click={onCancel}><X class="w-4 h-4"/></button>
+        <button class="p-1 rounded-md hover:bg-muted/20" aria-label="Close dialog" on:click={onCancel}><X class="w-4 h-4" aria-hidden="true" /></button>
       </div>
 
       <div class="mt-4 flex justify-end gap-2">

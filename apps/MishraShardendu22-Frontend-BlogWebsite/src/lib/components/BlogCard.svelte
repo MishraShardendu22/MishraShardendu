@@ -111,13 +111,13 @@
 
       <div class="flex items-center gap-3 shrink-0">
         {#if readingTime > 0}
-          <div class="flex items-center gap-1 text-[10px] bg-white/20 backdrop-blur-md px-2 py-1 rounded-full">
-            <Clock class="w-3 h-3" />
+          <div class="flex items-center gap-1 text-[10px] bg-white/20 backdrop-blur-md px-2 py-1 rounded-full" aria-label="{readingTime} minute read">
+            <Clock class="w-3 h-3" aria-hidden="true" />
             <span>{readingTime}m</span>
           </div>
         {/if}
-        <div class="flex items-center gap-1 text-[10px] bg-white/20 backdrop-blur-md px-2 py-1 rounded-full">
-          <MessageCircle class="w-3 h-3" />
+        <div class="flex items-center gap-1 text-[10px] bg-white/20 backdrop-blur-md px-2 py-1 rounded-full" aria-label="{blog.comments ?? 0} comments">
+          <MessageCircle class="w-3 h-3" aria-hidden="true" />
           <span>{blog.comments ?? 0}</span>
         </div>
       </div>

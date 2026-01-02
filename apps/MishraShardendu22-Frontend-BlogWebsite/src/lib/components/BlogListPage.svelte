@@ -80,12 +80,16 @@
 
     <div class="flex items-center gap-3">
   <div class="relative flex-1 min-w-0 hidden lg:block" style="min-width: 360px;">
-        <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 pointer-events-none" />
+        <label for="blog-search" class="sr-only">Search blogs</label>
+        <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4 pointer-events-none" aria-hidden="true" />
         <Input
+          id="blog-search"
           placeholder="Search blogs..."
           bind:value={searchTerm}
           class="pl-10 pr-4 h-12 bg-card/80 backdrop-blur-sm border-2 border-border/60 focus:border-primary/50 hover:border-border rounded-xl text-sm text-foreground placeholder:text-muted-foreground transition-all duration-300 shadow-sm w-full font-medium"
+          aria-describedby="search-description"
         />
+        <span id="search-description" class="sr-only">Search through blog posts by title or content</span>
       </div>
 
       {#if isOwner}
@@ -93,7 +97,7 @@
           onclick={() => (window.location.href = `${basePath}/create`)}
           className="h-12 px-5 bg-linear-to-r from-primary to-primary/90 text-primary-foreground font-bold shadow-lg rounded-xl text-sm shrink-0 hidden lg:inline-flex"
         >
-          <Plus class="w-4 h-4" />
+          <Plus class="w-4 h-4" aria-hidden="true" />
           <span class="ml-2">Create</span>
         </Button>
       {/if}
@@ -154,8 +158,8 @@
 
     <!-- Pagination -->
     {#if filteredBlogs.length > pageSize}
-      <div class="mt-6 flex items-center justify-center gap-3">
-        <Button size="sm" variant="outline" onclick={() => currentPage = Math.max(1, currentPage - 1)} className="px-3">
+      <nav class="mt-6 flex items-center justify-center gap-3" aria-label="Blog pagination">
+        <Button size="sm" variant="outline" onclick={() => currentPage = Math.max(1, currentPage - 1)} className="px-3" aria-label="Go to previous page" disabled={currentPage === 1}>
           Prev
         </Button>
 
@@ -165,15 +169,17 @@
           <button
             class={page === currentPage ? 'px-3 py-1 rounded-lg bg-primary text-primary-foreground font-semibold' : 'px-3 py-1 rounded-lg bg-card/80 border border-border'}
             on:click={() => (currentPage = page)}
+            aria-label="Go to page {page}"
+            aria-current={page === currentPage ? 'page' : undefined}
           >
             {page}
           </button>
         {/each}
 
-        <Button size="sm" variant="outline" onclick={() => currentPage = Math.min(totalPages, currentPage + 1)} className="px-3">
+        <Button size="sm" variant="outline" onclick={() => currentPage = Math.min(totalPages, currentPage + 1)} className="px-3" aria-label="Go to next page" disabled={currentPage === totalPages}>
           Next
         </Button>
-      </div>
+      </nav>
     {/if}
   {/if}
 </div>

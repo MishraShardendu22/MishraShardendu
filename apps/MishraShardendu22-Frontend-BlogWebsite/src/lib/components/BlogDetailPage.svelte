@@ -326,8 +326,8 @@
 
 <!-- Mobile back button (fixed) -->
 <div class="lg:hidden fixed top-4 left-4 z-50">
-  <Button variant="ghost" size="icon" onclick={() => history.back()} className="w-10 h-10">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0L3.586 10l4.707-4.707a1 1 0 011.414 1.414L6.414 10l3.293 3.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>
+  <Button variant="ghost" size="icon" onclick={() => history.back()} className="w-10 h-10" aria-label="Go back to previous page">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0L3.586 10l4.707-4.707a1 1 0 011.414 1.414L6.414 10l3.293 3.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>
   </Button>
 </div>
 
