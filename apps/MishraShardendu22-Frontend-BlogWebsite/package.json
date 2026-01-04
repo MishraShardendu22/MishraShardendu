@@ -39,7 +39,7 @@
   ],
   "type": "module",
   "engines": {
-    "node": ">=25"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "vite --port 5174",
