@@ -47,7 +47,7 @@ Every package in the monorepo should include the following metadata for optimal 
     "leetcode": "https://leetcode.com/u/ShardenduMishra22/"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   },
   "scripts": {
     "dev": "development start command",
@@ -105,7 +105,7 @@ Every package in the monorepo should include the following metadata for optimal 
     "leetcode": "https://leetcode.com/u/ShardenduMishra22/"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   }
 }
 ```
@@ -151,7 +151,7 @@ Every package in the monorepo should include the following metadata for optimal 
     "leetcode": "https://leetcode.com/u/ShardenduMishra22/"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   }
 }
 ```
@@ -184,7 +184,7 @@ Every package in the monorepo should include the following metadata for optimal 
     "github": "https://github.com/MishraShardendu22"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   }
 }
 ```

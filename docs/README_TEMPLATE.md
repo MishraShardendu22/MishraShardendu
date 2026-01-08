@@ -49,7 +49,7 @@ Use this template for creating professional README files for each application in
 
 ### Prerequisites
 
-- Node.js >= 18.0.0
+- Node.js >= 22.0.0
 - PNPM >= 9.0.0
 - [Other dependencies]
 

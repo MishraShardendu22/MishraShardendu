@@ -35,6 +35,9 @@
     }
   ],
   "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "dev": "vite --port 5173",
     "build": "tsc -b && vite build",
