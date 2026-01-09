@@ -1,32 +1,47 @@
 {
+  "id": "shardendu-admin-dashboard",
   "name": "Admin Dashboard - Shardendu Mishra",
   "short_name": "Admin",
   "description": "Secure administrative dashboard for managing portfolio content, projects, experiences, and blog posts.",
   "start_url": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "background_color": "#000000",
   "theme_color": "#10b981",
   "orientation": "portrait-primary",
   "scope": "/",
-  "lang": "en",
-  "categories": ["admin", "dashboard", "management"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["admin", "dashboard", "management", "productivity"],
   "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
     {
       "src": "/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
     },
     {
-      "src": "/favicon.ico",
-      "sizes": "48x48",
-      "type": "image/x-icon"
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "shortcuts": [
@@ -51,5 +66,7 @@
       "url": "/blogs",
       "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
     }
-  ]
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }

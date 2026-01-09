@@ -16,6 +16,9 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://blogs.mishrashardendu22.is-a.dev" />
     
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
     <!-- Favicon and Icons - Multiple formats and sizes for better compatibility -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -143,6 +146,58 @@
         color: #ffffff;
       }
     </style>
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://blogs.mishrashardendu22.is-a.dev/#website",
+          "url": "https://blogs.mishrashardendu22.is-a.dev",
+          "name": "Blogs By Shardendu Mishra",
+          "description": "Explore in-depth technical articles about web development, software engineering, programming best practices, and modern tech stack insights.",
+          "publisher": {
+            "@id": "https://blogs.mishrashardendu22.is-a.dev/#person"
+          },
+          "inLanguage": "en-US",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://blogs.mishrashardendu22.is-a.dev/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://blogs.mishrashardendu22.is-a.dev/#person",
+          "name": "Shardendu Mishra",
+          "url": "https://mishrashardendu22.is-a.dev",
+          "image": "https://blogs.mishrashardendu22.is-a.dev/Professional.webp",
+          "jobTitle": "Software Developer and Engineer",
+          "sameAs": [
+            "https://twitter.com/Shardendu_M",
+            "https://github.com/MishraShardendu22",
+            "https://linkedin.com/in/shardendu-mishra"
+          ]
+        },
+        {
+          "@type": "Blog",
+          "@id": "https://blogs.mishrashardendu22.is-a.dev/#blog",
+          "mainEntityOfPage": "https://blogs.mishrashardendu22.is-a.dev",
+          "name": "Shardendu Mishra's Tech Blog",
+          "description": "Technical articles about web development, Go, React, TypeScript, and software engineering best practices.",
+          "author": {
+            "@id": "https://blogs.mishrashardendu22.is-a.dev/#person"
+          },
+          "publisher": {
+            "@id": "https://blogs.mishrashardendu22.is-a.dev/#person"
+          },
+          "inLanguage": "en-US"
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="app"></div>

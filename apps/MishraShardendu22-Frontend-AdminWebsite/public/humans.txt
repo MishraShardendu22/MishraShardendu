@@ -1,0 +1,15 @@
+/* TEAM */
+Developer: Shardendu Mishra
+Site: https://mishrashardendu22.is-a.dev
+Twitter: @Shardendu_M
+GitHub: MishraShardendu22
+Location: Bangalore, India
+
+/* SITE */
+Last update: 2026/01/09
+Standards: HTML5, CSS3, JavaScript ES2024
+Components: React, TypeScript, Tailwind CSS
+Software: VS Code, Vite
+
+/* THANKS */
+Thanks to the open-source community for the amazing tools and libraries.
