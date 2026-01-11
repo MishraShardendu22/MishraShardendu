@@ -29,7 +29,7 @@ import type {
   UpdateVolunteerExperienceRequest,
   VolunteerExperience,
 } from '../types/types.data'
-import api from './api'
+import api, { blogApi } from './api'
 
 // =============================================================================
 // AUTH API
@@ -299,47 +299,47 @@ export const blogsAPI = {
     if (options?.author) params.append('author', options.author)
     if (options?.search) params.append('search', options.search)
 
-    const response = await api.get(`/blogs?${params.toString()}`)
+    const response = await blogApi.get(`/blogs?${params.toString()}`)
     return response.data
   },
 
   getBlogById: async (id: number): Promise<BlogResponse> => {
-    const response = await api.get(`/blogs/${id}`)
+    const response = await blogApi.get(`/blogs/${id}`)
     return response.data
   },
 
   createBlog: async (blog: CreateBlogRequest): Promise<BlogResponse> => {
-    const response = await api.post('/blogs', blog)
+    const response = await blogApi.post('/blogs', blog)
     return response.data
   },
 
   updateBlog: async (id: number, blog: UpdateBlogRequest): Promise<BlogResponse> => {
-    const response = await api.put(`/blogs/${id}`, blog)
+    const response = await blogApi.put(`/blogs/${id}`, blog)
     return response.data
   },
 
   patchBlog: async (id: number, blog: Partial<UpdateBlogRequest>): Promise<BlogResponse> => {
-    const response = await api.patch(`/blogs/${id}`, blog)
+    const response = await blogApi.patch(`/blogs/${id}`, blog)
     return response.data
   },
 
   deleteBlog: async (id: number): Promise<ApiResponse<{ message: string }>> => {
-    const response = await api.delete(`/blogs/${id}`)
+    const response = await blogApi.delete(`/blogs/${id}`)
     return response.data
   },
 
   getBlogStats: async (): Promise<BlogStatsResponse> => {
-    const response = await api.get('/blogs/stats')
+    const response = await blogApi.get('/blogs/stats')
     return response.data
   },
 
   getReorderList: async (): Promise<ApiResponse<BlogReorderItem[]>> => {
-    const response = await api.get('/blogs/reorder')
+    const response = await blogApi.get('/blogs/reorder')
     return response.data
   },
 
   updateReorder: async (payload: BlogReorderUpdate[]): Promise<ApiResponse<unknown>> => {
-    const response = await api.post('/blogs/reorder', payload)
+    const response = await blogApi.post('/blogs/reorder', payload)
     return response.data
   },
 }
@@ -351,7 +351,7 @@ export const blogsAPI = {
 export const commentsAPI = {
   getCommentsByBlogId: async (blogId: number, page = 1, limit = 10): Promise<CommentsResponse> => {
     const params = new URLSearchParams({ page: page.toString(), limit: limit.toString() })
-    const response = await api.get(`/blogs/${blogId}/comments?${params.toString()}`)
+    const response = await blogApi.get(`/blogs/${blogId}/comments?${params.toString()}`)
     return response.data
   },
 
@@ -359,7 +359,7 @@ export const commentsAPI = {
     blogId: number,
     comment: CreateCommentRequest
   ): Promise<ApiResponse<BlogComment>> => {
-    const response = await api.post(`/blogs/${blogId}/comments`, comment)
+    const response = await blogApi.post(`/blogs/${blogId}/comments`, comment)
     return response.data
   },
 
@@ -367,7 +367,7 @@ export const commentsAPI = {
     blogId: number,
     commentId: number
   ): Promise<ApiResponse<{ message: string }>> => {
-    const response = await api.delete(`/blogs/${blogId}/comments/${commentId}`)
+    const response = await blogApi.delete(`/blogs/${blogId}/comments/${commentId}`)
     return response.data
   },
 }

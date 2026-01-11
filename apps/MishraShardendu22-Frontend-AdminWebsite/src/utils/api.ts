@@ -12,8 +12,24 @@ declare module 'axios' {
 // Use proxy in development (empty string) or fallback to production URL
 const baseURL = import.meta.env.VITE_BACKEND_1 ? `${import.meta.env.VITE_BACKEND_1}/api` : '/api'
 
+// Blog backend URL - separate backend for blog endpoints
+const blogBaseURL = import.meta.env.VITE_BLOG_BACKEND
+  ? `${import.meta.env.VITE_BLOG_BACKEND}/api`
+  : 'https://mishrashardendu22-backend-blogwebsite.onrender.com/api'
+
 const api = axios.create({
   baseURL,
+  timeout: 60000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  maxRedirects: 5,
+  maxContentLength: 50 * 1024 * 1024,
+})
+
+// Separate API client for blog endpoints
+const blogApi = axios.create({
+  baseURL: blogBaseURL,
   timeout: 60000,
   headers: {
     'Content-Type': 'application/json',
@@ -49,42 +65,41 @@ const retryRequest = async (config: AxiosRequestConfig, retryCount = 0): Promise
   }
 }
 
-api.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
-    const token = typeof window !== 'undefined' ? localStorage.getItem('jwt_token') : null
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`
-    }
-
-    config.metadata = { startTime: Date.now() }
-
-    return config
-  },
-  (error) => {
-    return Promise.reject(error)
+// Shared request interceptor for both API clients
+const requestInterceptor = (config: InternalAxiosRequestConfig) => {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('jwt_token') : null
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
   }
-)
 
-api.interceptors.response.use(
-  (response) => {
-    return response
-  },
-  async (error: AxiosError) => {
-    if (error.response?.status === 401) {
-      if (typeof window !== 'undefined') {
-        localStorage.removeItem('jwt_token')
-        const isAdminPage =
-          window.location.pathname.startsWith('/admin') &&
-          window.location.pathname !== '/admin/login'
-        if (isAdminPage) {
-          window.location.href = '/'
-        }
+  config.metadata = { startTime: Date.now() }
+
+  return config
+}
+
+// Shared response interceptor for both API clients
+const responseInterceptor = async (error: AxiosError) => {
+  if (error.response?.status === 401) {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('jwt_token')
+      const isAdminPage =
+        window.location.pathname.startsWith('/admin') && window.location.pathname !== '/admin/login'
+      if (isAdminPage) {
+        window.location.href = '/'
       }
     }
-
-    return Promise.reject(error)
   }
-)
+
+  return Promise.reject(error)
+}
+
+// Apply interceptors to main API
+api.interceptors.request.use(requestInterceptor, (error) => Promise.reject(error))
+api.interceptors.response.use((response) => response, responseInterceptor)
+
+// Apply interceptors to blog API
+blogApi.interceptors.request.use(requestInterceptor, (error) => Promise.reject(error))
+blogApi.interceptors.response.use((response) => response, responseInterceptor)
 
 export default api
-export { retryRequest }
+export { blogApi, retryRequest }
