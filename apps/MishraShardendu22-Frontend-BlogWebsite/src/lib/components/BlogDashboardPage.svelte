@@ -6,6 +6,7 @@
     BookOpen,
     BarChart3,
     MessageCircle,
+    Plus,
   } from "lucide-svelte";
   import { toast } from "../toast";
   import { onMount } from "svelte";
@@ -102,25 +103,28 @@
     <ErrorState message={error} onRetry={loadData} />
   {:else}
     <!-- Header with actions -->
-    <div class="flex items-start justify-between gap-4">
-      <div>
-    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">Dashboard</h1>
-        <p class="text-sm text-muted-foreground">Manage your blog posts and view analytics</p>
+    <div class="space-y-4 md:space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+        <div class="space-y-1">
+          <h1 class="text-3xl sm:text-4xl font-bold tracking-tight bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">Dashboard</h1>
+          <p class="text-sm sm:text-base text-muted-foreground">Manage your blog posts and view analytics</p>
+        </div>
+        <!-- Desktop Create button -->
+        <Button onclick={() => (window.location.href = `${basePath}/create`)} className="h-11 px-6 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground rounded-lg hidden lg:inline-flex gap-2">
+          <Plus class="w-4 h-4" />
+          Create Post
+        </Button>
       </div>
 
-      <div class="flex items-center gap-3">
-          <!-- hide large search on very small screens -->
-            <div class="relative hidden lg:block" style="min-width:280px;">
-          <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-          <Input placeholder="Search your posts..." bind:value={searchTerm} class="pl-10 h-11" />
-        </div>
-          <!-- Desktop Create button; on small screens show smaller icon handled by mobile menu -->
-        <Button onclick={() => (window.location.href = `${basePath}/create`)} className="h-11 px-6 bg-linear-to-r from-primary to-primary/90 text-primary-foreground rounded-lg hidden lg:inline-flex">Create Post</Button>
+      <!-- Search bar - full width on mobile -->
+      <div class="relative w-full">
+        <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+        <Input placeholder="Search your posts..." bind:value={searchTerm} class="pl-10 h-11 w-full" />
       </div>
     </div>
     
     <!-- Stats Cards -->
-    <div class="modern-stats mt-4">
+    <div class="modern-stats mt-6">
       <div class="stat-card">
         <div class="flex items-center justify-between">
           <div>
@@ -174,23 +178,31 @@
         onAction={!searchTerm ? () => (window.location.href = `${basePath}/create`) : undefined}
       />
     {:else}
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
         {#each filteredBlogs as blog (blog.id)}
-          <div class="blog-card-improved">
-            <!-- Title above -->
-            <div class="mb-2">
-              <div class="flex items-center gap-3 min-w-0">
-                <div class="min-w-0">
-                  <h4 class="text-sm sm:text-base font-semibold text-foreground mb-0 line-clamp-2 truncate">
-                    {blog.title}
-                  </h4>
-                </div>
+          <div class="blog-card-dashboard">
+            <!-- Title and metadata -->
+            <div class="mb-4">
+              <h4 class="text-base sm:text-lg font-semibold text-foreground mb-2 line-clamp-2">
+                {blog.title}
+              </h4>
+              <div class="flex items-center gap-3 text-xs text-muted-foreground">
+                <span class="flex items-center gap-1">
+                  <BookOpen class="w-3 h-3" />
+                  {new Date(blog.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                </span>
+                {#if blog.comments !== undefined}
+                  <span class="flex items-center gap-1">
+                    <MessageCircle class="w-3 h-3" />
+                    {blog.comments} comments
+                  </span>
+                {/if}
               </div>
             </div>
 
-            <!-- Tags (1/4) and buttons (3/4) below title -->
-            <div class="mt-3 flex items-start gap-3 flex-wrap">
-              <div class="tags w-full sm:w-1/4">
+            <!-- Tags and buttons -->
+            <div class="flex flex-col sm:flex-row items-start gap-3">
+              <div class="tags flex-1 w-full sm:w-auto">
                 {#if blog.tags && blog.tags.length > 0}
                   <div class="flex flex-wrap gap-2">
                     {#each blog.tags.slice(0, 3) as tag}
@@ -203,12 +215,32 @@
                 {/if}
               </div>
 
-              <div class="actions w-full sm:w-3/4 flex justify-end">
-                <div class="card-actions w-full max-w-none flex gap-2 flex-wrap justify-end">
-                  <button type="button" class="view-btn px-3 py-2 rounded-md bg-primary/10 text-primary" onclick={() => (window.location.href = `${basePath}/read/${blog.id}`)}>View</button>
-                  <button type="button" class="edit-btn p-2 rounded-md border" onclick={() => (window.location.href = `${basePath}/read/${blog.id}/edit`)} aria-label="Edit blog post"><Edit class="w-4 h-4" aria-hidden="true" /></button>
-                  <button type="button" class="delete-btn p-2 rounded-md border text-destructive" onclick={() => handleDelete(blog.id)} disabled={deletingBlogId === blog.id} aria-label="Delete blog post"><Trash2 class="w-4 h-4" aria-hidden="true" /></button>
-                </div>
+              <div class="actions flex gap-2">
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  class="flex-1 sm:flex-initial"
+                  onclick={() => (window.location.href = `${basePath}/read/${blog.id}`)}
+                >
+                  View
+                </Button>
+                <Button 
+                  size="sm" 
+                  variant="outline"
+                  onclick={() => (window.location.href = `${basePath}/read/${blog.id}/edit`)} 
+                  aria-label="Edit blog post"
+                >
+                  <Edit class="w-4 h-4" aria-hidden="true" />
+                </Button>
+                <Button 
+                  size="sm" 
+                  variant="destructive"
+                  onclick={() => handleDelete(blog.id)} 
+                  disabled={deletingBlogId === blog.id} 
+                  aria-label="Delete blog post"
+                >
+                  <Trash2 class="w-4 h-4" aria-hidden="true" />
+                </Button>
               </div>
             </div>
           </div>

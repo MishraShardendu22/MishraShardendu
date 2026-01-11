@@ -187,7 +187,7 @@
 {/if}
 
 <aside
-  class="hidden lg:flex group fixed left-0 top-0 bottom-0 w-20 hover:w-72 border-r border-border bg-card/95 backdrop-blur-sm flex-col z-30 shadow-lg transition-all duration-300 ease-in-out"
+  class="hidden lg:flex group fixed left-0 top-0 bottom-0 w-20 hover:w-72 border-r border-border bg-card/95 backdrop-blur-sm flex-col z-30 shadow-lg transition-[width] duration-300 ease-in-out"
   aria-label="Blog navigation"
 >
   <div class="h-20 flex items-center justify-between px-4 border-b border-border bg-linear-to-b from-background/50 to-transparent shrink-0">

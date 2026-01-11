@@ -400,28 +400,20 @@ h6 {
     gap: 1rem;
   }
 
-  .stat-card { padding: 1rem; border-radius: var(--radius); background: var(--card); border: 1px solid var(--border); }
-
   @media (max-width: 900px) {
     /* Make stats stack on narrow screens */
     .modern-stats {
-      grid-template-columns: 1fr !important;
+      grid-template-columns: repeat(2, 1fr) !important;
     }
 
     /* Ensure fixed top buttons have safe spacing on small screens */
     .fixed.top-6.right-6, .fixed.top-4.left-4, .fixed.top-4.right-4 {
       top: calc(0.5rem + var(--safe-area-inset-top));
     }
-    .modern-stats { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 640px) {
     .modern-stats { grid-template-columns: 1fr; }
-
-    /* Blog card improvements */
-    .blog-card-improved { padding: 0.75rem; }
-    .blog-card-improved .tags { width: 40%; }
-    .blog-card-improved .actions { width: 60%; }
 
     /* Make large featured images responsive */
     .w-full.h-\[500px\] { height: auto !important; }
@@ -429,17 +421,6 @@ h6 {
 
     /* Toast spacing adjust */
     .toast-mobile-center { left: 50%; transform: translateX(-50%); }
-  }
-
-  /* Remove motion for users who prefer reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
   }
 }
 
@@ -466,77 +447,43 @@ h6 {
   }
 }
 
-/* Dashboard card actions: 3 equal buttons (view/edit/delete) */
-.card-actions {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  /* Make card-actions span the full width of its parent container so buttons fill available space */
-  width: 100%;
+/* Dashboard card improvements */
+.blog-card-dashboard {
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.card-actions button {
-  height: 42px;
-  border-radius: 0.625rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border: 1px solid rgba(255,255,255,0.04);
-  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
-  color: var(--foreground);
-  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
-  width: 100%;
-  min-width: 0; /* allow grid cells to size properly */
+.blog-card-dashboard:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
 }
 
-.card-actions .view-btn {
-  background: linear-gradient(90deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06));
-  color: var(--view-foreground);
-  border: 1px solid rgba(16,185,129,0.18);
-}
-
-.card-actions .edit-btn {
-  background: linear-gradient(90deg, rgba(59,130,246,0.12), rgba(59,130,246,0.06));
-}
-
-.card-actions .delete-btn {
-  background: linear-gradient(90deg, rgba(239,68,68,0.08), rgba(239,68,68,0.04));
-}
-
-.card-actions button:hover {
-  /* Remove translate and heavy shadow for these action buttons */
-  transform: none;
-  box-shadow: none;
-}
-
-.card-actions .view-btn:hover {
-  background: linear-gradient(90deg, var(--primary), var(--primary-hover));
-  color: var(--primary-foreground);
-  border-color: rgba(0,0,0,0.08);
+@media (max-width: 640px) {
+  .blog-card-dashboard {
+    padding: 1rem;
+  }
 }
 
 
 /* Modern card and stat visuals */
-.modern-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-
 .stat-card {
   padding: 1.5rem;
   border-radius: 0.75rem;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border: 1px solid var(--border-strong);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .stat-card:hover {
-  /* Disable upward movement and heavy shadow on hover */
-  transform: none;
-  transition: none;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
 }
 
 .stat-label {
@@ -548,23 +495,7 @@ h6 {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--foreground);
-}
-
-.stat-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.stat-icon-inner {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+  margin-top: 0.25rem;
 }
 
 
@@ -583,11 +514,10 @@ h6 {
   .blog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-/* Improved card look used by blog cards - REMOVED as we use BlogCard component styles directly */
-
-
 /* Tighter spacing for dashboard stat numbers */
 .stat-card p:first-child { margin-bottom: .25rem; }
+
+/* Performance optimized blog grid */
 
 
 /* Smooth reveal for sidebar labels (title, nav item labels, user info) */
@@ -595,10 +525,12 @@ h6 {
   /* Base hidden/collapsed state for label containers */
   .nav-label {
     opacity: 0;
-    transform: translateX(-6px);
+    transform: translate3d(-6px, 0, 0);
     max-width: 0;
     overflow: hidden;
-    transition: opacity 180ms ease, transform 220ms ease, max-width 220ms ease;
+    transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+                max-width 250ms cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
   }
 
@@ -606,7 +538,7 @@ h6 {
   aside.group:hover .nav-label,
   aside.group:focus-within .nav-label {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
     max-width: 40rem; /* large enough to reveal all label content */
   }
 
@@ -616,12 +548,11 @@ h6 {
     vertical-align: middle;
     max-width: 100%;
   }
+  
   /* Ensure form controls inside nav-label animate smoothly */
   .nav-label button,
   .nav-label .inline-flex {
-    opacity: inherit;
-    transform: inherit;
-    transition: opacity 180ms ease, transform 220ms ease;
+    transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -882,8 +813,7 @@ img {
 }
 
 /* Reduce layout shifts by setting explicit dimensions */
-.blog-card-improved {
-  min-height: 380px;
+.blog-card-dashboard {
   contain: layout style;
 }
 
@@ -892,20 +822,25 @@ img {
   contain: content;
 }
 
-/* Use will-change sparingly for known animations */
+/* Use will-change sparingly only during animations */
 .animate-slide-up {
-  will-change: transform, opacity;
+  animation: slide-up 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Reduce paint areas for hover effects */
-.group:hover .group-hover\:scale-105,
-.group:hover .group-hover\:blur-sm {
-  will-change: transform, filter;
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* Optimize loading spinner */
 .animate-spin {
-  will-change: transform;
+  animation: spin 1s linear infinite;
 }
 
 /* Reduce repaints on fixed elements */

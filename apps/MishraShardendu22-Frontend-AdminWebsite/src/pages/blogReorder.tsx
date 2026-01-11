@@ -143,8 +143,11 @@ export default function BlogReorderPage() {
         blogItems.forEach((item) => orderMap.set(item.uid, item.order))
         setOriginalOrder(orderMap)
         setError('')
-      } catch {
-        setError('Failed to load blogs. Please try again later.')
+      } catch (err) {
+        console.error('Failed to load blogs:', err)
+        const errorMessage =
+          err instanceof Error ? err.message : 'Failed to load blogs. Please try again later.'
+        setError(errorMessage)
       } finally {
         setLoading(false)
       }

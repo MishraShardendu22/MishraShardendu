@@ -1,5 +1,3 @@
-import axios from 'axios'
-import { API_CONFIG } from '../constants'
 import type {
   ApiResponse,
   AuthRequest,
@@ -287,16 +285,8 @@ export const volunteerExperiencesAPI = {
 export const achievementsAPI = certificationsAPI
 
 // =============================================================================
-// BLOG API (External Blog Backend)
+// BLOG API
 // =============================================================================
-
-const getAuthHeaders = () => {
-  const token = typeof window !== 'undefined' ? localStorage.getItem('jwt_token') : null
-  return {
-    'Content-Type': 'application/json',
-    ...(token && { Authorization: `Bearer ${token}` }),
-  }
-}
 
 export const blogsAPI = {
   getAllBlogs: async (
@@ -309,65 +299,47 @@ export const blogsAPI = {
     if (options?.author) params.append('author', options.author)
     if (options?.search) params.append('search', options.search)
 
-    const response = await axios.get(`${API_CONFIG.BLOG_BASE_URL}/blogs?${params.toString()}`, {
-      headers: getAuthHeaders(),
-    })
+    const response = await api.get(`/blogs?${params.toString()}`)
     return response.data
   },
 
   getBlogById: async (id: number): Promise<BlogResponse> => {
-    const response = await axios.get(`${API_CONFIG.BLOG_BASE_URL}/blogs/${id}`, {
-      headers: getAuthHeaders(),
-    })
+    const response = await api.get(`/blogs/${id}`)
     return response.data
   },
 
   createBlog: async (blog: CreateBlogRequest): Promise<BlogResponse> => {
-    const response = await axios.post(`${API_CONFIG.BLOG_BASE_URL}/blogs`, blog, {
-      headers: getAuthHeaders(),
-    })
+    const response = await api.post('/blogs', blog)
     return response.data
   },
 
   updateBlog: async (id: number, blog: UpdateBlogRequest): Promise<BlogResponse> => {
-    const response = await axios.put(`${API_CONFIG.BLOG_BASE_URL}/blogs/${id}`, blog, {
-      headers: getAuthHeaders(),
-    })
+    const response = await api.put(`/blogs/${id}`, blog)
     return response.data
   },
 
   patchBlog: async (id: number, blog: Partial<UpdateBlogRequest>): Promise<BlogResponse> => {
-    const response = await axios.patch(`${API_CONFIG.BLOG_BASE_URL}/blogs/${id}`, blog, {
-      headers: getAuthHeaders(),
-    })
+    const response = await api.patch(`/blogs/${id}`, blog)
     return response.data
   },
 
   deleteBlog: async (id: number): Promise<ApiResponse<{ message: string }>> => {
-    const response = await axios.delete(`${API_CONFIG.BLOG_BASE_URL}/blogs/${id}`, {
-      headers: getAuthHeaders(),
-    })
+    const response = await api.delete(`/blogs/${id}`)
     return response.data
   },
 
   getBlogStats: async (): Promise<BlogStatsResponse> => {
-    const response = await axios.get(`${API_CONFIG.BLOG_BASE_URL}/blogs/stats`, {
-      headers: getAuthHeaders(),
-    })
+    const response = await api.get('/blogs/stats')
     return response.data
   },
 
   getReorderList: async (): Promise<ApiResponse<BlogReorderItem[]>> => {
-    const response = await axios.get(`${API_CONFIG.BLOG_BASE_URL}/blogs/reorder`, {
-      headers: getAuthHeaders(),
-    })
+    const response = await api.get('/blogs/reorder')
     return response.data
   },
 
   updateReorder: async (payload: BlogReorderUpdate[]): Promise<ApiResponse<unknown>> => {
-    const response = await axios.post(`${API_CONFIG.BLOG_BASE_URL}/blogs/reorder`, payload, {
-      headers: getAuthHeaders(),
-    })
+    const response = await api.post('/blogs/reorder', payload)
     return response.data
   },
 }
@@ -379,10 +351,7 @@ export const blogsAPI = {
 export const commentsAPI = {
   getCommentsByBlogId: async (blogId: number, page = 1, limit = 10): Promise<CommentsResponse> => {
     const params = new URLSearchParams({ page: page.toString(), limit: limit.toString() })
-    const response = await axios.get(
-      `${API_CONFIG.BLOG_BASE_URL}/blogs/${blogId}/comments?${params.toString()}`,
-      { headers: getAuthHeaders() }
-    )
+    const response = await api.get(`/blogs/${blogId}/comments?${params.toString()}`)
     return response.data
   },
 
@@ -390,11 +359,7 @@ export const commentsAPI = {
     blogId: number,
     comment: CreateCommentRequest
   ): Promise<ApiResponse<BlogComment>> => {
-    const response = await axios.post(
-      `${API_CONFIG.BLOG_BASE_URL}/blogs/${blogId}/comments`,
-      comment,
-      { headers: getAuthHeaders() }
-    )
+    const response = await api.post(`/blogs/${blogId}/comments`, comment)
     return response.data
   },
 
@@ -402,10 +367,7 @@ export const commentsAPI = {
     blogId: number,
     commentId: number
   ): Promise<ApiResponse<{ message: string }>> => {
-    const response = await axios.delete(
-      `${API_CONFIG.BLOG_BASE_URL}/blogs/${blogId}/comments/${commentId}`,
-      { headers: getAuthHeaders() }
-    )
+    const response = await api.delete(`/blogs/${blogId}/comments/${commentId}`)
     return response.data
   },
 }
