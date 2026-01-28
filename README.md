@@ -10,7 +10,7 @@ Professional portfolio ecosystem featuring a Next.js personal website, Svelte bl
 
 ## Mission
 
-Deliver a high-performance, accessible, and SEO-optimized portfolio platform that showcases technical expertise while providing seamless content management and exceptional user experience across all devices.
+Deliver a high-performance, accessible, and SEO-optimized portfolio platform that showcases technical expertise while providing seamless content management and exceptional user experience across all devices. Built with modern web technologies and best practices to ensure scalability and maintainability.
 
 ## Monorepo Structure
 
