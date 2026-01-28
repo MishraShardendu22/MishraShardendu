@@ -2,7 +2,7 @@
   "name": "mishrashardendu22",
   "version": "3.1.0",
   "private": true,
-  "description": "Monorepo for Shardendu Mishra's portfolio ecosystem - Personal website, blog platform, and admin dashboard.",
+  "description": "Monorepo for Shardendu Mishra's portfolio ecosystem - Blog platform, and admin dashboard.",
   "author": {
     "name": "Shardendu Mishra",
     "email": "mishrashardendu22@gmail.com",
@@ -47,9 +47,9 @@
     "reset": "rm -rf node_modules apps/*/node_modules packages/*/node_modules apps/*/package-lock.json packages/*/package-lock.json pnpm-lock.yaml && pnpm install"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.14",
+    "@biomejs/biome": "2.3.15",
     "husky": "^9.1.7",
-    "turbo": "^2.8.3"
+    "turbo": "^2.8.8"
   },
   "engines": {
     "node": "22.x",
