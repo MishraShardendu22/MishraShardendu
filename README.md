@@ -17,9 +17,9 @@ Deliver a high-performance, accessible, and SEO-optimized portfolio platform tha
 | Repository                                                                                                | Purpose             | Technology       | Live URL                                 |
 | --------------------------------------------------------------------------------------------------------- | ------------------- | ---------------- | ---------------------------------------- |
 | [MishraShardendu22](https://github.com/MishraShardendu22/MishraShardendu)                                 | Root monorepo       | Turborepo + PNPM | -                                        |
-| [PersonalWebsite](https://github.com/MishraShardendu22/MishraShardendu)                                   | Main portfolio site | Next.js 15       | https://mishrashardendu22.is-a.dev       |
-| [BlogWebsite](https://github.com/MishraShardendu22/MishraShardendu)                                       | Blog platform       | Svelte 5         | https://mishrashardendu22.is-a.dev/blog  |
-| [AdminWebsite](https://github.com/MishraShardendu22/MishraShardendu)                                      | Admin dashboard     | Preact           | https://mishrashardendu22.is-a.dev/admin |
+| [PersonalWebsite](https://github.com/MishraShardendu22/MishraShardendu)                                   | Main portfolio site | Next.js 15       | <https://mishrashardendu22.is-a.dev>       |
+| [BlogWebsite](https://github.com/MishraShardendu22/MishraShardendu)                                       | Blog platform       | Svelte 5         | <https://mishrashardendu22.is-a.dev/blog>  |
+| [AdminWebsite](https://github.com/MishraShardendu22/MishraShardendu)                                      | Admin dashboard     | Preact           | <https://mishrashardendu22.is-a.dev/admin> |
 | [Backend-PersonalWebsite](https://github.com/MishraShardendu22/MishraShardendu22-Backend-PersonalWebsite) | Personal site API   | Go/Fiber         | API endpoint                             |
 | [Backend-BlogWebsite](https://github.com/MishraShardendu22/MishraShardendu22-Backend-BlogWebsite)         | Blog API            | JS/Node.js       | API endpoint                             |
 
@@ -275,13 +275,13 @@ The monorepo uses Turborepo for optimized build caching and parallel execution:
 All frontend applications are deployed to Vercel with automatic deployments on push to main:
 
 - **Personal Website**: Deployed from `apps/MishraShardendu22-Frontend-PersonalWebsite`
-  - Production: https://mishrashardendu22.is-a.dev/
+  - Production: <https://mishrashardendu22.is-a.dev/>
   - Framework Preset: Next.js
   - Build Command: `cd ../.. && pnpm turbo run build --filter=ms22-main`
   - Output Directory: `.next`
 
 - **Blog Website**: Deployed from `apps/MishraShardendu22-Frontend-BlogWebsite`
-  - Production: https://mishrashardendu22.is-a.dev/blog
+  - Production: <https://mishrashardendu22.is-a.dev/blog>
   - Framework Preset: Vite
   - Build Command: `cd ../.. && pnpm turbo run build --filter=ms22-blog`
   - Output Directory: `dist`
@@ -359,12 +359,12 @@ This project is licensed under the MIT License. See LICENSE file for details.
 
 **Shardendu Mishra**
 
-- Website: https://mishrashardendu22.is-a.dev/
-- LinkedIn: https://www.linkedin.com/in/shardendumishra22/
-- GitHub: https://github.com/MishraShardendu22
-- Twitter/X: https://x.com/Shardendu_M
-- LeetCode: https://leetcode.com/u/ShardenduMishra22/
-- Email: mishrashardendu22@gmail.com
+- Website: <https://mishrashardendu22.is-a.dev/>
+- LinkedIn: <https://www.linkedin.com/in/shardendumishra22/>
+- GitHub: <https://github.com/MishraShardendu22>
+- Twitter/X: <https://x.com/Shardendu_M>
+- LeetCode: <https://leetcode.com/u/ShardenduMishra22/>
+- Email: <mishrashardendu22@gmail.com>
 
 For bug reports and feature requests, please use the GitHub issue tracker in the respective repository.
 
@@ -527,7 +527,7 @@ MIT. See LICENSE for details.
 
 Shardendu Mishra  
 Software Engineer | Software Engineer  
-Email: mishrashardendu22@gmail.com
+Email: <mishrashardendu22@gmail.com>
 
 ## Acknowledgments
 
@@ -1062,7 +1062,7 @@ This Code of Conduct applies within project spaces and in public spaces when rep
 
 ## Enforcement
 
-Report issues to the maintainer at mishrashardendu22@gmail.com. All complaints will be reviewed and investigated, resulting in a response deemed necessary and appropriate to the circumstances.
+Report issues to the maintainer at <mishrashardendu22@gmail.com>. All complaints will be reviewed and investigated, resulting in a response deemed necessary and appropriate to the circumstances.
 
 ### docs/SECURITY.md
 
@@ -1074,7 +1074,7 @@ Security fixes are applied to the latest major version.
 
 ## Reporting a Vulnerability
 
-- Email: mishrashardendu22@gmail.com
+- Email: <mishrashardendu22@gmail.com>
 - Provide steps to reproduce, impact assessment, and any mitigations tried.
 - You will receive an acknowledgment within 72 hours.
 
