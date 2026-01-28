@@ -18,8 +18,18 @@ First off, thank you for considering contributing to this project! It's people l
 
 - Fork the repo and create your branch from `main`.
 - Ensure the test suite passes.
-- Make sure your code lints.
+- Make sure your code lints (run `pnpm lint` and `pnpm format`).
+- Update documentation if needed.
+- Write clear commit messages following the styleguide.
 - Issue that pull request!
+
+## Development Setup
+
+1. Fork and clone the repository
+2. Install dependencies: `pnpm install`
+3. Start development server: `pnpm dev`
+4. Run linter: `pnpm lint`
+5. Run tests: `pnpm test`
 
 ## Styleguides
 
