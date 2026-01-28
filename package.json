@@ -1,8 +1,8 @@
 {
   "name": "mishrashardendu22",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "private": true,
-  "description": "Monorepo for Shardendu Mishra's portfolio ecosystem - Personal website and admin dashboard.",
+  "description": "Monorepo for Shardendu Mishra's portfolio ecosystem - Personal website, blog platform, and admin dashboard.",
   "author": {
     "name": "Shardendu Mishra",
     "email": "mishrashardendu22@gmail.com",
