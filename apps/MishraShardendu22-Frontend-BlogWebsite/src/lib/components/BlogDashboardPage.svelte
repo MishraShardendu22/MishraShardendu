@@ -14,11 +14,11 @@
   import Badge from "./ui/badge.svelte";
   import Input from "./ui/input.svelte";
   import Button from "./ui/button.svelte";
-  import { getBasePath } from "../navigation";
+  import { navigateTo } from "../navigation";
   import { Loading, ErrorState, EmptyState } from "./shared";
   import { blogApi, statsApi, type Blog, type BlogStats } from "../api";
 
-  const basePath = getBasePath();
+  const basePath = '';
   
   let stats = $state<BlogStats>({ 
     totalBlogs: 0, 
@@ -110,7 +110,7 @@
           <p class="text-sm sm:text-base text-muted-foreground">Manage your blog posts and view analytics</p>
         </div>
         <!-- Desktop Create button -->
-        <Button onclick={() => (window.location.href = `${basePath}/create`)} className="h-11 px-6 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground rounded-lg hidden lg:inline-flex gap-2">
+        <Button onclick={() => navigateTo('/create')} className="h-11 px-6 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground rounded-lg hidden lg:inline-flex gap-2">
           <Plus class="w-4 h-4" />
           Create Post
         </Button>
@@ -175,7 +175,7 @@
         title="No posts found"
         description={searchTerm ? "Try a different search term" : "Create your first blog post"}
         actionLabel={!searchTerm ? "Create First Post" : undefined}
-        onAction={!searchTerm ? () => (window.location.href = `${basePath}/create`) : undefined}
+        onAction={!searchTerm ? () => navigateTo('/create') : undefined}
       />
     {:else}
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
@@ -220,14 +220,14 @@
                   size="sm" 
                   variant="outline" 
                   class="flex-1 sm:flex-initial"
-                  onclick={() => (window.location.href = `${basePath}/read/${blog.id}`)}
+                  onclick={() => navigateTo(`/read/${blog.id}`)}
                 >
                   View
                 </Button>
                 <Button 
                   size="sm" 
                   variant="outline"
-                  onclick={() => (window.location.href = `${basePath}/read/${blog.id}/edit`)} 
+                  onclick={() => navigateTo(`/read/${blog.id}/edit`)} 
                   aria-label="Edit blog post"
                 >
                   <Edit class="w-4 h-4" aria-hidden="true" />

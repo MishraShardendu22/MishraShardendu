@@ -71,7 +71,7 @@
           onSuccess();
         } else {
           setTimeout(() => {
-            navigateTo("/blog/read");
+            navigateTo("/read");
           }, 1000);
         }
       } else {

@@ -19,7 +19,7 @@
   const pageSize = PAGINATION.BLOG_PAGE_SIZE;
   let isVisible = $state(false);
 
-  const basePath = typeof window !== 'undefined' && window.location.pathname.startsWith('/blog') ? '/blog' : '';
+  const basePath = '';
 
   // Subscribe to auth store
   authStore.subscribe((state) => {
@@ -94,7 +94,7 @@
 
       {#if isOwner}
         <Button
-          onclick={() => (window.location.href = `${basePath}/create`)}
+          onclick={() => navigateTo('/create')}
           className="h-12 px-5 bg-linear-to-r from-primary to-primary/90 text-primary-foreground font-bold shadow-lg rounded-xl text-sm shrink-0 hidden lg:inline-flex"
         >
           <Plus class="w-4 h-4" aria-hidden="true" />
@@ -137,7 +137,7 @@
       </p>
       {#if !searchTerm && isOwner}
         <Button
-          onclick={() => navigateTo(`${basePath}/create`)}
+          onclick={() => navigateTo('/create')}
           className="h-12 sm:h-13 px-7 sm:px-9 bg-linear-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-primary-foreground font-bold shadow-xl hover:shadow-2xl shadow-primary/30 transition-all duration-300 gap-2 sm:gap-2.5 rounded-xl text-sm sm:text-base hover:scale-105 hidden lg:inline-flex"
         >
           <Plus class="w-5 h-5 sm:w-6 sm:h-6" />
@@ -150,7 +150,7 @@
       {#each filteredBlogs.slice((currentPage-1)*pageSize, currentPage*pageSize) as blog, index (blog.id)}
         <BlogCard 
           {blog} 
-          onReadMore={(blogId) => navigateTo(`${basePath}/read/${blogId}`)}
+          onReadMore={(blogId) => navigateTo(`/read/${blogId}`)}
           isFirstCard={currentPage === 1 && index === 0}
         />
       {/each}

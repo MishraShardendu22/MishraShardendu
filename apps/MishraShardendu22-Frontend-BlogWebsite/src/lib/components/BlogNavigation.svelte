@@ -5,7 +5,7 @@
   import Button from "./ui/button.svelte";
   import Avatar from "./ui/avatar.svelte";
   import { resolveImageUrl } from "../utils/image";
-  import { getBasePath, navigateTo } from "../navigation";
+  import { navigateTo } from "../navigation";
   import CompactEmailVerification from "./CompactEmailVerification.svelte";
   import { BookOpen, Plus, LogOut, Menu, X, Glasses, LayoutDashboard, User2, LogIn, BookAIcon } from "lucide-svelte";
 
@@ -21,37 +21,43 @@
     isAuthenticated = state.isAuthenticated;
   });
 
+  // Listen for URL changes
   $effect(() => {
-    currentPath = window.location.pathname;
+    const handleLocationChange = () => {
+      currentPath = window.location.pathname;
+    };
+
+    window.addEventListener("popstate", handleLocationChange);
+    return () => window.removeEventListener("popstate", handleLocationChange);
   });
 
-  const basePath = getBasePath();
+  const basePath = '';
 
   const navigationItems = [
     {
       name: "Read Blogs",
-      href: basePath ? `${basePath}/read` : "/",
+      href: "/read",
       icon: Glasses,
       description: "Read the latest blog posts",
       showForAll: true,
     },
     {
       name: "Dashboard",
-      href: `${basePath}/dashboard`,
+      href: "/dashboard",
       icon: LayoutDashboard,
       description: "Manage your blog posts",
       showForAll: false,
     },
     {
       name: "Create Post",
-      href: `${basePath}/create`,
+      href: "/create",
       icon: Plus,
       description: "Write a new blog post",
       showForAll: false,
     },
     {
       name: "Main Website",
-      href: basePath ? "/" : "https://mishrashardendu22.is-a.dev",
+      href: "https://mishrashardendu22.is-a.dev",
       icon: User2,
       description: "Go back to the main website",
       showForAll: true,
@@ -68,12 +74,8 @@
       return false;
     }
 
-    const normalizedCurrent = currentPath.startsWith('/blog') 
-      ? currentPath.substring(5) || '/read' 
-      : currentPath;
-    const normalizedHref = href.startsWith('/blog') 
-      ? href.substring(5) || '/read' 
-      : href;
+    const normalizedCurrent = currentPath;
+    const normalizedHref = href;
 
     if (normalizedHref === "/read") {
       if (normalizedCurrent === "/dashboard" || normalizedCurrent === "/create") {
@@ -136,7 +138,7 @@
       <!-- Mobile Create button CTA -->
       {#if isOwner}
         <div class="mb-4">
-          <Button size="sm" className="w-full bg-linear-to-r from-primary to-primary/90 text-primary-foreground" onclick={() => { isMobileMenuOpen = false; navigateTo(`${basePath}/create`); }}>
+          <Button size="sm" className="w-full bg-linear-to-r from-primary to-primary/90 text-primary-foreground" onclick={() => { isMobileMenuOpen = false; navigateTo('/create'); }}>
             <Plus class="w-4 h-4 mr-2" />
             Create Post
           </Button>
@@ -177,7 +179,7 @@
             Sign Out
           </Button>
         {:else}
-          <Button size="sm" className="w-full" onclick={() => navigateTo(`${basePath}/login`)}>
+          <Button size="sm" className="w-full" onclick={() => navigateTo('/login')}>
             Sign In
           </Button>
         {/if}
@@ -302,7 +304,7 @@
         <div class="flex items-center h-12">
           <div class="w-14 h-12 flex items-center justify-center shrink-0">
             <button
-              onclick={() => navigateTo(`${basePath}/login`)}
+              onclick={() => navigateTo('/login')}
               class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 transition-colors"
               title="Sign In"
               aria-label="Sign in to your account"
@@ -314,7 +316,7 @@
             <Button 
               size="default" 
               className="w-full bg-linear-to-r from-primary to-primary/90" 
-              onclick={() => navigateTo(`${basePath}/login`)}
+              onclick={() => navigateTo('/login')}
             >
               Sign In
             </Button>

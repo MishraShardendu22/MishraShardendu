@@ -11,6 +11,7 @@
   import { authStore } from "./lib/auth";
   import { updateSEO } from "./lib/seo";
   import { themeStore } from "./lib/theme";
+  import { navigateTo } from "./lib/navigation";
   import { onMount } from "svelte";
 
   let currentPath = $state(window.location.pathname);
@@ -23,6 +24,30 @@
       themeStore.init();
       await authStore.init();
       updatePageSEO();
+      
+      // Set up navigation event listeners
+      const handleLocationChange = () => {
+        currentPath = window.location.pathname;
+        
+        if (currentPath === '/' || currentPath === '') {
+          window.history.replaceState(null, '', '/read');
+          currentPath = '/read';
+        }
+      };
+
+      // Check initial path
+      const checkPath = window.location.pathname;
+      if (checkPath === '/' || checkPath === '') {
+        window.history.replaceState(null, '', '/read');
+        currentPath = '/read';
+      }
+
+      window.addEventListener("popstate", handleLocationChange);
+      
+      // Return cleanup function
+      return () => {
+        window.removeEventListener("popstate", handleLocationChange);
+      };
     } catch (error) {
       console.error('[Blog App] Initialization error:', error);
     }
@@ -32,28 +57,6 @@
     isAuthenticated = state.isAuthenticated;
     isOwner = state.user?.isOwner || false;
     isLoading = state.isLoading;
-  });
-
-  $effect(() => {
-    const handleLocationChange = () => {
-      currentPath = window.location.pathname;
-      
-      if (currentPath === '/' || currentPath === '') {
-        window.history.replaceState(null, '', '/read');
-        currentPath = '/read';
-      }
-    };
-
-    const checkPath = window.location.pathname;
-    if (checkPath === '/' || checkPath === '') {
-      window.history.replaceState(null, '', '/read');
-      currentPath = '/read';
-    } else {
-      currentPath = checkPath;
-    }
-
-    window.addEventListener("popstate", handleLocationChange);
-    return () => window.removeEventListener("popstate", handleLocationChange);
   });
 
   const normalizedPath = $derived(() => {
@@ -73,10 +76,10 @@
 
   $effect(() => {
     if (!isLoading && requiresAuth() && !isAuthenticated) {
-      window.location.href = '/login';
+      navigateTo('/login');
     } else if (!isLoading && requiresAuth() && isAuthenticated && !isOwner && 
                (normalizedPath() === "/create" || normalizedPath() === "/dashboard" || normalizedPath().endsWith("/edit"))) {
-      window.location.href = '/read';
+      navigateTo('/read');
     }
   });
 

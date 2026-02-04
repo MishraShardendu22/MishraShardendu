@@ -7,7 +7,7 @@
   import Badge from "./ui/badge.svelte";
   import Button from "./ui/button.svelte";
   import Avatar from "./ui/avatar.svelte";
-  import { getBasePath } from "../navigation";
+  import { navigateTo } from "../navigation";
   import { Loading, ErrorState } from "./shared";
   import OptimizedImage from "./OptimizedImage.svelte";
   import { validateCommentContent } from "../validation";
@@ -15,7 +15,7 @@
   import { updateSEO, generateBlogPostStructuredData, insertStructuredData, truncateDescription } from "../seo";
   import { Calendar, MessageCircle, Send, Trash, Share2, Check, Edit, ChevronDown, ChevronUp } from "lucide-svelte";
 
-  const basePath = getBasePath();
+  const basePath = '';
   import { resolveImageUrl } from "../utils/image";
 
   let { blogId }: { blogId: string } = $props();
@@ -202,7 +202,7 @@
 
   const editUrl = $derived(() => {
     if (!blog) return '';
-    return `${basePath}/read/${blog.id}/edit`;
+    return `/read/${blog.id}/edit`;
   });
 
   const canEdit = $derived(() => {
@@ -436,7 +436,7 @@
       {:else}
         <div class="mb-6 p-3 bg-muted border border-border rounded-lg">
           <p class="text-muted-foreground text-xs">
-            Please <a href={`${basePath}/login`} class="text-primary font-medium hover:underline">log in</a> to post comments.
+            Please <a href="/login" class="text-primary font-medium hover:underline">log in</a> to post comments.
           </p>
         </div>
       {/if}
