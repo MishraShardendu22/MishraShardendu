@@ -73,7 +73,7 @@
         if (result.success) {
           toast.success("Login successful!");
           setTimeout(() => {
-            navigateTo("/blog/read");
+            navigateTo("/read");
           }, 500);
         } else {
           toast.error(result.error || "Login failed");
@@ -97,7 +97,7 @@
   const handleOTPSuccess = () => {
     toast.success("Email verified successfully!");
     setTimeout(() => {
-      navigateTo("/blog/read");
+      navigateTo("/read");
     }, 500);
   };
 

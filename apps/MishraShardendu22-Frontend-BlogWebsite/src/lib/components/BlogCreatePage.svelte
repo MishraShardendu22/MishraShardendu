@@ -132,14 +132,14 @@
         const response = await blogApi.updateBlog(parseInt(blogId), payload);
         if (response.success) {
           toast.success("Blog post updated successfully!");
-          setTimeout(() => navigateTo(`/blog/read/${blogId}`), 800);
+          setTimeout(() => navigateTo(`/read/${blogId}`), 800);
         }
       } else {
         const response = await blogApi.createBlog(payload);
         if (response.success) {
           toast.success("Blog post created successfully!");
           setTimeout(() => {
-            navigateTo("/blog/read");
+            navigateTo("/read");
           }, 1000);
         }
       }
@@ -284,7 +284,7 @@
     </div>
 
     <div class="flex gap-3 justify-end">
-      <Button className="" type="button" variant="outline" onclick={() => navigateTo(blogId ? `/blog/read/${blogId}` : "/blog/read")}>
+      <Button className="" type="button" variant="outline" onclick={() => navigateTo(blogId ? `/read/${blogId}` : "/read")}>
         Cancel
       </Button>
       <Button className="" type="submit" disabled={isSubmitting} onclick={() => {}}>
