@@ -62,7 +62,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.563.0",
-    "preact": "^10.28.3",
+    "preact": "^10.27.3",
     "preact-router": "^4.1.2",
     "react-hook-form": "^7.71.1",
     "react-hot-toast": "^2.6.0",
