@@ -1,222 +1,127 @@
+import type { ComponentType } from 'preact'
+import { lazy, Suspense } from 'preact/compat'
 import { useEffect } from 'preact/hooks'
 import { Route, Router } from 'preact-router'
 import AdminLayout from './components/layout/AdminLayout'
 import { useAuth } from './hooks/use-auth'
-import BlogReorderPage from './pages/blogReorder'
-import CertificationsPage from './pages/certifications'
-import DashboardPage from './pages/dashboard'
-import EditCertificationPage from './pages/edit-certification'
-import EditExperiencePage from './pages/edit-experience'
-// Edit pages
-import EditProjectPage from './pages/edit-project'
-import EditVolunteerPage from './pages/edit-volunteer'
-import ExperiencesPage from './pages/experiences'
-import KanbanPage from './pages/kanban'
-// Import pages (these will be created)
-import LoginPage from './pages/login'
-import ProfilePage from './pages/profile'
-import ProjectsPage from './pages/projects'
-import SkillsPage from './pages/skills'
-import VolunteerPage from './pages/volunteer'
 import { pageSEO, updateSEO } from './utils/seo.util'
+
+// Route-level code splitting - lazy load all page components
+const LoginPage = lazy(() => import('./pages/login'))
+const DashboardPage = lazy(() => import('./pages/dashboard'))
+const ProfilePage = lazy(() => import('./pages/profile'))
+const SkillsPage = lazy(() => import('./pages/skills'))
+const ProjectsPage = lazy(() => import('./pages/projects'))
+const ExperiencesPage = lazy(() => import('./pages/experiences'))
+const VolunteerPage = lazy(() => import('./pages/volunteer'))
+const CertificationsPage = lazy(() => import('./pages/certifications'))
+const KanbanPage = lazy(() => import('./pages/kanban'))
+const BlogReorderPage = lazy(() => import('./pages/blogReorder'))
+const EditProjectPage = lazy(() => import('./pages/edit-project'))
+const EditCertificationPage = lazy(() => import('./pages/edit-certification'))
+const EditExperiencePage = lazy(() => import('./pages/edit-experience'))
+const EditVolunteerPage = lazy(() => import('./pages/edit-volunteer'))
+
+// Lightweight loading fallback
+const PageLoader = () => (
+  <div className="flex items-center justify-center min-h-[60vh]">
+    <div className="animate-spin rounded-full h-10 w-10 border-2 border-primary border-t-transparent" />
+  </div>
+)
+
+// Route-to-SEO key mapping
+const routeSEOMap: Record<string, keyof typeof pageSEO> = {
+  '/login': 'login',
+  '/dashboard': 'dashboard',
+  '/profile': 'profile',
+  '/skills': 'skills',
+  '/projects': 'projects',
+  '/experiences': 'experiences',
+  '/volunteer': 'volunteer',
+  '/certifications': 'certifications',
+  '/kanban': 'kanban',
+  '/blogs/reorder': 'blogReorder',
+}
+
+// Protected route definitions
+interface RouteConfig {
+  path: string
+  Page: ComponentType<any>
+  hasIdParam?: boolean
+}
+
+const protectedRoutes: RouteConfig[] = [
+  { path: '/admin/dashboard', Page: DashboardPage },
+  { path: '/admin/profile', Page: ProfilePage },
+  { path: '/admin/skills', Page: SkillsPage },
+  { path: '/admin/projects', Page: ProjectsPage },
+  { path: '/admin/experiences', Page: ExperiencesPage },
+  { path: '/admin/volunteer', Page: VolunteerPage },
+  { path: '/admin/certifications', Page: CertificationsPage },
+  { path: '/admin/kanban', Page: KanbanPage },
+  { path: '/admin/blogs/reorder', Page: BlogReorderPage },
+  { path: '/admin/projects/new', Page: EditProjectPage },
+  { path: '/admin/projects/edit/:id', Page: EditProjectPage, hasIdParam: true },
+  { path: '/admin/certifications/new', Page: EditCertificationPage },
+  { path: '/admin/certifications/edit/:id', Page: EditCertificationPage, hasIdParam: true },
+  { path: '/admin/experiences/new', Page: EditExperiencePage },
+  { path: '/admin/experiences/edit/:id', Page: EditExperiencePage, hasIdParam: true },
+  { path: '/admin/volunteer/new', Page: EditVolunteerPage },
+  { path: '/admin/volunteer/edit/:id', Page: EditVolunteerPage, hasIdParam: true },
+]
 
 function App() {
   const { isAuthenticated, isLoading, initializeAuth } = useAuth()
 
   useEffect(() => {
     initializeAuth()
-    // Ensure favicons and basic SEO on app mount
     updateSEO()
   }, [initializeAuth])
 
-  // Handle route changes for SEO
   const handleRouteChange = (e: { url?: string }) => {
     const path = e.url || window.location.pathname
-
-    // Determine which page SEO to apply based on route
-    if (path.includes('/login')) {
-      updateSEO(pageSEO.login)
-    } else if (path.includes('/dashboard')) {
-      updateSEO(pageSEO.dashboard)
-    } else if (path.includes('/profile')) {
-      updateSEO(pageSEO.profile)
-    } else if (path.includes('/skills')) {
-      updateSEO(pageSEO.skills)
-    } else if (path.includes('/projects')) {
-      updateSEO(pageSEO.projects)
-    } else if (path.includes('/experiences')) {
-      updateSEO(pageSEO.experiences)
-    } else if (path.includes('/volunteer')) {
-      updateSEO(pageSEO.volunteer)
-    } else if (path.includes('/certifications')) {
-      updateSEO(pageSEO.certifications)
-    } else if (path.includes('/kanban')) {
-      updateSEO(pageSEO.kanban)
-    } else if (path.includes('/blogs/reorder')) {
-      updateSEO(pageSEO.blogReorder)
-    } else {
-      updateSEO()
-    }
+    const seoKey = Object.entries(routeSEOMap).find(([key]) => path.includes(key))?.[1]
+    updateSEO(seoKey ? pageSEO[seoKey] : undefined)
   }
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
-      </div>
-    )
+    return <PageLoader />
   }
 
   return (
-    <Router onChange={handleRouteChange}>
-      <Route path="/admin/login" component={LoginPage} />
-      <Route
-        path="/admin/dashboard"
-        component={() => (
-          <AdminLayout>
-            <DashboardPage />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/profile"
-        component={() => (
-          <AdminLayout>
-            <ProfilePage />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/skills"
-        component={() => (
-          <AdminLayout>
-            <SkillsPage />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/projects"
-        component={() => (
-          <AdminLayout>
-            <ProjectsPage />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/experiences"
-        component={() => (
-          <AdminLayout>
-            <ExperiencesPage />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/volunteer"
-        component={() => (
-          <AdminLayout>
-            <VolunteerPage />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/certifications"
-        component={() => (
-          <AdminLayout>
-            <CertificationsPage />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/kanban"
-        component={() => (
-          <AdminLayout>
-            <KanbanPage />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/blogs/reorder"
-        component={() => (
-          <AdminLayout>
-            <BlogReorderPage />
-          </AdminLayout>
-        )}
-      />
-      {/* Edit Pages */}
-      <Route
-        path="/admin/projects/new"
-        component={() => (
-          <AdminLayout>
-            <EditProjectPage />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/projects/edit/:id"
-        component={({ id }: { id?: string }) => (
-          <AdminLayout>
-            <EditProjectPage id={id} />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/certifications/new"
-        component={() => (
-          <AdminLayout>
-            <EditCertificationPage />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/certifications/edit/:id"
-        component={({ id }: { id?: string }) => (
-          <AdminLayout>
-            <EditCertificationPage id={id} />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/experiences/new"
-        component={() => (
-          <AdminLayout>
-            <EditExperiencePage />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/experiences/edit/:id"
-        component={({ id }: { id?: string }) => (
-          <AdminLayout>
-            <EditExperiencePage id={id} />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/volunteer/new"
-        component={() => (
-          <AdminLayout>
-            <EditVolunteerPage />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        path="/admin/volunteer/edit/:id"
-        component={({ id }: { id?: string }) => (
-          <AdminLayout>
-            <EditVolunteerPage id={id} />
-          </AdminLayout>
-        )}
-      />
-      <Route
-        default
-        component={() => {
-          if (typeof window !== 'undefined') {
-            window.location.href = isAuthenticated ? '/admin/dashboard' : '/admin/login'
-          }
-          return null
-        }}
-      />
-    </Router>
+    <Suspense fallback={<PageLoader />}>
+      <Router onChange={handleRouteChange}>
+        <Route path="/admin/login" component={LoginPage} />
+        {protectedRoutes.map(({ path, Page, hasIdParam }) => (
+          <Route
+            key={path}
+            path={path}
+            component={
+              hasIdParam
+                ? ({ id }: { id?: string }) => (
+                    <AdminLayout>
+                      <Page id={id} />
+                    </AdminLayout>
+                  )
+                : () => (
+                    <AdminLayout>
+                      <Page />
+                    </AdminLayout>
+                  )
+            }
+          />
+        ))}
+        <Route
+          default
+          component={() => {
+            if (typeof window !== 'undefined') {
+              window.location.href = isAuthenticated ? '/admin/dashboard' : '/admin/login'
+            }
+            return null
+          }}
+        />
+      </Router>
+    </Suspense>
   )
 }
 

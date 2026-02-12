@@ -18,9 +18,19 @@ export default defineConfig(({ mode }) => {
     build: {
       rollupOptions: {
         output: {
+          chunkFileNames: 'assets/js/[name]-[hash].js',
+          entryFileNames: 'assets/js/[name]-[hash].js',
+          assetFileNames: (assetInfo) => {
+            const name = assetInfo.name || ''
+            if (/\.(gif|jpe?g|png|svg|webp|avif)$/i.test(name))
+              return 'assets/images/[name]-[hash][extname]'
+            if (/\.css$/i.test(name)) return 'assets/css/[name]-[hash][extname]'
+            if (/\.(woff2?|eot|ttf|otf)$/i.test(name)) return 'assets/fonts/[name]-[hash][extname]'
+            return 'assets/[name]-[hash][extname]'
+          },
           manualChunks: {
             // Core vendor chunk - Framework and routing
-            'vendor-core': ['preact', 'preact/hooks', 'preact-router'],
+            'vendor-core': ['preact', 'preact/hooks', 'preact-router', 'preact/compat'],
             // UI components chunk - Radix UI components
             'vendor-ui': [
               '@radix-ui/react-alert-dialog',
@@ -48,6 +58,10 @@ export default defineConfig(({ mode }) => {
       },
       // Increase the chunk size warning limit to 600 KB
       chunkSizeWarningLimit: 600,
+      // Enable CSS code splitting for smaller initial load
+      cssCodeSplit: true,
+      // Inline small assets under 4KB as base64
+      assetsInlineLimit: 4096,
       // Minify with esbuild for production
       minify: 'esbuild',
       target: 'es2020',

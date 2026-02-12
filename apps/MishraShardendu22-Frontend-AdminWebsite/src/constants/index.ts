@@ -46,6 +46,13 @@ export const STORAGE_KEYS = {
   THEME: 'theme',
 } as const
 
+// CDN image URLs (Cloudinary)
+export const CDN_IMAGES = {
+  ICON: 'https://res.cloudinary.com/dkxw15and/image/upload/v1770811006/image-upload-app/ehth0fbefclihy2a2qmj.png',
+  PROFESSIONAL:
+    'https://res.cloudinary.com/dkxw15and/image/upload/v1770811800/image-upload-app/whgmghnkqpj32ruoupdx.webp',
+} as const
+
 // UI constants
 export const UI = {
   TOAST_DURATION: 3000,

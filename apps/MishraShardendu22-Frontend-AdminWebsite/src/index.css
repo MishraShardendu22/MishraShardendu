@@ -384,6 +384,44 @@ h6 {
   background: var(--muted-foreground);
 }
 
+/* ========================================
+   Performance Optimizations
+   ======================================== */
+
+/* Use content-visibility for off-screen content to improve rendering */
+.grid > *,
+.flex-col > *:nth-child(n+4) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 200px;
+}
+
+/* Reduce layout shifts with contain on cards */
+[class*='card'] {
+  contain: layout style;
+}
+
+/* Reduce repaints on fixed elements */
+.fixed {
+  contain: layout style;
+}
+
+/* Optimize images for rendering */
+img {
+  content-visibility: auto;
+}
+
+/* Font loading optimization */
+@font-face {
+  font-display: swap;
+}
+
+/* Optimize scrolling performance */
+.overflow-y-auto,
+.overflow-y-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
 /* TipTap Editor Styles */
 .ProseMirror {
   min-height: 400px;

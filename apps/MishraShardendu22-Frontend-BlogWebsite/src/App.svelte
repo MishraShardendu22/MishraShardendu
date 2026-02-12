@@ -1,10 +1,6 @@
 <script lang="ts">
   import BlogNavigation from "./lib/components/BlogNavigation.svelte";
   import BlogListPage from "./lib/components/BlogListPage.svelte";
-  import BlogCreatePage from "./lib/components/BlogCreatePage.svelte";
-  import BlogDetailPage from "./lib/components/BlogDetailPage.svelte";
-  import BlogDashboardPage from "./lib/components/BlogDashboardPage.svelte";
-  import LoginPage from "./lib/components/LoginPage.svelte";
   import Toast from "./lib/components/Toast.svelte";
   import ConfirmDialog from "./lib/components/ConfirmDialog.svelte";
   import ThemeToggle from "./lib/components/ThemeToggle.svelte";
@@ -13,6 +9,12 @@
   import { themeStore } from "./lib/theme";
   import { navigateTo } from "./lib/navigation";
   import { onMount } from "svelte";
+
+  // Lazy load heavier page components
+  let BlogCreatePage: any = $state(null);
+  let BlogDetailPage: any = $state(null);
+  let BlogDashboardPage: any = $state(null);
+  let LoginPage: any = $state(null);
 
   let currentPath = $state(window.location.pathname);
   let isAuthenticated = $state(false);
@@ -80,6 +82,20 @@
     } else if (!isLoading && requiresAuth() && isAuthenticated && !isOwner && 
                (normalizedPath() === "/create" || normalizedPath() === "/dashboard" || normalizedPath().endsWith("/edit"))) {
       navigateTo('/read');
+    }
+  });
+
+  // Lazy load page components on demand
+  $effect(() => {
+    const page = pageComponent();
+    if (page === "login" && !LoginPage) {
+      import("./lib/components/LoginPage.svelte").then(m => { LoginPage = m.default; });
+    } else if (page === "create" || page === "edit") {
+      if (!BlogCreatePage) import("./lib/components/BlogCreatePage.svelte").then(m => { BlogCreatePage = m.default; });
+    } else if (page === "detail") {
+      if (!BlogDetailPage) import("./lib/components/BlogDetailPage.svelte").then(m => { BlogDetailPage = m.default; });
+    } else if (page === "dashboard") {
+      if (!BlogDashboardPage) import("./lib/components/BlogDashboardPage.svelte").then(m => { BlogDashboardPage = m.default; });
     }
   });
 
@@ -178,17 +194,18 @@
   <ConfirmDialog />
   
   {#if isLoading}
-    <div class="flex items-center justify-center min-h-screen bg-linear-to-br from-background via-background to-background-secondary" style="min-height: 100vh;">
-      <div class="text-center animate-slide-up">
-        <div class="relative w-20 h-20 mx-auto mb-6">
-          <div class="absolute inset-0 bg-linear-to-br from-primary/20 to-primary/10 rounded-full blur-xl animate-pulse"></div>
-          <div class="relative w-20 h-20 border-4 border-primary/30 border-t-primary rounded-full animate-spin shadow-lg"></div>
-        </div>
-        <p class="text-muted-foreground font-semibold text-lg">Loading...</p>
+    <div class="flex items-center justify-center min-h-screen bg-background" style="min-height: 100vh;">
+      <div class="text-center">
+        <div class="w-12 h-12 mx-auto mb-4 border-3 border-primary/30 border-t-primary rounded-full animate-spin"></div>
+        <p class="text-muted-foreground text-sm">Loading...</p>
       </div>
     </div>
   {:else if pageComponent() === "login"}
-    <LoginPage />
+    {#if LoginPage}
+      <LoginPage />
+    {:else}
+      <div class="flex items-center justify-center min-h-screen"><div class="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin"></div></div>
+    {/if}
   {:else}
     <BlogNavigation />
   <main class="lg:ml-20 transition-all duration-300 ease-in-out">
@@ -207,12 +224,24 @@
               Share your thoughts and insights with the world
             </p>
           </div>
-          <BlogCreatePage blogId={blogId()} />
+          {#if BlogCreatePage}
+            <BlogCreatePage blogId={blogId()} />
+          {:else}
+            <div class="flex justify-center py-12"><div class="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin"></div></div>
+          {/if}
         </div>
       {:else if pageComponent() === "dashboard"}
-        <BlogDashboardPage />
+        {#if BlogDashboardPage}
+          <BlogDashboardPage />
+        {:else}
+          <div class="flex justify-center py-12"><div class="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin"></div></div>
+        {/if}
       {:else if pageComponent() === "detail" && blogId()}
-        <BlogDetailPage blogId={blogId() || "1"} />
+        {#if BlogDetailPage}
+          <BlogDetailPage blogId={blogId() || "1"} />
+        {:else}
+          <div class="flex justify-center py-12"><div class="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin"></div></div>
+        {/if}
       {:else if pageComponent() === "edit" && blogId()}
         <div class="space-y-6 sm:space-y-8 animate-slide-up">
           <div class="relative space-y-3 pb-6 border-b-2 border-border/50">
@@ -224,7 +253,11 @@
               Update your blog post content
             </p>
           </div>
-          <BlogCreatePage blogId={blogId()} />
+          {#if BlogCreatePage}
+            <BlogCreatePage blogId={blogId()} />
+          {:else}
+            <div class="flex justify-center py-12"><div class="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin"></div></div>
+          {/if}
         </div>
         {/if}
       </div>

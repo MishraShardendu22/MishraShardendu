@@ -41,7 +41,7 @@ const blogApi = axios.create({
 const MAX_RETRIES = 3
 const RETRY_DELAY = 1000
 
-const retryRequest = async (config: AxiosRequestConfig, retryCount = 0): Promise<unknown> => {
+const _retryRequest = async (config: AxiosRequestConfig, retryCount = 0): Promise<unknown> => {
   try {
     return await api.request(config)
   } catch (error: unknown) {
@@ -58,7 +58,7 @@ const retryRequest = async (config: AxiosRequestConfig, retryCount = 0): Promise
       const delay = RETRY_DELAY * 2 ** retryCount
 
       await new Promise((resolve) => setTimeout(resolve, delay))
-      return retryRequest(config, retryCount + 1)
+      return _retryRequest(config, retryCount + 1)
     }
 
     throw error
@@ -102,4 +102,4 @@ blogApi.interceptors.request.use(requestInterceptor, (error) => Promise.reject(e
 blogApi.interceptors.response.use((response) => response, responseInterceptor)
 
 export default api
-export { blogApi, retryRequest }
+export { blogApi }

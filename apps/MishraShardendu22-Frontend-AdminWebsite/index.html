@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://admin.mishrashardendu22.is-a.dev" />
     <meta property="og:title" content="Admin Dashboard | Shardendu Mishra" />
     <meta property="og:description" content="Secure administrative dashboard for portfolio management. Authorized access only." />
-    <meta property="og:image" content="https://admin.mishrashardendu22.is-a.dev/Professional.avif" />
+    <meta property="og:image" content="https://res.cloudinary.com/dkxw15and/image/upload/v1770811800/image-upload-app/whgmghnkqpj32ruoupdx.webp" />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
     <meta property="og:image:alt" content="Shardendu Mishra Professional Photo" />
@@ -36,7 +36,7 @@
     <meta name="twitter:creator" content="@Shardendu_M" />
     <meta name="twitter:title" content="Admin Dashboard | Shardendu Mishra" />
     <meta name="twitter:description" content="Secure administrative dashboard for portfolio management. Authorized access only." />
-    <meta name="twitter:image" content="https://admin.mishrashardendu22.is-a.dev/Professional.avif" />
+    <meta name="twitter:image" content="https://res.cloudinary.com/dkxw15and/image/upload/v1770811800/image-upload-app/whgmghnkqpj32ruoupdx.webp" />
     <meta name="twitter:image:alt" content="Shardendu Mishra Professional Photo" />
     
     <!-- PWA Meta Tags -->
@@ -55,6 +55,13 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://admin.mishrashardendu22.is-a.dev" />
+    
+    <!-- DNS Prefetch and Preconnect for Performance -->
+    <link rel="dns-prefetch" href="https://portfolio-backend-2iw4.onrender.com" />
+    <link rel="preconnect" href="https://portfolio-backend-2iw4.onrender.com" crossorigin />
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    <link rel="modulepreload" href="/src/main.tsx" />
     
     <!-- Web App Manifest -->
     <link rel="manifest" href="/manifest.json" />
@@ -110,6 +117,17 @@
     </script>
   </head>
   <body>
+    <!-- Inline critical CSS to prevent FOUC -->
+    <style>
+      html, body { margin: 0; padding: 0; min-height: 100vh; }
+      #app { min-height: 100vh; }
+      html { background-color: #fef7f0; color: #1c1c1e; }
+      html.dark { background-color: #000000; color: #ffffff; }
+      .flex { display: flex; }
+      .items-center { align-items: center; }
+      .justify-center { justify-content: center; }
+      .min-h-screen { min-height: 100vh; }
+    </style>
     <div id="app"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

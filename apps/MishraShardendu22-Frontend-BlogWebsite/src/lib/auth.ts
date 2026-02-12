@@ -193,7 +193,7 @@ function createAuthStore() {
       })
 
       // Redirect to login
-      window.location.href = '/blog/login'
+      window.location.href = '/login'
     },
 
     // Update user

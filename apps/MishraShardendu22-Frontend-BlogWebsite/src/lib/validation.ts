@@ -180,38 +180,3 @@ export function validateTag(tag: string): ValidationResult {
 
   return { isValid: true }
 }
-
-/**
- * Sanitize HTML to prevent XSS (basic sanitization)
- */
-export function sanitizeHtml(html: string): string {
-  const div = document.createElement('div')
-  div.textContent = html
-  return div.innerHTML
-}
-
-/**
- * Escape special characters for display
- */
-export function escapeHtml(text: string): string {
-  const map: Record<string, string> = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;',
-  }
-  return text.replace(/[&<>"']/g, (m) => map[m])
-}
-
-/**
- * Check if URL is valid
- */
-export function isValidUrl(url: string): boolean {
-  try {
-    new URL(url)
-    return true
-  } catch {
-    return false
-  }
-}

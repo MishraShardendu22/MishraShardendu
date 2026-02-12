@@ -37,19 +37,19 @@ const navigation = [
 
 interface AdminLayoutProps {
   children?: JSX.Element | JSX.Element[]
-  path?: string
 }
 
-export default function AdminLayout({ children, path }: AdminLayoutProps) {
+export default function AdminLayout({ children }: AdminLayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { logout, isAuthenticated, isLoading } = useAuth()
   const [isNarrow, setIsNarrow] = useState(false)
+  const currentPath = typeof window !== 'undefined' ? window.location.pathname : ''
 
   useEffect(() => {
-    if (!isLoading && !isAuthenticated && path !== '/admin/login') {
+    if (!isLoading && !isAuthenticated) {
       route('/admin/login')
     }
-  }, [isAuthenticated, isLoading, path])
+  }, [isAuthenticated, isLoading])
 
   // show mobile/menu button when viewport is less than 1650px
   useEffect(() => {
@@ -63,12 +63,12 @@ export default function AdminLayout({ children, path }: AdminLayoutProps) {
     return () => window.removeEventListener('resize', update)
   }, [])
 
-  const isActive = (href: string) => path === href
+  const isActive = (href: string) => currentPath === href
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="animate-spin rounded-full h-10 w-10 border-2 border-primary border-t-transparent" />
       </div>
     )
   }

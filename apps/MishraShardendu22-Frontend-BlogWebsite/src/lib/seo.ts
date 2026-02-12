@@ -2,6 +2,8 @@
  * SEO Utilities for dynamic meta tag management
  */
 
+import { CDN_IMAGES } from './constants'
+
 export interface SEOConfig {
   title?: string
   description?: string
@@ -22,7 +24,7 @@ const DEFAULT_SEO: SEOConfig = {
     'Explore in-depth technical articles about web development, software engineering, programming best practices, and modern tech stack insights by Shardendu Mishra, a passionate software engineer and IIIT Dharwad student.',
   keywords:
     'Shardendu Mishra blog, technical blog, web development articles, programming tutorials, software engineering, Go programming, React tutorials, TypeScript guides, tech insights, developer blog, coding tips, IIIT Dharwad, full stack development, system design',
-  image: 'https://blogs.mishrashardendu22.is-a.dev/blogog-image.png',
+  image: CDN_IMAGES.PROFESSIONAL,
   url: 'https://blogs.mishrashardendu22.is-a.dev',
   type: 'website',
   author: 'Shardendu Mishra',
@@ -188,18 +190,6 @@ function updateCanonicalLink(url: string): void {
 }
 
 /**
- * Generate SEO-friendly slug from title
- */
-export function generateSlug(title: string): string {
-  return title
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, '')
-    .replace(/[\s_-]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-}
-
-/**
  * Truncate text for meta descriptions
  */
 export function truncateDescription(text: string, maxLength: number = 160): string {
@@ -231,14 +221,14 @@ export function generateBlogPostStructuredData(data: {
     },
     datePublished: data.datePublished,
     dateModified: data.dateModified || data.datePublished,
-    image: data.image || 'https://blogs.mishrashardendu22.is-a.dev/blogog-image.png',
+    image: data.image || CDN_IMAGES.PROFESSIONAL,
     url: data.url,
     publisher: {
       '@type': 'Person',
       name: 'Shardendu Mishra',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://blogs.mishrashardendu22.is-a.dev/icons/icon-512.png',
+        url: CDN_IMAGES.ICON,
       },
     },
     mainEntityOfPage: {

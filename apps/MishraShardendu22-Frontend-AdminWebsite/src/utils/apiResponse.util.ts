@@ -12,7 +12,6 @@ import type {
   CommentsResponse,
   CreateBlogRequest,
   CreateCertificationRequest,
-  CreateCommentRequest,
   CreateExperienceRequest,
   CreateProjectRequest,
   CreateVolunteerExperienceRequest,
@@ -282,8 +281,6 @@ export const volunteerExperiencesAPI = {
   },
 }
 
-export const achievementsAPI = certificationsAPI
-
 // =============================================================================
 // BLOG API
 // =============================================================================
@@ -340,34 +337,6 @@ export const blogsAPI = {
 
   updateReorder: async (payload: BlogReorderUpdate[]): Promise<ApiResponse<unknown>> => {
     const response = await blogApi.post('/blogs/reorder', payload)
-    return response.data
-  },
-}
-
-// =============================================================================
-// COMMENTS API
-// =============================================================================
-
-export const commentsAPI = {
-  getCommentsByBlogId: async (blogId: number, page = 1, limit = 10): Promise<CommentsResponse> => {
-    const params = new URLSearchParams({ page: page.toString(), limit: limit.toString() })
-    const response = await blogApi.get(`/blogs/${blogId}/comments?${params.toString()}`)
-    return response.data
-  },
-
-  createComment: async (
-    blogId: number,
-    comment: CreateCommentRequest
-  ): Promise<ApiResponse<BlogComment>> => {
-    const response = await blogApi.post(`/blogs/${blogId}/comments`, comment)
-    return response.data
-  },
-
-  deleteComment: async (
-    blogId: number,
-    commentId: number
-  ): Promise<ApiResponse<{ message: string }>> => {
-    const response = await blogApi.delete(`/blogs/${blogId}/comments/${commentId}`)
     return response.data
   },
 }
