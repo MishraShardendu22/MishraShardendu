@@ -57,7 +57,7 @@
     "@sveltejs/vite-plugin-svelte": "^7.0.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tsconfig/svelte": "^5.0.8",
-    "@types/node": "^25.3.3",
+    "@types/node": "^25.3.5",
     "autoprefixer": "^10.4.27",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
