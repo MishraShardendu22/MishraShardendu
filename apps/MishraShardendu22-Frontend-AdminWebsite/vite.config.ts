@@ -28,31 +28,28 @@ export default defineConfig(({ mode }) => {
             if (/\.(woff2?|eot|ttf|otf)$/i.test(name)) return 'assets/fonts/[name]-[hash][extname]'
             return 'assets/[name]-[hash][extname]'
           },
-          manualChunks: {
+          manualChunks: (id) => {
             // Core vendor chunk - Framework and routing
-            'vendor-core': ['preact', 'preact/hooks', 'preact-router', 'preact/compat'],
+            if (id.includes('preact') || id.includes('preact-router')) {
+              return 'vendor-core'
+            }
             // UI components chunk - Radix UI components
-            'vendor-ui': [
-              '@radix-ui/react-alert-dialog',
-              '@radix-ui/react-checkbox',
-              '@radix-ui/react-dialog',
-              '@radix-ui/react-label',
-              '@radix-ui/react-popover',
-              '@radix-ui/react-tabs',
-              '@radix-ui/react-tooltip',
-              'lucide-react',
-            ],
+            if (id.includes('@radix-ui') || id.includes('lucide-react')) {
+              return 'vendor-ui'
+            }
             // Form and validation chunk
-            'vendor-forms': ['react-hook-form', '@hookform/resolvers', 'zod'],
+            if (id.includes('react-hook-form') || id.includes('@hookform') || id.includes('zod')) {
+              return 'vendor-forms'
+            }
             // DnD and utilities chunk
-            'vendor-utils': [
-              '@dnd-kit/core',
-              '@dnd-kit/sortable',
-              '@dnd-kit/utilities',
-              'axios',
-              'react-hot-toast',
-              'react-markdown',
-            ],
+            if (
+              id.includes('@dnd-kit') ||
+              id.includes('axios') ||
+              id.includes('react-hot-toast') ||
+              id.includes('react-markdown')
+            ) {
+              return 'vendor-utils'
+            }
           },
         },
       },
