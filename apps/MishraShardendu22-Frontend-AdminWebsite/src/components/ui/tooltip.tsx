@@ -42,4 +42,4 @@ const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
 )
 TooltipContent.displayName = 'TooltipContent'
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
+export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger }

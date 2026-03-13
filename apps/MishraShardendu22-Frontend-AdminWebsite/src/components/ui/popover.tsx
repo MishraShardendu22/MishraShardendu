@@ -43,4 +43,4 @@ const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
 )
 PopoverContent.displayName = 'PopoverContent'
 
-export { Popover, PopoverTrigger, PopoverContent }
+export { Popover, PopoverContent, PopoverTrigger }

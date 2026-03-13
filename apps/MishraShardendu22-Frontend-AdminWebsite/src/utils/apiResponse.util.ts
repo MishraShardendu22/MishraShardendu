@@ -342,4 +342,4 @@ export const blogsAPI = {
 }
 
 // Re-export types for convenience
-export type { Blog, BlogComment, BlogsResponse, BlogResponse, CommentsResponse }
+export type { Blog, BlogComment, BlogResponse, BlogsResponse, CommentsResponse }
