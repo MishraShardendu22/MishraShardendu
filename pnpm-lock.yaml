@@ -36,7 +36,7 @@ importers:
         version: 3.2.2(react@19.2.0)
       '@hookform/resolvers':
         specifier: ^5.2.2
-        version: 5.2.2(react-hook-form@7.71.2(react@19.2.0))
+        version: 5.2.2(react-hook-form@7.72.0(react@19.2.0))
       '@radix-ui/react-alert-dialog':
         specifier: ^1.1.15
         version: 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -80,8 +80,8 @@ importers:
         specifier: ^4.1.2
         version: 4.1.2(preact@10.29.0)
       react-hook-form:
-        specifier: ^7.71.2
-        version: 7.71.2(react@19.2.0)
+        specifier: ^7.72.0
+        version: 7.72.0(react@19.2.0)
       react-hot-toast:
         specifier: ^2.6.0
         version: 2.6.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -2117,8 +2117,8 @@ packages:
     resolution: {integrity: sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==}
     engines: {node: '>= 0.4'}
 
-  get-tsconfig@4.13.6:
-    resolution: {integrity: sha512-shZT/QMiSHc/YBLxxOkMtgSid5HFoauqCE3/exfsEcwg1WkeqjG+V40yBbBrsD+jW2HDXcs28xOfcbm2jI8Ddw==}
+  get-tsconfig@4.13.7:
+    resolution: {integrity: sha512-7tN6rFgBlMgpBML5j8typ92BKFi2sFQvIdpAqLA2beia5avZDrMs0FLZiM5etShWq5irVyGcGMEA1jcDaK7A/Q==}
 
   global-modules@1.0.0:
     resolution: {integrity: sha512-sKzpEkf11GpOFuw0Zzjzmt4B4UZwjOcG757PPvrfhxcLFbq0wpsgpOqxpxtxFiCG4DtG93M6XRVbF2oGdev7bg==}
@@ -2607,8 +2607,8 @@ packages:
     peerDependencies:
       react: ^19.2.0
 
-  react-hook-form@7.71.2:
-    resolution: {integrity: sha512-1CHvcDYzuRUNOflt4MOq3ZM46AronNJtQ1S7tnX6YN4y72qhgiUItpacZUAQ0TyWYci3yz1X+rXaSxiuEm86PA==}
+  react-hook-form@7.72.0:
+    resolution: {integrity: sha512-V4v6jubaf6JAurEaVnT9aUPKFbNtDgohj5CIgVGyPHvT9wRx5OZHVjz31GsxnPNI278XMu+ruFz+wGOscHaLKw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
@@ -3473,10 +3473,10 @@ snapshots:
 
   '@floating-ui/utils@0.2.11': {}
 
-  '@hookform/resolvers@5.2.2(react-hook-form@7.71.2(react@19.2.0))':
+  '@hookform/resolvers@5.2.2(react-hook-form@7.72.0(react@19.2.0))':
     dependencies:
       '@standard-schema/utils': 0.3.0
-      react-hook-form: 7.71.2(react@19.2.0)
+      react-hook-form: 7.72.0(react@19.2.0)
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
@@ -4676,7 +4676,7 @@ snapshots:
       dunder-proto: 1.0.1
       es-object-atoms: 1.1.1
 
-  get-tsconfig@4.13.6:
+  get-tsconfig@4.13.7:
     dependencies:
       resolve-pkg-maps: 1.0.0
     optional: true
@@ -5286,7 +5286,7 @@ snapshots:
       react: 19.2.0
       scheduler: 0.27.0
 
-  react-hook-form@7.71.2(react@19.2.0):
+  react-hook-form@7.72.0(react@19.2.0):
     dependencies:
       react: 19.2.0
 
@@ -5590,7 +5590,7 @@ snapshots:
   tsx@4.20.6:
     dependencies:
       esbuild: 0.25.12
-      get-tsconfig: 4.13.6
+      get-tsconfig: 4.13.7
     optionalDependencies:
       fsevents: 2.3.3
     optional: true
