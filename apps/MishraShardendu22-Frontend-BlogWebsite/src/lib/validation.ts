@@ -9,7 +9,7 @@ export interface ValidationResult {
  * Validate email format
  */
 export function validateEmail(email: string): ValidationResult {
-  if (!email || !email.trim()) {
+  if (!email?.trim()) {
     return { isValid: false, error: 'Email is required' }
   }
 
@@ -57,7 +57,7 @@ export function validatePassword(password: string): ValidationResult {
  * Validate name (2-50 characters, letters and spaces only)
  */
 export function validateName(name: string): ValidationResult {
-  if (!name || !name.trim()) {
+  if (!name?.trim()) {
     return { isValid: false, error: 'Name is required' }
   }
 
@@ -82,7 +82,7 @@ export function validateName(name: string): ValidationResult {
  * Validate OTP (6 digits)
  */
 export function validateOTP(otp: string): ValidationResult {
-  if (!otp || !otp.trim()) {
+  if (!otp?.trim()) {
     return { isValid: false, error: 'OTP is required' }
   }
 
@@ -97,7 +97,7 @@ export function validateOTP(otp: string): ValidationResult {
  * Validate blog title (5-200 characters)
  */
 export function validateBlogTitle(title: string): ValidationResult {
-  if (!title || !title.trim()) {
+  if (!title?.trim()) {
     return { isValid: false, error: 'Title is required' }
   }
 
@@ -118,7 +118,7 @@ export function validateBlogTitle(title: string): ValidationResult {
  * Validate blog content (minimum 50 characters)
  */
 export function validateBlogContent(content: string): ValidationResult {
-  if (!content || !content.trim()) {
+  if (!content?.trim()) {
     return { isValid: false, error: 'Content is required' }
   }
 
@@ -139,7 +139,7 @@ export function validateBlogContent(content: string): ValidationResult {
  * Validate comment content (5-1000 characters)
  */
 export function validateCommentContent(content: string): ValidationResult {
-  if (!content || !content.trim()) {
+  if (!content?.trim()) {
     return { isValid: false, error: 'Comment cannot be empty' }
   }
 
@@ -160,7 +160,7 @@ export function validateCommentContent(content: string): ValidationResult {
  * Validate tag (1-30 characters, alphanumeric and hyphens)
  */
 export function validateTag(tag: string): ValidationResult {
-  if (!tag || !tag.trim()) {
+  if (!tag?.trim()) {
     return { isValid: false, error: 'Tag cannot be empty' }
   }
 
