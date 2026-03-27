@@ -1,4 +1,4 @@
-import { ExternalLink, Github, Pencil, Plus, Trash2 } from 'lucide-react'
+import { ExternalLink, GitBranch, Pencil, Plus, Trash2 } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
 import { route } from 'preact-router'
 import toast from 'react-hot-toast'
@@ -162,7 +162,7 @@ export default function ProjectsPage() {
                         rel="noopener noreferrer"
                       >
                         <Button size="sm" variant="outline" className="h-9 px-3">
-                          <Github className="w-4 h-4 mr-1" /> Code
+                          <GitBranch className="w-4 h-4 mr-1" /> Code
                         </Button>
                       </a>
                     )}
