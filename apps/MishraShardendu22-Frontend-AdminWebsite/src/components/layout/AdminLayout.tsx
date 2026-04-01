@@ -5,7 +5,6 @@ import {
   FolderKanban,
   GraduationCap,
   LayoutDashboard,
-  LogOut,
   Menu,
   Settings,
   User,
@@ -119,7 +118,6 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
         <div className="flex items-center gap-4">
           <Button variant="outline" className="text-primary hover:bg-primary/20" onClick={logout}>
-            <LogOut className="w-5 h-5 mr-2" />
             Sign Out
           </Button>
         </div>

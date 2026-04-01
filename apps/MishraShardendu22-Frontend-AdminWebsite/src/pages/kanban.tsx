@@ -23,7 +23,6 @@ import {
   GripVertical,
   Loader2,
   Package,
-  Save,
   TrendingDown,
   TrendingUp,
 } from 'lucide-react'
@@ -316,10 +315,7 @@ export default function KanbanPage() {
                       Saving...
                     </>
                   ) : (
-                    <>
-                      <Save className="mr-2 h-4 w-4" />
-                      Save Changes
-                    </>
+                    <>Save Changes</>
                   )}
                 </Button>
               </div>

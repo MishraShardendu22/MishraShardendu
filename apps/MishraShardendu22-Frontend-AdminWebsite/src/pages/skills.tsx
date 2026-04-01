@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, Loader2, Plus } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
 import toast from 'react-hot-toast'
 import { ErrorState, Loading } from '../components/shared'
@@ -122,7 +122,6 @@ export default function SkillsPage() {
         <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
           <DialogTrigger>
             <Button class="bg-teal-600 hover:bg-teal-700 text-white font-semibold">
-              <Plus class="w-4 h-4 mr-2" />
               Add Skills
             </Button>
           </DialogTrigger>
@@ -166,18 +165,14 @@ export default function SkillsPage() {
 
       {skills.length === 0 ? (
         <div class="flex flex-col items-center justify-center py-20 space-y-6 bg-gray-50 dark:bg-gray-900/50 rounded-xl border shadow-lg">
-          <div class="w-20 h-20 rounded-full bg-teal-500/20 flex items-center justify-center">
-            <Plus class="w-10 h-10 text-teal-500" />
-          </div>
           <h3 class="text-3xl font-semibold">No skills yet</h3>
           <p class="text-lg text-gray-600 dark:text-gray-400 max-w-md text-center">
             Get started by adding your first skill.
           </p>
           <Button
             onClick={() => setIsAddDialogOpen(true)}
-            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-linear-to-r from-teal-500 to-green-500 text-white shadow-lg hover:from-teal-600 hover:to-green-600 font-semibold"
+            class="inline-flex px-6 py-3 rounded-full bg-linear-to-r from-teal-500 to-green-500 text-white shadow-lg hover:from-teal-600 hover:to-green-600 font-semibold"
           >
-            <Plus class="w-5 h-5" />
             Add Skill
           </Button>
         </div>

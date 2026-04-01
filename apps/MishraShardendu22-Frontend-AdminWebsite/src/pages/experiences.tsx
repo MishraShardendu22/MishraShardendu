@@ -1,4 +1,4 @@
-import { Briefcase, ChevronLeft, ChevronRight, Edit, Plus, Trash2 } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Edit, Trash2 } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
 import { route } from 'preact-router'
 import toast from 'react-hot-toast'
@@ -76,19 +76,18 @@ export default function ExperiencesPage() {
           onClick={() => route('/admin/experiences/new')}
           className="shadow-md hover:shadow-xl transition-all duration-200 flex items-center"
         >
-          <Plus className="mr-2 h-5 w-5" /> Add Experience
+          Add Experience
         </Button>
       </div>
 
       {experiences.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-16 animate-fade-in">
-          <Briefcase className="mx-auto h-16 w-16 text-foreground mb-4" />
           <h3 className="text-2xl font-semibold text-foreground mb-2">No experiences yet</h3>
           <p className="text-lg text-foreground mb-6">
             Get started by adding your first experience.
           </p>
           <Button onClick={() => route('/admin/experiences/new')} className="flex items-center">
-            <Plus className="mr-2 h-5 w-5" /> Add Experience
+            Add Experience
           </Button>
         </div>
       ) : (

@@ -1,4 +1,4 @@
-import { ArrowLeft, Loader2, Plus, Save, X } from 'lucide-react'
+import { ArrowLeft, Loader2, X } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
 import { route } from 'preact-router'
 import toast from 'react-hot-toast'
@@ -357,7 +357,7 @@ export default function EditExperiencePage({ id }: EditExperiencePageProps) {
                     }}
                   />
                   <Button type="button" onClick={addTechnology} variant="outline" size="lg">
-                    <Plus className="w-4 h-4 mr-1" /> Add
+                    Add
                   </Button>
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -411,7 +411,6 @@ export default function EditExperiencePage({ id }: EditExperiencePageProps) {
                 </Button>
                 <Button type="submit" disabled={submitting} size="lg">
                   {submitting && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
-                  <Save className="w-4 h-4 mr-2" />
                   {id ? 'Update Experience' : 'Create Experience'}
                 </Button>
               </div>

@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import { FileQuestion, Plus } from 'lucide-react'
+import { FileQuestion } from 'lucide-react'
 import type { ComponentChildren } from 'preact'
 import { cn } from '../../lib/utils'
 import { Button } from '../ui/button'
@@ -91,11 +91,7 @@ export function EmptyState({
         </p>
       )}
       {actionLabel && onAction && (
-        <Button
-          onClick={onAction}
-          className="mt-5 gap-2 shadow-md hover:shadow-lg transition-shadow"
-        >
-          <Plus className="w-4 h-4" />
+        <Button onClick={onAction} className="mt-5 shadow-md hover:shadow-lg transition-shadow">
           {actionLabel}
         </Button>
       )}

@@ -1,4 +1,4 @@
-import { ArrowLeft, Loader2, Save } from 'lucide-react'
+import { ArrowLeft, Loader2 } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
 import { route } from 'preact-router'
 import toast from 'react-hot-toast'
@@ -290,7 +290,6 @@ export default function EditProjectPage({ id }: EditProjectPageProps) {
                 </Button>
                 <Button type="submit" disabled={submitting} size="lg">
                   {submitting && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
-                  <Save className="w-4 h-4 mr-2" />
                   {id ? 'Update Project' : 'Create Project'}
                 </Button>
               </div>

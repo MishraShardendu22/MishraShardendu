@@ -1,4 +1,4 @@
-import { Briefcase, ExternalLink, Globe, GraduationCap, Medal, Plus, Settings } from 'lucide-react'
+import { Briefcase, ExternalLink, GraduationCap } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
 import { Loading } from '../components/shared'
 import { Badge } from '../components/ui/badge'
@@ -82,7 +82,6 @@ export default function DashboardPage() {
       <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
         <Card className="border-2 border-border/50 hover:border-primary/50 transition-all hover:-translate-y-2">
           <CardContent className="p-6 lg:p-8 flex flex-col items-center">
-            <Briefcase className="h-10 w-10 text-primary mb-4" />
             <div className="text-4xl font-bold text-foreground mb-2">{stats.projects}</div>
             <div className="text-base font-medium text-foreground/80">Projects</div>
           </CardContent>
@@ -90,7 +89,6 @@ export default function DashboardPage() {
 
         <Card className="border-2 border-border/50 hover:border-secondary/50 transition-all hover:-translate-y-2">
           <CardContent className="p-6 lg:p-8 flex flex-col items-center">
-            <GraduationCap className="h-10 w-10 text-secondary mb-4" />
             <div className="text-4xl font-bold text-foreground mb-2">{stats.experiences}</div>
             <div className="text-base font-medium text-foreground/80">Experiences</div>
           </CardContent>
@@ -98,7 +96,6 @@ export default function DashboardPage() {
 
         <Card className="border-2 border-border/50 hover:border-accent/50 transition-all hover:-translate-y-2">
           <CardContent className="p-6 lg:p-8 flex flex-col items-center">
-            <Settings className="h-10 w-10 text-accent mb-4" />
             <div className="text-4xl font-bold text-foreground mb-2">{stats.skills}</div>
             <div className="text-base font-medium text-foreground/80">Skills</div>
           </CardContent>
@@ -106,7 +103,6 @@ export default function DashboardPage() {
 
         <Card className="border-2 border-border/50 hover:border-yellow-500/50 transition-all hover:-translate-y-2">
           <CardContent className="p-6 lg:p-8 flex flex-col items-center">
-            <Medal className="h-10 w-10 text-yellow-500 mb-4" />
             <div className="text-4xl font-bold text-foreground mb-2">{stats.certifications}</div>
             <div className="text-base font-medium text-foreground/80">Certifications</div>
           </CardContent>
@@ -114,7 +110,6 @@ export default function DashboardPage() {
 
         <Card className="border-2 border-border/50 hover:border-blue-500/50 transition-all hover:-translate-y-2">
           <CardContent className="p-6 lg:p-8 flex flex-col items-center">
-            <Globe className="h-10 w-10 text-blue-500 mb-4" />
             <div className="text-4xl font-bold text-foreground mb-2">Live</div>
             <div className="text-base font-medium text-foreground/80">Portfolio Status</div>
           </CardContent>
@@ -131,7 +126,6 @@ export default function DashboardPage() {
               variant="outline"
               className="w-full h-auto p-6 lg:p-8 flex flex-col gap-4 text-lg font-semibold shadow-md hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50"
             >
-              <Briefcase className="h-10 w-10 text-primary" />
               <span>Manage Projects</span>
             </Button>
           </a>
@@ -141,7 +135,6 @@ export default function DashboardPage() {
               variant="outline"
               className="w-full h-auto p-6 lg:p-8 flex flex-col gap-4 text-lg font-semibold shadow-md hover:shadow-xl transition-all duration-300 border-2 hover:border-secondary/50"
             >
-              <GraduationCap className="h-10 w-10 text-secondary" />
               <span>Manage Experiences</span>
             </Button>
           </a>
@@ -151,7 +144,6 @@ export default function DashboardPage() {
               variant="outline"
               className="w-full h-auto p-6 lg:p-8 flex flex-col gap-4 text-lg font-semibold shadow-md hover:shadow-xl transition-all duration-300 border-2 hover:border-accent/50"
             >
-              <Settings className="h-10 w-10 text-accent" />
               <span>Manage Skills</span>
             </Button>
           </a>
@@ -161,7 +153,6 @@ export default function DashboardPage() {
               variant="outline"
               className="w-full h-auto p-6 lg:p-8 flex flex-col gap-4 text-lg font-semibold shadow-md hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50"
             >
-              <ExternalLink className="h-10 w-10 text-primary" />
               <span>View Portfolio</span>
             </Button>
           </a>
@@ -183,18 +174,12 @@ export default function DashboardPage() {
             <div className="space-y-4">
               {projects.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-12 space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Briefcase className="h-8 w-8 text-primary/60" />
-                  </div>
                   <div className="text-center space-y-2">
                     <h4 className="text-xl font-semibold text-foreground">No projects yet</h4>
                     <p className="text-foreground/70">Get started by creating your first project</p>
                   </div>
                   <a href="/admin/projects">
-                    <Button className="mt-4">
-                      <Plus className="mr-2 h-5 w-5" />
-                      Add Project
-                    </Button>
+                    <Button className="mt-4">Add Project</Button>
                   </a>
                 </div>
               ) : (
@@ -239,18 +224,12 @@ export default function DashboardPage() {
             <div className="space-y-4">
               {experiences.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-12 space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center">
-                    <GraduationCap className="h-8 w-8 text-secondary/60" />
-                  </div>
                   <div className="text-center space-y-2">
                     <h4 className="text-xl font-semibold text-foreground">No experiences yet</h4>
                     <p className="text-foreground/70">Get started by adding your work experience</p>
                   </div>
                   <a href="/admin/experiences">
-                    <Button className="mt-4">
-                      <Plus className="mr-2 h-5 w-5" />
-                      Add Experience
-                    </Button>
+                    <Button className="mt-4">Add Experience</Button>
                   </a>
                 </div>
               ) : (

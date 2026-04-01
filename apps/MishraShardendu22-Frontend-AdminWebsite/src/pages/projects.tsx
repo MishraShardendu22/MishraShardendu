@@ -1,4 +1,4 @@
-import { ExternalLink, GitBranch, Pencil, Plus, Trash2 } from 'lucide-react'
+import { Pencil, Trash2 } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
 import { route } from 'preact-router'
 import toast from 'react-hot-toast'
@@ -77,10 +77,7 @@ export default function ProjectsPage() {
 
       {/* Action Bar */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 border-b border-border pb-4">
-        <Button onClick={() => route('/admin/projects/new')}>
-          <Plus className="w-4 h-4 mr-2" />
-          Add Project
-        </Button>
+        <Button onClick={() => route('/admin/projects/new')}>Add Project</Button>
       </div>
 
       {/* Projects Grid */}
@@ -91,10 +88,7 @@ export default function ProjectsPage() {
           </div>
           <h3 className="text-2xl font-bold text-foreground mb-2">No Projects Yet</h3>
           <p className="text-foreground/60 mb-6">Start by adding your first project</p>
-          <Button onClick={() => route('/admin/projects/new')}>
-            <Plus className="w-4 h-4 mr-2" />
-            Add Your First Project
-          </Button>
+          <Button onClick={() => route('/admin/projects/new')}>Add Your First Project</Button>
         </div>
       ) : (
         <>
@@ -151,7 +145,7 @@ export default function ProjectsPage() {
                     {project.project_live_link && (
                       <a href={project.project_live_link} target="_blank" rel="noopener noreferrer">
                         <Button size="sm" variant="outline" className="h-9 px-3">
-                          <ExternalLink className="w-4 h-4 mr-1" /> Live
+                          Live
                         </Button>
                       </a>
                     )}
@@ -162,7 +156,7 @@ export default function ProjectsPage() {
                         rel="noopener noreferrer"
                       >
                         <Button size="sm" variant="outline" className="h-9 px-3">
-                          <GitBranch className="w-4 h-4 mr-1" /> Code
+                          Code
                         </Button>
                       </a>
                     )}

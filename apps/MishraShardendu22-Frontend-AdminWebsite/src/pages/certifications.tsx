@@ -1,4 +1,4 @@
-import { ExternalLink, Pencil, Plus, Trash2 } from 'lucide-react'
+import { Pencil, Trash2 } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
 import { route } from 'preact-router'
 import toast from 'react-hot-toast'
@@ -77,10 +77,7 @@ export default function CertificationsPage() {
 
       {/* Action Bar */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 border-b border-border pb-4">
-        <Button onClick={() => route('/admin/certifications/new')}>
-          <Plus className="w-4 h-4 mr-2" />
-          Add Certification
-        </Button>
+        <Button onClick={() => route('/admin/certifications/new')}>Add Certification</Button>
       </div>
 
       {/* Certifications Grid */}
@@ -92,7 +89,6 @@ export default function CertificationsPage() {
           <h3 className="text-2xl font-bold text-foreground mb-2">No Certifications Yet</h3>
           <p className="text-foreground/60 mb-6">Start by adding your first certification</p>
           <Button onClick={() => route('/admin/certifications/new')}>
-            <Plus className="w-4 h-4 mr-2" />
             Add Your First Certification
           </Button>
         </div>
@@ -155,9 +151,9 @@ export default function CertificationsPage() {
                       href={cert.certificate_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline mt-auto"
+                      className="inline-flex items-center text-sm text-primary hover:underline mt-auto"
                     >
-                      <ExternalLink className="w-4 h-4" /> View Certificate
+                      View Certificate
                     </a>
                   )}
                 </CardContent>

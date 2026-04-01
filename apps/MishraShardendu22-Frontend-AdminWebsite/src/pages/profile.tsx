@@ -234,7 +234,6 @@ export default function ProfilePage() {
                 variant="outline"
                 className="border-2 border-foreground/20 hover:border-foreground/40 hover:bg-muted/50 text-foreground font-semibold px-6 py-3 transition-all"
               >
-                <Shield className="w-4 h-4 mr-2" />
                 Sign Out
               </Button>
             </div>

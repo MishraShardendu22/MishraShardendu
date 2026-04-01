@@ -17,7 +17,7 @@ import {
   useSortable,
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { CheckCircle2, GripVertical, Loader2, Save, TrendingDown, TrendingUp } from 'lucide-react'
+import { CheckCircle2, GripVertical, Loader2, TrendingDown, TrendingUp } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
 import toast from 'react-hot-toast'
 import { ErrorState, Loading } from '../components/shared'
@@ -341,10 +341,7 @@ export default function BlogReorderPage() {
                       Saving...
                     </>
                   ) : (
-                    <>
-                      <Save className="mr-2 h-4 w-4" />
-                      Save Changes
-                    </>
+                    <>Save Changes</>
                   )}
                 </Button>
               </div>
