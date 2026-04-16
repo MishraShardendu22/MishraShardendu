@@ -62,7 +62,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-svelte": "^1.0.1",
-    "postcss": "^8.5.9",
+    "postcss": "^8.5.10",
     "svelte": "^5.55.4",
     "svelte-check": "^4.4.6",
     "tailwind-merge": "^3.5.0",
@@ -75,7 +75,7 @@
     "@tailwindcss/vite": "^4.2.2",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "isomorphic-dompurify": "3.8.0",
+    "isomorphic-dompurify": "3.9.0",
     "marked": "18.0.0"
   }
 }
