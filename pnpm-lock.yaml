@@ -99,8 +99,8 @@ importers:
         version: 4.3.6
     devDependencies:
       '@module-federation/vite':
-        specifier: ^1.14.3
-        version: 1.14.3(rollup@4.55.1)(typescript@6.0.2)(vite@8.0.8(@types/node@25.6.0)(esbuild@0.27.2)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.8.3))
+        specifier: ^1.14.4
+        version: 1.14.4(rollup@4.55.1)(typescript@6.0.2)(vite@8.0.8(@types/node@25.6.0)(esbuild@0.27.2)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.8.3))
       '@preact/preset-vite':
         specifier: ^2.10.5
         version: 2.10.5(@babel/core@7.29.0)(preact@10.29.1)(rollup@4.55.1)(vite@8.0.8(@types/node@25.6.0)(esbuild@0.27.2)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.8.3))
@@ -194,12 +194,16 @@ importers:
 
 packages:
 
-  '@asamuzakjp/css-color@5.1.10':
-    resolution: {integrity: sha512-02OhhkKtgNRuicQ/nF3TRnGsxL9wp0r3Y7VlKWyOHHGmGyvXv03y+PnymU8FKFJMTjIr1Bk8U2g1HWSLrpAHww==}
+  '@asamuzakjp/css-color@5.1.11':
+    resolution: {integrity: sha512-KVw6qIiCTUQhByfTd78h2yD1/00waTmm9uy/R7Ck/ctUyAPj+AEDLkQIdJW0T8+qGgj3j5bpNKK7Q3G+LedJWg==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
 
-  '@asamuzakjp/dom-selector@7.0.9':
-    resolution: {integrity: sha512-r3ElRr7y8ucyN2KdICwGsmj19RoN13CLCa/pvGydghWK6ZzeKQ+TcDjVdtEZz2ElpndM5jXw//B9CEee0mWnVg==}
+  '@asamuzakjp/dom-selector@7.0.10':
+    resolution: {integrity: sha512-KyOb19eytNSELkmdqzZZUXWCU25byIlOld5qVFg0RYdS0T3tt7jeDByxk9hIAC73frclD8GKrHttr0SUjKCCdQ==}
+    engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
+
+  '@asamuzakjp/generational-cache@1.0.1':
+    resolution: {integrity: sha512-wajfB8KqzMCN2KGNFdLkReeHncd0AslUSrvHVvvYWuU8ghncRJoA50kT3zP9MVL0+9g4/67H+cdvBskj9THPzg==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
 
   '@asamuzakjp/nwsapi@2.3.9':
@@ -783,8 +787,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@module-federation/dts-plugin@2.3.2':
-    resolution: {integrity: sha512-Egvd6TefTnKfa95u4NlLWnAEWe72NhAYSw4jkXF4WNla0ULbj65XrOIKyk7Lcx7HMCjlvEL7fa218qw8q0EL3Q==}
+  '@module-federation/dts-plugin@2.3.3':
+    resolution: {integrity: sha512-VNtURt+hvieNKCBleAqHKffLAU4clKmuuqLQIbvDkFbGe4bo7hUaq5DruTnJBWWDOizZx0OQrdQYPijCnBK6UQ==}
     peerDependencies:
       typescript: ^4.9.0 || ^5.0.0
       vue-tsc: '>=1.0.24'
@@ -792,31 +796,31 @@ packages:
       vue-tsc:
         optional: true
 
-  '@module-federation/error-codes@2.3.2':
-    resolution: {integrity: sha512-Y8F6EG+shNY5mJ0yKcJh4t6HlMYEtqMvABDDmxWulLz/tSV859SL05I5eDR1EvK0jNhLbq8LFipFEToQLqF0AA==}
+  '@module-federation/error-codes@2.3.3':
+    resolution: {integrity: sha512-UVtKBoKnRDcHgByIDvPRZSxQqjqbNH7NvJm1KHLoce33+EDiIdZYs0HvvUQv43RgESpB9s7HjrqFlq3bEcAgfQ==}
 
-  '@module-federation/managers@2.3.2':
-    resolution: {integrity: sha512-mb8NfwLDZbA08HXkEjsAXyqyIyR+FC73tZxCHlPW/3fdTB5WLKG9Qrq/uan/zq/uyTdtYT3MCaMh7uf3ezqFMQ==}
+  '@module-federation/managers@2.3.3':
+    resolution: {integrity: sha512-sYL0t2guakJ+nDSQANH54uz5q1YxaNCn5C3lr+7BoRD49dX7Z6k7094yqOPEy8trzqdIoQVFpgewVA6IC/FeyQ==}
 
-  '@module-federation/runtime-core@2.3.2':
-    resolution: {integrity: sha512-o4Pfi21uADHtSl3/BHu/3ph5+069pDOXL8Lck12b+rxsHessbeZkNo+MOxwP+gXf8fFsT+f9spOmx+Y5gtyc2A==}
+  '@module-federation/runtime-core@2.3.3':
+    resolution: {integrity: sha512-B07LDH9KxhBO3GbULGW64mQFVQBtrEd3PoaCBm7XR1IbU8rMQUJQjDNVZgXYcyhRPBVP+3KWZuiaKFRiNb6PQw==}
 
-  '@module-federation/runtime@2.3.2':
-    resolution: {integrity: sha512-JFSAbr0zBDmNF+wcqHw22CmZGuUZjTsa4qzm1+RUVi3blrnKeBj9Y2FppEOBwPc/FHUr4/MDijA/6GFE2cv7gQ==}
+  '@module-federation/runtime@2.3.3':
+    resolution: {integrity: sha512-JYJ3qv9V85DtBtT/ppDuJNwBTUrYqqZDYcyiTzwY5+44dC5QPvgJ//F+BOhAhZ02WkZV0b4jsKTyLOC3vXKGqQ==}
 
-  '@module-federation/sdk@2.3.2':
-    resolution: {integrity: sha512-EKiZpLnD2ogy7OcnuU+vkGO5vhh3J25PHwtEzgVGIAsMis3JHYPpY7L1Ue7i0zVrdmI23dVJPBtfGV/Pg7THPA==}
+  '@module-federation/sdk@2.3.3':
+    resolution: {integrity: sha512-mwCS+LQdqiSc6fM5iz/S60ibaFNSH6kNqlZkCRIuS4yjdZ+jgnihz+6xp1QzppvfFgKLhEHBiXOmcYOdk3Ckew==}
     peerDependencies:
       node-fetch: ^3.3.2
     peerDependenciesMeta:
       node-fetch:
         optional: true
 
-  '@module-federation/third-party-dts-extractor@2.3.2':
-    resolution: {integrity: sha512-aQmzd7KPkk39LuOh9us2XxXdMmaGLfTU6fJEEsvjzRIgwQtQ10BRAnuJ+GGW1BkD9tXtbuYtW4+bWT7JxX4Pyg==}
+  '@module-federation/third-party-dts-extractor@2.3.3':
+    resolution: {integrity: sha512-rR94TjC1QVQLQPTazI0waLc76hI8dnv6aHTl+PUEIY9s5hXp8TA85XS0QJQqIf2KTjlPgZbWAwyFjOAJluTjaw==}
 
-  '@module-federation/vite@1.14.3':
-    resolution: {integrity: sha512-hIfcrf/m23z3v1OorfxMw2O5GoiNypRUTG7q18+33Z75nOLG6wSPk6D2fCJlkQFFaHcN76DPZjyhCAU0u2tyzQ==}
+  '@module-federation/vite@1.14.4':
+    resolution: {integrity: sha512-XQUwzjq9rSM/2QKuRcWd9BFgI2MSrGUQQ+DqGRGdlsbpAA242v67/SNW0yX883INrHxNt0Hz0iC11p0UcPCO9g==}
     peerDependencies:
       vite: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
 
@@ -1948,8 +1952,8 @@ packages:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
 
-  electron-to-chromium@1.5.337:
-    resolution: {integrity: sha512-15gKW9mRUNP9RdzhedJNypFUxtYWSXohFz2nTLzM272xbRXHws68kNDzyATG3qej+vUj/7Sn9hf5XTDh0XK6/w==}
+  electron-to-chromium@1.5.339:
+    resolution: {integrity: sha512-Is+0BBHJ4NrdpAYiperrmp53pLywG/yV/6lIMTAnhxvzj/Cmn5Q/ogSHC6AKe7X+8kPLxxFk0cs5oc/3j/fxIg==}
 
   emoji-regex@10.6.0:
     resolution: {integrity: sha512-toUI84YS5YmxW219erniWD0CIVOo46xGKColeNQRgOzDorgBi1v4D71/OFzgD9GO2UGKIv1C3Sp8DAn0+j5w7A==}
@@ -2993,19 +2997,23 @@ packages:
 
 snapshots:
 
-  '@asamuzakjp/css-color@5.1.10':
+  '@asamuzakjp/css-color@5.1.11':
     dependencies:
+      '@asamuzakjp/generational-cache': 1.0.1
       '@csstools/css-calc': 3.2.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-color-parser': 4.1.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-tokenizer': 4.0.0
 
-  '@asamuzakjp/dom-selector@7.0.9':
+  '@asamuzakjp/dom-selector@7.0.10':
     dependencies:
+      '@asamuzakjp/generational-cache': 1.0.1
       '@asamuzakjp/nwsapi': 2.3.9
       bidi-js: 1.0.3
       css-tree: 3.2.1
       is-potential-custom-element-name: 1.0.1
+
+  '@asamuzakjp/generational-cache@1.0.1': {}
 
   '@asamuzakjp/nwsapi@2.3.9': {}
 
@@ -3441,12 +3449,12 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@module-federation/dts-plugin@2.3.2(typescript@6.0.2)':
+  '@module-federation/dts-plugin@2.3.3(typescript@6.0.2)':
     dependencies:
-      '@module-federation/error-codes': 2.3.2
-      '@module-federation/managers': 2.3.2
-      '@module-federation/sdk': 2.3.2
-      '@module-federation/third-party-dts-extractor': 2.3.2
+      '@module-federation/error-codes': 2.3.3
+      '@module-federation/managers': 2.3.3
+      '@module-federation/sdk': 2.3.3
+      '@module-federation/third-party-dts-extractor': 2.3.3
       adm-zip: 0.5.10
       ansi-colors: 4.1.3
       isomorphic-ws: 5.0.0(ws@8.18.0)
@@ -3459,42 +3467,42 @@ snapshots:
       - node-fetch
       - utf-8-validate
 
-  '@module-federation/error-codes@2.3.2': {}
+  '@module-federation/error-codes@2.3.3': {}
 
-  '@module-federation/managers@2.3.2':
+  '@module-federation/managers@2.3.3':
     dependencies:
-      '@module-federation/sdk': 2.3.2
+      '@module-federation/sdk': 2.3.3
       find-pkg: 2.0.0
     transitivePeerDependencies:
       - node-fetch
 
-  '@module-federation/runtime-core@2.3.2':
+  '@module-federation/runtime-core@2.3.3':
     dependencies:
-      '@module-federation/error-codes': 2.3.2
-      '@module-federation/sdk': 2.3.2
+      '@module-federation/error-codes': 2.3.3
+      '@module-federation/sdk': 2.3.3
     transitivePeerDependencies:
       - node-fetch
 
-  '@module-federation/runtime@2.3.2':
+  '@module-federation/runtime@2.3.3':
     dependencies:
-      '@module-federation/error-codes': 2.3.2
-      '@module-federation/runtime-core': 2.3.2
-      '@module-federation/sdk': 2.3.2
+      '@module-federation/error-codes': 2.3.3
+      '@module-federation/runtime-core': 2.3.3
+      '@module-federation/sdk': 2.3.3
     transitivePeerDependencies:
       - node-fetch
 
-  '@module-federation/sdk@2.3.2': {}
+  '@module-federation/sdk@2.3.3': {}
 
-  '@module-federation/third-party-dts-extractor@2.3.2':
+  '@module-federation/third-party-dts-extractor@2.3.3':
     dependencies:
       find-pkg: 2.0.0
       resolve: 1.22.8
 
-  '@module-federation/vite@1.14.3(rollup@4.55.1)(typescript@6.0.2)(vite@8.0.8(@types/node@25.6.0)(esbuild@0.27.2)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.8.3))':
+  '@module-federation/vite@1.14.4(rollup@4.55.1)(typescript@6.0.2)(vite@8.0.8(@types/node@25.6.0)(esbuild@0.27.2)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.8.3))':
     dependencies:
-      '@module-federation/dts-plugin': 2.3.2(typescript@6.0.2)
-      '@module-federation/runtime': 2.3.2
-      '@module-federation/sdk': 2.3.2
+      '@module-federation/dts-plugin': 2.3.3(typescript@6.0.2)
+      '@module-federation/runtime': 2.3.3
+      '@module-federation/sdk': 2.3.3
       '@rollup/pluginutils': 5.3.0(rollup@4.55.1)
       defu: 6.1.7
       es-module-lexer: 2.0.0
@@ -4273,7 +4281,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.10.19
       caniuse-lite: 1.0.30001788
-      electron-to-chromium: 1.5.337
+      electron-to-chromium: 1.5.339
       node-releases: 2.0.37
       update-browserslist-db: 1.2.3(browserslist@4.28.2)
 
@@ -4411,7 +4419,7 @@ snapshots:
       es-errors: 1.3.0
       gopd: 1.2.0
 
-  electron-to-chromium@1.5.337: {}
+  electron-to-chromium@1.5.339: {}
 
   emoji-regex@10.6.0: {}
 
@@ -4714,8 +4722,8 @@ snapshots:
 
   jsdom@29.0.2:
     dependencies:
-      '@asamuzakjp/css-color': 5.1.10
-      '@asamuzakjp/dom-selector': 7.0.9
+      '@asamuzakjp/css-color': 5.1.11
+      '@asamuzakjp/dom-selector': 7.0.10
       '@bramus/specificity': 2.4.2
       '@csstools/css-syntax-patches-for-csstree': 1.1.3(css-tree@3.2.1)
       '@exodus/bytes': 1.15.0
