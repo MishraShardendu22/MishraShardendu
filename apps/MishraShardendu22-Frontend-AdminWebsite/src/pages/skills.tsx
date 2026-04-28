@@ -104,7 +104,7 @@ export default function SkillsPage() {
   }
 
   return (
-    <div class="space-y-8 p-6">
+    <div class="space-y-8">
       <header class="text-center space-y-6">
         <h1 class="text-2xl md:text-3xl font-heading font-extrabold bg-linear-to-r from-blue-500 via-teal-500 to-green-500 bg-clip-text text-transparent leading-tight">
           Skills - Manage your technical skills and competencies

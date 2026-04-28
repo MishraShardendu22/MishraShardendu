@@ -64,7 +64,7 @@ export default function ProjectsPage() {
   }
 
   return (
-    <div className="space-y-8 w-[90%] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="space-y-8">
       {/* Header */}
       <header className="text-center space-y-4">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold bg-linear-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">

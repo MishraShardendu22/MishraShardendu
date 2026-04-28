@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -11,14 +12,32 @@ html {
   touch-action: manipulation;
 }
 
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  background-image:
+    radial-gradient(900px circle at 10% 10%, rgba(0, 200, 150, 0.12), transparent 40%),
+    radial-gradient(800px circle at 90% 20%, rgba(59, 130, 246, 0.12), transparent 45%),
+    radial-gradient(700px circle at 50% 100%, rgba(124, 179, 66, 0.1), transparent 50%);
+  background-attachment: fixed;
+}
+
+.dark body {
+  background-image:
+    radial-gradient(900px circle at 10% 10%, rgba(16, 185, 129, 0.14), transparent 40%),
+    radial-gradient(800px circle at 90% 20%, rgba(59, 130, 246, 0.12), transparent 45%),
+    radial-gradient(700px circle at 50% 100%, rgba(6, 182, 212, 0.12), transparent 50%);
+}
+
 /* Mobile-first responsive font scaling */
 :root {
   /* Enhanced font system with better mobile readability */
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Fredoka', system-ui, sans-serif;
-  --font-subheading: 'Poppins', system-ui, sans-serif;
-  --font-geist-sans: 'Geist Sans', system-ui, sans-serif;
-  --font-geist-mono: 'Geist Mono', 'SF Mono', Monaco, Consolas, monospace;
+  --font-body: 'Manrope', 'IBM Plex Sans', system-ui, sans-serif;
+  --font-heading: 'Space Grotesk', 'Manrope', system-ui, sans-serif;
+  --font-subheading: 'Space Grotesk', 'Manrope', system-ui, sans-serif;
+  --font-geist-sans: 'Manrope', 'IBM Plex Sans', system-ui, sans-serif;
+  --font-geist-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
 
   /* Mobile-optimized sizing */
   --radius: 0.875rem; /* Increased for better touch targets */
@@ -29,8 +48,8 @@ html {
   --safe-area-inset-right: env(safe-area-inset-right, 0px);
 
   /* Enhanced Light Theme with better contrast */
-  --background: #fef7f0;
-  --background-secondary: #f8f0e8;
+  --background: #f6f7f9;
+  --background-secondary: #eef2f6;
   --foreground: #1c1c1e;
   --card: #ffffff;
   --card-foreground: #1c1c1e;
@@ -42,17 +61,17 @@ html {
   --secondary: #7cb342;
   --secondary-foreground: #ffffff;
   --secondary-hover: #689f38;
-  --muted: #fff9c4;
-  --muted-foreground: #6b7280;
+  --muted: #f1f5f9;
+  --muted-foreground: #556070;
   --accent: #3b82f6;
   --accent-foreground: #ffffff;
   --accent-hover: #2563eb;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #e5e7eb;
-  --border-strong: #d1d5db;
-  --input: #f9fafb;
-  --input-border: #d1d5db;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --input: #f8fafc;
+  --input-border: #cbd5e1;
   --ring: #3b82f6;
   --shadow: rgba(0, 0, 0, 0.1);
   --shadow-strong: rgba(0, 0, 0, 0.15);

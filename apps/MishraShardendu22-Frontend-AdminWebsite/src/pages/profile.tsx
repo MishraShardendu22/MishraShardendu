@@ -38,7 +38,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="space-y-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="space-y-8">
       {/* Header Section */}
       <div className="text-center space-y-4 mb-12">
         <div className="flex justify-center mb-4">

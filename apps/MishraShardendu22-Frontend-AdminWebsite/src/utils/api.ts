@@ -9,13 +9,25 @@ declare module 'axios' {
   }
 }
 
-// Use proxy in development (empty string) or fallback to production URL
-const baseURL = import.meta.env.VITE_BACKEND_1 ? `${import.meta.env.VITE_BACKEND_1}/api` : '/api'
+const DEFAULT_PORTFOLIO_BACKEND = 'https://portfolio-backend-2iw4.onrender.com'
+const normalizedPortfolioBackend = (
+  import.meta.env.VITE_BACKEND_1 || DEFAULT_PORTFOLIO_BACKEND
+).replace(/\/+$/, '')
+
+// Use dev proxy when running locally; fall back to production backend in builds
+const baseURL = import.meta.env.VITE_BACKEND_1
+  ? `${normalizedPortfolioBackend}/api`
+  : import.meta.env.DEV
+    ? '/api'
+    : `${normalizedPortfolioBackend}/api`
 
 // Blog backend URL - separate backend for blog endpoints
-const blogBaseURL = import.meta.env.VITE_BLOG_BACKEND
-  ? `${import.meta.env.VITE_BLOG_BACKEND}/api`
-  : 'https://mishrashardendu22-backend-blogwebsite.onrender.com/api'
+const DEFAULT_BLOG_BACKEND = 'https://mishrashardendu22-backend-blogwebsite.onrender.com'
+const normalizedBlogBackend = (import.meta.env.VITE_BLOG_BACKEND || DEFAULT_BLOG_BACKEND).replace(
+  /\/+$/,
+  ''
+)
+const blogBaseURL = `${normalizedBlogBackend}/api`
 
 const api = axios.create({
   baseURL,

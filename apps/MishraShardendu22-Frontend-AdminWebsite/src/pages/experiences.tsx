@@ -64,7 +64,7 @@ export default function ExperiencesPage() {
   }
 
   return (
-    <div className="space-y-12 w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="space-y-10">
       <div className="text-center mb-12 space-y-8">
         <h1 className="text-2xl md:text-3xl font-heading font-bold bg-linear-to-r from-secondary via-primary to-accent bg-clip-text text-transparent leading-tight">
           Experiences - Manage your professional experiences and work history.

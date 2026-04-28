@@ -69,7 +69,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+    <div className="space-y-10">
       <div className="text-center space-y-6 pb-8">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-linear-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
           Welcome, Admin
