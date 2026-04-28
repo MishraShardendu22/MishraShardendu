@@ -89,8 +89,8 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       </div>
 
       <header className="sticky top-0 z-50 bg-card/85 backdrop-blur-md border-b border-border shadow-sm">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-8 h-16">
-          <div className="flex items-center gap-4">
+        <div className="mx-auto flex w-full max-w-[1700px] items-center justify-between px-4 sm:px-8 h-16">
+          <div className="flex items-center gap-4 shrink-0">
             {isNarrow && (
               <button
                 className="p-2 rounded-md hover:bg-primary/20 transition"
@@ -99,13 +99,16 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                 <Menu className="w-6 h-6 text-primary" />
               </button>
             )}
-            <a href="/admin/dashboard" className="font-bold text-xl text-primary select-none">
+            <a
+              href="/admin/dashboard"
+              className="font-bold text-xl text-primary select-none whitespace-nowrap"
+            >
               Admin Panel
             </a>
           </div>
 
           {!isNarrow && (
-            <nav className="flex gap-4 font-semibold">
+            <nav className="flex flex-1 items-center justify-center gap-4 font-semibold min-w-0">
               {navigation.map(({ name, href, icon: Icon }) => (
                 <a
                   key={name}
@@ -117,13 +120,13 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                   }`}
                 >
                   <Icon className="w-5 h-5" />
-                  <span>{name}</span>
+                  <span className="whitespace-nowrap">{name}</span>
                 </a>
               ))}
             </nav>
           )}
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 shrink-0">
             <Button variant="outline" className="text-primary hover:bg-primary/20" onClick={logout}>
               Sign Out
             </Button>
@@ -133,7 +136,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
       {mobileMenuOpen && isNarrow && (
         <nav className="sticky top-16 z-40 bg-card/90 backdrop-blur-md border-b border-border shadow-md">
-          <div className="mx-auto flex w-full max-w-7xl flex-col px-4 py-2 gap-2">
+          <div className="mx-auto flex w-full max-w-[1700px] flex-col px-4 py-2 gap-2">
             {navigation.map(({ name, href, icon: Icon }) => (
               <a
                 key={name}
@@ -153,7 +156,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         </nav>
       )}
 
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-8 py-10">{children}</main>
+      <main className="flex-1 w-full max-w-[1700px] mx-auto px-4 sm:px-8 py-10">{children}</main>
     </div>
   )
 }
