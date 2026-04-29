@@ -71,8 +71,8 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       lucide-react:
-        specifier: ^1.12.0
-        version: 1.12.0(react@19.2.0)
+        specifier: ^1.14.0
+        version: 1.14.0(react@19.2.0)
       preact:
         specifier: ^10.29.1
         version: 10.29.1
@@ -99,8 +99,8 @@ importers:
         version: 4.3.6
     devDependencies:
       '@module-federation/vite':
-        specifier: ^1.15.0
-        version: 1.15.0(rollup@4.55.1)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.27.2)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.8.3))
+        specifier: ^1.15.1
+        version: 1.15.1(rollup@4.55.1)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.27.2)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.8.3))
       '@preact/preset-vite':
         specifier: ^2.10.5
         version: 2.10.5(@babel/core@7.29.0)(preact@10.29.1)(rollup@4.55.1)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.27.2)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.8.3))
@@ -135,8 +135,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(react@19.2.0)(svelte@5.55.5(@typescript-eslint/types@8.58.1))
       isomorphic-dompurify:
-        specifier: 3.10.0
-        version: 3.10.0
+        specifier: 3.11.0
+        version: 3.11.0
       marked:
         specifier: 18.0.2
         version: 18.0.2
@@ -819,8 +819,8 @@ packages:
   '@module-federation/third-party-dts-extractor@2.3.3':
     resolution: {integrity: sha512-rR94TjC1QVQLQPTazI0waLc76hI8dnv6aHTl+PUEIY9s5hXp8TA85XS0QJQqIf2KTjlPgZbWAwyFjOAJluTjaw==}
 
-  '@module-federation/vite@1.15.0':
-    resolution: {integrity: sha512-jYQ+yJBbixAc88b8ShRJPSoIARVCoP/VsNzfHAlUfHAXM43h+B+zZOCWmheUxRvB4xYMd4CpZwKLiZ3Sr9IGjA==}
+  '@module-federation/vite@1.15.1':
+    resolution: {integrity: sha512-omp8UYFsKiGIWj9nTSIGF1GsybA+8A/Z8W0P7Y2PRdf4oL/GveXF3haQT6u0OFPm/v3veKYphC1LpvOZoDQBHQ==}
     peerDependencies:
       vite: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
 
@@ -2206,8 +2206,8 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  isomorphic-dompurify@3.10.0:
-    resolution: {integrity: sha512-Gj2duy4dACsP/FLPvwJ3+MXTlGtOo+O4yfpA0jdxuz/sZlbZzazGzScajOHRwH7PCy4j3bh5ibLGJY4/Rb5kGQ==}
+  isomorphic-dompurify@3.11.0:
+    resolution: {integrity: sha512-il0sNhLnfawc6vKoMqnZX1JXzEzw0pP3DZWg7mM7VJNJ8cq6DCxeAjEcfjTazyBF8dkUn+rBsBPS5NQs4ZaI3g==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24.0.0}
 
   isomorphic-ws@5.0.0:
@@ -2347,8 +2347,8 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-react@1.12.0:
-    resolution: {integrity: sha512-rTKR3RN6HIAxdNZALoPvqxd64vjL9nTThU0JF9q1Qg8yUnmo1r+d8baN72YNVK3RGxUmzBzbd77IWJq/fkm+Xw==}
+  lucide-react@1.14.0:
+    resolution: {integrity: sha512-+1mdWcfSJVUsaTIjN9zoezmUhfXo5l0vP7ekBMPo3jcS/aIkxHnXqAPsByszMZx/Y8oQBRJxJx5xg+RH3urzxA==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
@@ -2766,8 +2766,8 @@ packages:
     resolution: {integrity: sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==}
     engines: {node: '>=6'}
 
-  tinyexec@1.1.1:
-    resolution: {integrity: sha512-VKS/ZaQhhkKFMANmAOhhXVoIfBXblQxGX1myCQ2faQrfmobMftXeJPcZGp0gS07ocvGJWDLZGyOZDadDBqYIJg==}
+  tinyexec@1.1.2:
+    resolution: {integrity: sha512-dAqSqE/RabpBKI8+h26GfLq6Vb3JVXs30XYQjdMjaj/c2tS8IYYMbIzP599KtRj7c57/wYApb3QjgRgXmrCukA==}
     engines: {node: '>=18'}
 
   tinyglobby@0.2.16:
@@ -3498,7 +3498,7 @@ snapshots:
       find-pkg: 2.0.0
       resolve: 1.22.8
 
-  '@module-federation/vite@1.15.0(rollup@4.55.1)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.27.2)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.8.3))':
+  '@module-federation/vite@1.15.1(rollup@4.55.1)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.27.2)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.8.3))':
     dependencies:
       '@module-federation/dts-plugin': 2.3.3(typescript@6.0.3)
       '@module-federation/runtime': 2.3.3
@@ -4704,7 +4704,7 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  isomorphic-dompurify@3.10.0:
+  isomorphic-dompurify@3.11.0:
     dependencies:
       dompurify: 3.4.1
       jsdom: 29.1.0
@@ -4807,7 +4807,7 @@ snapshots:
       listr2: 9.0.5
       picomatch: 4.0.4
       string-argv: 0.3.2
-      tinyexec: 1.1.1
+      tinyexec: 1.1.2
       yaml: 2.8.3
 
   listr2@9.0.5:
@@ -4839,7 +4839,7 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-react@1.12.0(react@19.2.0):
+  lucide-react@1.14.0(react@19.2.0):
     dependencies:
       react: 19.2.0
 
@@ -5438,7 +5438,7 @@ snapshots:
 
   tapable@2.3.3: {}
 
-  tinyexec@1.1.1: {}
+  tinyexec@1.1.2: {}
 
   tinyglobby@0.2.16:
     dependencies:
