@@ -47,9 +47,9 @@
     "reset": "rm -rf node_modules apps/*/node_modules packages/*/node_modules apps/*/package-lock.json packages/*/package-lock.json pnpm-lock.yaml && pnpm install"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.13",
+    "@biomejs/biome": "2.4.15",
     "husky": "^9.1.7",
-    "turbo": "^2.9.7"
+    "turbo": "^2.9.14"
   },
   "engines": {
     "node": "22.x",
