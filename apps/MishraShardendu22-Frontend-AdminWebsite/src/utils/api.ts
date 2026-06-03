@@ -94,7 +94,5 @@ const responseInterceptor = async (error: AxiosError) => {
 api.interceptors.request.use(requestInterceptor, (error) => Promise.reject(error))
 api.interceptors.response.use((response) => response, responseInterceptor)
 
-blogApi.interceptors.response.use((response) => response, responseInterceptor)
-
 export default api
 export { blogApi }
