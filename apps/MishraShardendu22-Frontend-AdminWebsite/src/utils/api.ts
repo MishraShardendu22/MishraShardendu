@@ -27,10 +27,8 @@ const api = axios.create({
     'Content-Type': 'application/json',
   },
   maxRedirects: 5,
-  maxContentLength: 50 * 1024 * 1024,
 })
 
-// Separate API client for blog endpoints
 const blogApi = axios.create({
   baseURL: blogBaseURL,
   timeout: 60000,
@@ -38,7 +36,6 @@ const blogApi = axios.create({
     'Content-Type': 'application/json',
   },
   maxRedirects: 5,
-  maxContentLength: 50 * 1024 * 1024,
 })
 
 const MAX_RETRIES = 3
@@ -68,7 +65,6 @@ const _retryRequest = async (config: AxiosRequestConfig, retryCount = 0): Promis
   }
 }
 
-// Shared request interceptor for both API clients
 const requestInterceptor = (config: InternalAxiosRequestConfig) => {
   const token = typeof window !== 'undefined' ? localStorage.getItem('jwt_token') : null
   if (token) {
@@ -80,7 +76,17 @@ const requestInterceptor = (config: InternalAxiosRequestConfig) => {
   return config
 }
 
-// Shared response interceptor for both API clients
+const requestInterceptorBlogs = (config: InternalAxiosRequestConfig) => {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+
+  config.metadata = { startTime: Date.now() }
+
+  return config
+}
+
 const responseInterceptor = async (error: AxiosError) => {
   if (error.response?.status === 401) {
     if (typeof window !== 'undefined') {
@@ -96,12 +102,10 @@ const responseInterceptor = async (error: AxiosError) => {
   return Promise.reject(error)
 }
 
-// Apply interceptors to main API
 api.interceptors.request.use(requestInterceptor, (error) => Promise.reject(error))
 api.interceptors.response.use((response) => response, responseInterceptor)
 
-// Apply interceptors to blog API
-blogApi.interceptors.request.use(requestInterceptor, (error) => Promise.reject(error))
+blogApi.interceptors.request.use(requestInterceptorBlogs, (error) => Promise.reject(error))
 blogApi.interceptors.response.use((response) => response, responseInterceptor)
 
 export default api
