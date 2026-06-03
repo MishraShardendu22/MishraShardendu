@@ -76,17 +76,6 @@ const requestInterceptor = (config: InternalAxiosRequestConfig) => {
   return config
 }
 
-const requestInterceptorBlogs = (config: InternalAxiosRequestConfig) => {
-  const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`
-  }
-
-  config.metadata = { startTime: Date.now() }
-
-  return config
-}
-
 const responseInterceptor = async (error: AxiosError) => {
   if (error.response?.status === 401) {
     if (typeof window !== 'undefined') {
@@ -105,7 +94,6 @@ const responseInterceptor = async (error: AxiosError) => {
 api.interceptors.request.use(requestInterceptor, (error) => Promise.reject(error))
 api.interceptors.response.use((response) => response, responseInterceptor)
 
-blogApi.interceptors.request.use(requestInterceptorBlogs, (error) => Promise.reject(error))
 blogApi.interceptors.response.use((response) => response, responseInterceptor)
 
 export default api
