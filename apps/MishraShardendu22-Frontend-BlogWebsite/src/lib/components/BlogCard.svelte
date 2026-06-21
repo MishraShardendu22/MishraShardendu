@@ -13,7 +13,7 @@
     blog,
     onReadMore,
     isFirstCard = false,
-    maxExcerptLength = 150,
+    maxExcerptLength = 140,
   }: {
     blog: Blog;
     customActions?: any;
@@ -37,8 +37,7 @@
   const getReadingTime = (content: string) => {
     const wordsPerMinute = 200;
     const words = content.trim().split(/\s+/).length;
-    const minutes = Math.ceil(words / wordsPerMinute);
-    return minutes;
+    return Math.ceil(words / wordsPerMinute);
   };
 
   const parseMarkdownExcerpt = (markdown: string): string => {
@@ -63,63 +62,65 @@
 
 <button
   type="button"
-  class="group relative rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer h-52 border-2 border-primary/50 w-full text-left"
+  class="group flex flex-col bg-card/80 backdrop-blur-md rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 cursor-pointer border border-border hover:border-primary/30 w-full text-left"
   onclick={() => onReadMore?.(blog.id.toString())}
 >
-  <!-- Background Image with Blur -->
-  <div class="absolute inset-0">
+  <!-- Card Image Header -->
+  <div class="relative w-full aspect-[16/9] overflow-hidden bg-muted">
     {#if blog.image}
       <OptimizedImage
         src={resolveImageUrl(blog.image)}
         alt={blog.title}
-        class="w-full h-full object-cover scale-110 blur-sm"
+        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         loading={isFirstCard ? "eager" : "lazy"}
         isLCP={isFirstCard}
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
       />
     {:else}
-      <div class="w-full h-full bg-linear-to-br from-primary/40 via-primary/30 to-accent/20"></div>
+      <div class="w-full h-full bg-linear-to-br from-primary/20 to-accent/10 flex items-center justify-center">
+        <span class="text-primary/40 font-semibold text-lg tracking-widest uppercase">Blog Post</span>
+      </div>
     {/if}
-    <!-- Dark overlay for better text contrast -->
-    <div class="absolute inset-0 bg-linear-to-t from-black/90 via-black/60 to-black/40"></div>
+    <!-- Overlay for metadata tag if needed in future -->
   </div>
 
-  <div class="relative h-full flex flex-col justify-end px-4 pb-4 z-10">
-    <h3 class="text-3xl font-bold mb-2 line-clamp-2 text-white drop-shadow-lg transition-colors">
+  <!-- Card Body -->
+  <div class="flex flex-col flex-1 p-5 md:p-6">
+    <div class="flex items-center gap-2 mb-3 text-xs font-medium text-muted-foreground">
+      <span class="text-primary">{formatDate(blog.createdAt)}</span>
+      <span class="w-1 h-1 rounded-full bg-border-strong"></span>
+      <div class="flex items-center gap-1">
+        <Clock class="w-3.5 h-3.5" />
+        <span>{readingTime} min read</span>
+      </div>
+    </div>
+
+    <h3 class="text-xl md:text-2xl font-bold mb-3 text-foreground line-clamp-2 leading-tight group-hover:text-primary transition-colors duration-300">
       {blog.title}
     </h3>
 
     {#if excerpt}
-      <p class="text-white/90 text-xs line-clamp-2 mb-3 leading-relaxed drop-shadow-md">
+      <p class="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-6 flex-1">
         {excerpt}
       </p>
     {/if}
 
     <!-- Footer -->
-    <div class="flex items-center justify-between text-white/90">
-      <div class="flex items-center gap-2 min-w-0">
+    <div class="flex items-center justify-between pt-4 border-t border-border mt-auto">
+      <div class="flex items-center gap-3 min-w-0">
         <Avatar
-          class="w-6 h-6 shrink-0 ring-2 ring-white/30"
+          class="w-8 h-8 shrink-0 ring-2 ring-background shadow-sm"
           src={resolveImageUrl(blog.author?.profileImage || blog.author?.image || blog.author?.avatar || blog.author?.profile?.avatar || undefined)}
           fallback={blog.author?.name ? getInitials(blog.author.name, blog.author.name) : blog.author?.email?.charAt(0).toUpperCase() || "U"}
         />
         <div class="flex flex-col min-w-0">
-          <span class="text-xs font-medium truncate drop-shadow-md">{blog.author?.name || "Unknown"}</span>
-          <span class="text-[10px] text-white/70 drop-shadow-md">{formatDate(blog.createdAt)}</span>
+          <span class="text-sm font-medium text-foreground truncate">{blog.author?.name || "Unknown"}</span>
         </div>
       </div>
 
-      <div class="flex items-center gap-3 shrink-0">
-        {#if readingTime > 0}
-          <div class="flex items-center gap-1 text-[10px] bg-white/20 backdrop-blur-md px-2 py-1 rounded-full" aria-label="{readingTime} minute read">
-            <Clock class="w-3 h-3" aria-hidden="true" />
-            <span>{readingTime}m</span>
-          </div>
-        {/if}
-        <div class="flex items-center gap-1 text-[10px] bg-white/20 backdrop-blur-md px-2 py-1 rounded-full" aria-label="{blog.comments ?? 0} comments">
-          <MessageCircle class="w-3 h-3" aria-hidden="true" />
-          <span>{blog.comments ?? 0}</span>
-        </div>
+      <div class="flex items-center gap-1.5 text-xs text-muted-foreground bg-muted/50 px-2.5 py-1.5 rounded-full transition-colors group-hover:bg-primary/10 group-hover:text-primary">
+        <MessageCircle class="w-3.5 h-3.5" />
+        <span class="font-medium">{blog.comments ?? 0}</span>
       </div>
     </div>
   </div>

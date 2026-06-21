@@ -92,51 +92,61 @@ body {
 }
 
 .dark {
-  /* Enhanced Dark Theme with OLED-friendly colors */
-  --background: #000000;
-  --background-secondary: #0a0a0a;
-  --foreground: #ffffff;
-  --card: #111111;
-  --card-foreground: #ffffff;
-  --popover: #1a1a1a;
-  --popover-foreground: #ffffff;
-  --primary: #10b981;
-  --primary-foreground: #000000;
-  --primary-hover: #059669;
-  --secondary: #06b6d4;
-  --secondary-foreground: #000000;
-  --secondary-hover: #0891b2;
-  --muted: #1a1a1a;
-  --muted-foreground: #a1a1aa;
-  --accent: #3b82f6;
+  /* Premium Zinc & Violet Dark Theme */
+  --background: #09090b; /* zinc-950 */
+  --background-secondary: #0f0f12; 
+  --foreground: #fafafa; /* zinc-50 */
+  
+  --card: #18181b; /* zinc-900 */
+  --card-foreground: #fafafa;
+  
+  --popover: #18181b;
+  --popover-foreground: #fafafa;
+  
+  --primary: #7c3aed; /* violet-600 */
+  --primary-foreground: #ffffff;
+  --primary-hover: #8b5cf6; /* violet-500 */
+  
+  --secondary: #27272a; /* zinc-800 */
+  --secondary-foreground: #fafafa;
+  --secondary-hover: #3f3f46; /* zinc-700 */
+  
+  --muted: #27272a; /* zinc-800 */
+  --muted-foreground: #a1a1aa; /* zinc-400 */
+  
+  --accent: #8b5cf6; /* violet-500 */
   --accent-foreground: #ffffff;
-  --accent-hover: #2563eb;
-  --destructive: #ef4444;
+  --accent-hover: #7c3aed; /* violet-600 */
+  
+  --destructive: #ef4444; /* red-500 */
   --destructive-foreground: #ffffff;
-  --border: #262626;
-  --border-strong: #404040;
-  --input: #1a1a1a;
-  --input-border: #404040;
-  --ring: #3b82f6;
+  
+  --border: #27272a; /* zinc-800 */
+  --border-strong: #3f3f46; /* zinc-700 */
+  
+  --input: #18181b; /* zinc-900 */
+  --input-border: #3f3f46; /* zinc-700 */
+  
+  --ring: #7c3aed; /* violet-600 */
   --shadow: rgba(0, 0, 0, 0.5);
-  --shadow-strong: rgba(0, 0, 0, 0.7);
+  --shadow-strong: rgba(0, 0, 0, 0.8);
 
   /* Dark chart colors */
-  --chart-1: #10b981;
+  --chart-1: #8b5cf6;
   --chart-2: #3b82f6;
-  --chart-3: #f59e0b;
+  --chart-3: #10b981;
   --chart-4: #ef4444;
-  --chart-5: #8b5cf6;
+  --chart-5: #f59e0b;
 
   /* Dark sidebar */
-  --sidebar: #111111;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #10b981;
-  --sidebar-primary-foreground: #000000;
-  --sidebar-accent: #3b82f6;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #262626;
-  --sidebar-ring: #3b82f6;
+  --sidebar: #09090b;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #7c3aed;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #27272a;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: #27272a;
+  --sidebar-ring: #7c3aed;
 }
 
 /* View button foreground should adapt to theme: black in light, white in dark */
@@ -497,15 +507,15 @@ h6 {
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 2rem;
 }
 
 @media (min-width: 640px) {
-  .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
 }
 
 @media (min-width: 1024px) {
-  .blog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .blog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
 }
 
 /* Tighter spacing for dashboard stat numbers */
