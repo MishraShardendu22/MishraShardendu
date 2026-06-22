@@ -1,5 +1,3 @@
-# Retired Website - No Longer Maintained
-
 <div align="center">
   <img src="https://raw.githubusercontent.com/ShardenduMishra22/ShardenduMishra22/main/Gopher.gif" alt="Gopher Mishra" width="200"/>
 </div>

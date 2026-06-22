@@ -209,7 +209,7 @@
   {:else}
     <BlogNavigation />
   <main class="lg:ml-20 transition-all duration-300 ease-in-out">
-      <div class="mx-auto pl-2 pr-2 sm:pl-3 sm:pr-3 lg:pl-4 lg:pr-4 py-6 sm:py-8 max-w-10xl">
+      <div class="mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 max-w-[1920px]">
         {#if pageComponent() === "list"}
           <BlogListPage />
 

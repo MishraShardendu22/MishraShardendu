@@ -192,13 +192,13 @@
   class="hidden lg:flex group fixed left-0 top-0 bottom-0 w-20 hover:w-72 border-r border-border bg-card/95 backdrop-blur-sm flex-col z-30 shadow-lg transition-[width] duration-300 ease-in-out"
   aria-label="Blog navigation"
 >
-  <div class="h-20 flex items-center justify-between px-4 border-b border-border bg-linear-to-b from-background/50 to-transparent shrink-0">
-    <div class="nav-label">
+  <div class="h-20 flex items-center border-b border-border bg-linear-to-b from-background/50 to-transparent shrink-0">
+    <div class="w-20 h-20 flex items-center justify-center shrink-0">
+      <BookAIcon class="w-6 h-6 text-primary" />
+    </div>
+    <div class="nav-label flex-1 pr-4 min-w-0">
       <h1 class="font-bold text-lg whitespace-nowrap">Blog</h1>
       <p class="text-xs text-muted-foreground whitespace-nowrap">Shardendu Mishra</p>
-    </div>
-    <div class="w-12 h-12 p-2.5  flex items-center justify-center shrink-0">
-      <BookAIcon />
     </div>
   </div>
 

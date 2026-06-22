@@ -507,15 +507,22 @@ h6 {
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
+  width: 100%;
 }
 
-@media (min-width: 640px) {
-  .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+@media (min-width: 768px) {
+  .blog-grid { 
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    gap: 2rem; 
+  }
 }
 
-@media (min-width: 1024px) {
-  .blog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
+@media (min-width: 1536px) {
+  .blog-grid { 
+    grid-template-columns: repeat(3, minmax(0, 1fr)); 
+    gap: 2.5rem; 
+  }
 }
 
 /* Tighter spacing for dashboard stat numbers */
