@@ -62,7 +62,7 @@
 
 <button
   type="button"
-  class="group flex flex-col bg-card/80 backdrop-blur-md rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 cursor-pointer border border-border hover:border-primary/30 w-full text-left"
+  class="group flex flex-col bg-card/80 backdrop-blur-md rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 cursor-pointer border border-border hover:border-primary/30 w-full text-left"
   onclick={() => onReadMore?.(blog.id.toString())}
 >
   <!-- Card Image Header -->

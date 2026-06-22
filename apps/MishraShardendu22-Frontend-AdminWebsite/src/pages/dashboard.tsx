@@ -80,35 +80,35 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
-        <Card className="border-2 border-border/50 hover:border-primary/50 transition-all hover:-translate-y-2">
+        <Card className="border-2 border-border/50 hover:border-primary/50 transition-all">
           <CardContent className="p-6 lg:p-8 flex flex-col items-center">
             <div className="text-4xl font-bold text-foreground mb-2">{stats.projects}</div>
             <div className="text-base font-medium text-foreground/80">Projects</div>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-border/50 hover:border-secondary/50 transition-all hover:-translate-y-2">
+        <Card className="border-2 border-border/50 hover:border-secondary/50 transition-all">
           <CardContent className="p-6 lg:p-8 flex flex-col items-center">
             <div className="text-4xl font-bold text-foreground mb-2">{stats.experiences}</div>
             <div className="text-base font-medium text-foreground/80">Experiences</div>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-border/50 hover:border-accent/50 transition-all hover:-translate-y-2">
+        <Card className="border-2 border-border/50 hover:border-accent/50 transition-all">
           <CardContent className="p-6 lg:p-8 flex flex-col items-center">
             <div className="text-4xl font-bold text-foreground mb-2">{stats.skills}</div>
             <div className="text-base font-medium text-foreground/80">Skills</div>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-border/50 hover:border-yellow-500/50 transition-all hover:-translate-y-2">
+        <Card className="border-2 border-border/50 hover:border-yellow-500/50 transition-all">
           <CardContent className="p-6 lg:p-8 flex flex-col items-center">
             <div className="text-4xl font-bold text-foreground mb-2">{stats.certifications}</div>
             <div className="text-base font-medium text-foreground/80">Certifications</div>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-border/50 hover:border-blue-500/50 transition-all hover:-translate-y-2">
+        <Card className="border-2 border-border/50 hover:border-blue-500/50 transition-all">
           <CardContent className="p-6 lg:p-8 flex flex-col items-center">
             <div className="text-4xl font-bold text-foreground mb-2">Live</div>
             <div className="text-base font-medium text-foreground/80">Portfolio Status</div>

@@ -1,12 +1,5 @@
-# Format and lint staged files with Biome and restage them so the commit includes formatting
-STAGED_FILES="$(git diff --name-only --cached --relative --diff-filter=ACMR)"
-if [ -n "$STAGED_FILES" ]; then
-  FILES_TO_FORMAT=$(echo "$STAGED_FILES" | grep -E '\.(ts|tsx|js|jsx|json|jsonc)$' || true)
-  if [ -n "$FILES_TO_FORMAT" ]; then
-    echo "husky: running biome on staged files..."
-    pnpm biome check --write --unsafe --files-ignore-unknown=true --no-errors-on-unmatched --diagnostic-level=error $FILES_TO_FORMAT
-    git add $FILES_TO_FORMAT
-  fi
-fi
-
-exit 0
+#!/usr/bin/env sh
+pnpm run validate || {
+  echo "Validation failed! Fix lint, tests, and build before committing."
+  exit 1
+}

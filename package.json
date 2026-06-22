@@ -44,11 +44,13 @@
     "clean": "rm -rf node_modules apps/*/node_modules packages/*/node_modules",
     "clean:turbo": "rm -rf .turbo apps/*/.turbo packages/*/.turbo",
     "clean:all": "pnpm clean && pnpm clean:turbo",
-    "reset": "rm -rf node_modules apps/*/node_modules packages/*/node_modules apps/*/package-lock.json packages/*/package-lock.json pnpm-lock.yaml && pnpm install"
+    "reset": "rm -rf node_modules apps/*/node_modules packages/*/node_modules apps/*/package-lock.json packages/*/package-lock.json pnpm-lock.yaml && pnpm install",
+    "validate": "pnpm check && pnpm typecheck && pnpm test && pnpm build"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.0",
     "@playwright/test": "1.61.0",
+    "@vitest/coverage-v8": "4.1.9",
     "esbuild": "0.28.1",
     "husky": "^9.1.7",
     "turbo": "^2.9.18"
