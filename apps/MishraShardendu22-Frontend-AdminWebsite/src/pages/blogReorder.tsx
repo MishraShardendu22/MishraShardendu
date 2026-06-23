@@ -17,7 +17,7 @@ import {
   useSortable,
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { CheckCircle2, GripVertical, Loader2, TrendingDown, TrendingUp } from 'lucide-react'
+import { ArrowLeft, CheckCircle2, GripVertical, Loader2, TrendingDown, TrendingUp } from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
 import toast from 'react-hot-toast'
 import { ErrorState, Loading } from '../components/shared'
@@ -238,6 +238,14 @@ export default function BlogReorderPage() {
     <div className="space-y-8">
       <div className="border-b pb-6">
         <div className="flex items-center gap-3 mb-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => window.history.back()}
+            className="shrink-0 w-9 h-9 p-0"
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </Button>
           <div className="p-2 rounded-lg bg-primary/10">
             <svg className="h-6 w-6 text-primary" viewBox="0 0 24 24" fill="none">
               <path

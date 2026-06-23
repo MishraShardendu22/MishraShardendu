@@ -88,8 +88,8 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         <ThemeToggle />
       </div>
 
-      <header className="sticky top-0 z-50 bg-card/85 backdrop-blur-md border-b border-border shadow-sm">
-        <div className="mx-auto flex w-full max-w-[1700px] items-center justify-between px-4 sm:px-8 h-16">
+      <header className="sticky top-0 z-50 bg-card/85 backdrop-blur-md border-b border-border shadow-sm overflow-hidden">
+        <div className="mx-auto flex w-full max-w-[1700px] items-center justify-between px-4 sm:px-8 h-16 overflow-x-hidden">
           <div className="flex items-center gap-4 shrink-0">
             {isNarrow && (
               <button
@@ -100,7 +100,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               </button>
             )}
             <a
-              href="/admin/dashboard"
+              href="https://mishrashardendu22.is-a.dev"
               className="font-bold text-xl text-primary select-none whitespace-nowrap"
             >
               Admin Panel
