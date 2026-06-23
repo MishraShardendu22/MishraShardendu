@@ -188,7 +188,7 @@
   });
 </script>
 
-<div class="min-h-screen bg-background overflow-x-hidden" style="min-height: 100vh;">
+<div class="min-h-screen bg-background overflow-x-hidden w-full max-w-full" style="min-height: 100vh;">
   <Toast />
   <ThemeToggle />
   <ConfirmDialog />
@@ -208,8 +208,8 @@
     {/if}
   {:else}
     <BlogNavigation />
-  <main class="lg:ml-20 transition-all duration-300 ease-in-out overflow-x-hidden">
-      <div class="mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 max-w-[1920px]">
+  <main class="lg:ml-20 transition-all duration-300 ease-in-out overflow-x-hidden w-full max-w-full">
+      <div class="mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 max-w-7xl w-full">
         {#if pageComponent() === "list"}
           <BlogListPage />
 

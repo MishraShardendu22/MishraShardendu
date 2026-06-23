@@ -95,7 +95,7 @@
       </div>
     </div>
 
-    <h3 class="text-xl md:text-2xl font-bold mb-3 text-foreground line-clamp-2 leading-tight group-hover:text-primary transition-colors duration-300">
+    <h3 class="text-xl md:text-2xl font-bold mb-3 text-foreground line-clamp-2 leading-tight group-hover:text-primary transition-colors duration-300 break-words overflow-hidden">
       {blog.title}
     </h3>
 

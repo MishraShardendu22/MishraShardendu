@@ -9,6 +9,8 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* Ensure body has background */
@@ -18,6 +20,8 @@ body {
   min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* Ensure app container takes full space */
