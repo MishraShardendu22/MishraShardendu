@@ -189,17 +189,11 @@
 {/if}
 
 <aside
-  class="hidden lg:flex group fixed left-0 top-0 bottom-0 w-20 hover:w-72 border-r border-border bg-card/95 backdrop-blur-sm flex-col z-30 shadow-lg transition-[width] duration-300 ease-in-out"
+  class="hidden lg:flex fixed left-0 top-0 bottom-0 w-20 border-r border-border bg-card/95 backdrop-blur-sm flex-col z-30 shadow-lg"
   aria-label="Blog navigation"
 >
-  <div class="h-20 flex items-center border-b border-border bg-linear-to-b from-background/50 to-transparent shrink-0">
-    <div class="w-20 h-20 flex items-center justify-center shrink-0">
-      <BookAIcon class="w-6 h-6 text-primary" />
-    </div>
-    <div class="nav-label flex-1 pr-4 min-w-0">
-      <h1 class="font-bold text-lg whitespace-nowrap">Blog</h1>
-      <p class="text-xs text-muted-foreground whitespace-nowrap">Shardendu Mishra</p>
-    </div>
+  <div class="h-20 flex items-center justify-center border-b border-border bg-linear-to-b from-background/50 to-transparent">
+    <BookAIcon class="w-6 h-6 text-primary" />
   </div>
 
   <nav class="flex-1 py-4 px-2 space-y-1 overflow-y-auto">
@@ -207,121 +201,74 @@
       {@const isActive = isRouteActive(item.href)}
       <a 
         href={item.href} 
-        title={item.name}
         onclick={(e) => { e.preventDefault(); navigateTo(item.href); }}
         class={cn(
-          "flex items-center h-14 rounded-xl transition-all duration-300 relative",
+          "group/item flex items-center justify-center h-14 rounded-xl transition-all duration-300 relative",
           isActive 
             ? "bg-linear-to-r from-primary to-primary/90 text-primary-foreground shadow-lg shadow-primary/25" 
             : "hover:bg-linear-to-r hover:from-accent/10 hover:to-accent/5 hover:shadow-md"
         )}
       >
-        <div class="w-16 h-14 flex items-center justify-center shrink-0">
-          {#if item.icon}
-            {@const Icon = item.icon}
-            <Icon class={cn(
-              "h-6 w-6 transition-all duration-300",
-              isActive ? "text-primary-foreground" : "text-muted-foreground group-hover/item:text-primary"
-            )} />
-          {/if}
-        </div>
-        <div class="nav-label flex flex-col justify-center pr-4 flex-1 min-w-0">
-          <div class={cn("font-semibold text-sm whitespace-nowrap")}>{item.name}</div>
-          <div class={cn("text-xs whitespace-nowrap truncate", isActive ? "text-primary-foreground/80" : "text-muted-foreground")}>{item.description}</div>
+        {#if item.icon}
+          {@const Icon = item.icon}
+          <Icon class={cn(
+            "h-6 w-6 transition-all duration-300",
+            isActive ? "text-primary-foreground" : "text-muted-foreground"
+          )} />
+        {/if}
+        <div class="absolute left-full ml-2 px-3 py-2 bg-popover text-popover-foreground rounded-lg shadow-lg opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible transition-all duration-200 whitespace-nowrap z-50 pointer-events-none">
+          <div class="font-semibold text-sm">{item.name}</div>
+          <div class="text-xs text-muted-foreground">{item.description}</div>
         </div>
       </a>
     {/each}
   </nav>
 
-  <div class="border-t border-border bg-linear-to-t from-background/50 to-transparent shrink-0">
+  <div class="border-t border-border bg-linear-to-t from-background/50 to-transparent">
     {#if isAuthenticated && user}
-      <!-- User Avatar Section -->
-      <div class="p-3 border-b border-border/50">
-        <div class="flex items-center">
-          <div class="w-14 h-14 flex items-center justify-center shrink-0">
-            <div class="relative">
-              <Avatar
-                src={resolveImageUrl(user.profileImage || user.image || user.avatar || user.profile?.avatar || undefined)}
-                fallback={user.name?.charAt(0) || "U"}
-                class="w-12 h-12 border-2 border-primary/20 shadow-md"
-              />
-              {#if user.isVerified}
-                <div class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-emerald-500 rounded-full border-2 border-background flex items-center justify-center" role="img" aria-label="Verified account">
-                  <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-              {/if}
-            </div>
-          </div>
-          <div class="nav-label flex-1 min-w-0 ml-2">
-            <p class="text-sm font-bold truncate">{user.name}</p>
-
-            {#if !user.isVerified}
-              <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-amber-700 dark:text-amber-300 bg-amber-100 dark:bg-amber-950/50 px-1.5 py-0.5 rounded-md mt-1">
-                <span class="w-1 h-1 rounded-full bg-amber-500 animate-pulse"></span>
-                Not verified
-              </span>
-            {/if}
-          </div>
-        </div>
-        
-        {#if !user.isVerified}
-          <div class="mt-3 pt-3 border-t border-border/50 nav-label">
-            <CompactEmailVerification email={user.email} />
+      <div class="p-3 border-b border-border/50 flex items-center justify-center group/avatar relative">
+        <Avatar
+          src={resolveImageUrl(user.profileImage || user.image || user.avatar || user.profile?.avatar || undefined)}
+          fallback={user.name?.charAt(0) || "U"}
+          class="w-12 h-12 border-2 border-primary/20 shadow-md"
+        />
+        {#if user.isVerified}
+          <div class="absolute bottom-2 right-2 w-4 h-4 bg-emerald-500 rounded-full border-2 border-background flex items-center justify-center" role="img" aria-label="Verified account">
+            <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
           </div>
         {/if}
+        <div class="absolute left-full ml-2 px-3 py-2 bg-popover text-popover-foreground rounded-lg shadow-lg opacity-0 invisible group-hover/avatar:opacity-100 group-hover/avatar:visible transition-all duration-200 whitespace-nowrap z-50 pointer-events-none">
+          <div class="text-sm font-bold">{user.name}</div>
+          <div class="text-xs text-muted-foreground">{user.email}</div>
+        </div>
       </div>
       
-      <!-- Logout Section -->
       <div class="p-3">
-        <div class="flex items-center h-12">
-          <div class="w-14 h-12 flex items-center justify-center shrink-0">
-            <button
-              onclick={() => authStore.logout()}
-              class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors"
-              title="Sign Out"
-              aria-label="Sign out of your account"
-            >
-              <LogOut class="w-5 h-5 text-muted-foreground hover:text-red-600 dark:hover:text-red-400 transition-colors" aria-hidden="true" />
-            </button>
+        <button
+          onclick={() => authStore.logout()}
+          class="group/logout w-full h-12 flex items-center justify-center rounded-lg hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors relative"
+          aria-label="Sign out of your account"
+        >
+          <LogOut class="w-5 h-5 text-muted-foreground hover:text-red-600 dark:hover:text-red-400 transition-colors" aria-hidden="true" />
+          <div class="absolute left-full ml-2 px-3 py-2 bg-popover text-popover-foreground rounded-lg shadow-lg opacity-0 invisible group-hover/logout:opacity-100 group-hover/logout:visible transition-all duration-200 whitespace-nowrap z-50 pointer-events-none">
+            Sign Out
           </div>
-          <div class="nav-label flex-1 ml-2">
-            <Button 
-              size="sm" 
-              variant="outline" 
-              className="w-full hover:bg-red-50 dark:hover:bg-red-950/20 hover:text-red-600 dark:hover:text-red-400 hover:border-red-300 dark:hover:border-red-800 transition-all" 
-              onclick={() => authStore.logout()}
-            >
-              Sign Out
-            </Button>
-          </div>
-        </div>
+        </button>
       </div>
     {:else}
-      <!-- Sign In Section -->
       <div class="p-3">
-        <div class="flex items-center h-12">
-          <div class="w-14 h-12 flex items-center justify-center shrink-0">
-            <button
-              onclick={() => navigateTo('/login')}
-              class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 transition-colors"
-              title="Sign In"
-              aria-label="Sign in to your account"
-            >
-              <LogIn class="w-5 h-5 text-primary-foreground" aria-hidden="true" />
-            </button>
+        <button
+          onclick={() => navigateTo('/login')}
+          class="group/login w-full h-12 flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 transition-colors relative"
+          aria-label="Sign in to your account"
+        >
+          <LogIn class="w-5 h-5 text-primary-foreground" aria-hidden="true" />
+          <div class="absolute left-full ml-2 px-3 py-2 bg-popover text-popover-foreground rounded-lg shadow-lg opacity-0 invisible group-hover/login:opacity-100 group-hover/login:visible transition-all duration-200 whitespace-nowrap z-50 pointer-events-none">
+            Sign In
           </div>
-          <div class="nav-label flex-1 ml-2">
-            <Button 
-              size="default" 
-              className="w-full bg-linear-to-r from-primary to-primary/90" 
-              onclick={() => navigateTo('/login')}
-            >
-              Sign In
-            </Button>
-          </div>
-        </div>
+        </button>
       </div>
     {/if}
   </div>
