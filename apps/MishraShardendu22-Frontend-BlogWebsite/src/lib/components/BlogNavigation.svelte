@@ -197,77 +197,121 @@
 {/if}
 
 <aside
-  class="hidden lg:flex fixed left-0 top-0 bottom-0 w-20 border-r border-border bg-card/95 backdrop-blur-sm flex-col z-30 shadow-lg overflow-hidden"
+  class="hidden lg:flex fixed left-0 top-0 bottom-0 w-20 min-w-20 max-w-20 border-r border-border bg-card/95 backdrop-blur-sm flex-col z-30 shadow-lg overflow-hidden"
   aria-label="Blog navigation"
 >
-  <div class="h-20 flex items-center justify-center border-b border-border bg-linear-to-b from-background/50 to-transparent">
+  <div class="h-20 flex items-center justify-center border-b border-border bg-linear-to-b from-background/50 to-transparent shrink-0">
     <BookAIcon class="w-6 h-6 text-primary" />
   </div>
 
-  <nav class="flex-1 py-4 px-2 space-y-1 overflow-y-auto">
+  <nav class="flex-1 py-4 px-2 space-y-1 overflow-y-auto overflow-x-hidden">
     {#each visibleNavItems as item}
       {@const isActive = isRouteActive(item.href)}
-      <a 
-        href={item.href} 
-        onclick={(e) => { 
-          e.preventDefault(); 
-          if (item.href.startsWith('http')) {
+
+      <a
+        href={item.href}
+        onclick={(e) => {
+          e.preventDefault();
+
+          if (item.href.startsWith("http")) {
             window.location.href = item.href;
           } else {
             navigateTo(item.href);
           }
         }}
         class={cn(
-          "group/item flex items-center justify-center h-14 rounded-xl transition-all duration-300 relative",
-          isActive 
-            ? "bg-linear-to-r from-primary to-primary/90 text-primary-foreground shadow-lg shadow-primary/25" 
+          "group/item flex items-center justify-center h-14 rounded-xl transition-all duration-300 relative overflow-hidden",
+          isActive
+            ? "bg-linear-to-r from-primary to-primary/90 text-primary-foreground shadow-lg shadow-primary/25"
             : "hover:bg-linear-to-r hover:from-accent/10 hover:to-accent/5 hover:shadow-md"
         )}
       >
         {#if item.icon}
           {@const Icon = item.icon}
-          <Icon class={cn(
-            "h-6 w-6 transition-all duration-300",
-            isActive ? "text-primary-foreground" : "text-muted-foreground"
-          )} />
+
+          <Icon
+            class={cn(
+              "h-6 w-6 transition-all duration-300",
+              isActive
+                ? "text-primary-foreground"
+                : "text-muted-foreground"
+            )}
+          />
         {/if}
-        <div class="absolute left-full ml-2 px-3 py-2 bg-popover text-popover-foreground rounded-lg shadow-lg opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible transition-all duration-200 whitespace-nowrap z-50 pointer-events-none">
+
+        <div
+          class="fixed px-3 py-2 bg-popover text-popover-foreground rounded-lg shadow-lg opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible transition-all duration-200 whitespace-nowrap z-[9999] pointer-events-none"
+          style="left: 96px;"
+        >
           <div class="font-semibold text-sm">{item.name}</div>
-          <div class="text-xs text-muted-foreground">{item.description}</div>
+          <div class="text-xs text-muted-foreground">
+            {item.description}
+          </div>
         </div>
       </a>
     {/each}
   </nav>
 
-  <div class="border-t border-border bg-linear-to-t from-background/50 to-transparent">
+  <div class="border-t border-border bg-linear-to-t from-background/50 to-transparent shrink-0">
     {#if isAuthenticated && user}
       <div class="p-3 border-b border-border/50 flex items-center justify-center group/avatar relative">
         <Avatar
-          src={resolveImageUrl(user.profileImage || user.image || user.avatar || user.profile?.avatar || undefined)}
+          src={resolveImageUrl(
+            user.profileImage ||
+            user.image ||
+            user.avatar ||
+            user.profile?.avatar ||
+            undefined
+          )}
           fallback={user.name?.charAt(0) || "U"}
           class="w-12 h-12 border-2 border-primary/20 shadow-md"
         />
+
         {#if user.isVerified}
-          <div class="absolute bottom-2 right-2 w-4 h-4 bg-emerald-500 rounded-full border-2 border-background flex items-center justify-center" role="img" aria-label="Verified account">
-            <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+          <div
+            class="absolute bottom-2 right-2 w-4 h-4 bg-emerald-500 rounded-full border-2 border-background flex items-center justify-center"
+            role="img"
+            aria-label="Verified account"
+          >
+            <svg
+              class="w-2.5 h-2.5 text-white"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
             </svg>
           </div>
         {/if}
-        <div class="absolute left-full ml-2 px-3 py-2 bg-popover text-popover-foreground rounded-lg shadow-lg opacity-0 invisible group-hover/avatar:opacity-100 group-hover/avatar:visible transition-all duration-200 whitespace-nowrap z-50 pointer-events-none">
+
+        <div
+          class="fixed px-3 py-2 bg-popover text-popover-foreground rounded-lg shadow-lg opacity-0 invisible group-hover/avatar:opacity-100 group-hover/avatar:visible transition-all duration-200 whitespace-nowrap z-[9999] pointer-events-none"
+          style="left: 96px; bottom: 120px;"
+        >
           <div class="text-sm font-bold">{user.name}</div>
           <div class="text-xs text-muted-foreground">{user.email}</div>
         </div>
       </div>
-      
+
       <div class="p-3">
         <button
           onclick={() => authStore.logout()}
           class="group/logout w-full h-12 flex items-center justify-center rounded-lg hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors relative"
           aria-label="Sign out of your account"
         >
-          <LogOut class="w-5 h-5 text-muted-foreground hover:text-red-600 dark:hover:text-red-400 transition-colors" aria-hidden="true" />
-          <div class="absolute left-full ml-2 px-3 py-2 bg-popover text-popover-foreground rounded-lg shadow-lg opacity-0 invisible group-hover/logout:opacity-100 group-hover/logout:visible transition-all duration-200 whitespace-nowrap z-50 pointer-events-none">
+          <LogOut
+            class="w-5 h-5 text-muted-foreground hover:text-red-600 dark:hover:text-red-400 transition-colors"
+            aria-hidden="true"
+          />
+
+          <div
+            class="fixed px-3 py-2 bg-popover text-popover-foreground rounded-lg shadow-lg opacity-0 invisible group-hover/logout:opacity-100 group-hover/logout:visible transition-all duration-200 whitespace-nowrap z-[9999] pointer-events-none"
+            style="left: 96px; bottom: 48px;"
+          >
             Sign Out
           </div>
         </button>
@@ -279,8 +323,15 @@
           class="group/login w-full h-12 flex items-center justify-center rounded-lg bg-primary hover:bg-primary/90 transition-colors relative"
           aria-label="Sign in to your account"
         >
-          <LogIn class="w-5 h-5 text-primary-foreground" aria-hidden="true" />
-          <div class="absolute left-full ml-2 px-3 py-2 bg-popover text-popover-foreground rounded-lg shadow-lg opacity-0 invisible group-hover/login:opacity-100 group-hover/login:visible transition-all duration-200 whitespace-nowrap z-50 pointer-events-none">
+          <LogIn
+            class="w-5 h-5 text-primary-foreground"
+            aria-hidden="true"
+          />
+
+          <div
+            class="fixed px-3 py-2 bg-popover text-popover-foreground rounded-lg shadow-lg opacity-0 invisible group-hover/login:opacity-100 group-hover/login:visible transition-all duration-200 whitespace-nowrap z-[9999] pointer-events-none"
+            style="left: 96px; bottom: 48px;"
+          >
             Sign In
           </div>
         </button>
