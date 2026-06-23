@@ -160,7 +160,15 @@
       <div class="flex flex-col space-y-2">
         {#each visibleNavItems as item}
           {@const isActive = isRouteActive(item.href)}
-          <a href={item.href} onclick={(e) => { e.preventDefault(); isMobileMenuOpen = false; navigateTo(item.href); }} class={cn("flex items-center gap-3 p-3 rounded-md", isActive ? "bg-primary/10 text-primary" : "hover:bg-muted/40")}> 
+          <a href={item.href} onclick={(e) => { 
+            e.preventDefault(); 
+            isMobileMenuOpen = false; 
+            if (item.href.startsWith('http')) {
+              window.location.href = item.href;
+            } else {
+              navigateTo(item.href);
+            }
+          }} class={cn("flex items-center gap-3 p-3 rounded-md", isActive ? "bg-primary/10 text-primary" : "hover:bg-muted/40")}> 
             {#if item.icon}
               {@const Icon = item.icon}
               <Icon class={cn("h-5 w-5", isActive ? "text-primary" : "text-muted-foreground")} />
@@ -201,7 +209,14 @@
       {@const isActive = isRouteActive(item.href)}
       <a 
         href={item.href} 
-        onclick={(e) => { e.preventDefault(); navigateTo(item.href); }}
+        onclick={(e) => { 
+          e.preventDefault(); 
+          if (item.href.startsWith('http')) {
+            window.location.href = item.href;
+          } else {
+            navigateTo(item.href);
+          }
+        }}
         class={cn(
           "group/item flex items-center justify-center h-14 rounded-xl transition-all duration-300 relative",
           isActive 
