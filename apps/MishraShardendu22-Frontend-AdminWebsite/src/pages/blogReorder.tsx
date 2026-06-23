@@ -17,7 +17,14 @@ import {
   useSortable,
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { ArrowLeft, CheckCircle2, GripVertical, Loader2, TrendingDown, TrendingUp } from 'lucide-react'
+import {
+  ArrowLeft,
+  CheckCircle2,
+  GripVertical,
+  Loader2,
+  TrendingDown,
+  TrendingUp,
+} from 'lucide-react'
 import { useEffect, useState } from 'preact/hooks'
 import toast from 'react-hot-toast'
 import { ErrorState, Loading } from '../components/shared'
