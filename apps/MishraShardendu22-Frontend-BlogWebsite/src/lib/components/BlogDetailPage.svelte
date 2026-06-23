@@ -338,6 +338,14 @@
     <ErrorState message={error} onRetry={loadBlog} />
   {:else if blog}
 
+<!-- Desktop back button -->
+<div class="hidden lg:block mb-6">
+  <Button variant="ghost" size="sm" onclick={() => history.back()} className="gap-2" aria-label="Go back to previous page">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0L3.586 10l4.707-4.707a1 1 0 011.414 1.414L6.414 10l3.293 3.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>
+    Back
+  </Button>
+</div>
+
 <article>
   {#if blog.image}
     <div class="group relative rounded-lg overflow-hidden border border-border mb-8 h-62.5">

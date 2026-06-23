@@ -189,7 +189,7 @@
 {/if}
 
 <aside
-  class="hidden lg:flex fixed left-0 top-0 bottom-0 w-20 border-r border-border bg-card/95 backdrop-blur-sm flex-col z-30 shadow-lg"
+  class="hidden lg:flex fixed left-0 top-0 bottom-0 w-20 border-r border-border bg-card/95 backdrop-blur-sm flex-col z-30 shadow-lg overflow-hidden"
   aria-label="Blog navigation"
 >
   <div class="h-20 flex items-center justify-center border-b border-border bg-linear-to-b from-background/50 to-transparent">
