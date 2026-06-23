@@ -4,4 +4,4 @@
 /apps/MishraShardendu22-Frontend-PersonalWebsite/**/*.ts linguist-detectable=false
 
 /apps/MishraShardendu22-Frontend-BlogWebsite/**/*.ts linguist-detectable=true
-*.html linguist-vendored
+*.html linguist-generated
