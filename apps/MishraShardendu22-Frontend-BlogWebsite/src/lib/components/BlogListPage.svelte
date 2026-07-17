@@ -74,8 +74,8 @@
   <!-- Page header with inline controls -->
   <div class="flex items-start justify-between gap-4">
     <div class="space-y-2">
-      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent drop-shadow-sm">Blog Posts</h1>
-      <p class="text-base text-muted-foreground font-medium">Explore articles about web development, programming, and tech insights</p>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent drop-shadow-sm">Github Backup</h1>
+      <p class="text-base text-muted-foreground font-medium">Explore technical articles, updates, and programming insights</p>
     </div>
 
     <div class="flex items-center gap-3">

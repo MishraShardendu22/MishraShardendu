@@ -98,7 +98,7 @@ export default function CertificationsPage() {
             {paginatedCertifications.map((cert) => (
               <Card
                 key={cert.inline.id}
-                className="hover:shadow-lg transition-shadow h-62.5 w-full flex flex-col overflow-hidden border hover:border-secondary/50 rounded-xl"
+                className="hover:shadow-lg transition-shadow h-[280px] w-full flex flex-col overflow-hidden border hover:border-secondary/50 rounded-xl"
               >
                 <CardHeader className="p-4 pb-2">
                   <div className="flex items-start justify-between gap-2">

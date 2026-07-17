@@ -25,8 +25,8 @@
   ];
 
   const MY_WEBSITES = [
-    { name: "Backup Observatory", url: "https://github.mishrashardendu22.is-a.dev", icon: Code },
-    { name: "Tech Blog", url: "https://blogs.mishrashardendu22.is-a.dev", icon: BookOpen },
+    { name: "Systems Lab", url: "https://github.mishrashardendu22.is-a.dev", icon: Code },
+    { name: "Github Backup", url: "https://blogs.mishrashardendu22.is-a.dev", icon: BookOpen },
     { name: "Admin Portal", url: "https://admin.mishrashardendu22.is-a.dev", icon: Shield },
     { name: "My UI Library", url: "https://pixel-art-8-bit.mishrashardendu22.is-a.dev", icon: Package },
   ];
@@ -83,7 +83,7 @@
             Go
           </span>
           <span class="px-4 py-2 bg-[#7c3aed]/10 border border-[#7c3aed]/25 rounded-lg text-xs text-[#7c3aed] font-semibold">
-            Next.js
+            Svelte
           </span>
           <span class="px-4 py-2 bg-[#18181b] border border-[#27272a] rounded-lg text-xs text-zinc-300 font-semibold">
             Kubernetes

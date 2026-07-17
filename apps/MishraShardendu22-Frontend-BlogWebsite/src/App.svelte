@@ -3,11 +3,9 @@
   import BlogListPage from "./lib/components/BlogListPage.svelte";
   import Toast from "./lib/components/Toast.svelte";
   import ConfirmDialog from "./lib/components/ConfirmDialog.svelte";
-  import ThemeToggle from "./lib/components/ThemeToggle.svelte";
   import Footer from "./lib/components/Footer.svelte";
   import { authStore } from "./lib/auth";
   import { updateSEO } from "./lib/seo";
-  import { themeStore } from "./lib/theme";
   import { navigateTo } from "./lib/navigation";
   import { onMount } from "svelte";
 
@@ -27,7 +25,7 @@
     
     (async () => {
       try {
-        themeStore.init();
+        document.documentElement.classList.add('dark');
         await authStore.init();
         updatePageSEO();
       } catch (error) {
@@ -196,7 +194,6 @@
 
 <div class="min-h-screen bg-background overflow-x-hidden w-full max-w-full" style="min-height: 100vh;">
   <Toast />
-  <ThemeToggle />
   <ConfirmDialog />
   
   {#if isLoading}

@@ -14,7 +14,6 @@ import type { JSX } from 'preact'
 import { useEffect, useState } from 'preact/hooks'
 import { route } from 'preact-router'
 import { useAuth } from '../../hooks/use-auth'
-import ThemeToggle from '../extra/ThemeToggle'
 import { Button } from '../ui/button'
 
 const navigation = [
@@ -82,10 +81,6 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         <div className="absolute -top-32 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
         <div className="absolute top-24 right-[-8%] h-80 w-80 rounded-full bg-accent/20 blur-3xl" />
         <div className="absolute bottom-[-10%] left-[-6%] h-72 w-72 rounded-full bg-secondary/15 blur-3xl" />
-      </div>
-
-      <div className="fixed bottom-4 right-4 z-60">
-        <ThemeToggle />
       </div>
 
       <header className="sticky top-0 z-50 bg-card/85 backdrop-blur-md border-b border-border shadow-sm overflow-hidden">

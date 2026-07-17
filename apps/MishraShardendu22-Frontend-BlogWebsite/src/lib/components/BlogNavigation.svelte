@@ -126,7 +126,7 @@
       <div class="flex items-center justify-between mb-4">
         <div class="flex items-center gap-3">
           <div>
-            <div class="font-bold" id="mobile-nav-title">Blog</div>
+            <div class="font-bold" id="mobile-nav-title">Github Backup</div>
             <div class="text-xs text-muted-foreground">Shardendu Mishra</div>
           </div>
         </div>

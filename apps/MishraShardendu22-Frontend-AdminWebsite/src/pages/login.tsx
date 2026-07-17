@@ -2,7 +2,6 @@ import { Eye, EyeOff, Shield } from 'lucide-react'
 import { useState } from 'preact/hooks'
 import { route } from 'preact-router'
 import toast from 'react-hot-toast'
-import ThemeToggle from '../components/extra/ThemeToggle'
 import { Alert, AlertDescription } from '../components/ui/alert'
 import { Button } from '../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
@@ -45,11 +44,6 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-linear-to-br from-background via-background/95 to-background p-4">
-      {/* Fixed Theme Toggle - Bottom right position */}
-      <div className="fixed bottom-4 right-4 z-50">
-        <ThemeToggle />
-      </div>
-
       <div className="space-y-8 max-w-md w-full">
         <div className="text-center space-y-4">
           <div className="flex justify-center mb-4">

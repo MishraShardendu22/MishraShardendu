@@ -48,12 +48,12 @@
     "validate": "pnpm check && pnpm typecheck && pnpm test && pnpm build"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.0",
-    "@playwright/test": "1.61.0",
-    "@vitest/coverage-v8": "4.1.9",
+    "@biomejs/biome": "2.5.4",
+    "@playwright/test": "1.61.1",
+    "@vitest/coverage-v8": "4.1.10",
     "esbuild": "0.28.1",
     "husky": "^9.1.7",
-    "turbo": "^2.9.18"
+    "turbo": "^2.10.5"
   },
   "engines": {
     "node": ">=22.13.0",

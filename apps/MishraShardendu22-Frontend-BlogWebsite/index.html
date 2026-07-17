@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     
     <!-- Primary Meta Tags -->
-    <title>Blogs By Shardendu Mishra | Tech Articles & Programming Insights</title>
-    <meta name="title" content="Blogs By Shardendu Mishra | Tech Articles & Programming Insights" />
+    <title>Github Backup By Shardendu Mishra | Tech Articles & Programming Insights</title>
+    <meta name="title" content="Github Backup By Shardendu Mishra | Tech Articles & Programming Insights" />
     <meta name="description" content="Explore in-depth technical articles about web development, software engineering, programming best practices, and modern tech stack insights by Shardendu Mishra." />
     <meta name="keywords" content="Shardendu Mishra blog, technical blog, web development articles, programming tutorials, software engineering, Go programming, React tutorials, TypeScript guides, tech insights, developer blog, coding tips, IIIT Dharwad, full stack development" />
     <meta name="author" content="Shardendu Mishra" />
@@ -33,18 +33,18 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://blogs.mishrashardendu22.is-a.dev" />
-    <meta property="og:title" content="Blogs By Shardendu Mishra | Tech Articles & Programming Insights" />
+    <meta property="og:title" content="Github Backup By Shardendu Mishra | Tech Articles & Programming Insights" />
     <meta property="og:description" content="Explore in-depth technical articles about web development, software engineering, programming best practices, and modern tech stack insights." />
     <meta property="og:image" content="https://res.cloudinary.com/dkxw15and/image/upload/v1770811800/image-upload-app/whgmghnkqpj32ruoupdx.webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:site_name" content="Shardendu Mishra Blog" />
+    <meta property="og:site_name" content="Shardendu Mishra Github Backup" />
     <meta property="og:locale" content="en_US" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://blogs.mishrashardendu22.is-a.dev" />
-    <meta name="twitter:title" content="Blogs By Shardendu Mishra | Tech Articles & Programming Insights" />
+    <meta name="twitter:title" content="Github Backup By Shardendu Mishra | Tech Articles & Programming Insights" />
     <meta name="twitter:description" content="Explore in-depth technical articles about web development, software engineering, programming best practices, and modern tech stack insights." />
     <meta name="twitter:image" content="https://res.cloudinary.com/dkxw15and/image/upload/v1770811800/image-upload-app/whgmghnkqpj32ruoupdx.webp" />
     <meta name="twitter:creator" content="@Shardendu_M" />
@@ -83,45 +83,16 @@
     <script>
       (function() {
         try {
-          // Migrate old theme keys to new shared key for backward compatibility
-          const oldBlogTheme = localStorage.getItem('blog-theme');
-          const oldTheme = localStorage.getItem('theme');
-          const sharedTheme = localStorage.getItem('portfolio-theme');
-          
-          if (!sharedTheme && (oldBlogTheme || oldTheme)) {
-            const migratedTheme = oldBlogTheme || oldTheme;
-            localStorage.setItem('portfolio-theme', migratedTheme);
-            // Clean up old keys
-            localStorage.removeItem('blog-theme');
-            localStorage.removeItem('theme');
-          }
-          
-          // Use shared theme key across all portfolio websites for synchronized theme
-          const theme = localStorage.getItem('portfolio-theme') || 
-            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-          
           const root = document.documentElement;
+          root.classList.add('dark');
+          root.style.backgroundColor = '#000000';
+          root.style.color = '#ffffff';
           
-          if (theme === 'dark') {
-            root.classList.add('dark');
-          } else {
-            root.classList.remove('dark');
-          }
-          
-          // Apply immediate background to prevent white flash
-          root.style.backgroundColor = theme === 'dark' ? '#000000' : '#fef7f0';
-          root.style.color = theme === 'dark' ? '#ffffff' : '#1c1c1e';
-          
-          // Set theme-color meta tag
           const metaThemeColor = document.querySelector('meta[name="theme-color"]');
           if (metaThemeColor) {
-            metaThemeColor.setAttribute('content', theme === 'dark' ? '#000000' : '#fef7f0');
+            metaThemeColor.setAttribute('content', '#000000');
           }
-        } catch (e) {
-          // Fallback to light theme
-          document.documentElement.style.backgroundColor = '#fef7f0';
-          document.documentElement.style.color = '#1c1c1e';
-        }
+        } catch (e) {}
       })();
     </script>
     
@@ -156,7 +127,7 @@
           "@type": "WebSite",
           "@id": "https://blogs.mishrashardendu22.is-a.dev/#website",
           "url": "https://blogs.mishrashardendu22.is-a.dev",
-          "name": "Blogs By Shardendu Mishra",
+          "name": "Github Backup",
           "description": "Explore in-depth technical articles about web development, software engineering, programming best practices, and modern tech stack insights.",
           "publisher": {
             "@id": "https://blogs.mishrashardendu22.is-a.dev/#person"
@@ -185,7 +156,7 @@
           "@type": "Blog",
           "@id": "https://blogs.mishrashardendu22.is-a.dev/#blog",
           "mainEntityOfPage": "https://blogs.mishrashardendu22.is-a.dev",
-          "name": "Shardendu Mishra's Tech Blog",
+          "name": "Shardendu Mishra's Github Backup",
           "description": "Technical articles about web development, Go, React, TypeScript, and software engineering best practices.",
           "author": {
             "@id": "https://blogs.mishrashardendu22.is-a.dev/#person"
