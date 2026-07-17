@@ -16,86 +16,31 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   background-image:
-    radial-gradient(900px circle at 10% 10%, rgba(0, 200, 150, 0.12), transparent 40%),
-    radial-gradient(800px circle at 90% 20%, rgba(59, 130, 246, 0.12), transparent 45%),
-    radial-gradient(700px circle at 50% 100%, rgba(124, 179, 66, 0.1), transparent 50%);
+    radial-gradient(900px circle at 10% 10%, rgba(124, 58, 237, 0.06), transparent 40%),
+    radial-gradient(800px circle at 90% 20%, rgba(59, 130, 246, 0.05), transparent 45%),
+    radial-gradient(700px circle at 50% 100%, rgba(124, 58, 237, 0.04), transparent 50%);
   background-attachment: fixed;
-}
-
-.dark body {
-  background-image:
-    radial-gradient(900px circle at 10% 10%, rgba(16, 185, 129, 0.14), transparent 40%),
-    radial-gradient(800px circle at 90% 20%, rgba(59, 130, 246, 0.12), transparent 45%),
-    radial-gradient(700px circle at 50% 100%, rgba(6, 182, 212, 0.12), transparent 50%);
 }
 
 /* Mobile-first responsive font scaling */
 :root {
   /* Enhanced font system with better mobile readability */
-  --font-body: 'Manrope', 'IBM Plex Sans', system-ui, sans-serif;
-  --font-heading: 'Space Grotesk', 'Manrope', system-ui, sans-serif;
-  --font-subheading: 'Space Grotesk', 'Manrope', system-ui, sans-serif;
-  --font-geist-sans: 'Manrope', 'IBM Plex Sans', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-heading: 'Space Grotesk', system-ui, sans-serif;
+  --font-subheading: 'Space Grotesk', system-ui, sans-serif;
+  --font-geist-sans: 'IBM Plex Sans', system-ui, sans-serif;
   --font-geist-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
 
   /* Mobile-optimized sizing */
-  --radius: 0.875rem; /* Increased for better touch targets */
+  --radius: 0.75rem; /* Lock standard radius to 12px (0.75rem) */
   --touch-target: 44px; /* Minimum touch target size */
   --safe-area-inset-top: env(safe-area-inset-top, 0px);
   --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
   --safe-area-inset-left: env(safe-area-inset-left, 0px);
   --safe-area-inset-right: env(safe-area-inset-right, 0px);
 
-  /* Enhanced Light Theme with better contrast */
-  --background: #f6f7f9;
-  --background-secondary: #eef2f6;
-  --foreground: #1c1c1e;
-  --card: #ffffff;
-  --card-foreground: #1c1c1e;
-  --popover: #ffffff;
-  --popover-foreground: #1c1c1e;
-  --primary: #00c896;
-  --primary-foreground: #ffffff;
-  --primary-hover: #00b085;
-  --secondary: #7cb342;
-  --secondary-foreground: #ffffff;
-  --secondary-hover: #689f38;
-  --muted: #f1f5f9;
-  --muted-foreground: #556070;
-  --accent: #3b82f6;
-  --accent-foreground: #ffffff;
-  --accent-hover: #2563eb;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: #e2e8f0;
-  --border-strong: #cbd5e1;
-  --input: #f8fafc;
-  --input-border: #cbd5e1;
-  --ring: #3b82f6;
-  --shadow: rgba(0, 0, 0, 0.1);
-  --shadow-strong: rgba(0, 0, 0, 0.15);
-
-  /* Chart colors */
-  --chart-1: #00c896;
-  --chart-2: #3b82f6;
-  --chart-3: #f59e0b;
-  --chart-4: #ef4444;
-  --chart-5: #8b5cf6;
-
-  /* Sidebar system */
-  --sidebar: #ffffff;
-  --sidebar-foreground: #1c1c1e;
-  --sidebar-primary: #00c896;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #3b82f6;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #e5e7eb;
-  --sidebar-ring: #3b82f6;
-}
-
-.dark {
-  /* Premium Zinc & Violet Dark Theme */
+  /* Premium Zinc & Violet Dark Theme - Default */
   --background: #09090b; /* zinc-950 */
   --background-secondary: #0f0f12; 
   --foreground: #fafafa; /* zinc-50 */
@@ -282,7 +227,7 @@ h6 {
   --color-shadow-strong: var(--shadow-strong);
   --radius-xs: calc(var(--radius) - 6px);
   --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-md: calc(var(--radius) - 4px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);

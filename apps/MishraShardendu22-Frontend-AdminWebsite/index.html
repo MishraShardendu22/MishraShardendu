@@ -37,8 +37,7 @@
     <meta name="twitter:image:alt" content="Shardendu Mishra Professional Photo" />
     
     <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#10b981" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#00c896" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#7c3aed" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Admin Dashboard" />
@@ -85,27 +84,13 @@
     }
     </script>
     
-    <!-- Theme initialization script - prevents FOUC and handles migration -->
+    <!-- Theme initialization script - prevents FOUC -->
     <script>
       (function() {
         try {
-          // Migrate old theme keys to new shared key for backward compatibility
-          const oldTheme = localStorage.getItem('theme');
-          const sharedTheme = localStorage.getItem('portfolio-theme');
-          
-          if (!sharedTheme && oldTheme) {
-            localStorage.setItem('portfolio-theme', oldTheme);
-            localStorage.removeItem('theme');
-          }
-          
-          // Use shared theme key across all portfolio websites for synchronized theme
-          const theme = localStorage.getItem('portfolio-theme') || 'system';
-          const isDark = theme === 'dark' || 
-            (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-          
-          const root = document.documentElement;
-          root.classList.remove('light', 'dark');
-          root.classList.add(isDark ? 'dark' : 'light');
+          localStorage.setItem('portfolio-theme', 'dark');
+          document.documentElement.classList.remove('light');
+          document.documentElement.classList.add('dark');
         } catch (e) {
           console.error('Failed to initialize theme:', e);
         }
@@ -115,10 +100,9 @@
   <body>
     <!-- Inline critical CSS to prevent FOUC -->
     <style>
-      html, body { margin: 0; padding: 0; min-height: 100vh; }
-      #app { min-height: 100vh; }
-      html { background-color: #fef7f0; color: #1c1c1e; }
-      html.dark { background-color: #000000; color: #ffffff; }
+      html, body { margin: 0; padding: 0; min-height: 100vh; background-color: #09090b; color: #fafafa; }
+      #app { min-height: 100vh; background-color: #09090b; }
+      html { background-color: #09090b; color: #fafafa; }
       .flex { display: flex; }
       .items-center { align-items: center; }
       .justify-center { justify-content: center; }

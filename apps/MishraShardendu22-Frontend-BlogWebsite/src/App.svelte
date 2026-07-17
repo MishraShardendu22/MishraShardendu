@@ -4,6 +4,7 @@
   import Toast from "./lib/components/Toast.svelte";
   import ConfirmDialog from "./lib/components/ConfirmDialog.svelte";
   import ThemeToggle from "./lib/components/ThemeToggle.svelte";
+  import Footer from "./lib/components/Footer.svelte";
   import { authStore } from "./lib/auth";
   import { updateSEO } from "./lib/seo";
   import { themeStore } from "./lib/theme";
@@ -21,38 +22,43 @@
   let isOwner = $state(false);
   let isLoading = $state(true);
 
-  onMount(async () => {
-    try {
-      themeStore.init();
-      await authStore.init();
-      updatePageSEO();
+  onMount(() => {
+    let cleanup: (() => void) | undefined;
+    
+    (async () => {
+      try {
+        themeStore.init();
+        await authStore.init();
+        updatePageSEO();
+      } catch (error) {
+        console.error('[Blog App] Initialization error:', error);
+      }
+    })();
+    
+    // Set up navigation event listeners
+    const handleLocationChange = () => {
+      currentPath = window.location.pathname;
       
-      // Set up navigation event listeners
-      const handleLocationChange = () => {
-        currentPath = window.location.pathname;
-        
-        if (currentPath === '/' || currentPath === '') {
-          window.history.replaceState(null, '', '/read');
-          currentPath = '/read';
-        }
-      };
-
-      // Check initial path
-      const checkPath = window.location.pathname;
-      if (checkPath === '/' || checkPath === '') {
+      if (currentPath === '/' || currentPath === '') {
         window.history.replaceState(null, '', '/read');
         currentPath = '/read';
       }
+    };
 
-      window.addEventListener("popstate", handleLocationChange);
-      
-      // Return cleanup function
-      return () => {
-        window.removeEventListener("popstate", handleLocationChange);
-      };
-    } catch (error) {
-      console.error('[Blog App] Initialization error:', error);
+    // Check initial path
+    const checkPath = window.location.pathname;
+    if (checkPath === '/' || checkPath === '') {
+      window.history.replaceState(null, '', '/read');
+      currentPath = '/read';
     }
+
+    window.addEventListener("popstate", handleLocationChange);
+    
+    cleanup = () => {
+      window.removeEventListener("popstate", handleLocationChange);
+    };
+    
+    return cleanup;
   });
 
   authStore.subscribe((state) => {
@@ -261,6 +267,7 @@
         </div>
         {/if}
       </div>
+      <Footer />
     </main>
   {/if}
 </div>
