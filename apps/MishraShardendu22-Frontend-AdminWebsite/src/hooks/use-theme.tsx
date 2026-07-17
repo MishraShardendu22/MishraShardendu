@@ -25,7 +25,7 @@ export function ThemeProvider({ children }: { children: JSX.Element | JSX.Elemen
 
   useEffect(() => {
     applyTheme()
-    
+
     // Auto-migrate any local storage theme to dark
     localStorage.setItem('portfolio-theme', 'dark')
 
