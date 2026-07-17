@@ -25,8 +25,8 @@
   ];
 
   const MY_WEBSITES = [
-    { name: "Systems Lab", url: "https://github.mishrashardendu22.is-a.dev", icon: Code },
-    { name: "Github Backup", url: "https://blogs.mishrashardendu22.is-a.dev", icon: BookOpen },
+    { name: "Github Backup Lab", url: "https://github.mishrashardendu22.is-a.dev", icon: Code },
+    { name: "Main", url: "https://mishrashardendu22.is-a.dev", icon: BookOpen },
     { name: "Admin Portal", url: "https://admin.mishrashardendu22.is-a.dev", icon: Shield },
     { name: "My UI Library", url: "https://pixel-art-8-bit.mishrashardendu22.is-a.dev", icon: Package },
   ];
