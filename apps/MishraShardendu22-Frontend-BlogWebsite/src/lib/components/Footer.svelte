@@ -197,15 +197,8 @@
       </div>
     </div>
 
-    <!-- Visca Barça Banner & Scroll To Top -->
+    <!-- Banner & Scroll To Top -->
     <div class="mt-16 pt-8 border-t border-[#18181b] flex flex-col items-center gap-8">
-      <div class="text-center w-full">
-        <h2 class="font-black text-5xl sm:text-7xl md:text-9xl lg:text-[10rem] xl:text-[14rem] tracking-wider leading-none">
-          <span class="text-[#3b82f6] italic font-heading">VISCA</span>
-          <span class="text-[#ef4444] italic font-heading">BARÇA</span>
-        </h2>
-      </div>
-
       <div class="w-full flex justify-between items-center text-xs text-zinc-500">
         <span>&copy; 2026 Shardendu Mishra</span>
         <button
