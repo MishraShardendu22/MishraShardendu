@@ -103,29 +103,9 @@ export function updateSEO(config: SEOConfig = {}): void {
     updateMetaTag('name', 'googlebot', 'noindex, nofollow, noarchive, nosnippet')
   }
 
-  // Theme color
-  const themeColorDark = document.querySelector(
-    'meta[name="theme-color"][media="(prefers-color-scheme: dark)"]'
-  )
-  const themeColorLight = document.querySelector(
-    'meta[name="theme-color"][media="(prefers-color-scheme: light)"]'
-  )
-
-  if (!themeColorDark) {
-    const meta = document.createElement('meta')
-    meta.name = 'theme-color'
-    meta.content = '#10b981'
-    meta.media = '(prefers-color-scheme: dark)'
-    document.head.appendChild(meta)
-  }
-
-  if (!themeColorLight) {
-    const meta = document.createElement('meta')
-    meta.name = 'theme-color'
-    meta.content = '#00c896'
-    meta.media = '(prefers-color-scheme: light)'
-    document.head.appendChild(meta)
-  }
+  // The application is intentionally dark-only, including browser chrome.
+  updateMetaTag('name', 'theme-color', '#09090b')
+  updateMetaTag('name', 'color-scheme', 'dark')
 
   // Open Graph tags
   updateMetaTag('property', 'og:title', seo.title || '')
