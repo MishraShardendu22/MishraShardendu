@@ -1,19 +1,12 @@
-# Phase 1 Plan: MishraShardendu22-Frontend-BlogWebsite
+# Phase 1 Plan: MishraShardendu22-Frontend-BlogWebsite (Motion Elevation)
 
-## 1. Design Token Adoption
-* Adopt canonical dark-mode token set in `src/app.css`:
-  * Enforce dark mode as default background (`#09090b` base, `#121318` card surface).
-  * Primary Accent: `#6366f1` (indigo-500).
-  * Hover Accent: `#4f46e5` (indigo-600).
-  * Borders: `#27272a`.
-  * Focus Ring: `#6366f1`.
-* Article typography: optimize reading line length, heading rhythm, and code block formatting.
+## 1. Library Selection & Strategy
+* **Strategy**: Native Svelte Primitives (`svelte/transition` `fade`, `fly`, `scale`, `slide`; `svelte/motion` `tweened`, `spring`).
+* **Justification**: Idiomatic, reactivity-integrated Svelte animation system with zero external dependency bloat.
 
-## 2. Component & Code Elevation
-* Eliminate all 11 Biome linter warnings by strictly typing `ApiResponse<T>`, error handlers in `src/lib/api.ts` & `src/lib/auth.ts`, and refactoring cognitive complexity in `src/lib/auth.ts` and `src/lib/seo.ts`.
-* Validate SEO metadata tags (OpenGraph, canonical URLs, structured JSON-LD data).
-
-## 3. Verification Sequence
-* Run `pnpm biome check apps/MishraShardendu22-Frontend-BlogWebsite` to verify 0 errors / 0 warnings.
-* Run `pnpm test` to verify Vitest tests pass.
-* Run `turbo run build` to verify Vite build passes cleanly.
+## 2. Targeted Interactions
+* **Article List**: Staggered list entrance via `transition:fly={{ y: 15, duration: 250, delay: i * 40 }}`.
+* **Reading Progress Bar**: Smooth width animation with `svelte/motion` `tweened`.
+* **Image Load**: Smooth fade-in transition (`transition:fade`).
+* **Micro-interactions**: Button press micro-scale (`active:scale-[0.98]`), focus ring scale.
+* **Accessibility**: Respect `prefers-reduced-motion: reduce`.

@@ -329,14 +329,47 @@ h6 {
     }
   }
 
+  /* Motion & Animation System */
+  @keyframes tableRowStagger {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .stagger-table-row {
+    animation: tableRowStagger 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .stagger-table-row:nth-child(1) { animation-delay: 0.03s; }
+  .stagger-table-row:nth-child(2) { animation-delay: 0.06s; }
+  .stagger-table-row:nth-child(3) { animation-delay: 0.09s; }
+  .stagger-table-row:nth-child(4) { animation-delay: 0.12s; }
+  .stagger-table-row:nth-child(5) { animation-delay: 0.15s; }
+
+  button:active:not(:disabled),
+  [role='button']:active:not(:disabled) {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+
   /* Remove motion for users who prefer reduced motion */
   @media (prefers-reduced-motion: reduce) {
+    .stagger-table-row {
+      animation: none;
+      transform: none;
+    }
+
     *,
     *::before,
     *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms;
+      animation-iteration-count: 1;
+      transition-duration: 0.01ms;
     }
   }
 }
