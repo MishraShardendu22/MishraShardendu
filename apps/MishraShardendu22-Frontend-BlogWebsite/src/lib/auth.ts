@@ -40,59 +40,48 @@ function createAuthStore() {
       const token = localStorage.getItem('authToken')
       const userStr = localStorage.getItem('user')
 
-      if (token && userStr) {
-        // Check if token is expired
-        if (isTokenExpired(token)) {
-          console.warn('[Auth] Token expired, clearing auth state')
-          localStorage.removeItem('authToken')
-          localStorage.removeItem('user')
-          update((state) => ({ ...state, isLoading: false, error: 'Session expired' }))
-          return
-        }
-
-        try {
-          const user = JSON.parse(userStr)
-          update((state) => ({
-            ...state,
-            token,
-            user,
-            isAuthenticated: true,
-            isLoading: false,
-            error: null,
-          }))
-
-          // Verify token with backend (with timeout to prevent blocking)
-          const timeoutPromise = new Promise((_, reject) =>
-            setTimeout(() => reject(new Error('Verification timeout')), 5000)
-          )
-
-          try {
-            const response = (await Promise.race([authApi.getCurrentUser(), timeoutPromise])) as any
-
-            if (response.success && response.data) {
-              update((state) => ({
-                ...state,
-                user: response.data!.user,
-                error: null,
-              }))
-            }
-          } catch (error: any) {
-            console.warn('[Auth] Token verification failed (non-blocking):', error.message)
-            // Don't logout on verification failure - just log it
-            // User can still browse without auth features
-          }
-        } catch (error) {
-          console.error('[Auth] Failed to parse stored user:', error)
-          localStorage.removeItem('authToken')
-          localStorage.removeItem('user')
-          update((state) => ({
-            ...state,
-            isLoading: false,
-            error: 'Invalid stored session',
-          }))
-        }
-      } else {
+      if (!token || !userStr) {
         update((state) => ({ ...state, isLoading: false }))
+        return
+      }
+
+      if (isTokenExpired(token)) {
+        console.warn('[Auth] Token expired, clearing auth state')
+        localStorage.removeItem('authToken')
+        localStorage.removeItem('user')
+        update((state) => ({ ...state, isLoading: false, error: 'Session expired' }))
+        return
+      }
+
+      try {
+        const user = JSON.parse(userStr)
+        update((state) => ({
+          ...state,
+          token,
+          user,
+          isAuthenticated: true,
+          isLoading: false,
+          error: null,
+        }))
+
+        const timeoutPromise = new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error('Verification timeout')), 5000)
+        )
+
+        Promise.race([authApi.getCurrentUser(), timeoutPromise])
+          .then((res) => {
+            if (res.success && res.data) {
+              update((state) => ({ ...state, user: res.data!.user, error: null }))
+            }
+          })
+          .catch((err: unknown) => {
+            console.warn('[Auth] Token verification failed (non-blocking):', (err as Error).message)
+          })
+      } catch (error) {
+        console.error('[Auth] Failed to parse stored user:', error)
+        localStorage.removeItem('authToken')
+        localStorage.removeItem('user')
+        update((state) => ({ ...state, isLoading: false, error: 'Invalid stored session' }))
       }
     },
 
@@ -119,9 +108,9 @@ function createAuthStore() {
         }
 
         return { success: false, error: response.error || 'Login failed' }
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error('Login error:', error)
-        return { success: false, error: error.message || 'Login failed' }
+        return { success: false, error: (error as Error).message || 'Login failed' }
       }
     },
 
@@ -148,9 +137,9 @@ function createAuthStore() {
         }
 
         return { success: false, error: response.error || 'Registration failed' }
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error('Registration error:', error)
-        return { success: false, error: error.message || 'Registration failed' }
+        return { success: false, error: (error as Error).message || 'Registration failed' }
       }
     },
 
@@ -173,9 +162,9 @@ function createAuthStore() {
         }
 
         return { success: false, error: response.error || 'OTP verification failed' }
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error('OTP verification error:', error)
-        return { success: false, error: error.message || 'OTP verification failed' }
+        return { success: false, error: (error as Error).message || 'OTP verification failed' }
       }
     },
 

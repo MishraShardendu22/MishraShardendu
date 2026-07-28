@@ -75,12 +75,12 @@ export default defineConfig(({ mode }) => {
         '/api': {
           target: env.VITE_BACKEND_1 || 'https://portfolio-backend-2iw4.onrender.com',
           changeOrigin: true,
-          configure: (proxy: any, _options: any) => {
-            proxy.on('error', (err: any, _req: any, _res: any) => {
+          configure: (proxy: { on: (event: string, cb: (...args: unknown[]) => void) => void }) => {
+            proxy.on('error', (err: unknown) => {
               console.error('proxy error', err)
             })
-            proxy.on('proxyReq', (_proxyReq: any, _req: any, _res: any) => {})
-            proxy.on('proxyRes', (_proxyRes: any, _req: any, _res: any) => {})
+            proxy.on('proxyReq', () => {})
+            proxy.on('proxyRes', () => {})
           },
         },
       },

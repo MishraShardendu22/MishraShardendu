@@ -33,7 +33,7 @@ export interface Author {
 }
 
 // API Response Types
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean
   message?: string
   data?: T
@@ -97,7 +97,7 @@ export class ApiError extends Error {
   constructor(
     message: string,
     public statusCode?: number,
-    public response?: any
+    public response?: unknown
   ) {
     super(message)
     this.name = 'ApiError'
@@ -141,7 +141,7 @@ const apiRequest = async <T>(endpoint: string, options: RequestInit = {}): Promi
     })
 
     // Try to parse JSON response
-    let data: any
+    let data: unknown
     try {
       data = await response.json()
     } catch (_e) {

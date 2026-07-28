@@ -46,6 +46,7 @@ const routeSEOMap: Record<string, keyof typeof pageSEO> = {
 // Protected route definitions
 interface RouteConfig {
   path: string
+  // biome-ignore lint/suspicious/noExplicitAny: RouteConfig accepts polymorphic page components
   Page: ComponentType<any>
   hasIdParam?: boolean
 }

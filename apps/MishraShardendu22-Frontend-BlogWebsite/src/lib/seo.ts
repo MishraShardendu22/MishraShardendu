@@ -30,6 +30,28 @@ const DEFAULT_SEO: SEOConfig = {
   author: 'Shardendu Mishra',
 }
 
+function createFaviconLink(linkConfig: {
+  rel: string
+  type?: string
+  sizes?: string
+  href: string
+}): void {
+  const selector = linkConfig.type
+    ? `link[rel="${linkConfig.rel}"][type="${linkConfig.type}"]${linkConfig.sizes ? `[sizes="${linkConfig.sizes}"]` : ''}`
+    : `link[rel="${linkConfig.rel}"]${linkConfig.sizes ? `[sizes="${linkConfig.sizes}"]` : ''}[href="${linkConfig.href}"]`
+
+  let link = document.querySelector(selector) as HTMLLinkElement
+
+  if (!link) {
+    link = document.createElement('link')
+    link.rel = linkConfig.rel
+    link.href = linkConfig.href
+    if (linkConfig.type) link.type = linkConfig.type
+    if (linkConfig.sizes) link.setAttribute('sizes', linkConfig.sizes)
+    document.head.appendChild(link)
+  }
+}
+
 /**
  * Ensure all favicon links are present in the document head
  */
@@ -46,37 +68,41 @@ function ensureFavicons(): void {
     { rel: 'apple-touch-icon', sizes: '512x512', href: '/icons/icon-512.png' },
   ]
 
-  faviconLinks.forEach((linkConfig) => {
-    const selector = linkConfig.type
-      ? `link[rel="${linkConfig.rel}"][type="${linkConfig.type}"]${linkConfig.sizes ? `[sizes="${linkConfig.sizes}"]` : ''}`
-      : `link[rel="${linkConfig.rel}"]${linkConfig.sizes ? `[sizes="${linkConfig.sizes}"]` : ''}[href="${linkConfig.href}"]`
+  faviconLinks.forEach(createFaviconLink)
+}
+// Ensure manifest link
+if (!document.querySelector('link[rel="manifest"]')) {
+  const manifest = document.createElement('link')
+  manifest.rel = 'manifest'
+  manifest.href = '/manifest.json'
+  document.head.appendChild(manifest)
+}
 
-    let link = document.querySelector(selector) as HTMLLinkElement
+// Ensure viewport meta tag
+if (!document.querySelector('meta[name="viewport"]')) {
+  const viewport = document.createElement('meta')
+  viewport.name = 'viewport'
+  viewport.content = 'width=device-width, initial-scale=1.0'
+  document.head.appendChild(viewport)
+}
 
-    if (!link) {
-      link = document.createElement('link')
-      link.rel = linkConfig.rel
-      link.href = linkConfig.href
-      if (linkConfig.type) link.type = linkConfig.type
-      if (linkConfig.sizes) link.setAttribute('sizes', linkConfig.sizes)
-      document.head.appendChild(link)
-    }
-  })
+function updateArticleMeta(seo: SEOConfig): void {
+  if (seo.type !== 'article') return
 
-  // Ensure manifest link
-  if (!document.querySelector('link[rel="manifest"]')) {
-    const manifest = document.createElement('link')
-    manifest.rel = 'manifest'
-    manifest.href = '/manifest.json'
-    document.head.appendChild(manifest)
-  }
+  updateMetaTag('property', 'og:type', 'article')
+  if (seo.publishedTime) updateMetaTag('property', 'article:published_time', seo.publishedTime)
+  if (seo.modifiedTime) updateMetaTag('property', 'article:modified_time', seo.modifiedTime)
+  if (seo.author) updateMetaTag('property', 'article:author', seo.author)
+  if (seo.section) updateMetaTag('property', 'article:section', seo.section)
 
-  // Ensure viewport meta tag
-  if (!document.querySelector('meta[name="viewport"]')) {
-    const viewport = document.createElement('meta')
-    viewport.name = 'viewport'
-    viewport.content = 'width=device-width, initial-scale=1.0'
-    document.head.appendChild(viewport)
+  if (seo.tags && seo.tags.length > 0) {
+    document.querySelectorAll('meta[property="article:tag"]').forEach((tag) => tag.remove())
+    seo.tags.forEach((tag) => {
+      const meta = document.createElement('meta')
+      meta.setAttribute('property', 'article:tag')
+      meta.setAttribute('content', tag)
+      document.head.appendChild(meta)
+    })
   }
 }
 
@@ -86,24 +112,15 @@ function ensureFavicons(): void {
 export function updateSEO(config: SEOConfig = {}): void {
   const seo = { ...DEFAULT_SEO, ...config }
 
-  // Update document title
-  if (seo.title) {
-    document.title = seo.title
-  }
-
-  // Ensure favicons are present
+  if (seo.title) document.title = seo.title
   ensureFavicons()
 
-  // Update or create meta tags
   updateMetaTag('name', 'description', seo.description || '')
   updateMetaTag('name', 'keywords', seo.keywords || '')
   updateMetaTag('name', 'author', seo.author || '')
-
-  // Update theme-color and color-scheme
-  updateMetaTag('name', 'theme-color', '#000000')
+  updateMetaTag('name', 'theme-color', '#09090b')
   updateMetaTag('name', 'color-scheme', 'dark')
 
-  // Open Graph tags
   updateMetaTag('property', 'og:title', seo.title || '')
   updateMetaTag('property', 'og:description', seo.description || '')
   updateMetaTag('property', 'og:image', seo.image || '')
@@ -112,44 +129,13 @@ export function updateSEO(config: SEOConfig = {}): void {
   updateMetaTag('property', 'og:site_name', 'Shardendu Mishra — Engineering Notes')
   updateMetaTag('property', 'og:locale', 'en_US')
 
-  // Twitter tags
   updateMetaTag('name', 'twitter:card', 'summary_large_image')
   updateMetaTag('name', 'twitter:title', seo.title || '')
   updateMetaTag('name', 'twitter:description', seo.description || '')
   updateMetaTag('name', 'twitter:image', seo.image || '')
   updateMetaTag('name', 'twitter:creator', '@Shardendu_M')
 
-  // Article specific tags
-  if (seo.type === 'article') {
-    updateMetaTag('property', 'og:type', 'article')
-    if (seo.publishedTime) {
-      updateMetaTag('property', 'article:published_time', seo.publishedTime)
-    }
-    if (seo.modifiedTime) {
-      updateMetaTag('property', 'article:modified_time', seo.modifiedTime)
-    }
-    if (seo.author) {
-      updateMetaTag('property', 'article:author', seo.author)
-    }
-    if (seo.section) {
-      updateMetaTag('property', 'article:section', seo.section)
-    }
-    if (seo.tags && seo.tags.length > 0) {
-      // Remove existing tag meta tags
-      const existingTags = document.querySelectorAll('meta[property="article:tag"]')
-      existingTags.forEach((tag) => tag.remove())
-
-      // Add new tags
-      seo.tags.forEach((tag) => {
-        const meta = document.createElement('meta')
-        meta.setAttribute('property', 'article:tag')
-        meta.setAttribute('content', tag)
-        document.head.appendChild(meta)
-      })
-    }
-  }
-
-  // Update canonical URL
+  updateArticleMeta(seo)
   updateCanonicalLink(seo.url || '')
 }
 
