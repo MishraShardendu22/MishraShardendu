@@ -34,6 +34,7 @@ body {
 
 /* Mobile-first responsive font scaling */
 :root {
+  color-scheme: dark;
   /* Enhanced font system with better mobile readability */
   --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-heading: 'Space Grotesk', system-ui, sans-serif;

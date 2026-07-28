@@ -19,7 +19,7 @@ export interface SEOConfig {
 }
 
 const DEFAULT_SEO: SEOConfig = {
-  title: 'Github Backup By Shardendu Mishra | Tech Articles & Programming Insights',
+  title: 'Shardendu Mishra — Engineering Notes',
   description:
     'Explore in-depth technical articles about web development, software engineering, programming best practices, and modern tech stack insights by Shardendu Mishra, a passionate software engineer and IIIT Dharwad student.',
   keywords:
@@ -101,7 +101,7 @@ export function updateSEO(config: SEOConfig = {}): void {
 
   // Update theme-color and color-scheme
   updateMetaTag('name', 'theme-color', '#000000')
-  updateMetaTag('name', 'color-scheme', 'light dark')
+  updateMetaTag('name', 'color-scheme', 'dark')
 
   // Open Graph tags
   updateMetaTag('property', 'og:title', seo.title || '')
@@ -109,7 +109,7 @@ export function updateSEO(config: SEOConfig = {}): void {
   updateMetaTag('property', 'og:image', seo.image || '')
   updateMetaTag('property', 'og:url', seo.url || '')
   updateMetaTag('property', 'og:type', seo.type || 'website')
-  updateMetaTag('property', 'og:site_name', 'Shardendu Mishra Github Backup')
+  updateMetaTag('property', 'og:site_name', 'Shardendu Mishra — Engineering Notes')
   updateMetaTag('property', 'og:locale', 'en_US')
 
   // Twitter tags

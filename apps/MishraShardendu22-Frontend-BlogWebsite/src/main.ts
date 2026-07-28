@@ -27,15 +27,9 @@ if (typeof window !== 'undefined') {
 
 function initTheme() {
   try {
-    const theme =
-      localStorage.getItem('portfolio-theme') ||
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
+    document.documentElement.classList.add('dark')
+    document.documentElement.classList.remove('light')
+    localStorage.setItem('portfolio-theme', 'dark')
   } catch (e) {
     console.error('[Blog Main] Failed to initialize theme:', e)
   }
