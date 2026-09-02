@@ -1,0 +1,20 @@
+services:
+  admin:
+    build:
+      context: .
+      dockerfile: apps/MishraShardendu22-Frontend-AdminWebsite/Dockerfile
+    image: shardendumishra22/ms22-admin:latest
+    container_name: ms22-admin
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+
+  blog:
+    build:
+      context: .
+      dockerfile: apps/MishraShardendu22-Frontend-BlogWebsite/Dockerfile
+    image: shardendumishra22/ms22-blog:latest
+    container_name: ms22-blog
+    restart: unless-stopped
+    ports:
+      - "5174:80"

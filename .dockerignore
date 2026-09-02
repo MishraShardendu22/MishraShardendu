@@ -1,0 +1,17 @@
+node_modules
+apps/*/node_modules
+packages/*/node_modules
+apps/*/dist
+.turbo
+apps/*/.turbo
+packages/*/.turbo
+.git
+.github
+.husky
+.vscode
+playwright-report
+test-results
+e2e
+docs
+*.log
+.DS_Store
