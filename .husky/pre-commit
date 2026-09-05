@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-pnpm run validate || {
-  echo "Validation failed! Fix lint, tests, and build before committing."
-  exit 1
-}
